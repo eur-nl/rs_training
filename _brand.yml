@@ -1,0 +1,18 @@
+color:
+  palette:
+    primary: "#0c8066"      
+    secondary: "#e3dad8"    
+    accent: "#f2b880"       
+    dark: "#1a1a1a"         
+    light: "#faf7f6"        
+  foreground: primary
+
+logo: 
+  medium: logo.png
+
+typography:
+  fonts:
+    - family: Nunito
+      source: google
+  base: Nunito
+  headings: Nunito

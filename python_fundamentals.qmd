@@ -1,0 +1,16 @@
+--- 
+title: "Python Fundamentals" 
+format: html 
+toc: true 
+toc-location: right 
+--- 
+## Welcome 
+This course introduces the basics of Python programming. It is designed for beginners with no prior experience.
+
+## What you will learn 
+- How to write Python scripts 
+- How to work with data 
+- How to use Jupyter notebooks 
+
+## Contact 
+If you have questions, feel free to reach out.
