@@ -1,0 +1,12 @@
+--- 
+title: "Research Software at EUR" 
+format: html 
+toc: true 
+toc-location: right 
+--- 
+
+Are you interested in learning more about Research Software? Do you want to improve your programming skills? 
+On this website, we publish all training materials related to research software, making it easier to find the right topic.
+
+## Contribute Your Own Material
+Have you created a useful lesson, tutorial, or script that others could benefit from? Get in touch with us or submit a pull request!

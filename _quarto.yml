@@ -8,9 +8,11 @@ website:
   back-to-top-navigation: true
   sidebar:
     style: "floating"
+    collapse-level: 1
     contents:
       - text: "Home"
-        href: home.qmd
+        href: index.qmd
+      - text: "---"
       - section: Python Fundamentals
         href: python_fundamentals.qmd
         contents:
@@ -18,7 +20,7 @@ website:
           href: Day1.ipynb
         - text: "Functions & Files"
           href: Day2.ipynb
-        - text: "Pandas & Plots"
+        - text: "Pandas & Plots + Next steps"
           href: Day3.ipynb
         - section: "Assignments"
           href: Instructions.ipynb
@@ -29,6 +31,7 @@ website:
             href: Assignments_Day2.ipynb
           - text: "Assignments - Pandas & Plots"
             href: Assignments_Day3.ipynb
+      - text: "---"
       - section: Programming Café
         contents:
         - text: "1 How to approach programming as a researcher (GitRepo)"
@@ -39,7 +42,6 @@ website:
           href: bash.qmd
         - text: "4 Clean your data with Python"
           href: DataCleaning.ipynb
-
 
 format:
   html:

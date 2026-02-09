@@ -1,7 +1,0 @@
---- 
-title: "Home" 
-format: html 
-toc: true 
-toc-location: right 
---- 
-## Welcome 
