@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Clean your data efficiently using Python – Research Software Training @ EUR</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./bash.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5f570b2fef623abd72473927a003bedd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5f570b2fef623abd72473927a003bedd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5f570b2fef623abd72473927a003bedd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://codeberg.org/charliegreene/research-software-best-practice">Programming Café</a></li><li class="breadcrumb-item"><a href="./DataCleaning.html">4 Clean your data with Python</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./python_fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Fundamentals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data (Collection) Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions &amp; Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas &amp; Plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignments_Day1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments - Data (Collection) Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignments_Day2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments - Functions &amp; Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignments_Day3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments - Pandas &amp; Plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Programming Café</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://codeberg.org/charliegreene/research-software-best-practice" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 How to approach programming as a researcher (GitRepo)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lesson_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Automating Tasks with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Basic command line usage in the Bash shell (PDF)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DataCleaning.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">4 Clean your data with Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#inspect-your-data" id="toc-inspect-your-data" class="nav-link active" data-scroll-target="#inspect-your-data">Inspect your data</a></li>
+  <li><a href="#wait-logging" id="toc-wait-logging" class="nav-link" data-scroll-target="#wait-logging">WAIT! Logging?</a></li>
+  <li><a href="#deleting-whitespace" id="toc-deleting-whitespace" class="nav-link" data-scroll-target="#deleting-whitespace">Deleting Whitespace</a></li>
+  <li><a href="#manipulate-cases" id="toc-manipulate-cases" class="nav-link" data-scroll-target="#manipulate-cases">Manipulate cases</a></li>
+  <li><a href="#replacing-values" id="toc-replacing-values" class="nav-link" data-scroll-target="#replacing-values">Replacing values</a></li>
+  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns">Renaming columns</a></li>
+  <li><a href="#missing-values-and-using-na" id="toc-missing-values-and-using-na" class="nav-link" data-scroll-target="#missing-values-and-using-na">Missing values and using na</a></li>
+  <li><a href="#unifying-time-stamps" id="toc-unifying-time-stamps" class="nav-link" data-scroll-target="#unifying-time-stamps">Unifying time stamps</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://codeberg.org/charliegreene/research-software-best-practice">Programming Café</a></li><li class="breadcrumb-item"><a href="./DataCleaning.html">4 Clean your data with Python</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Clean your data efficiently using Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Everyone has seen messy data before, extras spaces, symbols mixed with numbers, inconsistent spelling or data formats. All of these examples make the analysis of data more difficult.</p>
+<p>The data in itself is not “bad” data, but just not ready for analyses yet!</p>
+<p>In today’s session, I want to help you show how you can check whether your data is “messy” and how to get it ready for your analysis.</p>
+<p>You may now wonder “Why should I clean my data? Can’t I just analyse the messy data?”. There are multiple answers to this, but in general, messy data (in general) can lead to wrong results, make your analysis slower, increases your chance of mistakes and a lot harder to reproduce. If “Amsterdam”, for example, appears in three different spellings in your data, your analysis might think you have three cities instead of one.</p>
+<p>Let’s learn together, how to spot messy data, how to fix it and how to log the changes so everything is transparent and reproducible!</p>
+<p>Before we begin, I want to show you <a href="https://github.com/eyowhite/Messy-dataset">an example of messy data</a>! Let’s have a look at the data, open the file and try to spot some irregularities together. I want you to think of issues such as <strong>unwanted characters</strong>, <strong>inconsistent spelling</strong>, <strong>mixed data types</strong>, <strong>extra whitespace</strong>, <strong>duplicate rows</strong> and <strong>missing values</strong>.</p>
+<p>While we did the first examination with our own eyes, we can also use pandas (the python package) to inspect the data.</p>
+<section id="inspect-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-your-data">Inspect your data</h2>
+<div id="9282b0d524d9ffd0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.528818Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.526346Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, let's import pandas (or install if you have not installed it yet)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="904345e36199859e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.536464Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.532825Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's read the csv file</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pandas.read_csv(<span class="st">"messy_HR_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="a1e6dcf2ccc7286f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.544184Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.539956Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the first five rows</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="494">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joining Date</th>
+<th data-quarto-table-cell-role="th">Performance Score</th>
+<th data-quarto-table-cell-role="th">Email</th>
+<th data-quarto-table-cell-role="th">Phone Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>grace</td>
+<td>25</td>
+<td>50000</td>
+<td>Male</td>
+<td>HR</td>
+<td>Manager</td>
+<td>April 5, 2018</td>
+<td>D</td>
+<td>email@example.com</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>david</td>
+<td>NaN</td>
+<td>65000</td>
+<td>Female</td>
+<td>Finance</td>
+<td>Director</td>
+<td>2020/02/20</td>
+<td>F</td>
+<td>user@domain.com</td>
+<td>123-456-7890</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>hannah</td>
+<td>35</td>
+<td>SIXTY THOUSAND</td>
+<td>Female</td>
+<td>Sales</td>
+<td>Director</td>
+<td>01/15/2020</td>
+<td>C</td>
+<td>email@example.com</td>
+<td>098-765-4321</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>eve</td>
+<td>NaN</td>
+<td>50000</td>
+<td>Female</td>
+<td>IT</td>
+<td>Manager</td>
+<td>April 5, 2018</td>
+<td>A</td>
+<td>name@company.org</td>
+<td></td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>grace</td>
+<td>NaN</td>
+<td>NAN</td>
+<td>Female</td>
+<td>Finance</td>
+<td>Manager</td>
+<td>01/15/2020</td>
+<td>F</td>
+<td>name@company.org</td>
+<td>098-765-4321</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="5275205ba189002d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.550992Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.548039Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And the general information</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 1000 entries, 0 to 999
+Data columns (total 10 columns):
+ #   Column             Non-Null Count  Dtype
+---  ------             --------------  -----
+ 0   Name               1000 non-null   str  
+ 1   Age                841 non-null    str  
+ 2   Salary             1000 non-null   str  
+ 3   Gender             1000 non-null   str  
+ 4   Department         1000 non-null   str  
+ 5   Position           1000 non-null   str  
+ 6   Joining Date       1000 non-null   str  
+ 7   Performance Score  1000 non-null   str  
+ 8   Email              610 non-null    str  
+ 9   Phone Number       815 non-null    str  
+dtypes: str(10)
+memory usage: 78.3 KB</code></pre>
+</div>
+</div>
+<p>Do you see the first problem already? Some columns do not have 1000 rows, but 841 (Age), 610 (Email) and 815 (Phone number instead). Let’s remember this and fix it later.</p>
+<div id="533f42fb90631b3e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.564299Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.557493Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's have a look at the summary of the data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df.describe(include<span class="op">=</span><span class="st">"all"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="496">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joining Date</th>
+<th data-quarto-table-cell-role="th">Performance Score</th>
+<th data-quarto-table-cell-role="th">Email</th>
+<th data-quarto-table-cell-role="th">Phone Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>1000</td>
+<td>841</td>
+<td>1000</td>
+<td>1000</td>
+<td>1000</td>
+<td>1000</td>
+<td>1000</td>
+<td>1000</td>
+<td>610</td>
+<td>815</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">unique</th>
+<td>10</td>
+<td>5</td>
+<td>6</td>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">top</th>
+<td>alice</td>
+<td>thirty</td>
+<td>65000</td>
+<td>Male</td>
+<td>Finance</td>
+<td>Assistant</td>
+<td>2020/02/20</td>
+<td>B</td>
+<td>user@domain.com</td>
+<td>123-456-7890</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">freq</th>
+<td>118</td>
+<td>176</td>
+<td>184</td>
+<td>355</td>
+<td>218</td>
+<td>214</td>
+<td>232</td>
+<td>225</td>
+<td>213</td>
+<td>236</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>This overview gives us another hint. Now, of course our file only is an example, but you may wonder (in real data) why a phone number is used 236 times.</p>
+<div id="20e14414280010a4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.569143Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.566994Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's have a look at the unique values of each column and check whether we find something there</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.Name.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="497">
+<pre><code>&lt;StringArray&gt;
+[  ' grace ',   ' david ',  ' hannah ',     ' eve ',    ' jack ', ' charlie ',
+   ' frank ',     ' bob ',   ' alice ',     ' ivy ']
+Length: 10, dtype: str</code></pre>
+</div>
+</div>
+<p>The names look normal to me, but if we look closer, we can see that there are whitespaces around the names. Is that needed? I do not think so! Let’s delete them.</p>
+</section>
+<section id="wait-logging" class="level2">
+<h2 class="anchored" data-anchor-id="wait-logging">WAIT! Logging?</h2>
+<p>We just wanted to start deleting, however, we want to keep track of everthing. For that I want to write a small function that we can reuse.</p>
+<div id="1237feff044f4ff5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.574957Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.573155Z&quot;}}" data-execution_count="498">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_change(description):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"log_file.txt"</span>, mode <span class="op">=</span> <span class="st">'a'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> log_file:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(description, datetime.datetime.now(), sep <span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>, <span class="bu">file</span> <span class="op">=</span> log_file)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Started process!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Back to deleting whitespace!</p>
+</section>
+<section id="deleting-whitespace" class="level2">
+<h2 class="anchored" data-anchor-id="deleting-whitespace">Deleting Whitespace</h2>
+<div id="ea9e7b528d194702" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.580473Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.578687Z&quot;}}" data-execution_count="499">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can do that using strip()</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df.Name <span class="op">=</span> df.Name.<span class="bu">str</span>.strip()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Deleted whitespace in column Name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1798896e25320612" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.584762Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.582877Z&quot;}}" data-execution_count="500">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.Name.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="500">
+<pre><code>&lt;StringArray&gt;
+[  'grace',   'david',  'hannah',     'eve',    'jack', 'charlie',   'frank',
+     'bob',   'alice',     'ivy']
+Length: 10, dtype: str</code></pre>
+</div>
+</div>
+<p>df.Name.str.strip() removes extra whitespace from the beginning and end of each string. We use <code>str</code> to say that this method should be used to every value in the column.</p>
+<p>Since we looked at names, we may also want to have then capitalized, right?</p>
+</section>
+<section id="manipulate-cases" class="level2">
+<h2 class="anchored" data-anchor-id="manipulate-cases">Manipulate cases</h2>
+<p>We can do that using str.capitalize(). In a similar manner, we can use lowercase, uppercase or different settings: - str.lower(): Converts all characters to lowercase. - str.upper(): Converts all characters to uppercase. - str.title(): Converts first character of each word to uppercase and remaining to lowercase. - str.capitalize(): Converts first character to uppercase and remaining to lowercase. - str.swapcase(): Converts uppercase to lowercase and lowercase to uppercase.</p>
+<div id="7dff5def0a7ccc20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.590805Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.588906Z&quot;}}" data-execution_count="501">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df.Name <span class="op">=</span> df.Name.<span class="bu">str</span>.capitalize()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Capitalized strings in column Name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Let’s have a look at the age next…</p>
+<div id="a5cd78f61fb5e743" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.596527Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.594641Z&quot;}}" data-execution_count="502">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.Age.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="502">
+<pre><code>&lt;StringArray&gt;
+['25', nan, '35', '40', 'thirty', '50']
+Length: 6, dtype: str</code></pre>
+</div>
+</div>
+<p>It seems that age is sometimes written out as a string “thirty” and sometimes saved as a number.</p>
+</section>
+<section id="replacing-values" class="level2">
+<h2 class="anchored" data-anchor-id="replacing-values">Replacing values</h2>
+<p>If there are only some instances, it may be handy to just replace the string with a number.</p>
+<div id="c58a6a1b5cfdfe0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.605738Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.603575Z&quot;}}" data-execution_count="503">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.Age <span class="op">=</span> df.Age.replace(<span class="st">"thirty"</span>, <span class="st">"30"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Replacing thirty with 30 in column Age"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="4c8a591dd9db0a25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.610327Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.608497Z&quot;}}" data-execution_count="504">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.Age.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="504">
+<pre><code>&lt;StringArray&gt;
+['25', nan, '35', '40', '30', '50']
+Length: 6, dtype: str</code></pre>
+</div>
+</div>
+<div id="2a415746f1e476d5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.616287Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.614041Z&quot;}}" data-execution_count="505">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also ask pandas to convert all values to numbers and everything that is not a number, to NA</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ‘coerce’ means that invalid parsing will be set as NaN.</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df.Age <span class="op">=</span> pandas.to_numeric(df.Age, downcast<span class="op">=</span><span class="st">"integer"</span>, errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Converting Age to numeric"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="3a1c4820cdb56510" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.621329Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.619381Z&quot;}}" data-execution_count="506">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.Age.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="506">
+<pre><code>array([25., nan, 35., 40., 30., 50.])</code></pre>
+</div>
+</div>
+<p>Let’s check whether we find a similar problem in the Salary.</p>
+<div id="e369c46ea5e25aec" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.627110Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.625091Z&quot;}}" data-execution_count="507">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.Salary.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="507">
+<pre><code>&lt;StringArray&gt;
+['50000', '65000', 'SIXTY THOUSAND', ' NAN ', '70000', '55000']
+Length: 6, dtype: str</code></pre>
+</div>
+</div>
+<div id="79268935be3ce12d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.634092Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.630955Z&quot;}}" data-execution_count="508">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's replace SIXTY THOUSAND by the number</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df.Salary <span class="op">=</span> df.Salary.replace(<span class="st">"SIXTY THOUSAND"</span>, <span class="st">"60000"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Replace SIXTY THOUSAND with 60000 in column Salary"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># And tell pandas that we have numerics here</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>df.Salary <span class="op">=</span> pandas.to_numeric(df.Salary, downcast<span class="op">=</span><span class="st">"integer"</span>,errors<span class="op">=</span><span class="st">"coerce"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Converting Salary to numeric"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>df.Salary.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="508">
+<pre><code>array([50000., 65000., 60000.,    nan, 70000., 55000.])</code></pre>
+</div>
+</div>
+<p>Let’s have a short look at Gender…</p>
+<div id="926746b0d3e3aaf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.639887Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.637839Z&quot;}}" data-execution_count="509">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.Gender.unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="509">
+<pre><code>&lt;StringArray&gt;
+['Male', 'Female', 'Other']
+Length: 3, dtype: str</code></pre>
+</div>
+</div>
+<p>Ok! Looks good to me! But we may want to change it to “m”, “f” and “d”? For that, we could create a so-called mapping. We create a dictionary that contains the words that are currently in the dataset as keys and the words that we want to use as values. With this, we can also standardize the spelling!</p>
+<div id="9cb99612398a44c8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.645799Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.643545Z&quot;}}" data-execution_count="510">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gender_mapping <span class="op">=</span> {<span class="st">'Male'</span>: <span class="st">'m'</span>, <span class="st">'Female'</span>: <span class="st">'f'</span>, <span class="st">'Other'</span>:<span class="st">'d'</span>}</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Important: To use this function, you need the newest version of pandas (3.0) which may require to update your Python instance</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>df.Gender <span class="op">=</span> df.Gender.<span class="bu">str</span>.replace(gender_mapping)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Replace Male, Female and Other with f,m and d in column Gender"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="999d26780e92f98b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.651455Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.649264Z&quot;}}" data-execution_count="511">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df.Gender</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="511">
+<pre><code>0      m
+1      f
+2      f
+3      f
+4      f
+      ..
+995    f
+996    m
+997    m
+998    d
+999    m
+Name: Gender, Length: 1000, dtype: str</code></pre>
+</div>
+</div>
+<p>I did not find any problems in the Department and Position column, however, I do not like that the columns “Joining Date”, “Performance Score” and “Phone Number” use two words! That may make the work with them more difficult as we have to use a different approach (<code>df['Joining Date']</code> instead of <code>df.joining_date</code>).</p>
+</section>
+<section id="renaming-columns" class="level2">
+<h2 class="anchored" data-anchor-id="renaming-columns">Renaming columns</h2>
+<p>Let’s rename them!</p>
+<div id="7f61756b0a588b6a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.656603Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.654701Z&quot;}}" data-execution_count="512">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">"Joining Date"</span>: <span class="st">"Joining_Date"</span>, <span class="st">"Performance Score"</span>: <span class="st">"Performance_Score"</span>, <span class="st">"Phone Number"</span>: <span class="st">"Phone_Number"</span>})</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Renaming Column Joining Date, Performance Score and Phone Number to Joining_Date, Performance_Score and Phone_Number"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="missing-values-and-using-na" class="level1">
+<h1>Missing values and using na</h1>
+<p>While having a first look at our data, we have seen that Age, Salary, Email and Phone Number, were not fully filled and contained empty cells. We also saw that “NaN” has not been used for non-existing values all the time. Let’s unify that!</p>
+<div id="11829831529bf668" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.662158Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.659925Z&quot;}}" data-execution_count="513">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First we want to replace empty cells with a NA value</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.replace(<span class="st">""</span>, pandas.NA)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Filling all empty cells with NA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9120e678a98a9bf5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.665843Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.663909Z&quot;}}" data-execution_count="514">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also decide to name our "NA" different, but NaN works best with pandas. Let's unify it for every column</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.fillna(pandas.NA)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Unify NAs to pandas NA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="758cab9b94473036" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.672941Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.668444Z&quot;}}" data-execution_count="515">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="515">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joining_Date</th>
+<th data-quarto-table-cell-role="th">Performance_Score</th>
+<th data-quarto-table-cell-role="th">Email</th>
+<th data-quarto-table-cell-role="th">Phone_Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Grace</td>
+<td>25.0</td>
+<td>50000.0</td>
+<td>m</td>
+<td>HR</td>
+<td>Manager</td>
+<td>April 5, 2018</td>
+<td>D</td>
+<td>email@example.com</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>David</td>
+<td>NaN</td>
+<td>65000.0</td>
+<td>f</td>
+<td>Finance</td>
+<td>Director</td>
+<td>2020/02/20</td>
+<td>F</td>
+<td>user@domain.com</td>
+<td>123-456-7890</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Hannah</td>
+<td>35.0</td>
+<td>60000.0</td>
+<td>f</td>
+<td>Sales</td>
+<td>Director</td>
+<td>01/15/2020</td>
+<td>C</td>
+<td>email@example.com</td>
+<td>098-765-4321</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Eve</td>
+<td>NaN</td>
+<td>50000.0</td>
+<td>f</td>
+<td>IT</td>
+<td>Manager</td>
+<td>April 5, 2018</td>
+<td>A</td>
+<td>name@company.org</td>
+<td></td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Grace</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>f</td>
+<td>Finance</td>
+<td>Manager</td>
+<td>01/15/2020</td>
+<td>F</td>
+<td>name@company.org</td>
+<td>098-765-4321</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">995</th>
+<td>Jack</td>
+<td>50.0</td>
+<td>65000.0</td>
+<td>f</td>
+<td>HR</td>
+<td>Manager</td>
+<td>2020/02/20</td>
+<td>F</td>
+<td>NaN</td>
+<td>098-765-4321</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">996</th>
+<td>Jack</td>
+<td>30.0</td>
+<td>50000.0</td>
+<td>m</td>
+<td>Finance</td>
+<td>Analyst</td>
+<td>April 5, 2018</td>
+<td>C</td>
+<td>NaN</td>
+<td>555-555-5555</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">997</th>
+<td>Hannah</td>
+<td>30.0</td>
+<td>70000.0</td>
+<td>m</td>
+<td>IT</td>
+<td>Assistant</td>
+<td>01/15/2020</td>
+<td>D</td>
+<td>user@domain.com</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">998</th>
+<td>Bob</td>
+<td>25.0</td>
+<td>65000.0</td>
+<td>d</td>
+<td>Marketing</td>
+<td>Manager</td>
+<td>April 5, 2018</td>
+<td>D</td>
+<td>email@example.com</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">999</th>
+<td>Ivy</td>
+<td>30.0</td>
+<td>60000.0</td>
+<td>m</td>
+<td>Finance</td>
+<td>Manager</td>
+<td>2020/02/20</td>
+<td>C</td>
+<td>user@domain.com</td>
+<td>123-456-7890</td>
+</tr>
+</tbody>
+</table>
+
+<p>1000 rows × 10 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="unifying-time-stamps" class="level1">
+<h1>Unifying time stamps</h1>
+<p>You may have guessed it already, but the last aspect that we want to clean are the different time stamps. The dataset contains formats such as month, day year and year/month/day as well as month/day/year.</p>
+<p>Let’s unify that using pandas. A possible approach would be <code>df.Joining_Date = pandas.to_datetime(df.Joining_Date, errors="coerce")</code>. However, since our data is a bit more complex, we may have to adapt to different formats.</p>
+<div id="87376bfa60f50242" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.708757Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.675191Z&quot;}}" data-execution_count="516">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_date(date):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that takes the date and time and tries out to parse it using every possible format"""</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">format</span> <span class="kw">in</span> [<span class="st">"%B </span><span class="sc">%d</span><span class="st">, %Y"</span>, <span class="st">"%Y/%m/</span><span class="sc">%d</span><span class="st">"</span>,<span class="st">"%m/</span><span class="sc">%d</span><span class="st">/%Y"</span>, <span class="st">"%m-</span><span class="sc">%d</span><span class="st">-%Y"</span>, <span class="st">"%Y.%m.</span><span class="sc">%d</span><span class="st">"</span>]:</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> pandas.to_datetime(date, <span class="bu">format</span><span class="op">=</span><span class="bu">format</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pandas.NaT</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>df.Joining_Date <span class="op">=</span> df.Joining_Date.<span class="bu">apply</span>(parse_date)</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Unifying time stamps in column Joining_Date"</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="4456ed73ed1d7b81" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.713253Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.711401Z&quot;}}" data-execution_count="517">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unify it to a human-readable version</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df.Joining_Date <span class="op">=</span> df.Joining_Date.dt.strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Converting time stamps to %Y-%m-</span><span class="sc">%d</span><span class="st"> in column Joining_Date"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="6d106341eb2a80d5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.720054Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.715762Z&quot;}}" data-execution_count="518">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's have a final look at our data set! It looks so much cleaner!</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="518">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joining_Date</th>
+<th data-quarto-table-cell-role="th">Performance_Score</th>
+<th data-quarto-table-cell-role="th">Email</th>
+<th data-quarto-table-cell-role="th">Phone_Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Grace</td>
+<td>25.0</td>
+<td>50000.0</td>
+<td>m</td>
+<td>HR</td>
+<td>Manager</td>
+<td>2018-04-05</td>
+<td>D</td>
+<td>email@example.com</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>David</td>
+<td>NaN</td>
+<td>65000.0</td>
+<td>f</td>
+<td>Finance</td>
+<td>Director</td>
+<td>2020-02-20</td>
+<td>F</td>
+<td>user@domain.com</td>
+<td>123-456-7890</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Hannah</td>
+<td>35.0</td>
+<td>60000.0</td>
+<td>f</td>
+<td>Sales</td>
+<td>Director</td>
+<td>2020-01-15</td>
+<td>C</td>
+<td>email@example.com</td>
+<td>098-765-4321</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Eve</td>
+<td>NaN</td>
+<td>50000.0</td>
+<td>f</td>
+<td>IT</td>
+<td>Manager</td>
+<td>2018-04-05</td>
+<td>A</td>
+<td>name@company.org</td>
+<td></td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Grace</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>f</td>
+<td>Finance</td>
+<td>Manager</td>
+<td>2020-01-15</td>
+<td>F</td>
+<td>name@company.org</td>
+<td>098-765-4321</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">995</th>
+<td>Jack</td>
+<td>50.0</td>
+<td>65000.0</td>
+<td>f</td>
+<td>HR</td>
+<td>Manager</td>
+<td>2020-02-20</td>
+<td>F</td>
+<td>NaN</td>
+<td>098-765-4321</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">996</th>
+<td>Jack</td>
+<td>30.0</td>
+<td>50000.0</td>
+<td>m</td>
+<td>Finance</td>
+<td>Analyst</td>
+<td>2018-04-05</td>
+<td>C</td>
+<td>NaN</td>
+<td>555-555-5555</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">997</th>
+<td>Hannah</td>
+<td>30.0</td>
+<td>70000.0</td>
+<td>m</td>
+<td>IT</td>
+<td>Assistant</td>
+<td>2020-01-15</td>
+<td>D</td>
+<td>user@domain.com</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">998</th>
+<td>Bob</td>
+<td>25.0</td>
+<td>65000.0</td>
+<td>d</td>
+<td>Marketing</td>
+<td>Manager</td>
+<td>2018-04-05</td>
+<td>D</td>
+<td>email@example.com</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">999</th>
+<td>Ivy</td>
+<td>30.0</td>
+<td>60000.0</td>
+<td>m</td>
+<td>Finance</td>
+<td>Manager</td>
+<td>2020-02-20</td>
+<td>C</td>
+<td>user@domain.com</td>
+<td>123-456-7890</td>
+</tr>
+</tbody>
+</table>
+
+<p>1000 rows × 10 columns</p>
+</div>
+</div>
+</div>
+<div id="baab18888a126116" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.730925Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.722615Z&quot;}}" data-execution_count="519">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can start doing some statistics!</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df.describe(include<span class="op">=</span><span class="st">"all"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="519">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Salary</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Department</th>
+<th data-quarto-table-cell-role="th">Position</th>
+<th data-quarto-table-cell-role="th">Joining_Date</th>
+<th data-quarto-table-cell-role="th">Performance_Score</th>
+<th data-quarto-table-cell-role="th">Email</th>
+<th data-quarto-table-cell-role="th">Phone_Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>1000</td>
+<td>841.000000</td>
+<td>833.000000</td>
+<td>1000</td>
+<td>1000</td>
+<td>1000</td>
+<td>1000</td>
+<td>1000</td>
+<td>610</td>
+<td>815</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">unique</th>
+<td>10</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">top</th>
+<td>Alice</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>m</td>
+<td>Finance</td>
+<td>Assistant</td>
+<td>2020-02-20</td>
+<td>B</td>
+<td>user@domain.com</td>
+<td>123-456-7890</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">freq</th>
+<td>118</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>355</td>
+<td>218</td>
+<td>214</td>
+<td>232</td>
+<td>225</td>
+<td>213</td>
+<td>236</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>NaN</td>
+<td>35.802616</td>
+<td>60216.086435</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">std</th>
+<td>NaN</td>
+<td>8.551889</td>
+<td>7127.032811</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">min</th>
+<td>NaN</td>
+<td>25.000000</td>
+<td>50000.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>NaN</td>
+<td>30.000000</td>
+<td>55000.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>NaN</td>
+<td>35.000000</td>
+<td>60000.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>NaN</td>
+<td>40.000000</td>
+<td>65000.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">max</th>
+<td>NaN</td>
+<td>50.000000</td>
+<td>70000.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./bash.html" class="pagination-link" aria-label="3 Basic command line usage in the Bash shell (PDF)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">3 Basic command line usage in the Bash shell (PDF)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

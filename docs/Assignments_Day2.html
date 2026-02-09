@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Assignments - Day 2 – Research Software Training @ EUR</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Assignments_Day3.html" rel="next">
+<link href="./Assignments_Day1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5f570b2fef623abd72473927a003bedd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5f570b2fef623abd72473927a003bedd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5f570b2fef623abd72473927a003bedd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_fundamentals.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="./Instructions.html">Assignments</a></li><li class="breadcrumb-item"><a href="./Assignments_Day2.html">Assignments - Functions &amp; Files</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./python_fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Fundamentals</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data (Collection) Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions &amp; Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Day3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas &amp; Plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignments_Day1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments - Data (Collection) Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignments_Day2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Assignments - Functions &amp; Files</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignments_Day3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments - Pandas &amp; Plots</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Programming Café</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://codeberg.org/charliegreene/research-software-best-practice" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 How to approach programming as a researcher (GitRepo)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lesson_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Automating Tasks with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Basic command line usage in the Bash shell (PDF)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DataCleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 Clean your data with Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#assignment-4.1" id="toc-assignment-4.1" class="nav-link active" data-scroll-target="#assignment-4.1">Assignment 4.1</a>
+  <ul class="collapse">
+  <li><a href="#expected-input" id="toc-expected-input" class="nav-link" data-scroll-target="#expected-input">Expected input</a></li>
+  <li><a href="#expected-return-values" id="toc-expected-return-values" class="nav-link" data-scroll-target="#expected-return-values">Expected return values</a></li>
+  </ul></li>
+  <li><a href="#assignment-4.2" id="toc-assignment-4.2" class="nav-link" data-scroll-target="#assignment-4.2">Assignment 4.2</a>
+  <ul class="collapse">
+  <li><a href="#expected-input-1" id="toc-expected-input-1" class="nav-link" data-scroll-target="#expected-input-1">Expected input</a></li>
+  <li><a href="#expected-return-values-1" id="toc-expected-return-values-1" class="nav-link" data-scroll-target="#expected-return-values-1">Expected return values</a></li>
+  </ul></li>
+  <li><a href="#assignment-4.3" id="toc-assignment-4.3" class="nav-link" data-scroll-target="#assignment-4.3">Assignment 4.3</a>
+  <ul class="collapse">
+  <li><a href="#input" id="toc-input" class="nav-link" data-scroll-target="#input">Input</a></li>
+  <li><a href="#expected-return-values-2" id="toc-expected-return-values-2" class="nav-link" data-scroll-target="#expected-return-values-2">Expected return values</a></li>
+  </ul></li>
+  <li><a href="#assignment-5.1" id="toc-assignment-5.1" class="nav-link" data-scroll-target="#assignment-5.1">Assignment 5.1</a>
+  <ul class="collapse">
+  <li><a href="#expected-input-2" id="toc-expected-input-2" class="nav-link" data-scroll-target="#expected-input-2">Expected input</a></li>
+  <li><a href="#expected-print" id="toc-expected-print" class="nav-link" data-scroll-target="#expected-print">Expected print</a></li>
+  </ul></li>
+  <li><a href="#assignment-5.2" id="toc-assignment-5.2" class="nav-link" data-scroll-target="#assignment-5.2">Assignment 5.2</a>
+  <ul class="collapse">
+  <li><a href="#expected-input-3" id="toc-expected-input-3" class="nav-link" data-scroll-target="#expected-input-3">Expected input</a></li>
+  <li><a href="#expected-return-values-3" id="toc-expected-return-values-3" class="nav-link" data-scroll-target="#expected-return-values-3">Expected return values</a></li>
+  </ul></li>
+  <li><a href="#assignment-5.3" id="toc-assignment-5.3" class="nav-link" data-scroll-target="#assignment-5.3">Assignment 5.3</a>
+  <ul class="collapse">
+  <li><a href="#expected-input-4" id="toc-expected-input-4" class="nav-link" data-scroll-target="#expected-input-4">Expected input</a></li>
+  <li><a href="#expected-return-values-4" id="toc-expected-return-values-4" class="nav-link" data-scroll-target="#expected-return-values-4">Expected return values</a></li>
+  </ul></li>
+  <li><a href="#assignment-5.4" id="toc-assignment-5.4" class="nav-link" data-scroll-target="#assignment-5.4">Assignment 5.4</a>
+  <ul class="collapse">
+  <li><a href="#expected-input-5" id="toc-expected-input-5" class="nav-link" data-scroll-target="#expected-input-5">Expected input</a></li>
+  <li><a href="#expected-return-values-5" id="toc-expected-return-values-5" class="nav-link" data-scroll-target="#expected-return-values-5">Expected return values</a></li>
+  <li><a href="#assignment-6.1" id="toc-assignment-6.1" class="nav-link" data-scroll-target="#assignment-6.1">Assignment 6.1</a>
+  <ul class="collapse">
+  <li><a href="#csv-file-content" id="toc-csv-file-content" class="nav-link" data-scroll-target="#csv-file-content">CSV file content</a></li>
+  <li><a href="#expected-print-on-console" id="toc-expected-print-on-console" class="nav-link" data-scroll-target="#expected-print-on-console">Expected print on console</a></li>
+  </ul></li>
+  <li><a href="#assignment-6.2" id="toc-assignment-6.2" class="nav-link" data-scroll-target="#assignment-6.2">Assignment 6.2</a>
+  <ul class="collapse">
+  <li><a href="#csv-file-content-1" id="toc-csv-file-content-1" class="nav-link" data-scroll-target="#csv-file-content-1">CSV file content</a></li>
+  <li><a href="#expected-print-on-console-1" id="toc-expected-print-on-console-1" class="nav-link" data-scroll-target="#expected-print-on-console-1">Expected print on console</a></li>
+  </ul></li>
+  <li><a href="#assignment-6.3" id="toc-assignment-6.3" class="nav-link" data-scroll-target="#assignment-6.3">Assignment 6.3</a>
+  <ul class="collapse">
+  <li><a href="#csv-file-content-2" id="toc-csv-file-content-2" class="nav-link" data-scroll-target="#csv-file-content-2">CSV file content</a></li>
+  <li><a href="#expected-return-values-6" id="toc-expected-return-values-6" class="nav-link" data-scroll-target="#expected-return-values-6">Expected return values</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_fundamentals.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="./Instructions.html">Assignments</a></li><li class="breadcrumb-item"><a href="./Assignments_Day2.html">Assignments - Functions &amp; Files</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Assignments - Day 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="3df51c2a-d436-48cb-9318-7e1c7ef15d7e" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> assertions <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> test_cells <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="assignment-4.1" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-4.1">Assignment 4.1</h2>
+<p>Create a function that takes three participants’ names (<code>name1</code>, <code>name2</code>, <code>name3</code>), sorts them by alphabet and returns the sorted list.</p>
+<section id="expected-input" class="level3">
+<h3 class="anchored" data-anchor-id="expected-input">Expected input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Petra"</span>, <span class="st">"Adam"</span>, <span class="st">"Eva"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-return-values" class="level3">
+<h3 class="anchored" data-anchor-id="expected-return-values">Expected return values</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"Adam"</span>, <span class="st">"Eva"</span>, <span class="st">"Petra"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6919a382-c242-4794-8dde-ad25b5bbd492" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 4.1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_4_1(name1, name2, name3):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8f687f35-54fc-4b0f-9682-40f329309139" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 4.1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>test_cell_4_1(assignment_4_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="fb78805f-0ecd-49e6-be9d-292ca83b2e8d" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 4.1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_4_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-4.2" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-4.2">Assignment 4.2</h2>
+<p>Write a function that takes a list of dictionaries (<code>list_d</code>) containing participant IDs and locations, and generates file names by combining the participant ID and location.</p>
+<section id="expected-input-1" class="level3">
+<h3 class="anchored" data-anchor-id="expected-input-1">Expected input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>[{<span class="st">"id"</span>:<span class="st">"001"</span>, <span class="st">"location"</span>:<span class="st">"Rotterdam"</span>},{<span class="st">"id"</span>:<span class="st">"002"</span>, <span class="st">"location"</span>:<span class="st">"Utrecht"</span>},{<span class="st">"id"</span>:<span class="st">"003"</span>, <span class="st">"location"</span>:<span class="st">"Amsterdam"</span>},{<span class="st">"id"</span>:<span class="st">"004"</span>, <span class="st">"location"</span>:<span class="st">"Nijmegen"</span>},{<span class="st">"id"</span>:<span class="st">"005"</span>, <span class="st">"location"</span>:<span class="st">"Breda"</span>}]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-return-values-1" class="level3">
+<h3 class="anchored" data-anchor-id="expected-return-values-1">Expected return values</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"001_Rotterdam.txt"</span>,<span class="st">"002_Utrecht.txt"</span>,<span class="st">"003_Amsterdam.txt"</span>,<span class="st">"004_Nijmegen.txt"</span>,<span class="st">"005_Breda.txt"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f3a22ec5-f7a1-4a50-8c7f-8d1e083bcf14" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 4.2</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_4_2(list_d):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="90a3dfa7-fd82-42e0-9b9b-804bb24e2791" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;2147265b5b36985e09e608444c4800c2&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;test_4_2&quot;,&quot;locked&quot;:true,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 4.2</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>test_cell_4_2(assignment_4_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9b9d697a-0e9a-4024-9da9-c5fcff5a0662" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 4.2</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_4_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-4.3" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-4.3">Assignment 4.3</h2>
+<p>Write a function that takes a list of file names and changes their ending depending on their name. - if the file name contains “table” it should be a <code>.csv</code> file - if the file name contains “text” it should be a <code>.txt</code> file - if the file name contains neither “table” nor “text” it should remain unchanged</p>
+<section id="input" class="level3">
+<h3 class="anchored" data-anchor-id="input">Input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"table1.txt"</span>, <span class="st">"table2.csv"</span>, <span class="st">"text1.txt"</span>, <span class="st">"text2.csv"</span>, <span class="st">"plot.jpg"</span>, <span class="st">"plot.csv"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-return-values-2" class="level3">
+<h3 class="anchored" data-anchor-id="expected-return-values-2">Expected return values</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"table1.csv"</span>, <span class="st">"table2.csv"</span>, <span class="st">"text1.txt"</span>, <span class="st">"text2.txt"</span>, <span class="st">"plot.jpg"</span>, <span class="st">"plot.csv"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6ffdfa01-2f0f-415a-a3e9-9d05a8146b0d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;6c71fac5f37b1139eb621f56753f795b&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;assignment_4_3&quot;,&quot;locked&quot;:false,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 4.3</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_4_3(file_names_list):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="a090b1ad-499a-4122-aeb3-ae8c26aa3bc0" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;9d15065e39938709e9bbf9619c6d2604&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;test_4_3&quot;,&quot;locked&quot;:true,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 4.3</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>test_cell_4_3(assignment_4_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="b6ee7fab-91bd-4fee-b20a-a8d50b0cc9e7" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;ded2c9a895ea1150bae60284cf89a940&quot;,&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;assertion_4_3&quot;,&quot;locked&quot;:true,&quot;points&quot;:1,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 4.3</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_4_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-5.1" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-5.1">Assignment 5.1</h2>
+<p>Find the error in the following code, by using <code>try</code> and <code>except</code> and looking at the raised exception.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_1(persons):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""function takes list of people and prints every element (one per line)"""</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    persons <span class="op">=</span> [<span class="st">"Lisa"</span>, <span class="st">"Julia"</span>, <span class="st">"Veronika"</span>, <span class="st">"Anton"</span>, <span class="st">"Karl"</span>, <span class="st">"Vanessa"</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> person_index <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(persons)<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        person <span class="op">=</span> persons[person_index]</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(person)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="expected-input-2" class="level3">
+<h3 class="anchored" data-anchor-id="expected-input-2">Expected input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"Lisa"</span>, <span class="st">"Julia"</span>, <span class="st">"Veronika"</span>, <span class="st">"Anton"</span>, <span class="st">"Karl"</span>, <span class="st">"Vanessa"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-print" class="level3">
+<h3 class="anchored" data-anchor-id="expected-print">Expected print</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Lisa</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Julia</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Veronika</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>Anton</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>Karl</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>Vanessa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2312a8d0-a2c9-427b-b71a-41510c1bff68" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 5.1</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_1(persons):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""function takes list of people and prints every element (one per line)"""</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8d2be0ab-078b-426b-9c2a-674c72a606fa" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;c8c513fb0ffbf235f0cfbfce25b21e45&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;test_5_1&quot;,&quot;locked&quot;:true,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 5.1</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>test_cell_5_1(assignment_5_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="48cd778e-e57c-4cbe-9054-e9286f3665ae" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 5.1</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_5_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-5.2" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-5.2">Assignment 5.2</h2>
+<p>Find the error(s) and correct the following function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dict_people <span class="op">=</span> [{<span class="st">"first_name"</span>: <span class="st">"Petra"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">20</span>}, {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">33</span>}, {<span class="st">"first_name"</span>: <span class="st">"Adam"</span>, <span class="st">"age"</span>:<span class="dv">30</span>}, {<span class="st">"first_name"</span>: <span class="st">"Joshua"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, {<span class="st">"first_name"</span>: <span class="st">"Michel"</span>, <span class="st">"age"</span>:<span class="dv">21</span>}, {<span class="st">"last_name"</span>: <span class="st">"Bauer"</span>, <span class="st">"age"</span>:<span class="dv">55</span>}]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_2(dict_people):</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""function takes a list of dictionaries containing names and ages of people </span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">       and returns a list of all their names."""</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    list_names <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> person <span class="kw">in</span> dict_people:</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        list_names.append(person[<span class="st">"first_name"</span>])</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> list_names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Hint: remember <code>try</code> and <code>except</code> – you can use it to detect and skip problematic cases. Do NOT change the value of <code>dict_people</code>.</p>
+<section id="expected-input-3" class="level3">
+<h3 class="anchored" data-anchor-id="expected-input-3">Expected input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>[{<span class="st">"first_name"</span>: <span class="st">"Petra"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">20</span>}, {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">33</span>}, {<span class="st">"first_name"</span>: <span class="st">"Adam"</span>, <span class="st">"age"</span>:<span class="dv">30</span>}, {<span class="st">"first_name"</span>: <span class="st">"Joshua"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, {<span class="st">"first_name"</span>: <span class="st">"Michel"</span>, <span class="st">"age"</span>:<span class="dv">21</span>}, {<span class="st">"last_name"</span>: <span class="st">"Bauer"</span>, <span class="st">"age"</span>:<span class="dv">55</span>}]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-return-values-3" class="level3">
+<h3 class="anchored" data-anchor-id="expected-return-values-3">Expected return values</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">"Petra"</span>, <span class="st">"Klaudia"</span>, <span class="st">"Klaudia"</span>, <span class="st">"Adam"</span>, <span class="st">"Joshua"</span>, <span class="st">"Michel"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3171d5a7-9ac9-4655-ad0a-c3806ce2f257" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 5.2</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_2(dict_people):</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""function takes a list of dictionaries containing names and ages of people</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">       and returns a list of all their names."""</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="6666aee3-9620-4901-bd1e-8f96288f58f6" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;123b3f64346b45d7779a26d82b969305&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;test_5_2&quot;,&quot;locked&quot;:true,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 5.2</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>test_cell_5_2(assignment_5_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="afb4d992-2c0a-42dc-8ae4-69cc89ac4f46" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 5.2</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_5_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-5.3" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-5.3">Assignment 5.3</h2>
+<p>Correct the following code. Check the variable names, keys and the syntax. Use try and except for potential error messages. Do NOT change the value of <code>dict_people</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dict_people <span class="op">=</span> {<span class="st">"001"</span>: {<span class="st">"first_name"</span>: <span class="st">"Petra"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"002"</span>:{<span class="st">"First_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">20</span>}, <span class="st">"003"</span>: {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">33</span>}, <span class="st">"004"</span>:{<span class="st">"first_name"</span>: <span class="st">"Adam"</span>, <span class="st">"age"</span>:<span class="dv">30</span>}, <span class="st">"005"</span>:{<span class="st">"First_name"</span>: <span class="st">"Joshua"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"006"</span>:{<span class="st">"first_name"</span>: <span class="st">"Michel"</span>, <span class="st">"age"</span>:<span class="dv">21</span>}, <span class="st">"007"</span>:{<span class="st">"last_name"</span>: <span class="st">"Bauer"</span>, <span class="st">"age"</span>:<span class="dv">55</span>}}</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_3(dict_people):</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    list_names <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> person <span class="kw">in</span> dict_people.values():</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>        list_names.append(person[<span class="st">"first_name"</span>])</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> list_names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="expected-input-4" class="level3">
+<h3 class="anchored" data-anchor-id="expected-input-4">Expected input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>{<span class="st">"001"</span>: {<span class="st">"first_name"</span>: <span class="st">"Petra"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"002"</span>:{<span class="st">"First_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">20</span>}, <span class="st">"003"</span>: {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">33</span>}, <span class="st">"004"</span>:{<span class="st">"first_name"</span>: <span class="st">"Adam"</span>, <span class="st">"age"</span>:<span class="dv">30</span>}, <span class="st">"005"</span>:{<span class="st">"First_name"</span>: <span class="st">"Joshua"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"006"</span>:{<span class="st">"first_name"</span>: <span class="st">"Michel"</span>, <span class="st">"age"</span>:<span class="dv">21</span>}, <span class="st">"007"</span>:{<span class="st">"last_name"</span>: <span class="st">"Bauer"</span>, <span class="st">"age"</span>:<span class="dv">55</span>}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-return-values-4" class="level3">
+<h3 class="anchored" data-anchor-id="expected-return-values-4">Expected return values</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Petra'</span>, <span class="st">'Klaudia'</span>, <span class="st">'Klaudia'</span>, <span class="st">'Adam'</span>, <span class="st">'Joshua'</span>, <span class="st">'Michel'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="12cfb896-3363-46b6-a781-fa79b288f950" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 5.3</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_3(dict_people):</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="ceb2e667-3b61-4e6b-8997-b4e9d2a394ca" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;ffe32add97e045493c487c16fa71942f&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;test_5_3&quot;,&quot;locked&quot;:true,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 5.3</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>test_cell_5_3(assignment_5_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="3f6af1e7-9a2d-4df3-8ad5-a85739525817" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 5.3</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_5_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-5.4" class="level1">
+<h1>Assignment 5.4</h1>
+<p>Correct the following code, but this time see if you can manage <strong>without</strong> using <code>try</code> and <code>except</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dict_people <span class="op">=</span> {<span class="st">"001"</span>: {<span class="st">"first_name"</span>: <span class="st">"Petra"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"002"</span>:{<span class="st">"First_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">20</span>}, <span class="st">"003"</span>: {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">33</span>}, <span class="st">"004"</span>:{<span class="st">"first_name"</span>: <span class="st">"Adam"</span>, <span class="st">"age"</span>:<span class="dv">30</span>}, <span class="st">"005"</span>:{<span class="st">"First_name"</span>: <span class="st">"Joshua"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"006"</span>:{<span class="st">"first_name"</span>: <span class="st">"Michel"</span>, <span class="st">"age"</span>:<span class="dv">21</span>}, <span class="st">"007"</span>:{<span class="st">"last_name"</span>: <span class="st">"Bauer"</span>, <span class="st">"age"</span>:<span class="dv">55</span>}}</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_4(dict_people):</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    list_names <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> person <span class="kw">in</span> dict_people.values():</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        list_names.append(person[<span class="st">"first_name"</span>])</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> list_names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="expected-input-5" class="level3">
+<h3 class="anchored" data-anchor-id="expected-input-5">Expected input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>{<span class="st">"001"</span>: {<span class="st">"first_name"</span>: <span class="st">"Petra"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"002"</span>:{<span class="st">"First_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">20</span>}, <span class="st">"003"</span>: {<span class="st">"first_name"</span>: <span class="st">"Klaudia"</span>, <span class="st">"age"</span>:<span class="dv">33</span>}, <span class="st">"004"</span>:{<span class="st">"first_name"</span>: <span class="st">"Adam"</span>, <span class="st">"age"</span>:<span class="dv">30</span>}, <span class="st">"005"</span>:{<span class="st">"First_name"</span>: <span class="st">"Joshua"</span>, <span class="st">"age"</span>:<span class="dv">15</span>}, <span class="st">"006"</span>:{<span class="st">"first_name"</span>: <span class="st">"Michel"</span>, <span class="st">"age"</span>:<span class="dv">21</span>}, <span class="st">"007"</span>:{<span class="st">"last_name"</span>: <span class="st">"Bauer"</span>, <span class="st">"age"</span>:<span class="dv">55</span>}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="expected-return-values-5" class="level3">
+<h3 class="anchored" data-anchor-id="expected-return-values-5">Expected return values</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>[<span class="st">'Petra'</span>, <span class="st">'Klaudia'</span>, <span class="st">'Klaudia'</span>, <span class="st">'Adam'</span>, <span class="st">'Joshua'</span>, <span class="st">'Michel'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="892b3920-e33f-49dd-9258-45a6d810457d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;86d13a7902857a6693655246fb165b1b&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;assignment_5_4&quot;,&quot;locked&quot;:false,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 5.4</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_5_4(dict_people):</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="e419dc9c-4914-45fb-8bad-c4a4b019f4da" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;72a0ec9db125b008db791164a9a34961&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;test_5_4&quot;,&quot;locked&quot;:true,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 5.4</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>test_cell_5_4(assignment_5_4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="a67a3cb4-e47e-42ba-8987-92d1c1a9d571" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;2134bd3be1ad8f812b2aaaefde48e4ba&quot;,&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;assertion_5_4&quot;,&quot;locked&quot;:true,&quot;points&quot;:1,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 5.4</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_5_4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="assignment-6.1" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-6.1">Assignment 6.1</h2>
+<p>Read the csv file <code>static/first_names.txt</code> and store the contents in a list. Sort the participants by first names and print them.</p>
+<section id="csv-file-content" class="level3">
+<h3 class="anchored" data-anchor-id="csv-file-content">CSV file content</h3>
+<pre class="text"><code>name
+Peter
+Alex
+Sandra
+Eva
+Adam
+Fred
+Klaudia
+Helena
+Anna
+Xavier
+Yonne
+Timo
+Joeri
+Noralie
+Kevin
+Ruben
+Mick
+Tom
+Berta</code></pre>
+</section>
+<section id="expected-print-on-console" class="level3">
+<h3 class="anchored" data-anchor-id="expected-print-on-console">Expected print on console</h3>
+<pre class="text"><code>Adam
+Alex
+Anna
+Berta
+Eva
+Fred
+Helena
+Joeri
+Kevin
+Klaudia
+Mick
+Noralie
+Peter
+Ruben
+Sandra
+Timo
+Tom
+Xavier
+Yonne</code></pre>
+<div id="a4f47873-bcf8-4717-9ab9-2f6bebb6b6fa" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 6.1</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_6_1():</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    file_location <span class="op">=</span> <span class="st">"static/first_names.txt"</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="582c59d2-90fe-486a-bedf-d30429fafb7f" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 6.1</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>test_cell_6_1(assignment_6_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="ef7ceabd-fb61-4ce5-8fae-ebf063564f29" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;nbgrader&quot;,&quot;value&quot;:{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;fcb2d085b8e7aba1168f629525a07869&quot;,&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;assertion_6_1&quot;,&quot;locked&quot;:true,&quot;points&quot;:1,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 6.1</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_6_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-6.2" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-6.2">Assignment 6.2</h2>
+<p>Read the csv file <code>static/names_age_location.csv</code> and store the contents in a list. Sort the participants by age and print their age and name (seperated by a tab).</p>
+<section id="csv-file-content-1" class="level3">
+<h3 class="anchored" data-anchor-id="csv-file-content-1">CSV file content</h3>
+<pre><code>name,age,location
+Peter,21,Rotterdam
+Alex,45,Rotterdam
+Sandra,65,Rotterdam
+Eva,76,Utrecht
+Adam,31,Utrecht
+Fred,90,Utrecht
+Klaudia,45,Utrecht
+Helena,32,Nijmegen
+Anna,33,Nijmegen
+Xavier,33,Nijmegen
+Yonne,54,Nijmegen
+Timo,67,Nijmegen
+Joeri,89,Amsterdam
+Noralie,10,Amsterdam
+Kevin,11,Amsterdam
+Ruben,90,Amsterdam
+Mick,1,Amsterdam
+Tom,23,Groningen
+Berta,54,Groningen</code></pre>
+</section>
+<section id="expected-print-on-console-1" class="level3">
+<h3 class="anchored" data-anchor-id="expected-print-on-console-1">Expected print on console</h3>
+<pre><code>1   Mick
+10  Noralie
+11  Kevin
+21  Peter
+23  Tom
+31  Adam
+32  Helena
+33  Anna
+33  Xavier
+45  Alex
+45  Klaudia
+54  Berta
+54  Yonne
+65  Sandra
+67  Timo
+76  Eva
+89  Joeri
+90  Fred
+90  Ruben</code></pre>
+<div id="1802dc33-5d6d-4c53-aa5b-7e4c6014260f" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 6.2</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_6_2():</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> csv</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    file_location <span class="op">=</span> <span class="st">"static/names_age_location.csv"</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="97e7543f-f398-4713-94a5-7519ba458cbb" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 6.2</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>test_cell_6_2(assignment_6_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0e92f239-d4d2-49e6-b15a-2cea2e21aa0e" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 6.2</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_6_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="assignment-6.3" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-6.3">Assignment 6.3</h2>
+<p>Read the csv file <code>static/names_age_location.csv</code> and store the contents in a dictionary of dictionaries. Give each participant an id (incremental integers starting at <code>0</code>). Save the dictionary in a JSON file in <code>output/names_age_location.json</code> and return the dictionary at the end.</p>
+<section id="csv-file-content-2" class="level3">
+<h3 class="anchored" data-anchor-id="csv-file-content-2">CSV file content</h3>
+<pre><code>name,age,location
+Peter,21,Rotterdam
+Alex,45,Rotterdam
+Sandra,65,Rotterdam
+Eva,76,Utrecht
+Adam,31,Utrecht
+Fred,90,Utrecht
+Klaudia,45,Utrecht
+Helena,32,Nijmegen
+Anna,33,Nijmegen
+Xavier,33,Nijmegen
+Yonne,54,Nijmegen
+Timo,67,Nijmegen
+Joeri,89,Amsterdam
+Noralie,10,Amsterdam
+Kevin,11,Amsterdam
+Ruben,90,Amsterdam
+Mick,1,Amsterdam
+Tom,23,Groningen
+Berta,54,Groningen</code></pre>
+</section>
+<section id="expected-return-values-6" class="level3">
+<h3 class="anchored" data-anchor-id="expected-return-values-6">Expected return values</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span>: {<span class="st">'name'</span>: <span class="st">'Peter'</span>, <span class="st">'age'</span>: <span class="st">'21'</span>, <span class="st">'location'</span>: <span class="st">'Rotterdam'</span>},</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span>: {<span class="st">'name'</span>: <span class="st">'Alex'</span>, <span class="st">'age'</span>: <span class="st">'45'</span>, <span class="st">'location'</span>: <span class="st">'Rotterdam'</span>},</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span>: {<span class="st">'name'</span>: <span class="st">'Sandra'</span>, <span class="st">'age'</span>: <span class="st">'65'</span>, <span class="st">'location'</span>: <span class="st">'Rotterdam'</span>},</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span>: {<span class="st">'name'</span>: <span class="st">'Eva'</span>, <span class="st">'age'</span>: <span class="st">'76'</span>, <span class="st">'location'</span>: <span class="st">'Utrecht'</span>},</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span>: {<span class="st">'name'</span>: <span class="st">'Adam'</span>, <span class="st">'age'</span>: <span class="st">'31'</span>, <span class="st">'location'</span>: <span class="st">'Utrecht'</span>},</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span>: {<span class="st">'name'</span>: <span class="st">'Fred'</span>, <span class="st">'age'</span>: <span class="st">'90'</span>, <span class="st">'location'</span>: <span class="st">'Utrecht'</span>},</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span>: {<span class="st">'name'</span>: <span class="st">'Klaudia'</span>, <span class="st">'age'</span>: <span class="st">'45'</span>, <span class="st">'location'</span>: <span class="st">'Utrecht'</span>},</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span>: {<span class="st">'name'</span>: <span class="st">'Helena'</span>, <span class="st">'age'</span>: <span class="st">'32'</span>, <span class="st">'location'</span>: <span class="st">'Nijmegen'</span>},</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span>: {<span class="st">'name'</span>: <span class="st">'Anna'</span>, <span class="st">'age'</span>: <span class="st">'33'</span>, <span class="st">'location'</span>: <span class="st">'Nijmegen'</span>},</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span>: {<span class="st">'name'</span>: <span class="st">'Xavier'</span>, <span class="st">'age'</span>: <span class="st">'33'</span>, <span class="st">'location'</span>: <span class="st">'Nijmegen'</span>},</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">10</span>: {<span class="st">'name'</span>: <span class="st">'Yonne'</span>, <span class="st">'age'</span>: <span class="st">'54'</span>, <span class="st">'location'</span>: <span class="st">'Nijmegen'</span>},</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a> <span class="dv">11</span>: {<span class="st">'name'</span>: <span class="st">'Timo'</span>, <span class="st">'age'</span>: <span class="st">'67'</span>, <span class="st">'location'</span>: <span class="st">'Nijmegen'</span>},</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a> <span class="dv">12</span>: {<span class="st">'name'</span>: <span class="st">'Joeri'</span>, <span class="st">'age'</span>: <span class="st">'89'</span>, <span class="st">'location'</span>: <span class="st">'Amsterdam'</span>},</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a> <span class="dv">13</span>: {<span class="st">'name'</span>: <span class="st">'Noralie'</span>, <span class="st">'age'</span>: <span class="st">'10'</span>, <span class="st">'location'</span>: <span class="st">'Amsterdam'</span>},</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a> <span class="dv">14</span>: {<span class="st">'name'</span>: <span class="st">'Kevin'</span>, <span class="st">'age'</span>: <span class="st">'11'</span>, <span class="st">'location'</span>: <span class="st">'Amsterdam'</span>},</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a> <span class="dv">15</span>: {<span class="st">'name'</span>: <span class="st">'Ruben'</span>, <span class="st">'age'</span>: <span class="st">'90'</span>, <span class="st">'location'</span>: <span class="st">'Amsterdam'</span>},</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a> <span class="dv">16</span>: {<span class="st">'name'</span>: <span class="st">'Mick'</span>, <span class="st">'age'</span>: <span class="st">'1'</span>, <span class="st">'location'</span>: <span class="st">'Amsterdam'</span>},</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a> <span class="dv">17</span>: {<span class="st">'name'</span>: <span class="st">'Tom'</span>, <span class="st">'age'</span>: <span class="st">'23'</span>, <span class="st">'location'</span>: <span class="st">'Groningen'</span>},</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a> <span class="dv">18</span>: {<span class="st">'name'</span>: <span class="st">'Berta'</span>, <span class="st">'age'</span>: <span class="st">'54'</span>, <span class="st">'location'</span>: <span class="st">'Groningen'</span>}</span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="530f1370-4031-4416-8bf5-812c899001a6" class="cell" data-editable="true" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for assignment 6.3</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assignment_6_3():</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    csv_input <span class="op">=</span> <span class="st">'static/names_age_location.csv'</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    json_output <span class="op">=</span> <span class="st">'output/names_age_location.json'</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># YOUR CODE HERE</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="29b853fe-e01d-4050-bb30-ee699f10ce9d" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for assignment 6.3</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function </span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>test_cell_6_3(assignment_6_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="97d2ac56-cd2e-4bf3-8d7d-e68028644e3b" class="cell" data-editable="false" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;&quot;}}" data-tags="[]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assertion for assignment 6.3</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>check_assertion(assignment_6_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Assignments_Day1.html" class="pagination-link" aria-label="Assignments - Data (Collection) Types">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Assignments - Data (Collection) Types</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Assignments_Day3.html" class="pagination-link" aria-label="Assignments - Pandas &amp; Plots">
+        <span class="nav-page-text">Assignments - Pandas &amp; Plots</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

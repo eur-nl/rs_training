@@ -1,0 +1,963 @@
+[
+  {
+    "objectID": "lesson_2.html",
+    "href": "lesson_2.html",
+    "title": "Automating Tasks with Python",
+    "section": "",
+    "text": "In this second session of the Programming Café, we’ll dive into how to use Python scripts to automate repetitive tasks in your research. We’ll explore the basics of automation, focusing on how to effectively move, rename and copy your files and write clear, functional scripts.\nWe will start with a question: Which tasks would you like to automate in your research ? I hope that I can show you some tricks for these tasks today.\n\n\nDid everyone install Python ? Who needs help ? I would recommend the use of PyCharm! - Please create a copy of the files that you want to work on. - You can also download test files extracted from the German Summary Corpus (Wedig & Strobl, 2024) here. - Create a folder “data” in your projects and a subfolder “files” in which you paste your files\n\n\n\nimport os  #package that gives us access to the operating system\nimport shutil #package that gives us access to file operations\nimport re #package that gives us access to regular expressions\nimport time #package that gives us access to time\n\nif __name__ == '__main__':\n  # will be filled with our functions\n    \n\n\n\nDuring a busy period like a PhD, tasks such as tracking existing files or creating backups may be overlooked. Python can help automate these tasks, allowing you to complete them with the press of a button.\n\n\nAt the beginning of your project (or at a later stage), you might wonder how to best structure your files. This code snippet allows you to automate the process. Be aware: data/copy will be created for this session today and is not typical in a research project\ndef create_folders():\n  folders = [\"data/raw\", \"data/processed\", \"data/copy\" \"scripts\", \"results\"] # Here you can define how you would like to name your folders\n  # Create folders\n  for folder in folders:\n      os.makedirs(folder, exist_ok=True)\n\n\n\nTo get an overview of all the files in a folder, you can use the listdir() function.\ndef list_files():\n  # Get the directory path\n  working_dir = os.getcwd()\n  path = os.path.join(working_dir, \"data\", \"files\")\n  \n  print(os.listdir(path)) # print allows us to see the results on the console.\n\n\n\nYou might find yourself in a situation where you want to create copies of your files, such as for backup purposes. For this, you can use the shutil package.\ndef copy_files():\n  # Get the directory path\n  working_dir = os.getcwd() \n  path = os.path.join(working_dir, \"data\", \"files\") \n  \n  # this is how we copy one file\n  source = os.path.join(path, \"L1_Ki_02.csv\") \n  destination = os.path.join(working_dir, \"data\", \"test\", \"copy_L1_Ki_02.csv\")\n  shutil.copyfile(source, destination)\n  \n  # we can also copy a while directory\n  shutil.copytree(os.path.join(working_dir, \"data\", \"files\"), os.path.join(working_dir, \"data\", \"copy\"), dirs_exist_ok = True)\n\n\n\nAfter copying the files, we can perform some small operations on them!\nHave you ever found yourself in a situation where you realized you didn’t follow a clear concept in your file naming or ordered the sequences within the file names incorrectly? Let’s fix that!\nLet’s start simple: add “exp” in front of the current file name.\ndef change_name():\n  # Get the directory path\n  working_dir = os.getcwd() \n  folder_path = os.path.join(working_dir, \"data\",\"copy\") \n  \n  #for every file in that folder, we want to create a new file name and then use rename to change the name\n  for file in os.listdir(folder_path): \n    new_name = \"exp_\" + file\n    os.rename(os.path.join(folder_path, file), os.path.join(folder_path, new_name))\nNow a bit more complex, let’s only change csv files\ndef change_name_csv():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\") \n  \n  # for every file, we want to change, but only if the file ends with \".csv\"\n  for file in os.listdir(folder_path):\n      if file.endswith(\".csv\"):\n        new_name = \"csv_\" + file\n        os.rename(os.path.join(folder_path,file), os.path.join(folder_path,new_name))\nWe can also make it a bit more advanced here and only add the string “csv” where “csv” is not added (or included in the name already)\ndef change_name_csv_advanced():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\") \n  \n  # for every file, we want to change, but only if the file ends with \".csv\" and does not include csv already\n  for file in os.listdir(folder_path):\n      if file.endswith(\".csv\") and \"csv\" not in file:\n        new_name = \"csv_\" + file\n        os.rename(os.path.join(folder_path, file), os.path.join(folder_path, new_name))\nWe can also adjust this in more detail using regular expressions\ndef change_name_re():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\")\n  \n  # Create a pattern (\\s means whitespace)\n  pattern = re.compile(r\"(\\s+)\")\n  # and define what you want to replace it with\n  replace_with = \"_\"\n  \n  # for every file, check whether it fits the pattern and change the name accordingly\n  for file in os.listdir(folder_path):\n      new_name = pattern.sub(replace_with, file)\n      os.rename(os.path.join(folder_path, file), os.path.join(folder_path, new_name))\nRegular expressions are not limited to spaces, you can adapt them to match your file names. Best to use is regexr for this. They also provide a handy cheatsheet.\n\n\n\nAnother task that you may be interested in is sorting files. To sort files, we can use shutil again. We can sort files according to various criteria. For now, I show you file types and file names.\n\n\nTo sort files by file type, we can use the .endswith() function that we already used previously.\ndef sort_files_type():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\")\n  \n  # Decide on the names of the new directories (can also be nicer, but quick and dirty now)\n  destination_csv = os.path.join(working_dir, \"data\",\"csv_files\")\n  destination_txt = os.path.join(working_dir, \"data\",\"txt_files\")\n  \n  # Create the directories\n  os.makedirs(destination_csv, exist_ok=True)\n  os.makedirs(destination_txt, exist_ok=True)\n  \n  # for every file in the directory, sort in the right new folder\n  for file in os.listdir(folder_path):\n      if file.endswith(\".csv\"):\n          shutil.move(os.path.join(folder_path, file), os.path.join(destination_csv, file))\n      elif file.endswith(\".txt\"):\n          shutil.move(os.path.join(folder_path, file), os.path.join(destination_txt, file))\n\n\n\nTo sort the files by name or certain characteristics of the names, we use the “in” operator.\ndef sort_file_name():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\")\n  \n  # Decide on the names of the new directories (can also be nicer, but quick and dirty now)\n  destination_L1 = os.path.join(working_dir, \"data\",\"L1\")\n  destination_L2 = os.path.join(working_dir, \"data\",\"L2\")\n  os.makedirs(destination_L1, exist_ok=True)\n  os.makedirs(destination_L2, exist_ok=True)\n  \n  # for every file in the directory, sort in the right new folder using \"in\"\n  for file in os.listdir(folder_path):\n      if \"L1\" in file:\n          shutil.move(os.path.join(folder_path, file), os.path.join(destination_L1, file))\n      elif \"L2\" in file:\n        shutil.move(os.path.join(folder_path, file), os.path.join(destination_L2, file))\n\n\n\n\n\nFor a research project, you might also want a list of all files along with their modification dates. We can use Python for that!\n\n\ndef generate_README():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\")\n  \n  # Open the Readme file, print the header and then all information about the files\n  with open(\"README.txt\", mode = \"w\", encoding = \"utf-8\") as file_out:\n      print(\"directory\", \"subdirectory\", \"file\", \"modification_date\", sep = \"\\t\", file = file_out)\n      # for every directory/folder that we find...\n      for dirpath, dirnames, files in os.walk(folder_path):\n      #...iterate through files and print information in the readme\n          for file in files:\n              path =  os.path.join(dirpath, file)\n              mod_time = time.ctime(os.path.getmtime(path))\n              print(os.path.basename(folder_path), os.path.basename(dirpath), file, mod_time, sep = \"\\t\", file = file_out)\nIn the end, our main function may look like this:\nif __name__ == '__main__':\n  create_folders()\n  list_files()\n  copy_files()\n  change_name()\n  change_name_csv()\n  change_name_csv_advanced()\n  sort_file_name()\n  sort_file_type()\n  generate_README()\nI hope that this already helps you a bit for your research projects!\nAny other task that you want to optimize/automate?\nHere is a nice resource with even more topics!",
+    "crumbs": [
+      "Programming Café",
+      "2 Automating Tasks with Python"
+    ]
+  },
+  {
+    "objectID": "lesson_2.html#requirements-to-start",
+    "href": "lesson_2.html#requirements-to-start",
+    "title": "Automating Tasks with Python",
+    "section": "",
+    "text": "Did everyone install Python ? Who needs help ? I would recommend the use of PyCharm! - Please create a copy of the files that you want to work on. - You can also download test files extracted from the German Summary Corpus (Wedig & Strobl, 2024) here. - Create a folder “data” in your projects and a subfolder “files” in which you paste your files",
+    "crumbs": [
+      "Programming Café",
+      "2 Automating Tasks with Python"
+    ]
+  },
+  {
+    "objectID": "lesson_2.html#import-the-necessary-modules-and-create-a-main-function-to-coordinate-all-tasks",
+    "href": "lesson_2.html#import-the-necessary-modules-and-create-a-main-function-to-coordinate-all-tasks",
+    "title": "Automating Tasks with Python",
+    "section": "",
+    "text": "import os  #package that gives us access to the operating system\nimport shutil #package that gives us access to file operations\nimport re #package that gives us access to regular expressions\nimport time #package that gives us access to time\n\nif __name__ == '__main__':\n  # will be filled with our functions",
+    "crumbs": [
+      "Programming Café",
+      "2 Automating Tasks with Python"
+    ]
+  },
+  {
+    "objectID": "lesson_2.html#file-management",
+    "href": "lesson_2.html#file-management",
+    "title": "Automating Tasks with Python",
+    "section": "",
+    "text": "During a busy period like a PhD, tasks such as tracking existing files or creating backups may be overlooked. Python can help automate these tasks, allowing you to complete them with the press of a button.\n\n\nAt the beginning of your project (or at a later stage), you might wonder how to best structure your files. This code snippet allows you to automate the process. Be aware: data/copy will be created for this session today and is not typical in a research project\ndef create_folders():\n  folders = [\"data/raw\", \"data/processed\", \"data/copy\" \"scripts\", \"results\"] # Here you can define how you would like to name your folders\n  # Create folders\n  for folder in folders:\n      os.makedirs(folder, exist_ok=True)\n\n\n\nTo get an overview of all the files in a folder, you can use the listdir() function.\ndef list_files():\n  # Get the directory path\n  working_dir = os.getcwd()\n  path = os.path.join(working_dir, \"data\", \"files\")\n  \n  print(os.listdir(path)) # print allows us to see the results on the console.\n\n\n\nYou might find yourself in a situation where you want to create copies of your files, such as for backup purposes. For this, you can use the shutil package.\ndef copy_files():\n  # Get the directory path\n  working_dir = os.getcwd() \n  path = os.path.join(working_dir, \"data\", \"files\") \n  \n  # this is how we copy one file\n  source = os.path.join(path, \"L1_Ki_02.csv\") \n  destination = os.path.join(working_dir, \"data\", \"test\", \"copy_L1_Ki_02.csv\")\n  shutil.copyfile(source, destination)\n  \n  # we can also copy a while directory\n  shutil.copytree(os.path.join(working_dir, \"data\", \"files\"), os.path.join(working_dir, \"data\", \"copy\"), dirs_exist_ok = True)\n\n\n\nAfter copying the files, we can perform some small operations on them!\nHave you ever found yourself in a situation where you realized you didn’t follow a clear concept in your file naming or ordered the sequences within the file names incorrectly? Let’s fix that!\nLet’s start simple: add “exp” in front of the current file name.\ndef change_name():\n  # Get the directory path\n  working_dir = os.getcwd() \n  folder_path = os.path.join(working_dir, \"data\",\"copy\") \n  \n  #for every file in that folder, we want to create a new file name and then use rename to change the name\n  for file in os.listdir(folder_path): \n    new_name = \"exp_\" + file\n    os.rename(os.path.join(folder_path, file), os.path.join(folder_path, new_name))\nNow a bit more complex, let’s only change csv files\ndef change_name_csv():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\") \n  \n  # for every file, we want to change, but only if the file ends with \".csv\"\n  for file in os.listdir(folder_path):\n      if file.endswith(\".csv\"):\n        new_name = \"csv_\" + file\n        os.rename(os.path.join(folder_path,file), os.path.join(folder_path,new_name))\nWe can also make it a bit more advanced here and only add the string “csv” where “csv” is not added (or included in the name already)\ndef change_name_csv_advanced():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\") \n  \n  # for every file, we want to change, but only if the file ends with \".csv\" and does not include csv already\n  for file in os.listdir(folder_path):\n      if file.endswith(\".csv\") and \"csv\" not in file:\n        new_name = \"csv_\" + file\n        os.rename(os.path.join(folder_path, file), os.path.join(folder_path, new_name))\nWe can also adjust this in more detail using regular expressions\ndef change_name_re():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\")\n  \n  # Create a pattern (\\s means whitespace)\n  pattern = re.compile(r\"(\\s+)\")\n  # and define what you want to replace it with\n  replace_with = \"_\"\n  \n  # for every file, check whether it fits the pattern and change the name accordingly\n  for file in os.listdir(folder_path):\n      new_name = pattern.sub(replace_with, file)\n      os.rename(os.path.join(folder_path, file), os.path.join(folder_path, new_name))\nRegular expressions are not limited to spaces, you can adapt them to match your file names. Best to use is regexr for this. They also provide a handy cheatsheet.\n\n\n\nAnother task that you may be interested in is sorting files. To sort files, we can use shutil again. We can sort files according to various criteria. For now, I show you file types and file names.\n\n\nTo sort files by file type, we can use the .endswith() function that we already used previously.\ndef sort_files_type():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\")\n  \n  # Decide on the names of the new directories (can also be nicer, but quick and dirty now)\n  destination_csv = os.path.join(working_dir, \"data\",\"csv_files\")\n  destination_txt = os.path.join(working_dir, \"data\",\"txt_files\")\n  \n  # Create the directories\n  os.makedirs(destination_csv, exist_ok=True)\n  os.makedirs(destination_txt, exist_ok=True)\n  \n  # for every file in the directory, sort in the right new folder\n  for file in os.listdir(folder_path):\n      if file.endswith(\".csv\"):\n          shutil.move(os.path.join(folder_path, file), os.path.join(destination_csv, file))\n      elif file.endswith(\".txt\"):\n          shutil.move(os.path.join(folder_path, file), os.path.join(destination_txt, file))\n\n\n\nTo sort the files by name or certain characteristics of the names, we use the “in” operator.\ndef sort_file_name():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\",\"copy\")\n  \n  # Decide on the names of the new directories (can also be nicer, but quick and dirty now)\n  destination_L1 = os.path.join(working_dir, \"data\",\"L1\")\n  destination_L2 = os.path.join(working_dir, \"data\",\"L2\")\n  os.makedirs(destination_L1, exist_ok=True)\n  os.makedirs(destination_L2, exist_ok=True)\n  \n  # for every file in the directory, sort in the right new folder using \"in\"\n  for file in os.listdir(folder_path):\n      if \"L1\" in file:\n          shutil.move(os.path.join(folder_path, file), os.path.join(destination_L1, file))\n      elif \"L2\" in file:\n        shutil.move(os.path.join(folder_path, file), os.path.join(destination_L2, file))",
+    "crumbs": [
+      "Programming Café",
+      "2 Automating Tasks with Python"
+    ]
+  },
+  {
+    "objectID": "lesson_2.html#documentation",
+    "href": "lesson_2.html#documentation",
+    "title": "Automating Tasks with Python",
+    "section": "",
+    "text": "For a research project, you might also want a list of all files along with their modification dates. We can use Python for that!\n\n\ndef generate_README():\n  # Get the directory path\n  working_dir = os.getcwd()\n  folder_path = os.path.join(working_dir, \"data\")\n  \n  # Open the Readme file, print the header and then all information about the files\n  with open(\"README.txt\", mode = \"w\", encoding = \"utf-8\") as file_out:\n      print(\"directory\", \"subdirectory\", \"file\", \"modification_date\", sep = \"\\t\", file = file_out)\n      # for every directory/folder that we find...\n      for dirpath, dirnames, files in os.walk(folder_path):\n      #...iterate through files and print information in the readme\n          for file in files:\n              path =  os.path.join(dirpath, file)\n              mod_time = time.ctime(os.path.getmtime(path))\n              print(os.path.basename(folder_path), os.path.basename(dirpath), file, mod_time, sep = \"\\t\", file = file_out)\nIn the end, our main function may look like this:\nif __name__ == '__main__':\n  create_folders()\n  list_files()\n  copy_files()\n  change_name()\n  change_name_csv()\n  change_name_csv_advanced()\n  sort_file_name()\n  sort_file_type()\n  generate_README()\nI hope that this already helps you a bit for your research projects!\nAny other task that you want to optimize/automate?\nHere is a nice resource with even more topics!",
+    "crumbs": [
+      "Programming Café",
+      "2 Automating Tasks with Python"
+    ]
+  },
+  {
+    "objectID": "Day1.html",
+    "href": "Day1.html",
+    "title": "Python Fundamentals - Day 1",
+    "section": "",
+    "text": "Let us start with our first piece of code: the most famous sentence that we want to be able to print when starting to learn how to program is ‘Hello, world.’ For that, we can use the built-in function print(), which prints output to the command line. We add the sentence ‘Hello, world’ in parentheses.\n\nprint('hello world!')\n\nThe built-in function print() can help us grasp what we are actually doing right now. For example, we can also print numbers.\n\nprint(1)\n\nYou probably noticed that I did not use quotation marks this time. That’s because 1 is a different type – a number type called an integer.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#hello-world",
+    "href": "Day1.html#hello-world",
+    "title": "Python Fundamentals - Day 1",
+    "section": "",
+    "text": "Let us start with our first piece of code: the most famous sentence that we want to be able to print when starting to learn how to program is ‘Hello, world.’ For that, we can use the built-in function print(), which prints output to the command line. We add the sentence ‘Hello, world’ in parentheses.\n\nprint('hello world!')\n\nThe built-in function print() can help us grasp what we are actually doing right now. For example, we can also print numbers.\n\nprint(1)\n\nYou probably noticed that I did not use quotation marks this time. That’s because 1 is a different type – a number type called an integer.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#types-of-data",
+    "href": "Day1.html#types-of-data",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Types of data",
+    "text": "Types of data\nIn general, we differentiate between four types of data: Integer, Float, Boolean, and String.\n\nAn integer is a number without a decimal point.\nA float is a floating-point number, meaning it has a decimal place.\nA boolean has two possible values: true and false. It is used for logical operations.\nA string is a sequence of characters, primarily used for handling text. A string is indicated by quotation marks.\n\nWe can use the built-in function type() to check the type of objects.\n\ntype(1)\n\n\ntype (2.5)\n\n\ntype(True)\n\n\ntype(\"Hello world!\")\n\nNow that we understand data types, the question is: How do we use them effectively? A practical approach is to use variables. Variables allow us to store these values efficiently.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#variables",
+    "href": "Day1.html#variables",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Variables",
+    "text": "Variables\nTo be precise, variables allow us to bind a name to an object, meaning we can associate names with our values. This can be done with all types.\n\n# Store a text in the variable txt\ntxt = \"This is a text.\"\nprint(txt)\n\n\n# Store numbers in the variable number1 and number2\nn1 = 2\nn2 = 2.5\n\nprint(\"Number 1:\", n1)\nprint(\"Number 2:\", n2)\n\n\n# Store boolean in variables\nparticipated = True\nabsent = False\n\nprint(\"Participated:\", participated)\nprint(\"Absent:\", absent)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#using-variables",
+    "href": "Day1.html#using-variables",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Using Variables",
+    "text": "Using Variables\nVariables allow us to store values and types, which can be utilized to solve various tasks. A common example is using Python to perform simple math operations.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#simple-math",
+    "href": "Day1.html#simple-math",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Simple Math",
+    "text": "Simple Math\nWe can use numeric types to perform basic math operations such as addition, subtraction, division, and multiplication. To do this, we simply use the appropriate math operators.\n\n# Save the numbers 1,3 and 5 in variables n1, n2 and n3\nn1 = 1\nn2 = 3\nn3 = 5\n\n\n# Addition\nprint(n1 + n2)\n\n\n# Subtraction\nprint(n1 - n2)\n\n\n# Multiplication\nprint(n1 * n2)\n\n\n# Division\nprint(n1/n3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#string-manipulation-i",
+    "href": "Day1.html#string-manipulation-i",
+    "title": "Python Fundamentals - Day 1",
+    "section": "String manipulation (I)",
+    "text": "String manipulation (I)\nA very handy feature is that some of the same operators can be used on other data types, such as strings.\n\n# Here we create short string sequences\nt1 = \"participant\"\nt2 = \" 1 \"\nt3 = \"attended\"\nt4 = \" great\"\n\n\n# We can use + to add them to one string\nprint(t1 + t2 + t3)\n\n\n# We can use * to repeat certain sequences\nprint(t1 + t2 + t3 + 3 * t4)\n\n\nNew lines and tabs\nYou may have already noticed that I added whitespace around the ‘1’ and before ‘great.’ You might also want to add tab stops and new lines. For that, we can use ‘ for tabs and’’ for new lines.\n\nlines = \"Lyrics:\\tHappy Birthday to you\\n\\tHappy Birthday to you\\n\\tHappy Birthday dear Peter\\n\\tHappy Birthday to you.\"\nprint(lines)\n\n\n# We can also indicate strings that cover multiple lines with \"\"\".\nlines = \"\"\"Lyrics:\\tHappy Birthday to you\n\\tHappy Birthday to you\n\\tHappy Birthday dear Peter\n\\tHappy Birthday to you.\"\"\"\n\nprint(lines)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#string-manipulation-ii",
+    "href": "Day1.html#string-manipulation-ii",
+    "title": "Python Fundamentals - Day 1",
+    "section": "String manipulation (II)",
+    "text": "String manipulation (II)\nAside from these simple operations, Python offers numerous methods to manipulate strings.\n\n# This is the string that we are working with\nparticipants = \"participant_001,participant_002,participant_003,participant_004.\"\n\n\n# We can look at the length of the string using len()\nlength = len(participants)\nprint(length)\n\n\n# We can count how many occurrences of a character can be found in a string using count()\ncommas = participants.count(\",\")\nprint(commas)\n\n\n# We can clean the string, deleting certain characters at the end or the beginning of the string\nclean = participants.strip(\".\")\nprint(\"Old:\", participants)\nprint(\"New:\", clean)\n\n\n# We can replace certain parts of a string\nprint(\"Replaced 004 through 005:\\t\", participants.replace(\"participant_004\", \"participant_005\"))\n\n# And we can combine these operations\nnew_participants = participants.strip(\".\").replace(\"participant_004\", \"participant_005\")\nprint(\"Cleaned and replaced:\\t\\t\", new_participants)\n\n\n# We can also replace the \",\" with a tab stop (\\t)\nprint(new_participants.replace(\",\",\"\\t\"))\n\n\n# We can also create a list out of a string\nlist_part = new_participants.split(\",\")\nprint(list_part)\n\n\n# And we can fuse the list together to a string (choosing any connector (here: ;)\nnew_string = (\";\").join(list_part)\nprint(new_string)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#collection-data-types",
+    "href": "Day1.html#collection-data-types",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Collection Data Types",
+    "text": "Collection Data Types\nWhat you have just seen is a list, one of the four collection data types. In total, we have lists, sets, dictionaries, and tuples. These data types allow us to store more than one data point in a single variable.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#lists",
+    "href": "Day1.html#lists",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Lists",
+    "text": "Lists\nThe first type is lists, which offer a lot of flexibility. They can store data of any type and even multiple instances of the same value.\nWe just created our first list using split(), but there is also a more direct way to create one. To create a list, we can either use square brackets or the list() method.\n\nparticipated = list()\nprint(participated)\n\n\n# If we create a new list, we can also directly fill it with items\nparticipated = [\"participant_001\", \"participant_002\", \"participant_005\"]\nprint(participated)\n\n\n# We can also append new items to a list. With append(), we will always add it to the end\nparticipated = [\"participant_001\", \"participant_002\", \"participant_005\"]\nparticipated.append(\"participant_004\")\nprint(participated)\n\n\n# Instead of appending it at the end, we can also insert an item at a certain position.\nparticipated.insert(2, \"participant_003\")\nprint(participated)\n\n# Note: list.insert() never overrides an existing element. It always inserts, which means it adds a new element and shifts the others to the right.\n\n\nIndices\nA very handy feature is that you can select individual items from a list using their index – the number assigned to them in the sequence of items. To do this, you use square brackets.\nIn Python, the first element has the index number 0.\nIf we have the following list: - participant_001 - participant_002 - participant_003 - participant_005 - participant_004\nThen they have the following indices - participant_001 -&gt; 0 - participant_002 -&gt; 1 - participant_003 -&gt; 2 - participant_005 -&gt; 3 - participant_004 -&gt; 4\nSide note: This also works with strings!\nLet’s play around with this!\n\n# To select the first participant, we use the index 0\nparticipated = [\"participant_001\", \"participant_002\", \"participant_005\"]\nfirst = participated[0]\nprint(first)\n\n\n# You can also change your perspective and look at the list from the end, the last item is then number -1\nlast = participated[-1]\nprint(last)\n\n\n# We can also extract multiple items. For that, we have to state the range that we want to extract\nmiddle = participated[1:2]\nprint(middle)\n\n# We get the full list using only [:]\nfull = participated[:]\nprint(full)\n\n# if we use [:5], we get the first 5 elements\nfirst = participated[:5]\nprint(first)\n\n# if we use [5:], we get everything starting from the 5th element to the last\nstarting_five = participated[5:]\nprint(starting_five)\n\n\n# We can also save the index in a variable and then use that\nindex = 4\nprint(participated[index])\n\n# But be careful! Do not use strings as integers when handling lists\nprint(participated[\"four\"]) # does not work\n\n\n# We can remove participants using remove(). This removes all participants with this name\nparticipated.remove(\"participant_005\")\nprint(participated)\n\n# Or we use del together with the index\ndel participated[-1]\nprint(participated)\n\n\n# if we forgot the index of a certain item, we can also ask for it\nprint(participated.index(\"participant_001\"))\n\n\n# We can also sort a list\nparticipated = [\"participant_001\", \"participant_005\", \"participant_002\"]\nparticipated.sort()\nprint(participated)\n\n\n# Or ask for its length\nprint(len(participated))\n\nIt’s important to know that, for all variables, using = will overwrite the values previously saved. This can also be applied in combination with indices.\n\nparticipated = [\"participant_001\", \"participant_002\", \"participant_003\", \"participant_006\"]\nprint('Original:', participated)\nparticipated[-1] = \"participant_005\"\nprint('Adjusted:', participated)\n\n\n# If you want to make a copy of a list, be sure to use either copy() or [:]\nparticipated_copy = participated.copy()\n\nYou can find more information about copying here.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#tuples",
+    "href": "Day1.html#tuples",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Tuples",
+    "text": "Tuples\nAnother collection data type is tuples. The biggest difference between lists and tuples is that tuple elements cannot be changed.\nA tuple is a collection which is ordered and unchangeable. Tuples are written with round brackets.\n\nparticipated = [\"participant_001\", \"participant_005\", \"participant_002\"]\n\n# if we want to transform a list into a tuple or create a new tuple, we can use tuple()\npart_tuple = tuple(participated)\nprint(part_tuple)\n\n# We can also create tuples with rounded brackets\nlist_tuples = [(1, \"tuple_1\"), (2, \"tuple_2\"), (3,\"tuple_3\")]\nprint(list_tuples)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#dictionaries",
+    "href": "Day1.html#dictionaries",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Dictionaries",
+    "text": "Dictionaries\nThe third collection data type is dictionaries. They function like a real dictionary, meaning they have keys and values. Using this type, we can build the following structure:\n\nparticipant_name: Peter\nparticipant_age: 50\nparticipant_city: Rotterdam\n\nIn this dictionary, participant_name, participant_age, and participant_city are the keys, while Peter, 50, and Rotterdam are the values. To create a dictionary, we use curly brackets.\n\ndata = {\"participant_name\": \"Peter\", \"participant_age\": 50, \"participant_city\": \"Rotterdam\"}\nprint(data)\n\n\n# To retrieve the values saved in a dictionary, you can use the keys\nprint(data[\"participant_age\"])\n\n\n# You can change the values by using the keys\ndata[\"participant_city\"] = \"Utrecht\"\nprint(data)\n\n\n# and you can delete entries \ndel data[\"participant_age\"]\nprint(data)\n\n\n# To get an overview of all keys or values, you can use keys() and values().\nprint(\"Keys:\", data.keys())\nprint(\"Values:\", data.values())\n\n#If you want all pairs, you can use items\nprint(\"Items:\", data.items())\n\n\n# You can also merge two dictionaries using update()\nextra = {\"participant_birthmonth\": \"June\", \"participant_occupation\": \"researcher\"}\ndata.update(extra)\nprint(\"First Update\", data)\n\n# Important: Each key is unique, if you try to save a known key with a new value, it will overwrite the existing pair\nextra_2 = {\"participant_birthmonth\": \"July\", \"participant_occupation\": \"PhD\"}\ndata.update(extra_2)\nprint(\"Second Update\", data)\n\n\n# and you can empty dictionaries using clear()\nprint(\"Before\", extra)\nextra.clear()\nprint(\"After\", extra)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#sets",
+    "href": "Day1.html#sets",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Sets",
+    "text": "Sets\nThe last collection data type is sets. All values in a set are unique and unordered. Unlike other collection types, sets do not support indexing. You may have encountered sets in your high school math class.\n\n\n\nSets\n\n\n\n# To look at the intersection of two sets, you can either use the ampersand & or a.intersection(b) (with a one set, and b the other)\nfemale = {'Sue','Mary','Kate','Lee'}\nmale = set(['Lee','Eric','Tom','Adam']) \nprint(female & male)\n\nprint(female.intersection(male))\n\n\n# To look at the union of two sets, you can either use | or a.union(b) (with a one set, and b the other)\nprint(female | male)\n\nprint(female.union(male))\n\n\n# To look at the difference between the two sets, you can either use - or a.difference(b) (with a one set, and b the other)\nprint(female - male)\n\nprint(female.difference(male))",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#control-flow",
+    "href": "Day1.html#control-flow",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Control Flow",
+    "text": "Control Flow\n\nif, else, and elif\nIn real-life scenarios, you may want to exclude certain participants or apply different tests based on their attributes. For example, you could say:\n\nIf the participant is older than 65, add their age to the group of seniors.\nElse if the participant is younger than 18, add their age to the group of juniors.\nElse, add everyone else’s age to the group of adults.\n\nWe can implement similar logic in Python using if, elif, and else statements.\n\n# List of participants\nparticipant_age = 51\n# Empty lists to save whether they are seniors, juniors or adults\nseniors = []\njuniors = []\nadults = []\n\n# If age is greater than 65...\nif participant_age &gt; 65:\n    # ...save in seniors\n    seniors.append(participant_age)\n# else if age is lower than 18...\nelif participant_age &lt; 18:\n    # ...save in juniors\n    juniors.append(participant_age)\n# else (if neither older than 65 nor younger than 18)...\nelse:\n    # ...save in adults\n    adults.append(participant_age)\n\n# print results\nprint(\"Seniors\", seniors)\nprint(\"Juniors\", juniors)\nprint(\"Adults\", adults)\n\n\n# We can also check whether something equals a string or number using ==\nparticipant_name = \"Fred\"\n# if the name is Adam...\nif participant_name == \"Adam\":\n    # ...print that you found him\n    print(\"Found him!\")\n# else (if not Adam)...\nelse:\n    #...print wrong one\n    print(\"Wrong one!\")\n\n\n# We can also check whether something is in a list using in\nlist_names = [\"Lisa\", \"Lissa\", \"Lia\", \"Liia\", \"Lija\", \"Lira\", \"Liua\", \"Liaa\", \"Lina\", \"Lia\", \"Lima\"]\nname = \"Adam\"\n\n# if Adam is in the list of names...\nif name in list_names:\n    # ...print found it\n    print(\"Found it!\")\n# if not...\nelse: \n    # ...print no luck\n    print(\"No luck!\")",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#repeating-actions-with-loops",
+    "href": "Day1.html#repeating-actions-with-loops",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Repeating Actions with Loops",
+    "text": "Repeating Actions with Loops\nTypically, we want to perform actions for all our participants, which means we need to repeat them. For this purpose, we use loops.\nWe differentiate between two types of loops: while and for. - In a while loop, an action is performed as long as a certain condition is True. - In a for loop, an action is repeated a preset number of times.\n\nwhile\nLet’s sort our participants using a while loop!\n\n# Looking at the participants, we want to sort them. We stop once we reach 10 participants.\nparticipants_ages = [11,12,13,14,18,25,26,32,45,50,57,61,65,70,78]\nno_iteration = 0 # will be used to keep number of iterations (but also as index)\nseniors = []\njuniors = []\nadults = []\n\n# while no_iteration (number of iterations) is lower than 10\nwhile no_iteration &lt; 10: \n    # print number of repetitions\n    print(\"Repetition no.\", no_iteration)\n    # Sort them by age\n    if participants_ages[no_iteration] &gt; 65:\n        seniors.append(participants_ages[no_iteration])\n        print(\"Added Senior!\", participants_ages[no_iteration])\n    elif participants_ages[no_iteration] &lt; 18:\n        juniors.append(participants_ages[no_iteration])\n        print(\"Added Junior!\", participants_ages[no_iteration])\n    else:\n        adults.append(participants_ages[no_iteration])\n        print(\"Added Adult!\", participants_ages[no_iteration])\n    # in a while loop, do not forget to increase your end condition variable\n    no_iteration = no_iteration+1",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Day1.html#break-and-continue",
+    "href": "Day1.html#break-and-continue",
+    "title": "Python Fundamentals - Day 1",
+    "section": "Break and continue",
+    "text": "Break and continue\nWe can also only perform an action or leave the loop once we see a certain object, for that we can use break and continue.\nbreak abruptly stops the loop continue just pushes the loop to the next repetition.\nLet’s do nothing, when we see juniors and adults and stop once we see an older participant\n\nparticipants_ages = [11,12,13,14,18,25,26,32,45,50,57,61,65,70,78]\nno_iteration = 0\n\nwhile no_iteration &lt; 15: \n    print(\"Repetition no.\", no_iteration)\n    if participants_ages[no_iteration] &gt; 65:\n        print(\"STOP!\", participants_ages[no_iteration])\n        break\n    elif participants_ages[no_iteration] &lt; 18:\n        no_iteration = no_iteration+1\n        continue\n    else:\n        no_iteration = no_iteration+1\n        continue\n\n\nfor\nAnother approach to iterating over items in a list or dictionary is the for loop. It repeats an action for a specified number of times.\nIn prose, this would be: For every participant’s age in the list of participant_ages, sort them into the appropriate group.\n\nparticipants_ages = [11,12,13,14,18,25,26,32,45,50,57,61,65,70,78]\nseniors = []\njuniors = []\nadults = []\n\n# for every age of the participants...\nfor age_p in participants_ages:\n    # sort in the right group\n    if age_p &gt; 65:\n        seniors.append(age_p)\n        print(\"Added Senior!\", age_p)\n    elif age_p &lt; 18:\n        juniors.append(age_p)\n        print(\"Added Junior!\", age_p)\n    else:\n        adults.append(age_p)\n        print(\"Added Adult!\", age_p)\n\n\n# We can also combine for loops with dictionaries to find certain items or do an action based on a key or value\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\":55, \"p5\":66}\n# for every participant number (p1, p2, ...)\nfor p_no in participants:\n    # sort in the right group\n    if participants[p_no] &gt; 65:\n        seniors.append(p_no)\n        print(\"Added Senior!\", p_no)\n    elif participants[p_no] &lt; 18:\n        juniors.append(p_no)\n        print(\"Added Junior!\", p_no)\n    else:\n        adults.append(p_no)\n        print(\"Added Adult!\", p_no)\n\n\n# We can also iterate over two elements at the same time, for example, when looking at dictionaries\nfor key, value in participants.items():\n    print(\"Key:\", key, \"Value:\", value)\n\n\n# If we want repeat the actions a certain number of times, for example, 11 times, we can use range(). \n# range() creates a list of numbers starting at 0 until the number given as argument\nfor number in range(11):\n    print(number)\n\n\n# this also works in combination with len(), e.g. with the length of a list\nages = [11, 25, 43, 55, 66]\n\nfor p_no in range(len(ages)):\n    if ages[p_no] &gt; 65:\n        seniors.append(ages[p_no])\n        print(\"Added Senior!\", ages[p_no])\n    elif ages[p_no] &lt; 18:\n        juniors.append(ages[p_no])\n        print(\"Added Junior!\", ages[p_no])\n    else:\n        adults.append(ages[p_no])\n        print(\"Added Adult!\", ages[p_no])\n\nAnother handy function is enumerate(), you can combine it with a list to add indices to it.\n\nages = [11, 25, 43, 55, 66]\n\nfor index, value in enumerate(ages):\n    print(\"Index:\", index, \"Value:\", value)\n\n\n# If you are unsure about how to use a function or what a data type can do, use the help function\nhelp(enumerate)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html",
+    "href": "Assignments_Day3.html",
+    "title": "Assignments - Day 3",
+    "section": "",
+    "text": "from assertions import *\nfrom test_cells import *",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-7.1",
+    "href": "Assignments_Day3.html#assignment-7.1",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 7.1",
+    "text": "Assignment 7.1\nUse the random package to create your own sample. Complete the following code snippet that creates a list of 15 tuples that consist of a participant number (1-15) and a reaction time between 0.1 and 5.8 (rounded with 2 decimals). Return the list of tuples that contains the ids and the reaction times.\n\nExisting code\nfrom random import Random\nnumber_tuples = 15\nrandom_seed = 10\n\ndef assignment_7_1(number_tuples, random_seed):\n    random = Random(random_seed)\n    sample = []\n    for p_id in range(number_tuples):\n        participant_id = str(p_id)\n        reaction_time = str(round(random.uniform(0.1, 5.8), 2))\n        \n        # YOUR CODE\n        \n    return sample\n\n\nExpected return values (example)\n[('0', '2.27'), ('1', '5.34'), ('2', '3.54'), ('3', '4.25'), ('4', '4.34'), ('5', '0.82'), ('6', '4.35'), ('7', '2.74'), ('8', '3.85'), ('9', '1.49'), ('10', '1.29'), ('11', '3.55'), ('12', '0.77'), ('13', '1.24'), ('14', '1.62')]\n\n# Code for assignment 7.1\nfrom random import Random\nnumber_tuples = 15\nrandom_seed = 10\n\ndef assignment_7_1(number_tuples, random_seed):\n    random = Random(random_seed)\n    sample = []\n    for p_id in range(number_tuples):\n        participant_id = str(p_id)\n        reaction_time = str(round(random.uniform(0.1, 5.8), 2))\n    # YOUR CODE HERE\n    raise NotImplementedError()\n    return sample\n\n\n# Test for assignment 7.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_7_1(assignment_7_1)\n\n\n# Assertion for assignment 7.1\n\ncheck_assertion(assignment_7_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-7.2",
+    "href": "Assignments_Day3.html#assignment-7.2",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 7.2",
+    "text": "Assignment 7.2\nUse pandas to have a look at static/names_age_location.csv. Sort first by age and then by location. Return the sorted dataframe as dictionary using .to_dict()\n\nCSV input\nname,age,location\nPeter,21,Rotterdam\nAlex,45,Rotterdam\nSandra,65,Rotterdam\nEva,76,Utrecht\nAdam,31,Utrecht\nFred,90,Utrecht\nKlaudia,45,Utrecht\nHelena,32,Nijmegen\nAnna,33,Nijmegen\nXavier,33,Nijmegen\nYonne,54,Nijmegen\nTimo,67,Nijmegen\nJoeri,89,Amsterdam\nNoralie,10,Amsterdam\nKevin,11,Amsterdam\nRuben,90,Amsterdam\nMick,1,Amsterdam\nTom,23,Groningen\nBerta,54,Groningen\n\n\nExpected order\n        name  age   location\n16     Mick    1  Amsterdam\n13  Noralie   10  Amsterdam\n14    Kevin   11  Amsterdam\n0     Peter   21  Rotterdam\n17      Tom   23  Groningen\n4      Adam   31    Utrecht\n7    Helena   32   Nijmegen\n8      Anna   33   Nijmegen\n9    Xavier   33   Nijmegen\n1      Alex   45  Rotterdam\n6   Klaudia   45    Utrecht\n18    Berta   54  Groningen\n10    Yonne   54   Nijmegen\n2    Sandra   65  Rotterdam\n11     Timo   67   Nijmegen\n3       Eva   76    Utrecht\n12    Joeri   89  Amsterdam\n15    Ruben   90  Amsterdam\n5      Fred   90    Utrecht\n\n\nExpected return value\n{'name': {16: 'Mick', 13: 'Noralie', 14: 'Kevin', 0: 'Peter', 17: 'Tom', 4: 'Adam', 7: 'Helena', 8: 'Anna', 9: 'Xavier', 1: 'Alex', 6: 'Klaudia', 18: 'Berta', 10: 'Yonne', 2: 'Sandra', 11: 'Timo', 3: 'Eva', 12: 'Joeri', 15: 'Ruben', 5: 'Fred'}, 'age': {16: 1, 13: 10, 14: 11, 0: 21, 17: 23, 4: 31, 7: 32, 8: 33, 9: 33, 1: 45, 6: 45, 18: 54, 10: 54, 2: 65, 11: 67, 3: 76, 12: 89, 15: 90, 5: 90}, 'location': {16: 'Amsterdam', 13: 'Amsterdam', 14: 'Amsterdam', 0: 'Rotterdam', 17: 'Groningen', 4: 'Utrecht', 7: 'Nijmegen', 8: 'Nijmegen', 9: 'Nijmegen', 1: 'Rotterdam', 6: 'Utrecht', 18: 'Groningen', 10: 'Nijmegen', 2: 'Rotterdam', 11: 'Nijmegen', 3: 'Utrecht', 12: 'Amsterdam', 15: 'Amsterdam', 5: 'Utrecht'}}\n\n# Code for assignment 7.2\nimport pandas\n\ndef assignment_7_2():\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n\n# Test for assignment 7.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_7_2(assignment_7_2)\n\n\n# Assertion for assignment 7.2\n\ncheck_assertion(assignment_7_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-7.3",
+    "href": "Assignments_Day3.html#assignment-7.3",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 7.3",
+    "text": "Assignment 7.3\nCreate a new column for names_age_location using pandas that is True if the person lives in randstad and False if not. Return the boolean values in a list using .to_list(). Hint: Use data[\"location\"].isin(randstad)\n\nExpected input\n[\"Amsterdam\", \"Delft\", \"Rotterdam\", \"Leiden\", \"Den Haag\"]\n\n\nExpected data frame\nname  age   location  randstad\n0     Peter   21  Rotterdam      True\n1      Alex   45  Rotterdam      True\n2    Sandra   65  Rotterdam      True\n3       Eva   76    Utrecht     False\n4      Adam   31    Utrecht     False\n5      Fred   90    Utrecht     False\n6   Klaudia   45    Utrecht     False\n7    Helena   32   Nijmegen     False\n8      Anna   33   Nijmegen     False\n9    Xavier   33   Nijmegen     False\n10    Yonne   54   Nijmegen     False\n11     Timo   67   Nijmegen     False\n12    Joeri   89  Amsterdam      True\n13  Noralie   10  Amsterdam      True\n14    Kevin   11  Amsterdam      True\n15    Ruben   90  Amsterdam      True\n16     Mick    1  Amsterdam      True\n17      Tom   23  Groningen     False\n18    Berta   54  Groningen     False\n\n\nExpected return value\n[True, True, True, False, False, False, False, False, False, False, False, False, True, True, True, True, True, False, False]\n\n# Code for assignment 7.3\nimport pandas\n\ndef assignment_7_3(randstad):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 7.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_7_3(assignment_7_3)\n\n\n# Assertion for assignment 7.3\n\ncheck_assertion(assignment_7_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-8.1",
+    "href": "Assignments_Day3.html#assignment-8.1",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 8.1",
+    "text": "Assignment 8.1\nUse pandas to have a look at static/heights_temp.csv. Return how many people have a fever and how many are normal in a list using to_list().\n\nCSV input\nname,height,height_group,temperature,status\nJaimy,174,average,39,fever\nRobin,180,average,35,normal\nJentje,189,tall,35,normal\nDominique,185,tall,39,fever\nSam,179,average,37,normal\nBo,188,tall,40,fever\nJamie,174,average,38,fever\nWilly,174,average,34,normal\nAli-Indy,172,average,39,fever\nJos,180,average,37,normal\nJos-Jamie,190,tall,38,fever\nMarijn,164,average,36,normal\nDani-Ali,175,average,39,fever\nJaimy-Robin,177,average,37,normal\nEliza-Jamie,170,average,37,normal\nSenna-Eliza,169,average,41,fever\nSenna-Ruth,179,average,41,fever\nBo-Indy,177,average,38,fever\nSam-Eliza,179,average,41,fever\nMarijn-Ali,171,average,35,normal\nNicky-Nicky,174,average,39,fever\nDani,183,tall,34,normal\nIndy-Indy,188,tall,35,normal\n...\n\n\nExpected return values\n [47, 41]\n\n# Code for assignment 8.1\n\n\ndef assignment_8_1():\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 8.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_8_1(assignment_8_1)\n\n\n# Assertion for assignment 8.1\n\ncheck_assertion(assignment_8_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-8.2",
+    "href": "Assignments_Day3.html#assignment-8.2",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 8.2",
+    "text": "Assignment 8.2\nUse pandas to have a look at static/heights_temp.csv. Group the data by the height_group and return the average height of both groups in a list using to_list().\n\nCSV input\nname,height,height_group,temperature,status\nJaimy,174,average,39,fever\nRobin,180,average,35,normal\nJentje,189,tall,35,normal\nDominique,185,tall,39,fever\nSam,179,average,37,normal\nBo,188,tall,40,fever\nJamie,174,average,38,fever\nWilly,174,average,34,normal\nAli-Indy,172,average,39,fever\nJos,180,average,37,normal\nJos-Jamie,190,tall,38,fever\nMarijn,164,average,36,normal\nDani-Ali,175,average,39,fever\nJaimy-Robin,177,average,37,normal\nEliza-Jamie,170,average,37,normal\nSenna-Eliza,169,average,41,fever\nSenna-Ruth,179,average,41,fever\nBo-Indy,177,average,38,fever\nSam-Eliza,179,average,41,fever\nMarijn-Ali,171,average,35,normal\nNicky-Nicky,174,average,39,fever\nDani,183,tall,34,normal\nIndy-Indy,188,tall,35,normal\n...\n\n\nExpected return values\n[172.29850746268656, 185.0952380952381]\n\n# Code for assignment 8.2\nimport pandas\n\n\ndef assignment_8_2():\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 8.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_8_2(assignment_8_2)\n\n\n# Assertion for assignment 8.2\n\ncheck_assertion(assignment_8_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-8.3",
+    "href": "Assignments_Day3.html#assignment-8.3",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 8.3",
+    "text": "Assignment 8.3\nUse pandas to have a look at static/heights_temp.csv. Only have a look at participants over 170 and with fever. Return the standard deviation of the temperature of that group.\n\nCSV input\nname,height,height_group,temperature,status\nJaimy,174,average,39,fever\nRobin,180,average,35,normal\nJentje,189,tall,35,normal\nDominique,185,tall,39,fever\nSam,179,average,37,normal\nBo,188,tall,40,fever\nJamie,174,average,38,fever\nWilly,174,average,34,normal\nAli-Indy,172,average,39,fever\nJos,180,average,37,normal\nJos-Jamie,190,tall,38,fever\nMarijn,164,average,36,normal\nDani-Ali,175,average,39,fever\nJaimy-Robin,177,average,37,normal\nEliza-Jamie,170,average,37,normal\nSenna-Eliza,169,average,41,fever\nSenna-Ruth,179,average,41,fever\nBo-Indy,177,average,38,fever\nSam-Eliza,179,average,41,fever\nMarijn-Ali,171,average,35,normal\nNicky-Nicky,174,average,39,fever\nDani,183,tall,34,normal\nIndy-Indy,188,tall,35,normal\n...\n\n\nExpected return values\n0.9371024061116424\n\n# Code for assignment 8.3\n\ndef assignment_8_3():\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 8.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_8_3(assignment_8_3)\n\n\n# Assertion for assignment 8.3\n\ncheck_assertion(assignment_8_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-9.1",
+    "href": "Assignments_Day3.html#assignment-9.1",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 9.1",
+    "text": "Assignment 9.1\nTry to understand this code. Change the variable names. Add a docstring and comments for every line. Return the cleaned dictionary.\nd = {\"hello\": [\"hey\",\"hi\",\"good morning\", \"hello\"], \"bye\": [\"goodbye\", \"ciao\", \"bye\"]}\n\ndef assignment_9_1(d):\n    for e in d:\n        if e in d[e]:\n            d[e].remove(e)\n    return d\n\n# Code for assignment 9.1\ndef assignment_9_1(d):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 9.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\ntest_cell_9_1(assignment_9_1)\n\n\n# Assertion for assignment 9.1\n\ncheck_assertion(assignment_9_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-9.2",
+    "href": "Assignments_Day3.html#assignment-9.2",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 9.2",
+    "text": "Assignment 9.2\nTry to understand this code. Add a docstring and comments for every line. Return the solution of the riddle.\nsentence = \"Yesterday you travelled to Okinawa University. Did you see that I was there as well? Do believe me, please! It is true! True!\"\n\ndef assignment_9_2(s):\n    w = \"\"\n    for l in s:\n        if l.isupper():\n            w += l\n    return\n\n# Code for assignment 9.2\ndef assignment_9_2(s):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 9.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_9_2(assignment_9_2)\n\n\n# Assertion for assignment 9.2\n\ncheck_assertion(assignment_9_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day3.html#assignment-9.3-optional",
+    "href": "Assignments_Day3.html#assignment-9.3-optional",
+    "title": "Assignments - Day 3",
+    "section": "Assignment 9.3 (Optional)",
+    "text": "Assignment 9.3 (Optional)\nA researcher wrote a function to create a random number (based on a specific seed). The number is always part of the normal distribution with the mean x and the standard deviation y.\nWe tried to reuse this function and used a loop that creates a list of 8 numbers (list_numbers) that are part of the normal distribution (based on the seeds given in the list seeds).\nUse the list numbers, to create a dataframe with pandas and return the mean of numbers.\n\nExisting code\nfrom random import Random\nimport pandas\n\nseeds = [8890, 8891, 8899, 8810, 8850, 7780, 6655, 7879]\n\ndef assignment_9_3(seeds):\n    def normal(x, y, seed):\n        random = Random(seed)\n        g = random.gauss(x,y)\n        return round(g)\n\n    numbers = []\n    for seed in seeds:\n        numbers.append(normal(10, 2, seed))\n\n    # YOUR CODE\n    \n    return mean\n\n# Code for assignment 9.3\ndef assignment_9_3(seeds):\n    # Hint1: Do not forget to name the column when you create a DataFrame (use columns=['NAME'])\n    # Hint2: Use float() to convert a numpy float to a python readable float\n    def normal(x, y, seed):\n        random = Random(seed)\n        g = random.gauss(x, y)\n        return round(g)\n\n    numbers = []\n    for seed in seeds:\n        numbers.append(normal(10, 2, seed))\n    # YOUR CODE HERE\n    raise NotImplementedError()\n    return mean\n\n\n# Test for assignment 9.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\ntest_cell_9_3(assignment_9_3)\n\n\n# Assertion for assignment 9.3\n\ncheck_assertion(assignment_9_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "python_fundamentals.html",
+    "href": "python_fundamentals.html",
+    "title": "Python Fundamentals",
+    "section": "",
+    "text": "This course introduces the basics of Python programming. It is designed for beginners with no prior experience.",
+    "crumbs": [
+      "Python Fundamentals"
+    ]
+  },
+  {
+    "objectID": "python_fundamentals.html#welcome",
+    "href": "python_fundamentals.html#welcome",
+    "title": "Python Fundamentals",
+    "section": "",
+    "text": "This course introduces the basics of Python programming. It is designed for beginners with no prior experience.",
+    "crumbs": [
+      "Python Fundamentals"
+    ]
+  },
+  {
+    "objectID": "python_fundamentals.html#what-you-will-learn",
+    "href": "python_fundamentals.html#what-you-will-learn",
+    "title": "Python Fundamentals",
+    "section": "What you will learn",
+    "text": "What you will learn\n\nHow to write Python scripts\nHow to work with data\nHow to use Jupyter notebooks",
+    "crumbs": [
+      "Python Fundamentals"
+    ]
+  },
+  {
+    "objectID": "python_fundamentals.html#contact",
+    "href": "python_fundamentals.html#contact",
+    "title": "Python Fundamentals",
+    "section": "Contact",
+    "text": "Contact\nIf you have questions, feel free to reach out.",
+    "crumbs": [
+      "Python Fundamentals"
+    ]
+  },
+  {
+    "objectID": "Day2.html",
+    "href": "Day2.html",
+    "title": "Python Fundamentals - Day 2",
+    "section": "",
+    "text": "If we write snippets of code that we want to reuse in the future, it can be helpful to use functions. Functions are typically defined once and serve to group related functionality. They can be called (used) multiple times throughout your code. Additionally, functions have their own local variables, which are separate from the rest of the program.\nTo define a function, we use def.\n\n# Define function say_hello()\ndef say_hello():\n    print(\"Hello, how are you?\")\n    \nsay_hello()\n\nLet’s take the example of last week and put it into a function.\nPreviously, we checked whether a participant is older than 65 or younger than 18 and added them to groups accordingly. We can do that now as well.\n\n# We define a function that takes an age of a participant and sorts it into the corresponding group\nage = 51\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print(f\"Senior: {participant_age}\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print(f\"Junior: {participant_age}\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_age}\")\n\ncheck_age(age)\n\nYou may have seen that we added participant_age in the brackets behind the name of the function. participant_age is given as an argument to the function check_age().\nTo actually make our function check_age() usable, we might want to combine it with a loop. Let’s try that!\n\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print(f\"Senior: {participant_age}\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print(f\"Junior: {participant_age}\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_age}\")\n\n# Here, we only need the values since we are not interested in the names yet\n# for every participant in the values of the dictionary...\nfor age in participants.values():\n    # ...check their age\n    check_age(age)\n\nLet us also add the participant’s name to the function, so that we can add this to our print\n\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_name, participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print (f\"Senior: {participant_name} is {str(participant_age)} years old\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print (f\"Junior: {participant_name} is {str(participant_age)} years old\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_name} is {str(participant_age)} years old\")\n\n# Since we want to use the name and the age (key and value), we can use items()\nfor name, age in participants.items():\n    check_age(name, age)\n\nYou see that we can also give multiple arguments to a function. Here, the arguments are positional. Our function check_age() expects first participant_name and then its participant_age.\nIn this case, we will receive an error message if we change the order.\n\nfor name, age in participants.items():\n    check_age(age, name)\n\nThis error happens because the name is a string, but we use numerical operations to compare the age.\nTo overcome this error, you can use keyword arguments. By doing so, you explicitly specify which argument you are referring to.\n\nfor name, age in participants.items():\n    check_age(participant_age = age, participant_name = name)\n\nSide note An error that can happen, but is not easily to detected since it does not give an error message, is mixing key and value, but both are of the same data type.\n\ndef say_hello(name, hello):\n    print(f\"{hello} {name}!\")\n\nname = \"Peter\"\ngreeting = \"Hallo\"\nsay_hello(name, greeting)\nsay_hello(greeting, name)\n\n\n# Back to our function:\n\n# We can also add default values to the arguments which the function takes, if the information was not given.\ndef check_age(participant_name = \"Jane Doe\", participant_age = 55):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print (f\"Senior: {participant_name} is {str(participant_age)} years old\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print (f\"Junior: {participant_name} is {str(participant_age)} years old\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_name} is {str(participant_age)} years old\")\n\n\n# In this case, we do not use our loop, but just check what happens:\ncheck_age()\n\nFunctions can also return values! You may have encountered them in previous assignments. Return values indicate that the function provides a result at that point. In our case, the function returns the string that we want to print.\n\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_name, participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        return f\"Senior: {participant_name} is {str(participant_age)} years old\"\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        return f\"Junior: {participant_name} is {str(participant_age)} years old\"\n    else:\n        adults.append(participant_age)\n        return f\"Adult: {participant_name} is {str(participant_age)} years old\"\n\nfor name, age in participants.items():\n    output = check_age(name, age)\n    print(output)\n\nYou’ve seen how powerful functions can be. Since we want to reuse them, it’s very helpful to document them well. For this purpose, we use docstrings. We define them at the beginning of the function using “““…”“““.\n\ndef check_age(participant_name, participant_age):\n    \"\"\"Function takes participant name and age and adds them to list of seniors, juniors or adults\"\"\"\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        return f\"Senior: {participant_name} is {str(participant_age)} years old\"\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        return f\"Junior: {participant_name} is {str(participant_age)} years old\"\n    else:\n        adults.append(participant_age)\n        return f\"Adult: {participant_name} is {str(participant_age)} years old\"\n\n\n# If we now use the help-function, we will receive the docstring as output\n\nhelp(check_age)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Day2.html#functions",
+    "href": "Day2.html#functions",
+    "title": "Python Fundamentals - Day 2",
+    "section": "",
+    "text": "If we write snippets of code that we want to reuse in the future, it can be helpful to use functions. Functions are typically defined once and serve to group related functionality. They can be called (used) multiple times throughout your code. Additionally, functions have their own local variables, which are separate from the rest of the program.\nTo define a function, we use def.\n\n# Define function say_hello()\ndef say_hello():\n    print(\"Hello, how are you?\")\n    \nsay_hello()\n\nLet’s take the example of last week and put it into a function.\nPreviously, we checked whether a participant is older than 65 or younger than 18 and added them to groups accordingly. We can do that now as well.\n\n# We define a function that takes an age of a participant and sorts it into the corresponding group\nage = 51\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print(f\"Senior: {participant_age}\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print(f\"Junior: {participant_age}\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_age}\")\n\ncheck_age(age)\n\nYou may have seen that we added participant_age in the brackets behind the name of the function. participant_age is given as an argument to the function check_age().\nTo actually make our function check_age() usable, we might want to combine it with a loop. Let’s try that!\n\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print(f\"Senior: {participant_age}\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print(f\"Junior: {participant_age}\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_age}\")\n\n# Here, we only need the values since we are not interested in the names yet\n# for every participant in the values of the dictionary...\nfor age in participants.values():\n    # ...check their age\n    check_age(age)\n\nLet us also add the participant’s name to the function, so that we can add this to our print\n\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_name, participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print (f\"Senior: {participant_name} is {str(participant_age)} years old\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print (f\"Junior: {participant_name} is {str(participant_age)} years old\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_name} is {str(participant_age)} years old\")\n\n# Since we want to use the name and the age (key and value), we can use items()\nfor name, age in participants.items():\n    check_age(name, age)\n\nYou see that we can also give multiple arguments to a function. Here, the arguments are positional. Our function check_age() expects first participant_name and then its participant_age.\nIn this case, we will receive an error message if we change the order.\n\nfor name, age in participants.items():\n    check_age(age, name)\n\nThis error happens because the name is a string, but we use numerical operations to compare the age.\nTo overcome this error, you can use keyword arguments. By doing so, you explicitly specify which argument you are referring to.\n\nfor name, age in participants.items():\n    check_age(participant_age = age, participant_name = name)\n\nSide note An error that can happen, but is not easily to detected since it does not give an error message, is mixing key and value, but both are of the same data type.\n\ndef say_hello(name, hello):\n    print(f\"{hello} {name}!\")\n\nname = \"Peter\"\ngreeting = \"Hallo\"\nsay_hello(name, greeting)\nsay_hello(greeting, name)\n\n\n# Back to our function:\n\n# We can also add default values to the arguments which the function takes, if the information was not given.\ndef check_age(participant_name = \"Jane Doe\", participant_age = 55):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        print (f\"Senior: {participant_name} is {str(participant_age)} years old\")\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        print (f\"Junior: {participant_name} is {str(participant_age)} years old\")\n    else:\n        adults.append(participant_age)\n        print(f\"Adult: {participant_name} is {str(participant_age)} years old\")\n\n\n# In this case, we do not use our loop, but just check what happens:\ncheck_age()\n\nFunctions can also return values! You may have encountered them in previous assignments. Return values indicate that the function provides a result at that point. In our case, the function returns the string that we want to print.\n\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_name, participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        return f\"Senior: {participant_name} is {str(participant_age)} years old\"\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        return f\"Junior: {participant_name} is {str(participant_age)} years old\"\n    else:\n        adults.append(participant_age)\n        return f\"Adult: {participant_name} is {str(participant_age)} years old\"\n\nfor name, age in participants.items():\n    output = check_age(name, age)\n    print(output)\n\nYou’ve seen how powerful functions can be. Since we want to reuse them, it’s very helpful to document them well. For this purpose, we use docstrings. We define them at the beginning of the function using “““…”“““.\n\ndef check_age(participant_name, participant_age):\n    \"\"\"Function takes participant name and age and adds them to list of seniors, juniors or adults\"\"\"\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        return f\"Senior: {participant_name} is {str(participant_age)} years old\"\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        return f\"Junior: {participant_name} is {str(participant_age)} years old\"\n    else:\n        adults.append(participant_age)\n        return f\"Adult: {participant_name} is {str(participant_age)} years old\"\n\n\n# If we now use the help-function, we will receive the docstring as output\n\nhelp(check_age)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Day2.html#namespace-scoping-errors-and-exceptions",
+    "href": "Day2.html#namespace-scoping-errors-and-exceptions",
+    "title": "Python Fundamentals - Day 2",
+    "section": "Namespace, Scoping, Errors and Exceptions",
+    "text": "Namespace, Scoping, Errors and Exceptions\nWhen using functions, we need to keep one thing in mind: Namespaces and Scope.\n\nYou can think of a namespace as a mapping from names to objects, and scope as the textual region in the script where the namespace is accessible. We differentiate between built-in namespaces, which include words such as for, in, and while; global namespaces, which cover the entire script along with the variables and functions you create within it; and local namespaces, which encompass variables (or functions) defined within functions.\n\n\n\nnamespaces\n\n\nLet’s look at an example. If we consider the function we discussed earlier, we can immediately see that it uses global variables. The variables participants, seniors, juniors, and adults are created before we define the function, rather than within it. They are globally valid and can be accessed by all functions.\n\nparticipants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\nseniors = []\njuniors = []\nadults = []\n\ndef check_age(participant_name, participant_age):\n    if participant_age &gt; 65:\n        seniors.append(participant_age)\n        return f\"Senior: {participant_name} is {str(participant_age)} years old\"\n    elif participant_age &lt; 18:\n        juniors.append(participant_age)\n        return f\"Junior: {participant_name} is {str(participant_age)} years old\"\n    else:\n        adults.append(participant_age)\n        return f\"Adult: {participant_name} is {str(participant_age)} years old\"\n\nfor name, age in participants.items():\n    print(check_age(name, age))\n\nWe can also rewrite the code in a way that stores something within the function, making it inaccessible to other functions outside of it.\n\nall_participants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\n\ndef check_age(participants):\n    seniors_local = []\n    juniors_local = []\n    adults_local = []\n\n    for name, age in participants.items():\n        if age &gt; 65:\n            seniors_local.append(name)\n            print (f\"Senior: {name} is {str(age)} years old\")\n        elif age &lt; 18:\n            juniors_local.append(name)\n            print (f\"Junior: {name} is {str(age)} years old\")\n        else:\n            adults_local.append(name)\n            print(f\"Adult: {name} is {str(age)} years old\")\n\ncheck_age(all_participants)\n\nNow, seniors_local, juniors_local, and adults_local are not accessible outside of the function. Similarly, we cannot access seniors_local outside of the function. Let’s test it.\n\nprint(seniors_local)\n\nSee that! We get an error message indicating that the name seniors_local has not been defined. This occurs because the name is known only locally, not globally.\n\nThis differentiation helps us understand what we have access to and prevents certain errors in the future. It also reminds us not to overwrite global names locally!\n\nConsider the following examples:\n\ndef test_function():\n    in = 3\n    if else == \"3\":\n        print(\"ok\")\n\nWe wanted to name our variable in, but immediately received an error message. This is because in is already defined. You can identify these potential conflicts by observing the words: if they appear in bold print and green (in Jupyter Lab), it indicates that they are built-in variables, functions, or other objects.\nUnfortunately, we do not receive such a warning when attempting to overwrite global variables.\n\ntest = 3\n\ndef test_function():\n    test = 4\n    print(test)\n\ntest_function() \n\nIn this example, we overwrote the globally set variable test within the function. This could be intentional, but it might also happen by mistake. Therefore, ensure that you either use variable names only once or are aware when you overwrite or modify a global variable locally.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Day2.html#trial-error-exceptions",
+    "href": "Day2.html#trial-error-exceptions",
+    "title": "Python Fundamentals - Day 2",
+    "section": "Trial & Error (Exceptions)",
+    "text": "Trial & Error (Exceptions)\nAs you’ve seen before, Python generates error messages and halts execution if something cannot be done, for instance, when attempting to call a variable that hasn’t been defined. If you anticipate that an action you’re planning might raise an error message, you can prevent the program from stopping by using try and except.\n\nWe can follow a human-readable approach to use try and except:\ntry\n- do something\nexcept error is raised\n- do something else\n\nIt is generally recommended to specify the type of error you want to catch with this construction, such as NameError. However, if you’re unsure which error might be raised, you can run the script without specifying the error type.\n\nLet’s see if we can prevent the script from stopping when we attempt to print the list of seniors.\n\nall_participants = {\"p1\": 11, \"p2\": 25, \"p3\": 43, \"p4\": 55, \"p5\": 66}\n\ndef check_age(participants):\n    seniors_local = []\n    juniors_local = []\n    adults_local = []\n\n    for name, age in participants.items():\n        if age &gt; 65:\n            seniors_local.append(name)\n            print (f\"Senior: {name} is {str(age)} years old\")\n        elif age &lt; 18:\n            juniors_local.append(name)\n            print (f\"Junior: {name} is {str(age)} years old\")\n        else:\n            adults_local.append(name)\n            print(f\"Adult: {name} is {str(age)} years old\")\n\ncheck_age(all_participants)\n\n\nprint(seniors_local)\n\n\ntry:\n    print(seniors_local)\nexcept NameError:\n    print(\"I am trying to access the list outside of the function!\")\n\n\n# You can also combine the detection of two errors\ntry: # try this command\n   print(participants[\"bla\"])\nexcept (KeyError, NameError): # if Name or KeyError is raised, print something else\n    print(\"Error raised! Name or Key Error\")\nexcept: # if a different error is raised, do something else\n    print(\"I do not know this error!\")",
+    "crumbs": [
+      "Python Fundamentals",
+      "Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Day2.html#open-read-and-write-in-files",
+    "href": "Day2.html#open-read-and-write-in-files",
+    "title": "Python Fundamentals - Day 2",
+    "section": "Open, read and write in files",
+    "text": "Open, read and write in files\nWhen working with data, one of the most common tasks is handling files. Python allows us to read, write, and create files!\n\nLet’s start by assuming we are dealing with text files.\n\nIn this example, we aim to print our sentence about the participants’ age, name, and group into a file. We will use an adapted version of our function for this purpose:\n\n# Let's give the participants names\nall_participants = {\"Peter\": 11, \"Alex\": 25, \"Sandra\": 43, \"Eva\": 55, \"Adam\": 66}\n\ndef check_age(participants):\n    # Instead of adding them in lists, we will just print the group\n    seniors_local = []\n    juniors_local = []\n    adults_local = []\n\n    # for every participant\n    for name, age in participants.items():\n        # if the participant is older than 65...\n        if age &gt; 65:\n            # print sentence using senior\n            print (f\"Senior: {name} is {str(age)} years old\")\n        elif age &lt; 18:\n            # print sentence using junior\n            print (f\"Junior: {name} is {str(age)} years old\")\n        else:\n            # print sentence using adult\n            print(f\"Adult: {name} is {str(age)} years old\")\n\ncheck_age(all_participants)\n\nCurrently, this function prints the results to the console. To print these results to a file instead, we need to open a file, write the data into it, and then close the file. How can we achieve this?\n\n# Let's first just add the header of the table that we want to create\nheader = \"Log of participants\"\n# We open the file with the name participants.txt in a writing mode and with utf-8 encoding\nfile_out = open('output/participants.txt', mode = \"w\", encoding = 'utf-8')\n# with write we can write in the file\nfile_out.write(header)\n# do not forget to close the file!\nfile_out.close()\n\n\n# Now, let us integrate this in our function and also print the participants\nall_participants = {\"Peter\": 11, \"Alex\": 25, \"Sandra\": 43, \"Eva\": 55, \"Adam\": 66}\n\ndef check_age(participants):\n    # We open the file with the name participants.txt in a writing mode and with utf-8 encoding\n    file_out = open('output/participants.txt', mode = \"w\", encoding = 'utf-8')\n    header = \"Log of participants\\n\"\n    file_out.write(header)\n    # for every participant\n    for name, age in participants.items():\n        # if the participant is older than 65...\n        if age &gt; 65:\n            # print sentence using senior\n            print (f\"Senior: {name} is {str(age)} years old\", file = file_out)\n        elif age &lt; 18:\n            # print sentence using junior\n            print (f\"Junior: {name} is {str(age)} years old\", file = file_out)\n        else:\n            # print sentence using adult\n            print(f\"Adult: {name} is {str(age)} years old\", file = file_out)\n    file_out.close()\n\ncheck_age(all_participants)\n\n\n# Since many of us (including me) struggle to remember to close files, there is a better version to open a file\n\n# Header example part 2\nheader = \"Log of participants\"\n# We open the file with the name participants.txt in a writing mode and with utf-8 encoding, but this time we use with\nwith open('output/participants.txt', mode = \"w\", encoding = 'utf-8') as file_out:\n    # with write we can write in the file\n    file_out.write(header)\n\n# Now everything that happens within the indented area can refer to the file\n\n\n# We can also add that to our function:\nall_participants = {\"Peter\": 11, \"Alex\": 25, \"Sandra\": 43, \"Eva\": 55, \"Adam\": 66}\n\n# Now let us integrate this in our function and also print the participants\ndef check_age(participants):\n    # We open the file with the name participants.txt in a writing mode and with utf-8 encoding\n    with open('output/participants.txt', mode = \"w\", encoding = 'utf-8') as file_out:\n        header = \"Log of participants\\n\"\n        file_out.write(header)\n        # for every participant\n        for name, age in participants.items():\n            # if the participant is older than 65...\n            if age &gt; 65:\n                # print sentence using senior\n                print (f\"Senior: {name} is {str(age)} years old\", file = file_out)\n            elif age &lt; 18:\n                # print sentence using junior\n                print (f\"Junior: {name} is {str(age)} years old\", file = file_out)\n            else:\n                # print sentence using adult\n                print(f\"Adult: {name} is {str(age)} years old\", file = file_out)\n\ncheck_age(all_participants)\n\nYou may have noticed that we always create a new file. What if we want to add a line to an existing document? To do this, we need to use a different mode.\n\nLet’s add another participant:\n\n# Change the mode to a, this allows us to append new lines\nwith open('output/participants.txt', mode=\"a\", encoding='utf-8') as file_out:\n    print(\"Adult: Fred is 55 years old\", file=file_out)\n\n\nRead files\nTo begin analyzing or working with the data we’ve collected, we might want to read files. To do this, we need to open the file again, this time using the reading mode “r”.\n\n# Change the mode to r, this allows us to read the lines\nwith open('static/participants.txt', mode=\"r\", encoding='utf-8') as file_in:\n    # with read, we receive the full text as string\n    print(file_in.read())\n\n\n# with read, we receive the full text as string\n# if we want to receive every line, we can use readlines()\n\n# Change the mode to a, this allows us to append new lines\nwith open('static/participants.txt', mode=\"r\", encoding='utf-8') as file_in:\n    print(file_in.readlines())\n\n\n# As you can see, we receive the strings as elements of a list. \n# However, they also contain the tab stops and newlines.\n# We can remove these using the functions we got to know before\n\nwith open('static/participants.txt', mode=\"r\", encoding='utf-8') as file_in:\n    content = file_in.readlines()\n\n# let's first iterate over every element\nfor line in content:\n    print(line)\n\n\n# to change the formatting, we can use strip()\nfor line in content:\n    print(line.strip())\n\n# We can also save every line\noutput = []\nfor line in content:\n    output.append(line.strip())\n    \nprint(output)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Day2.html#write-and-read-json-files",
+    "href": "Day2.html#write-and-read-json-files",
+    "title": "Python Fundamentals - Day 2",
+    "section": "Write and Read JSON files",
+    "text": "Write and Read JSON files\nSimilarly, we can create JSON files, which are useful for documenting structures like dictionaries.\nTo work with JSON files, we need to import a module called json.\n\nimport json\n\n# Let us create a dictionary that we can work with\npart_dict = {\n    \"name\": \"Peter\",\n    \"age\": 11,\n    \"group\": \"junior\"\n}\n\n# We can use the function \"dump()\" to print the dictionary in the output file\nwith open(\"output/participant.json\", \"w\") as file_out:\n    json.dump(part_dict, file_out)\n\n\n# We can also do this with more complex dictionaries\npart_dict2 = {\n    \"p1\": {\n        \"name\": \"Peter\",\n        \"age\": 11,\n        \"group\": \"junior\"\n    },\n    \"p2\": {\n        \"name\": \"Alex\",\n        \"age\": 25,\n        \"group\": \"adult\"\n    }\n}\n\nwith open(\"output/participant2.json\", \"w\") as file_out2:\n    json.dump(part_dict2, file_out2)\n\n\n# In a similar manner, we can read JSON files\n\nwith open('static/participant2.json', 'r') as file_in:\n    content = json.load(file_in)\n\nprint(content)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Day2.html#write-and-read-csv-files",
+    "href": "Day2.html#write-and-read-csv-files",
+    "title": "Python Fundamentals - Day 2",
+    "section": "Write and Read CSV files",
+    "text": "Write and Read CSV files\nSimilarly, we can create CSV files (comma-separated values).\nTo work with them, we need to import the csv module.\n\n# We can also write csv files in a similar way\nimport csv\n\n# Let us reuse our dictionary\nparticipants = {\"Peter\": 11, \"Alex\": 25, \"Sandra\": 43, \"Eva\": 55, \"Adam\": 66}\n\n# important note when using the csv writer/reader, to always use newline='' to allow the\n# csv module handle the newlines correctly with complex csv structures.\nwith open('output/participants.csv', 'w', newline='') as file_out:\n    writer = csv.writer(file_out)\n    # Write a header row\n    writer.writerow([\"name\", \"age\", \"group\"])\n    \n    # Write multiple rows\n    for name, age in participants.items():\n        if age &gt; 65:\n            group = \"senior\" \n        elif age &lt; 18:\n            group = \"junior\"\n        else:\n            group = \"adult\"\n        writer.writerow([name, age, group])\n\n\n# And read their content\nimport csv\n\nwith open('static/participants.csv', 'r', newline='') as file_in:\n    reader = csv.reader(file_in)\n    for line in reader:\n        print(line)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Functions & Files"
+    ]
+  },
+  {
+    "objectID": "bash.html",
+    "href": "bash.html",
+    "title": "Research Software Training @ EUR",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Programming Café",
+      "3 Basic command line usage in the Bash shell (PDF)"
+    ]
+  },
+  {
+    "objectID": "DataCleaning.html",
+    "href": "DataCleaning.html",
+    "title": "Clean your data efficiently using Python",
+    "section": "",
+    "text": "Everyone has seen messy data before, extras spaces, symbols mixed with numbers, inconsistent spelling or data formats. All of these examples make the analysis of data more difficult.\nThe data in itself is not “bad” data, but just not ready for analyses yet!\nIn today’s session, I want to help you show how you can check whether your data is “messy” and how to get it ready for your analysis.\nYou may now wonder “Why should I clean my data? Can’t I just analyse the messy data?”. There are multiple answers to this, but in general, messy data (in general) can lead to wrong results, make your analysis slower, increases your chance of mistakes and a lot harder to reproduce. If “Amsterdam”, for example, appears in three different spellings in your data, your analysis might think you have three cities instead of one.\nLet’s learn together, how to spot messy data, how to fix it and how to log the changes so everything is transparent and reproducible!\nBefore we begin, I want to show you an example of messy data! Let’s have a look at the data, open the file and try to spot some irregularities together. I want you to think of issues such as unwanted characters, inconsistent spelling, mixed data types, extra whitespace, duplicate rows and missing values.\nWhile we did the first examination with our own eyes, we can also use pandas (the python package) to inspect the data.",
+    "crumbs": [
+      "Programming Café",
+      "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "DataCleaning.html#inspect-your-data",
+    "href": "DataCleaning.html#inspect-your-data",
+    "title": "Clean your data efficiently using Python",
+    "section": "Inspect your data",
+    "text": "Inspect your data\n\n# First, let's import pandas (or install if you have not installed it yet)\nimport pandas\n\n\n# Let's read the csv file\ndf = pandas.read_csv(\"messy_HR_data.csv\")\n\n\n# Look at the first five rows\ndf.head()\n\n\n\n\n\n\n\n\nName\nAge\nSalary\nGender\nDepartment\nPosition\nJoining Date\nPerformance Score\nEmail\nPhone Number\n\n\n\n\n0\ngrace\n25\n50000\nMale\nHR\nManager\nApril 5, 2018\nD\nemail@example.com\nNaN\n\n\n1\ndavid\nNaN\n65000\nFemale\nFinance\nDirector\n2020/02/20\nF\nuser@domain.com\n123-456-7890\n\n\n2\nhannah\n35\nSIXTY THOUSAND\nFemale\nSales\nDirector\n01/15/2020\nC\nemail@example.com\n098-765-4321\n\n\n3\neve\nNaN\n50000\nFemale\nIT\nManager\nApril 5, 2018\nA\nname@company.org\n\n\n\n4\ngrace\nNaN\nNAN\nFemale\nFinance\nManager\n01/15/2020\nF\nname@company.org\n098-765-4321\n\n\n\n\n\n\n\n\n# And the general information\ndf.info()\n\n&lt;class 'pandas.DataFrame'&gt;\nRangeIndex: 1000 entries, 0 to 999\nData columns (total 10 columns):\n #   Column             Non-Null Count  Dtype\n---  ------             --------------  -----\n 0   Name               1000 non-null   str  \n 1   Age                841 non-null    str  \n 2   Salary             1000 non-null   str  \n 3   Gender             1000 non-null   str  \n 4   Department         1000 non-null   str  \n 5   Position           1000 non-null   str  \n 6   Joining Date       1000 non-null   str  \n 7   Performance Score  1000 non-null   str  \n 8   Email              610 non-null    str  \n 9   Phone Number       815 non-null    str  \ndtypes: str(10)\nmemory usage: 78.3 KB\n\n\nDo you see the first problem already? Some columns do not have 1000 rows, but 841 (Age), 610 (Email) and 815 (Phone number instead). Let’s remember this and fix it later.\n\n# Let's have a look at the summary of the data\ndf.describe(include=\"all\")\n\n\n\n\n\n\n\n\nName\nAge\nSalary\nGender\nDepartment\nPosition\nJoining Date\nPerformance Score\nEmail\nPhone Number\n\n\n\n\ncount\n1000\n841\n1000\n1000\n1000\n1000\n1000\n1000\n610\n815\n\n\nunique\n10\n5\n6\n3\n5\n5\n5\n5\n3\n4\n\n\ntop\nalice\nthirty\n65000\nMale\nFinance\nAssistant\n2020/02/20\nB\nuser@domain.com\n123-456-7890\n\n\nfreq\n118\n176\n184\n355\n218\n214\n232\n225\n213\n236\n\n\n\n\n\n\n\nThis overview gives us another hint. Now, of course our file only is an example, but you may wonder (in real data) why a phone number is used 236 times.\n\n# Let's have a look at the unique values of each column and check whether we find something there\ndf.Name.unique()\n\n&lt;StringArray&gt;\n[  ' grace ',   ' david ',  ' hannah ',     ' eve ',    ' jack ', ' charlie ',\n   ' frank ',     ' bob ',   ' alice ',     ' ivy ']\nLength: 10, dtype: str\n\n\nThe names look normal to me, but if we look closer, we can see that there are whitespaces around the names. Is that needed? I do not think so! Let’s delete them.",
+    "crumbs": [
+      "Programming Café",
+      "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "DataCleaning.html#wait-logging",
+    "href": "DataCleaning.html#wait-logging",
+    "title": "Clean your data efficiently using Python",
+    "section": "WAIT! Logging?",
+    "text": "WAIT! Logging?\nWe just wanted to start deleting, however, we want to keep track of everthing. For that I want to write a small function that we can reuse.\n\nimport datetime\n\ndef log_change(description):\n    with open(\"log_file.txt\", mode = 'a', encoding = 'utf-8') as log_file:\n        print(description, datetime.datetime.now(), sep = '\\t', file = log_file)\n\nlog_change(\"Started process!\")\n\nBack to deleting whitespace!",
+    "crumbs": [
+      "Programming Café",
+      "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "DataCleaning.html#deleting-whitespace",
+    "href": "DataCleaning.html#deleting-whitespace",
+    "title": "Clean your data efficiently using Python",
+    "section": "Deleting Whitespace",
+    "text": "Deleting Whitespace\n\n# We can do that using strip()\ndf.Name = df.Name.str.strip()\nlog_change(\"Deleted whitespace in column Name\")\n\n\ndf.Name.unique()\n\n&lt;StringArray&gt;\n[  'grace',   'david',  'hannah',     'eve',    'jack', 'charlie',   'frank',\n     'bob',   'alice',     'ivy']\nLength: 10, dtype: str\n\n\ndf.Name.str.strip() removes extra whitespace from the beginning and end of each string. We use str to say that this method should be used to every value in the column.\nSince we looked at names, we may also want to have then capitalized, right?",
+    "crumbs": [
+      "Programming Café",
+      "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "DataCleaning.html#manipulate-cases",
+    "href": "DataCleaning.html#manipulate-cases",
+    "title": "Clean your data efficiently using Python",
+    "section": "Manipulate cases",
+    "text": "Manipulate cases\nWe can do that using str.capitalize(). In a similar manner, we can use lowercase, uppercase or different settings: - str.lower(): Converts all characters to lowercase. - str.upper(): Converts all characters to uppercase. - str.title(): Converts first character of each word to uppercase and remaining to lowercase. - str.capitalize(): Converts first character to uppercase and remaining to lowercase. - str.swapcase(): Converts uppercase to lowercase and lowercase to uppercase.\n\ndf.Name = df.Name.str.capitalize()\nlog_change(\"Capitalized strings in column Name\")\n\nLet’s have a look at the age next…\n\ndf.Age.unique()\n\n&lt;StringArray&gt;\n['25', nan, '35', '40', 'thirty', '50']\nLength: 6, dtype: str\n\n\nIt seems that age is sometimes written out as a string “thirty” and sometimes saved as a number.",
+    "crumbs": [
+      "Programming Café",
+      "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "DataCleaning.html#replacing-values",
+    "href": "DataCleaning.html#replacing-values",
+    "title": "Clean your data efficiently using Python",
+    "section": "Replacing values",
+    "text": "Replacing values\nIf there are only some instances, it may be handy to just replace the string with a number.\n\ndf.Age = df.Age.replace(\"thirty\", \"30\")\nlog_change(\"Replacing thirty with 30 in column Age\")\n\n\ndf.Age.unique()\n\n&lt;StringArray&gt;\n['25', nan, '35', '40', '30', '50']\nLength: 6, dtype: str\n\n\n\n# We can also ask pandas to convert all values to numbers and everything that is not a number, to NA\n# ‘coerce’ means that invalid parsing will be set as NaN.\ndf.Age = pandas.to_numeric(df.Age, downcast=\"integer\", errors=\"coerce\")\nlog_change(\"Converting Age to numeric\")\n\n\ndf.Age.unique()\n\narray([25., nan, 35., 40., 30., 50.])\n\n\nLet’s check whether we find a similar problem in the Salary.\n\ndf.Salary.unique()\n\n&lt;StringArray&gt;\n['50000', '65000', 'SIXTY THOUSAND', ' NAN ', '70000', '55000']\nLength: 6, dtype: str\n\n\n\n# Let's replace SIXTY THOUSAND by the number\ndf.Salary = df.Salary.replace(\"SIXTY THOUSAND\", \"60000\")\nlog_change(\"Replace SIXTY THOUSAND with 60000 in column Salary\")\n\n# And tell pandas that we have numerics here\ndf.Salary = pandas.to_numeric(df.Salary, downcast=\"integer\",errors=\"coerce\")\nlog_change(\"Converting Salary to numeric\")\n\ndf.Salary.unique()\n\narray([50000., 65000., 60000.,    nan, 70000., 55000.])\n\n\nLet’s have a short look at Gender…\n\ndf.Gender.unique()\n\n&lt;StringArray&gt;\n['Male', 'Female', 'Other']\nLength: 3, dtype: str\n\n\nOk! Looks good to me! But we may want to change it to “m”, “f” and “d”? For that, we could create a so-called mapping. We create a dictionary that contains the words that are currently in the dataset as keys and the words that we want to use as values. With this, we can also standardize the spelling!\n\ngender_mapping = {'Male': 'm', 'Female': 'f', 'Other':'d'}\n# Important: To use this function, you need the newest version of pandas (3.0) which may require to update your Python instance\ndf.Gender = df.Gender.str.replace(gender_mapping)\nlog_change(\"Replace Male, Female and Other with f,m and d in column Gender\")\n\n\ndf.Gender\n\n0      m\n1      f\n2      f\n3      f\n4      f\n      ..\n995    f\n996    m\n997    m\n998    d\n999    m\nName: Gender, Length: 1000, dtype: str\n\n\nI did not find any problems in the Department and Position column, however, I do not like that the columns “Joining Date”, “Performance Score” and “Phone Number” use two words! That may make the work with them more difficult as we have to use a different approach (df['Joining Date'] instead of df.joining_date).",
+    "crumbs": [
+      "Programming Café",
+      "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "DataCleaning.html#renaming-columns",
+    "href": "DataCleaning.html#renaming-columns",
+    "title": "Clean your data efficiently using Python",
+    "section": "Renaming columns",
+    "text": "Renaming columns\nLet’s rename them!\n\ndf = df.rename(columns={\"Joining Date\": \"Joining_Date\", \"Performance Score\": \"Performance_Score\", \"Phone Number\": \"Phone_Number\"})\nlog_change(\"Renaming Column Joining Date, Performance Score and Phone Number to Joining_Date, Performance_Score and Phone_Number\")",
+    "crumbs": [
+      "Programming Café",
+      "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html",
+    "href": "Assignments_Day2.html",
+    "title": "Assignments - Day 2",
+    "section": "",
+    "text": "from assertions import *\nfrom test_cells import *",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-4.1",
+    "href": "Assignments_Day2.html#assignment-4.1",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 4.1",
+    "text": "Assignment 4.1\nCreate a function that takes three participants’ names (name1, name2, name3), sorts them by alphabet and returns the sorted list.\n\nExpected input\n\"Petra\", \"Adam\", \"Eva\"\n\n\nExpected return values\n[\"Adam\", \"Eva\", \"Petra\"]\n\n# Code for assignment 4.1\ndef assignment_4_1(name1, name2, name3):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 4.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_4_1(assignment_4_1)\n\n\n# Assertion for assignment 4.1\n\ncheck_assertion(assignment_4_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-4.2",
+    "href": "Assignments_Day2.html#assignment-4.2",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 4.2",
+    "text": "Assignment 4.2\nWrite a function that takes a list of dictionaries (list_d) containing participant IDs and locations, and generates file names by combining the participant ID and location.\n\nExpected input\n[{\"id\":\"001\", \"location\":\"Rotterdam\"},{\"id\":\"002\", \"location\":\"Utrecht\"},{\"id\":\"003\", \"location\":\"Amsterdam\"},{\"id\":\"004\", \"location\":\"Nijmegen\"},{\"id\":\"005\", \"location\":\"Breda\"}]\n\n\nExpected return values\n[\"001_Rotterdam.txt\",\"002_Utrecht.txt\",\"003_Amsterdam.txt\",\"004_Nijmegen.txt\",\"005_Breda.txt\"]\n\n# Code for assignment 4.2\ndef assignment_4_2(list_d):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 4.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_4_2(assignment_4_2)\n\n\n# Assertion for assignment 4.2\n\ncheck_assertion(assignment_4_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-4.3",
+    "href": "Assignments_Day2.html#assignment-4.3",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 4.3",
+    "text": "Assignment 4.3\nWrite a function that takes a list of file names and changes their ending depending on their name. - if the file name contains “table” it should be a .csv file - if the file name contains “text” it should be a .txt file - if the file name contains neither “table” nor “text” it should remain unchanged\n\nInput\n[\"table1.txt\", \"table2.csv\", \"text1.txt\", \"text2.csv\", \"plot.jpg\", \"plot.csv\"]\n\n\nExpected return values\n[\"table1.csv\", \"table2.csv\", \"text1.txt\", \"text2.txt\", \"plot.jpg\", \"plot.csv\"]\n\n# Code for assignment 4.3\n  \ndef assignment_4_3(file_names_list):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 4.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_4_3(assignment_4_3)\n\n\n# Assertion for assignment 4.3\n\ncheck_assertion(assignment_4_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-5.1",
+    "href": "Assignments_Day2.html#assignment-5.1",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 5.1",
+    "text": "Assignment 5.1\nFind the error in the following code, by using try and except and looking at the raised exception.\ndef assignment_5_1(persons):\n    \"\"\"function takes list of people and prints every element (one per line)\"\"\"\n    persons = [\"Lisa\", \"Julia\", \"Veronika\", \"Anton\", \"Karl\", \"Vanessa\"]\n    \n    for person_index in range(len(persons)+1):\n        person = persons[person_index]\n        print(person)\n\nExpected input\n[\"Lisa\", \"Julia\", \"Veronika\", \"Anton\", \"Karl\", \"Vanessa\"]\n\n\nExpected print\nLisa\nJulia\nVeronika\nAnton\nKarl\nVanessa\n\n# Code for assignment 5.1\n\ndef assignment_5_1(persons):\n    \"\"\"function takes list of people and prints every element (one per line)\"\"\"\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 5.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_5_1(assignment_5_1)\n\n\n# Assertion for assignment 5.1\n\ncheck_assertion(assignment_5_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-5.2",
+    "href": "Assignments_Day2.html#assignment-5.2",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 5.2",
+    "text": "Assignment 5.2\nFind the error(s) and correct the following function:\ndict_people = [{\"first_name\": \"Petra\", \"age\":15}, {\"first_name\": \"Klaudia\", \"age\":20}, {\"first_name\": \"Klaudia\", \"age\":33}, {\"first_name\": \"Adam\", \"age\":30}, {\"first_name\": \"Joshua\", \"age\":15}, {\"first_name\": \"Michel\", \"age\":21}, {\"last_name\": \"Bauer\", \"age\":55}]\n\ndef assignment_5_2(dict_people):\n    \"\"\"function takes a list of dictionaries containing names and ages of people \n       and returns a list of all their names.\"\"\"\n    list_names = set()\n    for person in dict_people:\n        list_names.append(person[\"first_name\"])\n    return list_names\nHint: remember try and except – you can use it to detect and skip problematic cases. Do NOT change the value of dict_people.\n\nExpected input\n[{\"first_name\": \"Petra\", \"age\":15}, {\"first_name\": \"Klaudia\", \"age\":20}, {\"first_name\": \"Klaudia\", \"age\":33}, {\"first_name\": \"Adam\", \"age\":30}, {\"first_name\": \"Joshua\", \"age\":15}, {\"first_name\": \"Michel\", \"age\":21}, {\"last_name\": \"Bauer\", \"age\":55}]\n\n\nExpected return values\n[\"Petra\", \"Klaudia\", \"Klaudia\", \"Adam\", \"Joshua\", \"Michel\"]\n\n# Code for assignment 5.2\n\ndef assignment_5_2(dict_people):\n    \"\"\"function takes a list of dictionaries containing names and ages of people\n       and returns a list of all their names.\"\"\"\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 5.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_5_2(assignment_5_2)\n\n\n# Assertion for assignment 5.2\n\ncheck_assertion(assignment_5_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-5.3",
+    "href": "Assignments_Day2.html#assignment-5.3",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 5.3",
+    "text": "Assignment 5.3\nCorrect the following code. Check the variable names, keys and the syntax. Use try and except for potential error messages. Do NOT change the value of dict_people.\ndict_people = {\"001\": {\"first_name\": \"Petra\", \"age\":15}, \"002\":{\"First_name\": \"Klaudia\", \"age\":20}, \"003\": {\"first_name\": \"Klaudia\", \"age\":33}, \"004\":{\"first_name\": \"Adam\", \"age\":30}, \"005\":{\"First_name\": \"Joshua\", \"age\":15}, \"006\":{\"first_name\": \"Michel\", \"age\":21}, \"007\":{\"last_name\": \"Bauer\", \"age\":55}}\n\ndef assignment_5_3(dict_people):\n    list_names = set()\n    for person in dict_people.values():\n        list_names.append(person[\"first_name\"])\n        return list_names\n\nExpected input\n{\"001\": {\"first_name\": \"Petra\", \"age\":15}, \"002\":{\"First_name\": \"Klaudia\", \"age\":20}, \"003\": {\"first_name\": \"Klaudia\", \"age\":33}, \"004\":{\"first_name\": \"Adam\", \"age\":30}, \"005\":{\"First_name\": \"Joshua\", \"age\":15}, \"006\":{\"first_name\": \"Michel\", \"age\":21}, \"007\":{\"last_name\": \"Bauer\", \"age\":55}}\n\n\nExpected return values\n['Petra', 'Klaudia', 'Klaudia', 'Adam', 'Joshua', 'Michel']\n\n# Code for assignment 5.3\ndef assignment_5_3(dict_people):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 5.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_5_3(assignment_5_3)\n\n\n# Assertion for assignment 5.3\n\ncheck_assertion(assignment_5_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-6.1",
+    "href": "Assignments_Day2.html#assignment-6.1",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 6.1",
+    "text": "Assignment 6.1\nRead the csv file static/first_names.txt and store the contents in a list. Sort the participants by first names and print them.\n\nCSV file content\nname\nPeter\nAlex\nSandra\nEva\nAdam\nFred\nKlaudia\nHelena\nAnna\nXavier\nYonne\nTimo\nJoeri\nNoralie\nKevin\nRuben\nMick\nTom\nBerta\n\n\nExpected print on console\nAdam\nAlex\nAnna\nBerta\nEva\nFred\nHelena\nJoeri\nKevin\nKlaudia\nMick\nNoralie\nPeter\nRuben\nSandra\nTimo\nTom\nXavier\nYonne\n\n# Code for assignment 6.1\n\ndef assignment_6_1():\n    file_location = \"static/first_names.txt\"\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 6.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_6_1(assignment_6_1)\n\n\n# Assertion for assignment 6.1\n\ncheck_assertion(assignment_6_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-6.2",
+    "href": "Assignments_Day2.html#assignment-6.2",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 6.2",
+    "text": "Assignment 6.2\nRead the csv file static/names_age_location.csv and store the contents in a list. Sort the participants by age and print their age and name (seperated by a tab).\n\nCSV file content\nname,age,location\nPeter,21,Rotterdam\nAlex,45,Rotterdam\nSandra,65,Rotterdam\nEva,76,Utrecht\nAdam,31,Utrecht\nFred,90,Utrecht\nKlaudia,45,Utrecht\nHelena,32,Nijmegen\nAnna,33,Nijmegen\nXavier,33,Nijmegen\nYonne,54,Nijmegen\nTimo,67,Nijmegen\nJoeri,89,Amsterdam\nNoralie,10,Amsterdam\nKevin,11,Amsterdam\nRuben,90,Amsterdam\nMick,1,Amsterdam\nTom,23,Groningen\nBerta,54,Groningen\n\n\nExpected print on console\n1   Mick\n10  Noralie\n11  Kevin\n21  Peter\n23  Tom\n31  Adam\n32  Helena\n33  Anna\n33  Xavier\n45  Alex\n45  Klaudia\n54  Berta\n54  Yonne\n65  Sandra\n67  Timo\n76  Eva\n89  Joeri\n90  Fred\n90  Ruben\n\n# Code for assignment 6.2\n\ndef assignment_6_2():\n    import csv\n    file_location = \"static/names_age_location.csv\"\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 6.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_6_2(assignment_6_2)\n\n\n# Assertion for assignment 6.2\n\ncheck_assertion(assignment_6_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day2.html#assignment-6.3",
+    "href": "Assignments_Day2.html#assignment-6.3",
+    "title": "Assignments - Day 2",
+    "section": "Assignment 6.3",
+    "text": "Assignment 6.3\nRead the csv file static/names_age_location.csv and store the contents in a dictionary of dictionaries. Give each participant an id (incremental integers starting at 0). Save the dictionary in a JSON file in output/names_age_location.json and return the dictionary at the end.\n\nCSV file content\nname,age,location\nPeter,21,Rotterdam\nAlex,45,Rotterdam\nSandra,65,Rotterdam\nEva,76,Utrecht\nAdam,31,Utrecht\nFred,90,Utrecht\nKlaudia,45,Utrecht\nHelena,32,Nijmegen\nAnna,33,Nijmegen\nXavier,33,Nijmegen\nYonne,54,Nijmegen\nTimo,67,Nijmegen\nJoeri,89,Amsterdam\nNoralie,10,Amsterdam\nKevin,11,Amsterdam\nRuben,90,Amsterdam\nMick,1,Amsterdam\nTom,23,Groningen\nBerta,54,Groningen\n\n\nExpected return values\n{\n 0: {'name': 'Peter', 'age': '21', 'location': 'Rotterdam'},\n 1: {'name': 'Alex', 'age': '45', 'location': 'Rotterdam'},\n 2: {'name': 'Sandra', 'age': '65', 'location': 'Rotterdam'},\n 3: {'name': 'Eva', 'age': '76', 'location': 'Utrecht'},\n 4: {'name': 'Adam', 'age': '31', 'location': 'Utrecht'},\n 5: {'name': 'Fred', 'age': '90', 'location': 'Utrecht'},\n 6: {'name': 'Klaudia', 'age': '45', 'location': 'Utrecht'},\n 7: {'name': 'Helena', 'age': '32', 'location': 'Nijmegen'},\n 8: {'name': 'Anna', 'age': '33', 'location': 'Nijmegen'},\n 9: {'name': 'Xavier', 'age': '33', 'location': 'Nijmegen'},\n 10: {'name': 'Yonne', 'age': '54', 'location': 'Nijmegen'},\n 11: {'name': 'Timo', 'age': '67', 'location': 'Nijmegen'},\n 12: {'name': 'Joeri', 'age': '89', 'location': 'Amsterdam'},\n 13: {'name': 'Noralie', 'age': '10', 'location': 'Amsterdam'},\n 14: {'name': 'Kevin', 'age': '11', 'location': 'Amsterdam'},\n 15: {'name': 'Ruben', 'age': '90', 'location': 'Amsterdam'},\n 16: {'name': 'Mick', 'age': '1', 'location': 'Amsterdam'},\n 17: {'name': 'Tom', 'age': '23', 'location': 'Groningen'},\n 18: {'name': 'Berta', 'age': '54', 'location': 'Groningen'}\n}\n\n# Code for assignment 6.3\nimport json\nimport csv\n\ndef assignment_6_3():\n    csv_input = 'static/names_age_location.csv'\n    json_output = 'output/names_age_location.json'\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 6.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_6_3(assignment_6_3)\n\n\n# Assertion for assignment 6.3\n\ncheck_assertion(assignment_6_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Functions & Files"
+    ]
+  },
+  {
+    "objectID": "Day3.html",
+    "href": "Day3.html",
+    "title": "Python Fundamentals - Day 3",
+    "section": "",
+    "text": "Before we begin our data analysis, let’s experiment with random numbers.\nThe random package enables us to generate a single random number or a list of random numbers. To produce a random number within a specified range, we can use the randrange() function. This function requires two arguments: the starting point and the endpoint of the range, and it returns a random number from within that range.\nIt is recommended to set a seed for the random package at the start of your code, ensuring that you can consistently reproduce the same sequence of random numbers.\n\n# first let us import the random package\nfrom random import Random\n# We can use a random seed to allow for a reproducible output of the random package\nrandom = Random(10)\n\n# then we can ask it to create a random number between 35 and 42\ndef give_temperature():\n    return random.randrange(35, 42)\n\nprint(give_temperature())",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#using-packages---random",
+    "href": "Day3.html#using-packages---random",
+    "title": "Python Fundamentals - Day 3",
+    "section": "",
+    "text": "Before we begin our data analysis, let’s experiment with random numbers.\nThe random package enables us to generate a single random number or a list of random numbers. To produce a random number within a specified range, we can use the randrange() function. This function requires two arguments: the starting point and the endpoint of the range, and it returns a random number from within that range.\nIt is recommended to set a seed for the random package at the start of your code, ensuring that you can consistently reproduce the same sequence of random numbers.\n\n# first let us import the random package\nfrom random import Random\n# We can use a random seed to allow for a reproducible output of the random package\nrandom = Random(10)\n\n# then we can ask it to create a random number between 35 and 42\ndef give_temperature():\n    return random.randrange(35, 42)\n\nprint(give_temperature())",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#detailed-explanation-not-explained-in-class",
+    "href": "Day3.html#detailed-explanation-not-explained-in-class",
+    "title": "Python Fundamentals - Day 3",
+    "section": "Detailed explanation (not explained in class)",
+    "text": "Detailed explanation (not explained in class)\nTo generate a list of random numbers, we can use the random.sample() function. This function requires the range as its first argument, for instance, range(1, 101), and then the desired sample size, e.g., 15. This function is useful for expanding our list of participants.\nAfter that, we can use random.choice() to select a single random element from the sample or list. In our scenario, it can be used to randomly choose a name and age.\n\ndict_participants = {\"Peter\": 11, \"Alex\": 25, \"Sandra\": 43, \"Eva\":55, \"Adam\":66}\n\n# Let us add some random extra participants out of a set of names and ages and add them to our list\nnames = [\"Robin\", \"Willy\", \"Sam\", \"Nicky\", \"Marijn\", \"Dominique\", \"Luca\", \"Bo\", \"Jentje\", \"Jos\", \"Senna\", \"Jamie\", \"Ali\", \"Indy\", \"Dani\", \"Henny\", \"Ruth\", \"Eliza\", \"Jaimy\"]\n# Creates a list of 15 random numbers between 1 and 101\nages = random.sample(range(1, 101), 15)\n\np = 0\n# While we do not have 40 participants yet...\nwhile p &lt; 40:\n    # ...choose a random name of the list of names\n    name = random.choice(names)\n    # if we did not choose the name yet...\n    if name not in dict_participants:\n        # ...save the name in the dictionary together with a random age\n        dict_participants[name] = random.choice(ages)\n    # if we already have the name in the dictionary...\n    else:\n        # ...create a double name and save it in the dictionary with a random age\n        name = random.choice(names) + \"-\" + random.choice(names)\n        dict_participants[name] = random.choice(ages)\n    p += 1\n\nprint(dict_participants)\n\nLet’s now use the list of participants and incorporate it into our function to determine their age group.\nOnce we’ve completed the checks, we want to export the results to a CSV file.\n\nimport csv \n\ndef check_age(participants):\n    # We open the file with the name participants.txt in a writing mode and with utf-8 encoding\n    with open('output/participants_random.csv', mode = \"w\", encoding = 'utf-8') as file_out:\n        writer = csv.writer(file_out)\n        # header\n        writer.writerow([\"name\", \"age\", \"group\", \"temperature\"])\n        # for every participant\n        for name, age in participants.items():\n            if age &gt; 65:\n                group = \"senior\" \n            elif age &lt; 18:\n                group = \"junior\"\n            else:\n                group = \"adult\"\n            writer.writerow([name, age, group, give_temperature()])\n\ncheck_age(dict_participants)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#use-the-output-of-random-and-create-a-new-column-in-a-csv-file",
+    "href": "Day3.html#use-the-output-of-random-and-create-a-new-column-in-a-csv-file",
+    "title": "Python Fundamentals - Day 3",
+    "section": "Use the output of random and create a new column in a csv file",
+    "text": "Use the output of random and create a new column in a csv file\nLet’s use the csv file participants_random.csv and add a new column to it with the output that our function generates.\nTo do that, we use need to import csv again.\n\nimport csv \n\n# Define function\ndef add_temp_to_csv():\n    \"\"\"Function reads in existing csv file and adds a new column temperature\"\"\"\n    # Open file to read\n    with open('static/participants_random.csv', mode = \"r\", encoding = 'utf-8', newline='') as file_in:\n        # Create a csv reader\n        reader = csv.reader(file_in)\n        # Open file to write in\n        with open('output/participants_long.csv', mode = \"w\", encoding = 'utf-8', newline='') as file_out:\n            # Create a csv writer\n            writer = csv.writer(file_out)\n            # for every row that we read in participants_random.csv...\n            for row in reader:\n                # if the row contains the words \"name\" and \"age\" (i.e., it contains headers)...\n                if \"name\" in row and \"age\" in row:\n                    # ...add the new column header\n                    writer.writerow(row + [\"temperature\"])\n                # else (if it is not the header)... \n                else:\n                    # ...add the temperature\n                    writer.writerow(row + [give_temperature()])\n\nadd_temp_to_csv()\n\nOur csv file will now include all the information that we just created using the random package.\nname,age,group,temperature\nPeter,11,junior,37\nAlex,25,adult,41\nSandra,43,adult,35\nEva,55,adult,38\nAdam,66,senior,39\nMarijn,7,junior,41\nIndy,78,senior,38\nRuth,63,adult,35\nDani,69,senior,37\nJentje,63,adult,41\nIndy-Senna,20,adult,36\nRuth-Marijn,14,junior,38\nBo,69,senior,36\nWilly,20,adult,36\nLuca,20,adult,38\nJaimy,12,junior,41\nHenny,13,junior,41\nNicky,57,adult,38\nBo-Jos,63,adult,41\nSam,13,junior,37\nEliza,78,senior,35\nJos-Dominique,20,adult,36\nMarijn-Jamie,12,junior,41\nAli,63,adult,36\nJamie-Dominique,54,adult,39\nLuca-Indy,1,junior,40\nJos-Dani,14,junior,38\nIndy-Dani,20,adult,36\nLuca-Jentje,12,junior,39\nJamie,54,adult,40\nRobin,1,junior,40\nIndy-Ali,59,adult,38\nSam-Indy,78,senior,35\nWilly-Jamie,57,adult,38\nDani-Indy,78,senior,41\nJos,45,adult,35\nRuth-Jentje,9,junior,36\nSenna-Jamie,14,junior,35\nHenny-Dani,59,adult,38\nJaimy-Henny,54,adult,40\nJamie-Ali,63,adult,40\nDominique,12,junior,37\nJaimy-Sam,12,junior,40\nRobin-Jaimy,69,senior,37",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#using-packages---pandas",
+    "href": "Day3.html#using-packages---pandas",
+    "title": "Python Fundamentals - Day 3",
+    "section": "Using Packages - Pandas",
+    "text": "Using Packages - Pandas\nOnce we have prepared the data for our statistical analysis, we can start using another package: pandas.\nPandas is a fast, powerful, flexible, and user-friendly open-source tool for data analysis and manipulation, built on top of the Python programming language.\nWith pandas, we can read files, process them, and perform statistical analyses on the data. But to begin, we need to import pandas.\nNote that, unlike other packages we’ve seen before, pandas is not in Python’s standard library. This means that it has to be installed in your environment before you can use it. For our course, though, this has been done for you already.\n\nimport pandas\n\nAfter importing pandas, we can use the function read_csv() to read our list of participants. We give the name of the csv file and the data type (in this case: string) as arguments.\n\ndata = pandas.read_csv(\"static/participants_long.csv\",dtype=str)\nprint(data)\n\nGiven that we cannot assume the use of a single data type, we can specify the data types for each column. To achieve this, we create a dictionary named d_type and fill it it with the column names and their data types.\n\ndtype = {\"name\": str, \"age\": int, \"group\": str, \"temperature\":int}\ndata = pandas.read_csv(\"static/participants_long.csv\",dtype=dtype)\nprint(data)\n\nAfter importing the data, we can examine it by viewing the first five entries using head()and the last five entries using tail().\n\nprint(data.head())\n\n\nprint(data.tail())\n\nWe can also display the column names using data.columns or look at potential row names using data.index.\n\nprint(data.columns)\n\n\nprint(data.index)\n\nWe can also obtain a quick statistical summary of the data using describe().\nFor string data, this provides information on the number of rows (count), the number of unique items (unique), the most common item (top), and its frequency (freq).\nFor integer data, describe() gives us the number of rows (count), the mean, the standard deviation (std), the smallest value (min), the 1st, 2nd, and 3rd quartiles (25%, 50%, and 75%), and the maximum value (max).\n\nprint(data.describe())\n\nWe can use sort_index() to sort the data by rows or by column name (using data.sort_index(axis = 1)).\n\nprint(data.sort_index())\n\nWe can also sort the data by a specific column, such as age. Setting ascending=False allows us to arrange the data in descending order.\n\nprint(data.sort_values(by = 'age', ascending=False))\n\n\nSelection of specific columns or items\nWe can also examine the statistical summary of a single column. To do this, we simply use the column name after the dot.\nFor example, print(data.age) prints the ‘age’ column.\nWe can also combine this with describe() to obtain detailed information about a specific column.\n\nprint(data.age.describe())\n\nBy using the column name and the index, we can access individual rows or a sequence of rows, similar to accessing elements within a list or characters in a string.\n\n# return the first row of the column age\nprint(\"First row:\", data.age[0])\n# return the sequence between the first row of the column age and the third row\nprint(\"Sequence:\")\nprint(data.age[0:3])\n\nYou can also request specific properties of a value using boolean indexing.\nThis approach uses logic similar to the conditions used in an ‘if’ statement. The important distinction is that we apply this condition to all of the rows at once.\n\n# Only look at the data in which the age is above 40\nprint(data[data[\"age\"] &gt; 40])\n\nThe function isin() allows us to only access values that are in a certain list or group.\n\ndata[data[\"name\"].isin([\"Ali\", \"Adam\"])]\n\nBased on these conditions, we can also create a new column. In this example, we create a new column named ‘attended’ that contains the value True if the participant is older than 40.\n\ndata['attended'] = data['age'] &gt; 40\nprint(data)\n\n\n\nGroups\nWith Pandas, you can split the data into groups based on specific criteria, apply a function to each group independently, and then combine the results into a single data structure.\nLet’s create groups for the age categories: adult, junior, and senior, as we have defined.\n\nage_groups = data.groupby(\"group\")\n\nWe can now use the function describe() to access the statistics based on the groups\n\nage_groups.describe()\n\nThis also works in combination with specific columns.\n\nage_groups.age.describe()\n\n\n\nSimple Statistics\nWith Pandas, you can count the occurrences of specific columns or values. The count() function counts all non-empty cells for each column or row.\n\n# Count each filled row per column\ndata.count()\n\n# Count each filled column per row\ndata.count(1)\n\nYou can also count values (or combinations) using value_counts().\n\ndata.value_counts()\n\nIf you use value_counts() in combination with a specific column, you will get the occurence of every value.\n\ndata.group.value_counts()\n\n\ndata.attended.value_counts()\n\nWe can also calculate various statistical measures using Pandas: the mean with mean(), the median with median(), the standard deviation with std(), and the minimum and maximum values with min() and max(), respectively.\n\nprint(\"mean:\", data.temperature.mean())\nprint(\"median:\", data.temperature.median())\nprint(\"standard deviation:\", data.temperature.std())\nprint(\"minimum:\", data.temperature.min())\nprint(\"maximum:\", data.temperature.max())\n\n\n\nSimple Plots using Pandas and Matplotlib\nThe data structures created in Pandas can be visualized using the Matplotlib package. To do this, you first need to import matplotlib.pyplot (as plt).\nOnce imported, you can use the plot() function to create a plot. If you provide a single list or array to plot(), Matplotlib assumes it represents a sequence of y-values and automatically generates the corresponding x-values for you.\n\nimport matplotlib.pyplot as plt\n\n\ndata.plot(\"age\", \"temperature\")\n\nIm combination with a column name, we can also only plot one column. Here, matplotlib assumes that it is a sequence.\n\ndata.age.plot()\n\nWe can also reuse the groups that we created and plot the results based on these groups.\n\nage_groups.plot()\n\n\nage_groups.temperature.plot()\n\nThere are also other forms of plots that can be created using matplotlib. You can find an overview in the matplotlib documentation here.\n\nPlot customization\nTo further customize a plot, you can adjust the labels on the x-axis and y-axis using xlabel() and ylabel(). This allows you to provide more context and clarity to your visualizations.\n\ndata.plot('temperature', 'age')\nplt.xlabel('Temperature')\nplt.ylabel('Age')\n\n# We can add a title as well\nplt.title('Temperature correlates with age?')\n\nTo better represent your data, you can vary the type of plot used.\nFor example, you might want to choose a scatter plot for visualizing relationships between variables.\n\nplt.style.use('ggplot')\ndata.plot('temperature', 'age', kind = 'scatter')\nplt.xlabel('Temperature')\nplt.ylabel('Age')\n\n# We can adapt the limitations using xlim() and ylim()\nplt.ylim(0,100)\n\nWe can also annotate the plot, for example, with an arrow.\n\ndata.plot('temperature', 'age', kind = 'scatter')\nplt.xlabel('Temperature')\nplt.ylabel('Age')\nplt.title('Temperature correlates with age?')\nplt.ylim(0,100)\n\n# Arrow\nplt.annotate('max age: ' + str(data.age.max()), xy=(38, data.age.max()), xytext=(40, 90),\n             arrowprops=dict(facecolor='black', shrink=0.05),)\n\nIn total, we can choose between 11 kinds of plots in pandas:\n\n‘line’ : line plot (default)\n‘bar’ : vertical bar plot\n‘barh’ : horizontal bar plot\n‘hist’ : histogram\n‘box’ : boxplot\n‘kde’ : Kernel Density Estimation plot\n‘density’ : same as ‘kde’\n‘area’ : area plot\n‘pie’ : pie plot\n‘scatter’ : scatter plot (DataFrame only)\n‘hexbin’ : hexbin plot (DataFrame only)\n\nLet us try the pie plot, but this time with the frequencies of the age groups.\n\nplt.style.use('ggplot')\ndata.group.value_counts().plot(kind = 'pie')\nplt.title('Distribution across groups')\nplt.ylabel('')\n\nOf course, there are many more use cases and ways to create plots. The right plot really depends on your data. In general, I recommend just trying it out!\nPandas provides users with a good documentation of the possibilities here.\n\n\n\nSaving a plot\n\n# Note: the plt.savefig() must be in the same Notebook cell as the creation of the plot\nplt.style.use('ggplot')\ndata.group.value_counts().plot(kind = 'pie')\nplt.title('Distribution across groups')\nplt.ylabel('')\n\n# Save plot as pieplot_png\nplt.savefig('output/pie_plot.png')\n\n\n# Adjust the resolution, size and style\ndata.group.value_counts().plot(kind = 'pie', title = 'Distribution across groups', ylabel = '', figsize=(7, 7))\nplt.savefig('output/pie_plot2.png', dpi=200, bbox_inches='tight')\n# bbox is a mutable bounding box. bbox_inches refers to bbox in inches. Only the given portion of the figure is saved. If 'tight', it tries to figure out the tight bbox of the figure. \n# dpi stands for dots per inch\n# figsize takes the dimensions in inches\n\n\n\nProgramming Style\nMaintaining a consistent coding style significantly aids others and ourselves in reading and comprehending code more effectively. Code is read far more frequently than it is written. Python established a standard style through one of its early Python Enhancement Proposals (PEP), specifically PEP8.\nHere are some aspects that they write about comments:\n\nComments that contradict the code are worse than no comments. Always make a priority of keeping the comments up-to-date when the code changes!\nComments should be complete sentences. The first word should be capitalized, unless it is an identifier that begins with a lower case letter (never alter the case of identifiers!).\nEnsure that your comments are clear and easily understandable to other speakers of the language you are writing in\nPython coders from non-English speaking countries: please write your comments in English, unless you are 120% sure that the code will never be read by people who don’t speak your language.\n\nDoc strings even have their own conventions (PEP257).\n\n# This is a good documented code:\n\nimport pandas as pd\n\ndef get_headers(file_location):\n    \"\"\" Function reads csv file and prints headers\n    Parameters\n    ----------\n    file_location : str\n        The file location of the csv file\n\n    Returns\n    -------\n    list\n        a list of strings used that are the headers\"\"\"\n    # Process input\n    data = pd.read_csv(file_location)\n    headers = data.columns.to_list()\n    # Create output\n    print(\"\\t\".join(headers))\n    return headers\n\nget_headers(\"static/names_age_location.csv\")\n\n\n# This is not easily understandable:\nimport pandas as pd\n\ndef hd(f):\n    df = pd.read_csv(f)\n    print(\"\\t\".join(list(df.columns.values)))\n    return list(df.columns.values)\n\nhd(\"static/names_age_location.csv\")\n\n\n\nFAIR practices\nTo make your research software as reproducible as possible and to give you more confidence in publishing your code alongside your data, it is recommended to follow open science practices.\nTo be precise, I recommend you to take FAIR into account when starting to work on your own Research Software:\nF (Findable)\nA (Accessible)\nI (Interoperable)\nR (Reusable)\n\nFindable\nYou can make your code findable by uploading it to a public repository such as GitHub and writing a good README. - Git (GitHub) can be used to version your code. A programming café on how to use Git for versioning your software will be held soon. - A README file helps inform others on how to use your code. You can find more information on how to create a README. here.\n\n\nAccessible\nYou can make your code accessible by using open formats (Python is already a good choice!) and providing clear installation and usage instructions.\n\n\nInteroperable\nYou can make your code interoperable by avoiding hardcoding (i.e., use functions and refrain from using direct file paths within the code) and by documenting dependencies on other packages (e.g., random or pandas).\n\n\nReusable\nYou can make your code reusable by providing usage examples and writing modular, well-documented code.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#how-to-download-your-files",
+    "href": "Day3.html#how-to-download-your-files",
+    "title": "Python Fundamentals - Day 3",
+    "section": "How to download your files",
+    "text": "How to download your files\nTo download all the files that you created and worked on during this course, you can use the download option of jupyter. For that, click “File” and then “Download” (see screenshot).\n\n\n\njupyter",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#how-to-run-jupyter-notebook-locally",
+    "href": "Day3.html#how-to-run-jupyter-notebook-locally",
+    "title": "Python Fundamentals - Day 3",
+    "section": "How to run jupyter notebook locally",
+    "text": "How to run jupyter notebook locally\nAs an EUR employee the easiest way to run a jupyter notebook locally is via Anaconda. Here, you have the option to start a jupyter notebook.\n\n\n\nanaconda\n\n\nOnce jupyter launches, a webpage will open on your PC. Using the file system that you see there, you can look for your downloaded files and open them.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#next-steps",
+    "href": "Day3.html#next-steps",
+    "title": "Python Fundamentals - Day 3",
+    "section": "Next steps",
+    "text": "Next steps\nAlthough we have been learning Python using Jupyter Lab, in daily practice, you might prefer using an IDE (Integrated Development Environment) like PyCharm or Visual Studio Code. These tools help you to write and use research software efficiently.\nFind the links to the Software catalog here: - PyCharm - Visual Studio Code",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#programming-café",
+    "href": "Day3.html#programming-café",
+    "title": "Python Fundamentals - Day 3",
+    "section": "Programming Café",
+    "text": "Programming Café\nTo keep on learning Python, please consider coming to the monthly programming cafés that we host at EUR.\nThe next session will focus on how to clean and correct errors in your raw data using Python. It is a fitting next step to strengthen your programming skills. Find more information here.\nIn March, we will explore how to manage your data using Python.\nIn April, we will have a look at the IDEs and virtual environments in the Programming Café!\n\n\n\nProgramming Café",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Day3.html#helpfulinteresting-links-for-the-future",
+    "href": "Day3.html#helpfulinteresting-links-for-the-future",
+    "title": "Python Fundamentals - Day 3",
+    "section": "Helpful/Interesting links for the future",
+    "text": "Helpful/Interesting links for the future\n\nLearn more Python\n\nPlotting and Programming in Python course (Software Carpentries)\nThe Hitchhiker’s Guide to Python!\nKaggle courses\n\n\n\nLearn computational thinking\n\nComputational Thinking for Social Scientists\n\n\n\nLearn more about programming practices\n\nFive recommendations for FAIR software\nHow to FAIRify Your Research Software? A Practical Overview\nSelf-assessment for FAIR research software\nThe Turing Way - Guide on reproducible research\nGood enough practices in scientific computing\nResearch Software Development Guide by the eScience Center",
+    "crumbs": [
+      "Python Fundamentals",
+      "Pandas & Plots"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html",
+    "href": "Assignments_Day1.html",
+    "title": "Assignments - Day 1",
+    "section": "",
+    "text": "from assertions import *\nfrom test_cells import *",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-1.1",
+    "href": "Assignments_Day1.html#assignment-1.1",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 1.1",
+    "text": "Assignment 1.1\nYou can also perform more advanced operations using the operators //, % and **. Let’s try it out! Using these three operators, return the quotient of a divided by b (rounded to the next smallest whole number), the remainder of a divided by b and finally a raised to the power of b.\n\nExpected input\n15\n4\n\n\nExpected return values\n3, 3, 50625\n\n# Code for assignment 1.1\n\ndef assignment_1_1(a, b):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 1.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_1_1(assignment_1_1)\n\n\n# Assertion for assignment 1.1\n\ncheck_assertion(assignment_1_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-1.2",
+    "href": "Assignments_Day1.html#assignment-1.2",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 1.2",
+    "text": "Assignment 1.2\nPrecedence describes the order in which operations are performed. Parentheses have the highest precedence, following exponentiation, multiplication, division, floor division, modulus, additions and subtractions. If two operators have the same precedence, the expression is evaluated from left to right.\nPut parentheses in the following equation, in such a way that the result of the expression is 0.\n2 * 4 + 5 - 9 * 2\n\n# Code for assignment 1.2\n\ndef assignment_1_2():\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 1.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_1_2(assignment_1_2)\n\n\n# Assertion for assignment 1.2\n\ncheck_assertion(assignment_1_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-1.3",
+    "href": "Assignments_Day1.html#assignment-1.3",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 1.3",
+    "text": "Assignment 1.3\nHelp us format this data: Use string manipulation to seperate the names of the participants with a tabstop from the age and have one participant per line!\n\"Petra11Sophe23Agatha57Adam90Joeri29Timo41Eva27\"\n\nExpected output:\n\"\"\"\nPetra   11\nSophie  23\nAgatha  57\nAdam    90\nJoeri   29\nTimo    41\nEva 27\n\"\"\"\n\n# Code for assignment 1.3\n\ndef assignment_1_3():\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 1.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_1_3(assignment_1_3)\n\n\n# Assertion for assignment 1.3\n\ncheck_assertion(assignment_1_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-2.1",
+    "href": "Assignments_Day1.html#assignment-2.1",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 2.1",
+    "text": "Assignment 2.1\nClean this list of participants to only contain participants with uneven numbers as participant ids.\n\nInput\n[\"participant_001\", \"participant_002\", \"participant_003\", \"participant_004\", \"participant_005\", \"participant_006\", \"participant_007\", \"participant_008\", \"participant_009\"]\n\n\nExpected output:\n['participant_001', 'participant_003', 'participant_005', 'participant_007', 'participant_009']\n\n# Code for assignment 2.1\n\ndef assignment_2_1(list_participants):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 2.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_2_1(assignment_2_1)\n\n\n# Assertion for assignment 2.1\n\ncheck_assertion(assignment_2_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-2.2",
+    "href": "Assignments_Day1.html#assignment-2.2",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 2.2",
+    "text": "Assignment 2.2\nCreate a list of (three) dictionaries that contains the following data:\n\"id\" \"p_001\"\n\"name\"    \"Peter\"\n\"age\"   50\n\"occupation\"    \"researcher\"\n\n\"id\" \"p_002\"\n\"name\"    \"Petra\"\n\"age\"    30\n\"occupation\"    \"PhD\"\n\n\"id\" \"p_003\"\n\"name\"    \"Lisav\n\"age\"    15\n\"occupation\"    \"student\"\n\n# Code for assignment 2.2\n\ndef assignment_2_2():\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 2.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_2_2(assignment_2_2)\n\n\n# Assertion for assignment 2.2\n\ncheck_assertion(assignment_2_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-2.3",
+    "href": "Assignments_Day1.html#assignment-2.3",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 2.3",
+    "text": "Assignment 2.3\nUsing any of the introduced data collection types, find the (only) name that is in both of these two lists of names.\nnames1 = [\"Lisa\", \"Lia\", \"Lissa\", \"Liia\", \"Lija\", \"Pia\", \"Pina\", \"Pip\"]\nnames2 = [\"Lira\", \"Liua\", \"Liaa\", \"Lina\", \"Lia\", \"Pio\", \"Pima\", \"Pif\"]\n\n# Code for assignment 2.3\n\ndef assignment_2_3(names1, names2):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 2.3\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_2_3(assignment_2_3)\n\n\n# Assertion for assignment 2.3\n\ncheck_assertion(assignment_2_3)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-3.1",
+    "href": "Assignments_Day1.html#assignment-3.1",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 3.1",
+    "text": "Assignment 3.1\nUse if and elif to check whether Adam and Peter registered for the experiment.\n\nExpected input\nregistered = [\"Klaus\", \"Petra\", \"Adam\", \"Michel\", \"Susanne\", \"Lisa\"]\n\nname1 = \"Adam\"\n\nname2 = \"Peter\"\n\n\nExpected output (printed):\n\"Adam registered!\"\n\n# Code for assignment 3.1\n\ndef assignment_3_1(registered, name1, name2):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 3.1\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_3_1(assignment_3_1)\n\n\n# Assertion for assignment 3.1\n\ncheck_assertion(assignment_3_1)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-3.2",
+    "href": "Assignments_Day1.html#assignment-3.2",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 3.2",
+    "text": "Assignment 3.2\nUsing a loop, check whether each city in the list locations is in randstad, if that is not the case, add it to a new list called “outside”.\n\nExpected input\nlocations = [\"Amsterdam\", \"Rotterdam\", \"Utrecht\", \"Leiden\", \"Delft\", \"Arnhem\", \"Nijmegen\"]\nrandstad = [\"Amsterdam\", \"Rotterdam\", \"Leiden\", \"Delft\"]\n\n\nExpected output\n[]\n\n# Code for assignment 3.2\n\ndef assignment_3_2(locations, randstad):\n    # YOUR CODE HERE\n    raise NotImplementedError()\n\n\n# Test for assignment 3.2\n\n# Press Ctrl-Enter (PC) or Command-Enter (Mac) after changing the function \n# above and pressing Ctrl-Enter (PC) or Command-Enter (Mac)\n\ntest_cell_3_2(assignment_3_2)\n\n\n# Assertion for assignment 3.2\n\ncheck_assertion(assignment_3_2)",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Assignments_Day1.html#assignment-3.3",
+    "href": "Assignments_Day1.html#assignment-3.3",
+    "title": "Assignments - Day 1",
+    "section": "Assignment 3.3",
+    "text": "Assignment 3.3\nTake the dictionary with participants and their attendance and use it to create two seperate lists: One list of all participants that attended and one list of all absent participants.\n\nExpected input\nparticipants = {\"p1\": \"absent\", \"p2\": \"participated\", \"p3\": \"participated\", \"p4\":\"absent\", \"p5\":\"participated\", \"p6\":\"NA\"}",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments",
+      "Assignments - Data (Collection) Types"
+    ]
+  },
+  {
+    "objectID": "Instructions.html",
+    "href": "Instructions.html",
+    "title": "Instructions with the Assignments",
+    "section": "",
+    "text": "Dear student,\nWelcome to the programming course “Programming with Python for Researchers – Python Fundamentals”. The assignments form the practical part of the course, next to the live coding. Because programming is doing, these assignments form a vital part of the final grade awarded for this course.\nPlease note that you are encouraged to work together on the assignments. Keep in mind, however, that understanding a program is much easier than writing a program yourself.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments"
+    ]
+  },
+  {
+    "objectID": "Instructions.html#jupyter-notebooks",
+    "href": "Instructions.html#jupyter-notebooks",
+    "title": "Instructions with the Assignments",
+    "section": "Jupyter Notebooks",
+    "text": "Jupyter Notebooks\nThe assignments will be made on a JupyterHub server in the form of Jupyter Notebooks. Jupyter Notebooks play a key role in data science, as is explained in this 2018 article in Nature.\nIf you are unfamiliar with Jupyter Notebooks, please have a look at this tutorial. If you do, please start with the section titled Creating a Notebook. Otherwise, you can also try the example below (not graded). This example has the same structure as all the assignments in this series.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments"
+    ]
+  },
+  {
+    "objectID": "Instructions.html#the-assignment-structure",
+    "href": "Instructions.html#the-assignment-structure",
+    "title": "Instructions with the Assignments",
+    "section": "The Assignment Structure",
+    "text": "The Assignment Structure\nEach of the assignment notebook files contains a set of assignments, which are auto-graded. For each assignment, you should start by reading the instructions in the first cell. In the second cell, you are requested to program your solution by replacing these two lines:\n# YOUR CODE HERE\nraise NotImplementedError()\nwith your own Python code. As long as you do not change these lines, your assignment function will raise a NotImplementedError error when run.\nThe third cell, which is (mostly) read-only, can be used to enter the requested values and test your assignment function. The fourth cell will be run by the auto-grading tool of the teacher. It will run a number of tests through your assignment function. Please run it yourself, as well. If you solved the assignment correctly, you will see a message like:\nWell done! You seem to have solved assignment_1_1!",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments"
+    ]
+  },
+  {
+    "objectID": "Instructions.html#debugging",
+    "href": "Instructions.html#debugging",
+    "title": "Instructions with the Assignments",
+    "section": "Debugging",
+    "text": "Debugging\nEven in relatively small Python programs, you will discover that it is easy to make mistakes. To find out what the problem is, programmers often add print() statements at strategic places throughout their code, so that they can confirm whether their program actually reaches that location, and can inspect the current values of some variables there.\nExample:\ndef my_function(a, b):\n    print('value of a is', a)\n    ...\nPlease use them often. They will not influence your (auto)grading.",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments"
+    ]
+  },
+  {
+    "objectID": "Instructions.html#final-instruction",
+    "href": "Instructions.html#final-instruction",
+    "title": "Instructions with the Assignments",
+    "section": "Final instruction",
+    "text": "Final instruction\nBefore you start solving the example assignment, please press Ctrl-Enter in the cell below (PC) or Command-Enter (Mac). It will load the modules needed for the testing and auto-grading the assignments. After you did, a number between the square brackets will appear in front of the cell, like - for example:\nIn [1]:\nBelow the cell the following message will appear:\nAssertions imported OK\nTest cells imported OK\n\n# Please run the contents of this cell.\n# Select this cell and press Ctrl-Enter (or Command-Enter on mac).\n\nfrom assertions import *\nfrom test_cells import *",
+    "crumbs": [
+      "Python Fundamentals",
+      "Assignments"
+    ]
+  }
+]
