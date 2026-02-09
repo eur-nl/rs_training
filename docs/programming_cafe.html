@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Python Fundamentals – Research Software Training @ EUR</title>
+<title>Erasmian Programming Café – Research Software Training @ EUR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Day1.html" rel="next">
+<link href="./lesson_2.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_fundamentals.html">Python Fundamentals</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programming_cafe.html">Programming Café</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,13 +121,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./python_fundamentals.html" class="sidebar-item-text sidebar-link active">
+            <a href="./python_fundamentals.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Fundamentals</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Day1.html" class="sidebar-item-text sidebar-link">
@@ -180,13 +180,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./programming_cafe.html" class="sidebar-item-text sidebar-link">
+            <a href="./programming_cafe.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Programming Café</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://codeberg.org/charliegreene/research-software-best-practice" class="sidebar-item-text sidebar-link">
@@ -223,10 +223,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link active" data-scroll-target="#course-description">Course description</a></li>
-  <li><a href="#this-website" id="toc-this-website" class="nav-link" data-scroll-target="#this-website">This website</a></li>
-  <li><a href="#course-material" id="toc-course-material" class="nav-link" data-scroll-target="#course-material">Course material</a></li>
-  <li><a href="#what-the-course-teaches" id="toc-what-the-course-teaches" class="nav-link" data-scroll-target="#what-the-course-teaches">What the course teaches</a></li>
+  <li><a href="#materials" id="toc-materials" class="nav-link active" data-scroll-target="#materials">Materials</a></li>
+  <li><a href="#programming-café-at-eur" id="toc-programming-café-at-eur" class="nav-link" data-scroll-target="#programming-café-at-eur">Programming Café at EUR</a></li>
   <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -236,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python Fundamentals</h1>
+<h1 class="title">Erasmian Programming Café</h1>
 </div>
 
 
@@ -253,28 +251,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="course-description" class="level2">
-<h2 class="anchored" data-anchor-id="course-description">Course description</h2>
-<p>Tired of endless repetitive tasks in spreadsheets? Curious about how programming can transform your research? <strong>This course is your gateway to the world of Python!</strong> Learn how to think like a programmer, build your own scripts, and debug code. No more spreadsheet nightmares - discover how automation and computational thinking can save you time and open new possibilities for your research.</p>
-<p>In this in-person workshop, we combined lectures with hands-on programming. We worked on practical assignments during class, supported by expert instructors and teaching assistants - professional programmers ready to help whenever you need it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/logo_with_text.jpg" class="img-fluid figure-img"></p>
+<figcaption>Programming Café</figcaption>
+</figure>
+</div>
+<section id="materials" class="level2">
+<h2 class="anchored" data-anchor-id="materials">Materials</h2>
+<p>In this handy overview, you can find all course materials of the Erasmian programming café.</p>
 </section>
-<section id="this-website" class="level2">
-<h2 class="anchored" data-anchor-id="this-website">This website</h2>
-<p>On this website, you can find the course script as well as all the assignments. During the course, we access this information using JupyterLab.</p>
-</section>
-<section id="course-material" class="level2">
-<h2 class="anchored" data-anchor-id="course-material">Course material</h2>
-<p>Find the files that we refer to in the course <a href="material/Python_Fundamentals_static.zip">here</a> and rename the folder to <code>static</code>.</p>
-</section>
-<section id="what-the-course-teaches" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-course-teaches">What the course teaches</h2>
-<ul>
-<li>How to write Python scripts</li>
-<li>How to use Data Collection types</li>
-<li>What data types exist in Python</li>
-<li>How to use functions and access files</li>
-<li>How to work with data using Pandas</li>
-</ul>
+<section id="programming-café-at-eur" class="level2">
+<h2 class="anchored" data-anchor-id="programming-café-at-eur">Programming Café at EUR</h2>
+<p>Find more information (i.e., dates, schedules etc.) on <a href="https://eur-nl.github.io/programming-cafe/">the website of the Programming Café</a>.</p>
 </section>
 <section id="contact" class="level2">
 <h2 class="anchored" data-anchor-id="contact">Contact</h2>
@@ -688,8 +677,8 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Day1.html" class="pagination-link" aria-label="Data (Collection) Types">
-        <span class="nav-page-text">Data (Collection) Types</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./lesson_2.html" class="pagination-link" aria-label="2 Automating Tasks with Python">
+        <span class="nav-page-text">2 Automating Tasks with Python</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -355,27 +355,47 @@
     "href": "python_fundamentals.html",
     "title": "Python Fundamentals",
     "section": "",
-    "text": "This course introduces the basics of Python programming. It is designed for beginners with no prior experience.",
+    "text": "Tired of endless repetitive tasks in spreadsheets? Curious about how programming can transform your research? This course is your gateway to the world of Python! Learn how to think like a programmer, build your own scripts, and debug code. No more spreadsheet nightmares - discover how automation and computational thinking can save you time and open new possibilities for your research.\nIn this in-person workshop, we combined lectures with hands-on programming. We worked on practical assignments during class, supported by expert instructors and teaching assistants - professional programmers ready to help whenever you need it.",
     "crumbs": [
       "Python Fundamentals"
     ]
   },
   {
-    "objectID": "python_fundamentals.html#welcome",
-    "href": "python_fundamentals.html#welcome",
+    "objectID": "python_fundamentals.html#course-description",
+    "href": "python_fundamentals.html#course-description",
     "title": "Python Fundamentals",
     "section": "",
-    "text": "This course introduces the basics of Python programming. It is designed for beginners with no prior experience.",
+    "text": "Tired of endless repetitive tasks in spreadsheets? Curious about how programming can transform your research? This course is your gateway to the world of Python! Learn how to think like a programmer, build your own scripts, and debug code. No more spreadsheet nightmares - discover how automation and computational thinking can save you time and open new possibilities for your research.\nIn this in-person workshop, we combined lectures with hands-on programming. We worked on practical assignments during class, supported by expert instructors and teaching assistants - professional programmers ready to help whenever you need it.",
     "crumbs": [
       "Python Fundamentals"
     ]
   },
   {
-    "objectID": "python_fundamentals.html#what-you-will-learn",
-    "href": "python_fundamentals.html#what-you-will-learn",
+    "objectID": "python_fundamentals.html#this-website",
+    "href": "python_fundamentals.html#this-website",
     "title": "Python Fundamentals",
-    "section": "What you will learn",
-    "text": "What you will learn\n\nHow to write Python scripts\nHow to work with data\nHow to use Jupyter notebooks",
+    "section": "This website",
+    "text": "This website\nOn this website, you can find the course script as well as all the assignments. During the course, we access this information using JupyterLab.",
+    "crumbs": [
+      "Python Fundamentals"
+    ]
+  },
+  {
+    "objectID": "python_fundamentals.html#course-material",
+    "href": "python_fundamentals.html#course-material",
+    "title": "Python Fundamentals",
+    "section": "Course material",
+    "text": "Course material\nFind the files that we refer to in the course here and rename the folder to static.",
+    "crumbs": [
+      "Python Fundamentals"
+    ]
+  },
+  {
+    "objectID": "python_fundamentals.html#what-the-course-teaches",
+    "href": "python_fundamentals.html#what-the-course-teaches",
+    "title": "Python Fundamentals",
+    "section": "What the course teaches",
+    "text": "What the course teaches\n\nHow to write Python scripts\nHow to use Data Collection types\nWhat data types exist in Python\nHow to use functions and access files\nHow to work with data using Pandas",
     "crumbs": [
       "Python Fundamentals"
     ]
@@ -385,7 +405,7 @@
     "href": "python_fundamentals.html#contact",
     "title": "Python Fundamentals",
     "section": "Contact",
-    "text": "Contact\nIf you have questions, feel free to reach out.",
+    "text": "Contact\nIf you have questions, feel free to reach out to the lecturer of the course.",
     "crumbs": [
       "Python Fundamentals"
     ]
@@ -468,14 +488,43 @@
     ]
   },
   {
-    "objectID": "bash.html",
-    "href": "bash.html",
-    "title": "Research Software Training @ EUR",
+    "objectID": "programming_cafe.html",
+    "href": "programming_cafe.html",
+    "title": "Erasmian Programming Café",
     "section": "",
-    "text": "Back to top",
+    "text": "Programming Café",
     "crumbs": [
-      "Programming Café",
-      "3 Basic command line usage in the Bash shell (PDF)"
+      "Programming Café"
+    ]
+  },
+  {
+    "objectID": "programming_cafe.html#materials",
+    "href": "programming_cafe.html#materials",
+    "title": "Erasmian Programming Café",
+    "section": "Materials",
+    "text": "Materials\nIn this handy overview, you can find all course materials of the Erasmian programming café.",
+    "crumbs": [
+      "Programming Café"
+    ]
+  },
+  {
+    "objectID": "programming_cafe.html#programming-café-at-eur",
+    "href": "programming_cafe.html#programming-café-at-eur",
+    "title": "Erasmian Programming Café",
+    "section": "Programming Café at EUR",
+    "text": "Programming Café at EUR\nFind more information (i.e., dates, schedules etc.) on the website of the Programming Café.",
+    "crumbs": [
+      "Programming Café"
+    ]
+  },
+  {
+    "objectID": "programming_cafe.html#contact",
+    "href": "programming_cafe.html#contact",
+    "title": "Erasmian Programming Café",
+    "section": "Contact",
+    "text": "Contact\nIf you have questions, feel free to reach out to the lecturer of the course.",
+    "crumbs": [
+      "Programming Café"
     ]
   },
   {
@@ -553,6 +602,17 @@
     "crumbs": [
       "Programming Café",
       "4 Clean your data with Python"
+    ]
+  },
+  {
+    "objectID": "bash.html",
+    "href": "bash.html",
+    "title": "Research Software Training @ EUR",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "Programming Café",
+      "3 Basic command line usage in the Bash shell (PDF)"
     ]
   },
   {
