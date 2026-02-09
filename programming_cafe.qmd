@@ -1,0 +1,16 @@
+--- 
+title: "Erasmian Programming Café" 
+format: html 
+toc: true 
+toc-location: right 
+--- 
+![Programming Café](figures/logo_with_text.jpg)
+
+## Materials
+In this handy overview, you can find all course materials of the Erasmian programming café.
+
+## Programming Café at EUR
+Find more information (i.e., dates, schedules etc.) on [the website of the Programming Café](https://eur-nl.github.io/programming-cafe/).
+
+## Contact 
+If you have questions, feel free to reach out to the lecturer of the course.

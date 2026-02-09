@@ -7,6 +7,7 @@ website:
   page-navigation: true
   back-to-top-navigation: true
   sidebar:
+    logo-href: index.qmd
     style: "floating"
     collapse-level: 1
     contents:
@@ -33,6 +34,7 @@ website:
             href: Assignments_Day3.ipynb
       - text: "---"
       - section: Programming Café
+        href: programming_cafe.qmd
         contents:
         - text: "1 How to approach programming as a researcher (GitRepo)"
           href: https://codeberg.org/charliegreene/research-software-best-practice

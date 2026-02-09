@@ -4,13 +4,23 @@ format: html
 toc: true 
 toc-location: right 
 --- 
-## Welcome 
-This course introduces the basics of Python programming. It is designed for beginners with no prior experience.
+## Course description
+Tired of endless repetitive tasks in spreadsheets? Curious about how programming can transform your research? **This course is your gateway to the world of Python!** Learn how to think like a programmer, build your own scripts, and debug code. No more spreadsheet nightmares - discover how automation and computational thinking can save you time and open new possibilities for your research.
 
-## What you will learn 
-- How to write Python scripts 
-- How to work with data 
-- How to use Jupyter notebooks 
+In this in-person workshop, we combined lectures with hands-on programming. We worked on practical assignments during class, supported by expert instructors and teaching assistants - professional programmers ready to help whenever you need it.
+
+## This website
+On this website, you can find the course script as well as all the assignments. During the course, we access this information using JupyterLab.
+
+## Course material
+Find the files that we refer to in the course [here](material/Python_Fundamentals_static.zip) and rename the folder to `static`.
+
+## What the course teaches
+- How to write Python scripts
+- How to use Data Collection types
+- What data types exist in Python
+- How to use functions and access files
+- How to work with data using Pandas
 
 ## Contact 
-If you have questions, feel free to reach out.
+If you have questions, feel free to reach out to the lecturer of the course.
