@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -109,6 +109,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -122,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_fundamentals.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="./Day3.html">Pandas &amp; Plots</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_fundamentals.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="./Day3.html">Pandas &amp; Plots + Next steps</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,10 +153,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./home.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./python_fundamentals.html" class="sidebar-item-text sidebar-link">
@@ -178,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Day3.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Pandas &amp; Plots</span></a>
+ <span class="menu-text">Pandas &amp; Plots + Next steps</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -212,15 +216,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Programming Café</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://codeberg.org/charliegreene/research-software-best-practice" class="sidebar-item-text sidebar-link">
@@ -286,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_fundamentals.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="./Day3.html">Pandas &amp; Plots</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_fundamentals.html">Python Fundamentals</a></li><li class="breadcrumb-item"><a href="./Day3.html">Pandas &amp; Plots + Next steps</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Python Fundamentals - Day 3</h1>
 </div>
@@ -310,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Before we begin our data analysis, let’s experiment with random numbers.</p>
 <p>The random package enables us to generate a single random number or a list of random numbers. To produce a random number within a specified range, we can use the <code>randrange()</code> function. This function requires two arguments: the starting point and the endpoint of the range, and it returns a random number from within that range.</p>
 <p>It is recommended to set a seed for the random package at the start of your code, ensuring that you can consistently reproduce the same sequence of random numbers.</p>
-<div id="450a2c1b-0e25-4edd-bc95-2b0d7ccee2dd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.176016Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.173664Z&quot;}}">
+<div id="450a2c1b-0e25-4edd-bc95-2b0d7ccee2dd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.450212Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.446267Z&quot;}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first let us import the random package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> Random</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use a random seed to allow for a reproducible output of the random package</span></span>
@@ -321,92 +326,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> random.randrange(<span class="dv">35</span>, <span class="dv">42</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(give_temperature())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>39</code></pre>
+</div>
 </div>
 </section>
 <section id="detailed-explanation-not-explained-in-class" class="level2">
 <h2 class="anchored" data-anchor-id="detailed-explanation-not-explained-in-class">Detailed explanation (not explained in class)</h2>
 <p>To generate a list of random numbers, we can use the <code>random.sample()</code> function. This function requires the range as its first argument, for instance, <code>range(1, 101)</code>, and then the desired sample size, e.g., 15. This function is useful for expanding our list of participants.</p>
 <p>After that, we can use <code>random.choice()</code> to select a single random element from the sample or list. In our scenario, it can be used to randomly choose a name and age.</p>
-<div id="7a62902d-6c8f-4f06-a72b-aa5071e74cd8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.189131Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.187018Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dict_participants <span class="op">=</span> {<span class="st">"Peter"</span>: <span class="dv">11</span>, <span class="st">"Alex"</span>: <span class="dv">25</span>, <span class="st">"Sandra"</span>: <span class="dv">43</span>, <span class="st">"Eva"</span>:<span class="dv">55</span>, <span class="st">"Adam"</span>:<span class="dv">66</span>}</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let us add some random extra participants out of a set of names and ages and add them to our list</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Robin"</span>, <span class="st">"Willy"</span>, <span class="st">"Sam"</span>, <span class="st">"Nicky"</span>, <span class="st">"Marijn"</span>, <span class="st">"Dominique"</span>, <span class="st">"Luca"</span>, <span class="st">"Bo"</span>, <span class="st">"Jentje"</span>, <span class="st">"Jos"</span>, <span class="st">"Senna"</span>, <span class="st">"Jamie"</span>, <span class="st">"Ali"</span>, <span class="st">"Indy"</span>, <span class="st">"Dani"</span>, <span class="st">"Henny"</span>, <span class="st">"Ruth"</span>, <span class="st">"Eliza"</span>, <span class="st">"Jaimy"</span>]</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a list of 15 random numbers between 1 and 101</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ages <span class="op">=</span> random.sample(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>), <span class="dv">15</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># While we do not have 40 participants yet...</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> p <span class="op">&lt;</span> <span class="dv">40</span>:</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...choose a random name of the list of names</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> random.choice(names)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if we did not choose the name yet...</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="kw">not</span> <span class="kw">in</span> dict_participants:</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ...save the name in the dictionary together with a random age</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        dict_participants[name] <span class="op">=</span> random.choice(ages)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if we already have the name in the dictionary...</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ...create a double name and save it in the dictionary with a random age</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> random.choice(names) <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> random.choice(names)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        dict_participants[name] <span class="op">=</span> random.choice(ages)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    p <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dict_participants)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7a62902d-6c8f-4f06-a72b-aa5071e74cd8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.464075Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.461389Z&quot;}}" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dict_participants <span class="op">=</span> {<span class="st">"Peter"</span>: <span class="dv">11</span>, <span class="st">"Alex"</span>: <span class="dv">25</span>, <span class="st">"Sandra"</span>: <span class="dv">43</span>, <span class="st">"Eva"</span>:<span class="dv">55</span>, <span class="st">"Adam"</span>:<span class="dv">66</span>}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let us add some random extra participants out of a set of names and ages and add them to our list</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">"Robin"</span>, <span class="st">"Willy"</span>, <span class="st">"Sam"</span>, <span class="st">"Nicky"</span>, <span class="st">"Marijn"</span>, <span class="st">"Dominique"</span>, <span class="st">"Luca"</span>, <span class="st">"Bo"</span>, <span class="st">"Jentje"</span>, <span class="st">"Jos"</span>, <span class="st">"Senna"</span>, <span class="st">"Jamie"</span>, <span class="st">"Ali"</span>, <span class="st">"Indy"</span>, <span class="st">"Dani"</span>, <span class="st">"Henny"</span>, <span class="st">"Ruth"</span>, <span class="st">"Eliza"</span>, <span class="st">"Jaimy"</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a list of 15 random numbers between 1 and 101</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ages <span class="op">=</span> random.sample(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">101</span>), <span class="dv">15</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># While we do not have 40 participants yet...</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> p <span class="op">&lt;</span> <span class="dv">40</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...choose a random name of the list of names</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> random.choice(names)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if we did not choose the name yet...</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> name <span class="kw">not</span> <span class="kw">in</span> dict_participants:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ...save the name in the dictionary together with a random age</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        dict_participants[name] <span class="op">=</span> random.choice(ages)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if we already have the name in the dictionary...</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ...create a double name and save it in the dictionary with a random age</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        name <span class="op">=</span> random.choice(names) <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> random.choice(names)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        dict_participants[name] <span class="op">=</span> random.choice(ages)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    p <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dict_participants)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'Peter': 11, 'Alex': 25, 'Sandra': 43, 'Eva': 55, 'Adam': 66, 'Jamie': 5, 'Indy': 10, 'Marijn': 84, 'Ali-Indy': 2, 'Jentje': 63, 'Dominique': 21, 'Jos': 21, 'Marijn-Dani': 42, 'Bo': 63, 'Ali': 5, 'Jaimy': 5, 'Marijn-Luca': 32, 'Eliza-Jamie': 42, 'Senna-Eliza': 63, 'Henny-Sam': 62, 'Senna-Ruth': 62, 'Indy-Bo': 5, 'Willy': 63, 'Sam-Eliza': 32, 'Sam': 62, 'Jaimy-Jamie': 32, 'Nicky-Nicky': 63, 'Luca-Jamie': 60, 'Dani-Bo': 21, 'Marijn-Ruth': 62, 'Nicky': 2, 'Dani': 2, 'Dominique-Dominique': 63, 'Senna-Indy': 74, 'Robin': 36, 'Senna-Senna': 74, 'Jentje-Dani': 60, 'Dominique-Ali': 32, 'Henny': 21, 'Ruth-Jentje': 36, 'Dani-Ali': 62, 'Eliza-Jaimy': 27, 'Eliza': 60, 'Dominique-Eliza': 63}</code></pre>
+</div>
 </div>
 <p>Let’s now use the list of participants and incorporate it into our function to determine their age group.</p>
 <p>Once we’ve completed the checks, we want to export the results to a CSV file.</p>
-<div id="dd647d01-9b10-4c87-9f46-cd01fa4e3406" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.205224Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.200458Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_age(participants):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We open the file with the name participants.txt in a writing mode and with utf-8 encoding</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output/participants_random.csv'</span>, mode <span class="op">=</span> <span class="st">"w"</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> file_out:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        writer <span class="op">=</span> csv.writer(file_out)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># header</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        writer.writerow([<span class="st">"name"</span>, <span class="st">"age"</span>, <span class="st">"group"</span>, <span class="st">"temperature"</span>])</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for every participant</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> name, age <span class="kw">in</span> participants.items():</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> age <span class="op">&gt;</span> <span class="dv">65</span>:</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                group <span class="op">=</span> <span class="st">"senior"</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                group <span class="op">=</span> <span class="st">"junior"</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                group <span class="op">=</span> <span class="st">"adult"</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>            writer.writerow([name, age, group, give_temperature()])</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>check_age(dict_participants)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="dd647d01-9b10-4c87-9f46-cd01fa4e3406" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.473803Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.471083Z&quot;}}" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_age(participants):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We open the file with the name participants.txt in a writing mode and with utf-8 encoding</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output/participants_random.csv'</span>, mode <span class="op">=</span> <span class="st">"w"</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> file_out:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        writer <span class="op">=</span> csv.writer(file_out)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># header</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        writer.writerow([<span class="st">"name"</span>, <span class="st">"age"</span>, <span class="st">"group"</span>, <span class="st">"temperature"</span>])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for every participant</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> name, age <span class="kw">in</span> participants.items():</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> age <span class="op">&gt;</span> <span class="dv">65</span>:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                group <span class="op">=</span> <span class="st">"senior"</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                group <span class="op">=</span> <span class="st">"junior"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                group <span class="op">=</span> <span class="st">"adult"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            writer.writerow([name, age, group, give_temperature()])</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>check_age(dict_participants)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="use-the-output-of-random-and-create-a-new-column-in-a-csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="use-the-output-of-random-and-create-a-new-column-in-a-csv-file">Use the output of random and create a new column in a csv file</h2>
 <p>Let’s use the csv file <code>participants_random.csv</code> and add a new column to it with the output that our function generates.</p>
 <p>To do that, we use need to import csv again.</p>
-<div id="d1d5a820-549b-48b5-8154-49b32c51c66e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.215715Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.212852Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_temp_to_csv():</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function reads in existing csv file and adds a new column temperature"""</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Open file to read</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'static/participants_random.csv'</span>, mode <span class="op">=</span> <span class="st">"r"</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> file_in:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create a csv reader</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        reader <span class="op">=</span> csv.reader(file_in)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Open file to write in</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output/participants_long.csv'</span>, mode <span class="op">=</span> <span class="st">"w"</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> file_out:</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Create a csv writer</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            writer <span class="op">=</span> csv.writer(file_out)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># for every row that we read in participants_random.csv...</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                <span class="co"># if the row contains the words "name" and "age" (i.e., it contains headers)...</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">"name"</span> <span class="kw">in</span> row <span class="kw">and</span> <span class="st">"age"</span> <span class="kw">in</span> row:</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...add the new column header</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                    writer.writerow(row <span class="op">+</span> [<span class="st">"temperature"</span>])</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                <span class="co"># else (if it is not the header)... </span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...add the temperature</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                    writer.writerow(row <span class="op">+</span> [give_temperature()])</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>add_temp_to_csv()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d1d5a820-549b-48b5-8154-49b32c51c66e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.497117Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.493996Z&quot;}}" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_temp_to_csv():</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function reads in existing csv file and adds a new column temperature"""</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Open file to read</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'static/participants_random.csv'</span>, mode <span class="op">=</span> <span class="st">"r"</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> file_in:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create a csv reader</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        reader <span class="op">=</span> csv.reader(file_in)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Open file to write in</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output/participants_long.csv'</span>, mode <span class="op">=</span> <span class="st">"w"</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> file_out:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Create a csv writer</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            writer <span class="op">=</span> csv.writer(file_out)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># for every row that we read in participants_random.csv...</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                <span class="co"># if the row contains the words "name" and "age" (i.e., it contains headers)...</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">"name"</span> <span class="kw">in</span> row <span class="kw">and</span> <span class="st">"age"</span> <span class="kw">in</span> row:</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...add the new column header</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                    writer.writerow(row <span class="op">+</span> [<span class="st">"temperature"</span>])</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                <span class="co"># else (if it is not the header)... </span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...add the temperature</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                    writer.writerow(row <span class="op">+</span> [give_temperature()])</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>add_temp_to_csv()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Our csv file will now include all the information that we just created using the random package.</p>
 <pre class="csv"><code>name,age,group,temperature
@@ -461,181 +472,907 @@ Robin-Jaimy,69,senior,37</code></pre>
 <p>Pandas is a fast, powerful, flexible, and user-friendly open-source tool for data analysis and manipulation, built on top of the Python programming language.</p>
 <p>With pandas, we can read files, process them, and perform statistical analyses on the data. But to begin, we need to import pandas.</p>
 <p>Note that, unlike other packages we’ve seen before, pandas is <em>not</em> in Python’s standard library. This means that it has to be installed in your environment before you can use it. For our course, though, this has been done for you already.</p>
-<div id="30360411-f851-48e6-8882-c9aca2d0077e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.502359Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.226042Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="30360411-f851-48e6-8882-c9aca2d0077e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.809440Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.508861Z&quot;}}" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>After importing pandas, we can use the function <code>read_csv()</code> to read our list of participants. We give the name of the csv file and the data type (in this case: string) as arguments.</p>
-<div id="176ab68e-d524-4b48-b259-424f78e2b344" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.511788Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.505330Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">"static/participants_long.csv"</span>,dtype<span class="op">=</span><span class="bu">str</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="176ab68e-d524-4b48-b259-424f78e2b344" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.821366Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.814452Z&quot;}}" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">"static/participants_long.csv"</span>,dtype<span class="op">=</span><span class="bu">str</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               name age   group temperature
+0             Peter  11  junior          37
+1              Alex  25   adult          41
+2            Sandra  43   adult          35
+3               Eva  55   adult          38
+4              Adam  66  senior          39
+5            Marijn   7  junior          41
+6              Indy  78  senior          38
+7              Ruth  63   adult          35
+8              Dani  69  senior          37
+9            Jentje  63   adult          41
+10       Indy-Senna  20   adult          36
+11      Ruth-Marijn  14  junior          38
+12               Bo  69  senior          36
+13            Willy  20   adult          36
+14             Luca  20   adult          38
+15            Jaimy  12  junior          41
+16            Henny  13  junior          41
+17            Nicky  57   adult          38
+18           Bo-Jos  63   adult          41
+19              Sam  13  junior          37
+20            Eliza  78  senior          35
+21    Jos-Dominique  20   adult          36
+22     Marijn-Jamie  12  junior          41
+23              Ali  63   adult          36
+24  Jamie-Dominique  54   adult          39
+25        Luca-Indy   1  junior          40
+26         Jos-Dani  14  junior          38
+27        Indy-Dani  20   adult          36
+28      Luca-Jentje  12  junior          39
+29            Jamie  54   adult          40
+30            Robin   1  junior          40
+31         Indy-Ali  59   adult          38
+32         Sam-Indy  78  senior          35
+33      Willy-Jamie  57   adult          38
+34        Dani-Indy  78  senior          41
+35              Jos  45   adult          35
+36      Ruth-Jentje   9  junior          36
+37      Senna-Jamie  14  junior          35
+38       Henny-Dani  59   adult          38
+39      Jaimy-Henny  54   adult          40
+40        Jamie-Ali  63   adult          40
+41        Dominique  12  junior          37
+42        Jaimy-Sam  12  junior          40
+43      Robin-Jaimy  69  senior          37</code></pre>
+</div>
 </div>
 <p>Given that we cannot assume the use of a single data type, we can specify the data types for each column. To achieve this, we create a dictionary named <code>d_type</code> and fill it it with the column names and their data types.</p>
-<div id="48fd1d96-c90d-40e8-a0ea-e3e585d12ec5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.522052Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.518449Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dtype <span class="op">=</span> {<span class="st">"name"</span>: <span class="bu">str</span>, <span class="st">"age"</span>: <span class="bu">int</span>, <span class="st">"group"</span>: <span class="bu">str</span>, <span class="st">"temperature"</span>:<span class="bu">int</span>}</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">"static/participants_long.csv"</span>,dtype<span class="op">=</span>dtype)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="48fd1d96-c90d-40e8-a0ea-e3e585d12ec5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.840622Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.835813Z&quot;}}" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dtype <span class="op">=</span> {<span class="st">"name"</span>: <span class="bu">str</span>, <span class="st">"age"</span>: <span class="bu">int</span>, <span class="st">"group"</span>: <span class="bu">str</span>, <span class="st">"temperature"</span>:<span class="bu">int</span>}</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">"static/participants_long.csv"</span>,dtype<span class="op">=</span>dtype)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               name  age   group  temperature
+0             Peter   11  junior           37
+1              Alex   25   adult           41
+2            Sandra   43   adult           35
+3               Eva   55   adult           38
+4              Adam   66  senior           39
+5            Marijn    7  junior           41
+6              Indy   78  senior           38
+7              Ruth   63   adult           35
+8              Dani   69  senior           37
+9            Jentje   63   adult           41
+10       Indy-Senna   20   adult           36
+11      Ruth-Marijn   14  junior           38
+12               Bo   69  senior           36
+13            Willy   20   adult           36
+14             Luca   20   adult           38
+15            Jaimy   12  junior           41
+16            Henny   13  junior           41
+17            Nicky   57   adult           38
+18           Bo-Jos   63   adult           41
+19              Sam   13  junior           37
+20            Eliza   78  senior           35
+21    Jos-Dominique   20   adult           36
+22     Marijn-Jamie   12  junior           41
+23              Ali   63   adult           36
+24  Jamie-Dominique   54   adult           39
+25        Luca-Indy    1  junior           40
+26         Jos-Dani   14  junior           38
+27        Indy-Dani   20   adult           36
+28      Luca-Jentje   12  junior           39
+29            Jamie   54   adult           40
+30            Robin    1  junior           40
+31         Indy-Ali   59   adult           38
+32         Sam-Indy   78  senior           35
+33      Willy-Jamie   57   adult           38
+34        Dani-Indy   78  senior           41
+35              Jos   45   adult           35
+36      Ruth-Jentje    9  junior           36
+37      Senna-Jamie   14  junior           35
+38       Henny-Dani   59   adult           38
+39      Jaimy-Henny   54   adult           40
+40        Jamie-Ali   63   adult           40
+41        Dominique   12  junior           37
+42        Jaimy-Sam   12  junior           40
+43      Robin-Jaimy   69  senior           37</code></pre>
+</div>
 </div>
 <p>After importing the data, we can examine it by viewing the first five entries using <code>head()</code>and the last five entries using <code>tail()</code>.</p>
-<div id="c71a25c5-7154-4d82-ba7c-ec517235dc90" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.532368Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.530460Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c71a25c5-7154-4d82-ba7c-ec517235dc90" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.859012Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.856347Z&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name  age   group  temperature
+0   Peter   11  junior           37
+1    Alex   25   adult           41
+2  Sandra   43   adult           35
+3     Eva   55   adult           38
+4    Adam   66  senior           39</code></pre>
 </div>
-<div id="3b3cf544-446f-40f1-aaec-b5adb79eb0a9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.550043Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.548245Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.tail())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="3b3cf544-446f-40f1-aaec-b5adb79eb0a9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.866201Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.863912Z&quot;}}" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.tail())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           name  age   group  temperature
+39  Jaimy-Henny   54   adult           40
+40    Jamie-Ali   63   adult           40
+41    Dominique   12  junior           37
+42    Jaimy-Sam   12  junior           40
+43  Robin-Jaimy   69  senior           37</code></pre>
+</div>
 </div>
 <p>We can also display the column names using <code>data.columns</code> or look at potential row names using <code>data.index</code>.</p>
-<div id="2714822d-a90e-4aaf-aa2b-379015a0e11c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.560910Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.559194Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2714822d-a90e-4aaf-aa2b-379015a0e11c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.879747Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.878109Z&quot;}}" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['name', 'age', 'group', 'temperature'], dtype='object')</code></pre>
 </div>
-<div id="9c2ec14b-9aa5-4c80-9dc8-9b19a3791535" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.573876Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.572284Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.index)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9c2ec14b-9aa5-4c80-9dc8-9b19a3791535" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.892536Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.890899Z&quot;}}" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.index)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RangeIndex(start=0, stop=44, step=1)</code></pre>
+</div>
 </div>
 <p>We can also obtain a quick statistical summary of the data using <code>describe()</code>.</p>
 <p>For string data, this provides information on the number of rows (count), the number of unique items (unique), the most common item (top), and its frequency (freq).</p>
 <p>For integer data, <code>describe()</code> gives us the number of rows (count), the mean, the standard deviation (std), the smallest value (min), the 1st, 2nd, and 3rd quartiles (25%, 50%, and 75%), and the maximum value (max).</p>
-<div id="cff78b94-5d7d-48ee-ac5f-1f88c4ee9010" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.592174Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.587953Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cff78b94-5d7d-48ee-ac5f-1f88c4ee9010" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.908659Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.903848Z&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             age  temperature
+count  44.000000    44.000000
+mean   39.068182    38.045455
+std    26.100341     2.079295
+min     1.000000    35.000000
+25%    13.000000    36.000000
+50%    44.000000    38.000000
+75%    63.000000    40.000000
+max    78.000000    41.000000</code></pre>
+</div>
 </div>
 <p>We can use <code>sort_index()</code> to sort the data by rows or by column name (using data.sort_index(axis = 1)).</p>
-<div id="bdbff3cd-aa31-458a-a907-029d1bfbfaaf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.605783Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.603510Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.sort_index())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bdbff3cd-aa31-458a-a907-029d1bfbfaaf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.923071Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.920412Z&quot;}}" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.sort_index())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               name  age   group  temperature
+0             Peter   11  junior           37
+1              Alex   25   adult           41
+2            Sandra   43   adult           35
+3               Eva   55   adult           38
+4              Adam   66  senior           39
+5            Marijn    7  junior           41
+6              Indy   78  senior           38
+7              Ruth   63   adult           35
+8              Dani   69  senior           37
+9            Jentje   63   adult           41
+10       Indy-Senna   20   adult           36
+11      Ruth-Marijn   14  junior           38
+12               Bo   69  senior           36
+13            Willy   20   adult           36
+14             Luca   20   adult           38
+15            Jaimy   12  junior           41
+16            Henny   13  junior           41
+17            Nicky   57   adult           38
+18           Bo-Jos   63   adult           41
+19              Sam   13  junior           37
+20            Eliza   78  senior           35
+21    Jos-Dominique   20   adult           36
+22     Marijn-Jamie   12  junior           41
+23              Ali   63   adult           36
+24  Jamie-Dominique   54   adult           39
+25        Luca-Indy    1  junior           40
+26         Jos-Dani   14  junior           38
+27        Indy-Dani   20   adult           36
+28      Luca-Jentje   12  junior           39
+29            Jamie   54   adult           40
+30            Robin    1  junior           40
+31         Indy-Ali   59   adult           38
+32         Sam-Indy   78  senior           35
+33      Willy-Jamie   57   adult           38
+34        Dani-Indy   78  senior           41
+35              Jos   45   adult           35
+36      Ruth-Jentje    9  junior           36
+37      Senna-Jamie   14  junior           35
+38       Henny-Dani   59   adult           38
+39      Jaimy-Henny   54   adult           40
+40        Jamie-Ali   63   adult           40
+41        Dominique   12  junior           37
+42        Jaimy-Sam   12  junior           40
+43      Robin-Jaimy   69  senior           37</code></pre>
+</div>
 </div>
 <p>We can also sort the data by a specific column, such as age. Setting ascending=False allows us to arrange the data in descending order.</p>
-<div id="46716971-37b7-4bf3-af0b-48cd7565c214" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.621880Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.618506Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.sort_values(by <span class="op">=</span> <span class="st">'age'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="46716971-37b7-4bf3-af0b-48cd7565c214" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.937252Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.934329Z&quot;}}" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.sort_values(by <span class="op">=</span> <span class="st">'age'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               name  age   group  temperature
+34        Dani-Indy   78  senior           41
+32         Sam-Indy   78  senior           35
+6              Indy   78  senior           38
+20            Eliza   78  senior           35
+43      Robin-Jaimy   69  senior           37
+12               Bo   69  senior           36
+8              Dani   69  senior           37
+4              Adam   66  senior           39
+40        Jamie-Ali   63   adult           40
+23              Ali   63   adult           36
+18           Bo-Jos   63   adult           41
+7              Ruth   63   adult           35
+9            Jentje   63   adult           41
+31         Indy-Ali   59   adult           38
+38       Henny-Dani   59   adult           38
+33      Willy-Jamie   57   adult           38
+17            Nicky   57   adult           38
+3               Eva   55   adult           38
+24  Jamie-Dominique   54   adult           39
+29            Jamie   54   adult           40
+39      Jaimy-Henny   54   adult           40
+35              Jos   45   adult           35
+2            Sandra   43   adult           35
+1              Alex   25   adult           41
+10       Indy-Senna   20   adult           36
+21    Jos-Dominique   20   adult           36
+27        Indy-Dani   20   adult           36
+14             Luca   20   adult           38
+13            Willy   20   adult           36
+26         Jos-Dani   14  junior           38
+37      Senna-Jamie   14  junior           35
+11      Ruth-Marijn   14  junior           38
+19              Sam   13  junior           37
+16            Henny   13  junior           41
+42        Jaimy-Sam   12  junior           40
+41        Dominique   12  junior           37
+22     Marijn-Jamie   12  junior           41
+28      Luca-Jentje   12  junior           39
+15            Jaimy   12  junior           41
+0             Peter   11  junior           37
+36      Ruth-Jentje    9  junior           36
+5            Marijn    7  junior           41
+30            Robin    1  junior           40
+25        Luca-Indy    1  junior           40</code></pre>
+</div>
 </div>
 <section id="selection-of-specific-columns-or-items" class="level3">
 <h3 class="anchored" data-anchor-id="selection-of-specific-columns-or-items">Selection of specific columns or items</h3>
 <p>We can also examine the statistical summary of a single column. To do this, we simply use the column name after the dot.</p>
 <p>For example, <code>print(data.age)</code> prints the ‘age’ column.</p>
 <p>We can also combine this with <code>describe()</code> to obtain detailed information about a specific column.</p>
-<div id="2314edc7-0e2e-4fbc-ac16-e9f353f8a169" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.632824Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.630563Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.age.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2314edc7-0e2e-4fbc-ac16-e9f353f8a169" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.951897Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.949201Z&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.age.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count    44.000000
+mean     39.068182
+std      26.100341
+min       1.000000
+25%      13.000000
+50%      44.000000
+75%      63.000000
+max      78.000000
+Name: age, dtype: float64</code></pre>
+</div>
 </div>
 <p>By using the column name and the index, we can access individual rows or a sequence of rows, similar to accessing elements within a list or characters in a string.</p>
-<div id="4bd851a5-e795-4d35-bf76-3d9eb755b177" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.646402Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.644476Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return the first row of the column age</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First row:"</span>, data.age[<span class="dv">0</span>])</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># return the sequence between the first row of the column age and the third row</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sequence:"</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.age[<span class="dv">0</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4bd851a5-e795-4d35-bf76-3d9eb755b177" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.962744Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.960782Z&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return the first row of the column age</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First row:"</span>, data.age[<span class="dv">0</span>])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># return the sequence between the first row of the column age and the third row</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sequence:"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.age[<span class="dv">0</span>:<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>First row: 11
+Sequence:
+0    11
+1    25
+2    43
+Name: age, dtype: int64</code></pre>
+</div>
 </div>
 <p>You can also request specific properties of a value using boolean indexing.</p>
 <p>This approach uses logic similar to the conditions used in an ‘if’ statement. The important distinction is that we apply this condition to <em>all</em> of the rows at once.</p>
-<div id="95520b0d-dd5c-4c42-b643-8ad511ef3b0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.657830Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.655547Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only look at the data in which the age is above 40</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[data[<span class="st">"age"</span>] <span class="op">&gt;</span> <span class="dv">40</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="95520b0d-dd5c-4c42-b643-8ad511ef3b0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.974752Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.972224Z&quot;}}" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only look at the data in which the age is above 40</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[data[<span class="st">"age"</span>] <span class="op">&gt;</span> <span class="dv">40</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               name  age   group  temperature
+2            Sandra   43   adult           35
+3               Eva   55   adult           38
+4              Adam   66  senior           39
+6              Indy   78  senior           38
+7              Ruth   63   adult           35
+8              Dani   69  senior           37
+9            Jentje   63   adult           41
+12               Bo   69  senior           36
+17            Nicky   57   adult           38
+18           Bo-Jos   63   adult           41
+20            Eliza   78  senior           35
+23              Ali   63   adult           36
+24  Jamie-Dominique   54   adult           39
+29            Jamie   54   adult           40
+31         Indy-Ali   59   adult           38
+32         Sam-Indy   78  senior           35
+33      Willy-Jamie   57   adult           38
+34        Dani-Indy   78  senior           41
+35              Jos   45   adult           35
+38       Henny-Dani   59   adult           38
+39      Jaimy-Henny   54   adult           40
+40        Jamie-Ali   63   adult           40
+43      Robin-Jaimy   69  senior           37</code></pre>
+</div>
 </div>
 <p>The function <code>isin()</code> allows us to only access values that are in a certain list or group.</p>
-<div id="cbab6882-ae4d-415b-9923-70788351b777" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.686347Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.680731Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data[data[<span class="st">"name"</span>].isin([<span class="st">"Ali"</span>, <span class="st">"Adam"</span>])]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cbab6882-ae4d-415b-9923-70788351b777" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.989310Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.984008Z&quot;}}" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data[data[<span class="st">"name"</span>].isin([<span class="st">"Ali"</span>, <span class="st">"Adam"</span>])]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">group</th>
+<th data-quarto-table-cell-role="th">temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Adam</td>
+<td>66</td>
+<td>senior</td>
+<td>39</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">23</th>
+<td>Ali</td>
+<td>63</td>
+<td>adult</td>
+<td>36</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>Based on these conditions, we can also create a new column. In this example, we create a new column named ‘attended’ that contains the value True if the participant is older than 40.</p>
-<div id="8781c554-8048-40dc-97b3-110b9291bb4d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.697382Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.694516Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'attended'</span>] <span class="op">=</span> data[<span class="st">'age'</span>] <span class="op">&gt;</span> <span class="dv">40</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8781c554-8048-40dc-97b3-110b9291bb4d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.001560Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.998393Z&quot;}}" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'attended'</span>] <span class="op">=</span> data[<span class="st">'age'</span>] <span class="op">&gt;</span> <span class="dv">40</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               name  age   group  temperature  attended
+0             Peter   11  junior           37     False
+1              Alex   25   adult           41     False
+2            Sandra   43   adult           35      True
+3               Eva   55   adult           38      True
+4              Adam   66  senior           39      True
+5            Marijn    7  junior           41     False
+6              Indy   78  senior           38      True
+7              Ruth   63   adult           35      True
+8              Dani   69  senior           37      True
+9            Jentje   63   adult           41      True
+10       Indy-Senna   20   adult           36     False
+11      Ruth-Marijn   14  junior           38     False
+12               Bo   69  senior           36      True
+13            Willy   20   adult           36     False
+14             Luca   20   adult           38     False
+15            Jaimy   12  junior           41     False
+16            Henny   13  junior           41     False
+17            Nicky   57   adult           38      True
+18           Bo-Jos   63   adult           41      True
+19              Sam   13  junior           37     False
+20            Eliza   78  senior           35      True
+21    Jos-Dominique   20   adult           36     False
+22     Marijn-Jamie   12  junior           41     False
+23              Ali   63   adult           36      True
+24  Jamie-Dominique   54   adult           39      True
+25        Luca-Indy    1  junior           40     False
+26         Jos-Dani   14  junior           38     False
+27        Indy-Dani   20   adult           36     False
+28      Luca-Jentje   12  junior           39     False
+29            Jamie   54   adult           40      True
+30            Robin    1  junior           40     False
+31         Indy-Ali   59   adult           38      True
+32         Sam-Indy   78  senior           35      True
+33      Willy-Jamie   57   adult           38      True
+34        Dani-Indy   78  senior           41      True
+35              Jos   45   adult           35      True
+36      Ruth-Jentje    9  junior           36     False
+37      Senna-Jamie   14  junior           35     False
+38       Henny-Dani   59   adult           38      True
+39      Jaimy-Henny   54   adult           40      True
+40        Jamie-Ali   63   adult           40      True
+41        Dominique   12  junior           37     False
+42        Jaimy-Sam   12  junior           40     False
+43      Robin-Jaimy   69  senior           37      True</code></pre>
+</div>
 </div>
 </section>
 <section id="groups" class="level3">
 <h3 class="anchored" data-anchor-id="groups">Groups</h3>
 <p>With Pandas, you can split the data into groups based on specific criteria, apply a function to each group independently, and then combine the results into a single data structure.</p>
 <p>Let’s create groups for the age categories: adult, junior, and senior, as we have defined.</p>
-<div id="86092c31-58df-4eb0-9e35-ccfa2be3bd85" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.707453Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.705987Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>age_groups <span class="op">=</span> data.groupby(<span class="st">"group"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="86092c31-58df-4eb0-9e35-ccfa2be3bd85" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.012630Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.010962Z&quot;}}" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>age_groups <span class="op">=</span> data.groupby(<span class="st">"group"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now use the function <code>describe()</code> to access the statistics based on the groups</p>
-<div id="63ab72e9-9fb1-4cb4-80e7-5fcfe7178079" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.734817Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.723680Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>age_groups.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="63ab72e9-9fb1-4cb4-80e7-5fcfe7178079" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.035372Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.023544Z&quot;}}" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>age_groups.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="8" data-quarto-table-cell-role="th" data-halign="left">age</th>
+<th colspan="8" data-quarto-table-cell-role="th" data-halign="left">temperature</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th">group</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">adult</th>
+<td>21.0</td>
+<td>46.523810</td>
+<td>17.497483</td>
+<td>20.0</td>
+<td>25.0</td>
+<td>54.0</td>
+<td>59.0</td>
+<td>63.0</td>
+<td>21.0</td>
+<td>37.857143</td>
+<td>2.080522</td>
+<td>35.0</td>
+<td>36.00</td>
+<td>38.0</td>
+<td>40.00</td>
+<td>41.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">junior</th>
+<td>15.0</td>
+<td>10.466667</td>
+<td>4.273952</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>12.0</td>
+<td>13.0</td>
+<td>14.0</td>
+<td>15.0</td>
+<td>38.733333</td>
+<td>2.016598</td>
+<td>35.0</td>
+<td>37.00</td>
+<td>39.0</td>
+<td>40.50</td>
+<td>41.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">senior</th>
+<td>8.0</td>
+<td>73.125000</td>
+<td>5.303301</td>
+<td>66.0</td>
+<td>69.0</td>
+<td>73.5</td>
+<td>78.0</td>
+<td>78.0</td>
+<td>8.0</td>
+<td>37.250000</td>
+<td>2.052873</td>
+<td>35.0</td>
+<td>35.75</td>
+<td>37.0</td>
+<td>38.25</td>
+<td>41.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>This also works in combination with specific columns.</p>
-<div id="dc528a04-454c-4bba-8887-bc835f8130cc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.745977Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.740410Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>age_groups.age.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="dc528a04-454c-4bba-8887-bc835f8130cc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.045985Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.040004Z&quot;}}" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>age_groups.age.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">group</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">adult</th>
+<td>21.0</td>
+<td>46.523810</td>
+<td>17.497483</td>
+<td>20.0</td>
+<td>25.0</td>
+<td>54.0</td>
+<td>59.0</td>
+<td>63.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">junior</th>
+<td>15.0</td>
+<td>10.466667</td>
+<td>4.273952</td>
+<td>1.0</td>
+<td>10.0</td>
+<td>12.0</td>
+<td>13.0</td>
+<td>14.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">senior</th>
+<td>8.0</td>
+<td>73.125000</td>
+<td>5.303301</td>
+<td>66.0</td>
+<td>69.0</td>
+<td>73.5</td>
+<td>78.0</td>
+<td>78.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
 <section id="simple-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="simple-statistics">Simple Statistics</h3>
 <p>With Pandas, you can count the occurrences of specific columns or values. The <code>count()</code> function counts all non-empty cells for each column or row.</p>
-<div id="6ea662f9-9f8d-4e1c-843a-d989e17f7417" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.758680Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.755960Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each filled row per column</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>data.count()</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each filled column per row</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>data.count(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6ea662f9-9f8d-4e1c-843a-d989e17f7417" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.060119Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.056809Z&quot;}}" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each filled row per column</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>data.count()</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each filled column per row</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>data.count(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>0     5
+1     5
+2     5
+3     5
+4     5
+5     5
+6     5
+7     5
+8     5
+9     5
+10    5
+11    5
+12    5
+13    5
+14    5
+15    5
+16    5
+17    5
+18    5
+19    5
+20    5
+21    5
+22    5
+23    5
+24    5
+25    5
+26    5
+27    5
+28    5
+29    5
+30    5
+31    5
+32    5
+33    5
+34    5
+35    5
+36    5
+37    5
+38    5
+39    5
+40    5
+41    5
+42    5
+43    5
+dtype: int64</code></pre>
+</div>
 </div>
 <p>You can also count values (or combinations) using <code>value_counts()</code>.</p>
-<div id="a4cbd1df-a958-4eb5-937a-925f30f1c744" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.772881Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.768622Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a4cbd1df-a958-4eb5-937a-925f30f1c744" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.073468Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.068942Z&quot;}}" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>name             age  group   temperature  attended
+Adam             66   senior  39           True        1
+Alex             25   adult   41           False       1
+Jos-Dani         14   junior  38           False       1
+Jos-Dominique    20   adult   36           False       1
+Luca             20   adult   38           False       1
+Luca-Indy        1    junior  40           False       1
+Luca-Jentje      12   junior  39           False       1
+Marijn           7    junior  41           False       1
+Marijn-Jamie     12   junior  41           False       1
+Nicky            57   adult   38           True        1
+Peter            11   junior  37           False       1
+Robin            1    junior  40           False       1
+Robin-Jaimy      69   senior  37           True        1
+Ruth             63   adult   35           True        1
+Ruth-Jentje      9    junior  36           False       1
+Ruth-Marijn      14   junior  38           False       1
+Sam              13   junior  37           False       1
+Sam-Indy         78   senior  35           True        1
+Sandra           43   adult   35           True        1
+Senna-Jamie      14   junior  35           False       1
+Willy            20   adult   36           False       1
+Jos              45   adult   35           True        1
+Jentje           63   adult   41           True        1
+Jamie-Dominique  54   adult   39           True        1
+Henny            13   junior  41           False       1
+Ali              63   adult   36           True        1
+Bo               69   senior  36           True        1
+Bo-Jos           63   adult   41           True        1
+Dani             69   senior  37           True        1
+Dani-Indy        78   senior  41           True        1
+Dominique        12   junior  37           False       1
+Eliza            78   senior  35           True        1
+Eva              55   adult   38           True        1
+Henny-Dani       59   adult   38           True        1
+Jamie-Ali        63   adult   40           True        1
+Indy             78   senior  38           True        1
+Indy-Ali         59   adult   38           True        1
+Indy-Dani        20   adult   36           False       1
+Indy-Senna       20   adult   36           False       1
+Jaimy            12   junior  41           False       1
+Jaimy-Henny      54   adult   40           True        1
+Jaimy-Sam        12   junior  40           False       1
+Jamie            54   adult   40           True        1
+Willy-Jamie      57   adult   38           True        1
+Name: count, dtype: int64</code></pre>
+</div>
 </div>
 <p>If you use <code>value_counts()</code> in combination with a specific column, you will get the occurence of every value.</p>
-<div id="9d02ae7f-fcd3-470c-a237-1c403b4752b5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.792471Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.789798Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data.group.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9d02ae7f-fcd3-470c-a237-1c403b4752b5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.084235Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.081646Z&quot;}}" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data.group.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>group
+adult     21
+junior    15
+senior     8
+Name: count, dtype: int64</code></pre>
 </div>
-<div id="5338cd17-82d9-490a-a8f3-5a8b541b43ac" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.801642Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.798930Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data.attended.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5338cd17-82d9-490a-a8f3-5a8b541b43ac" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.098601Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.095982Z&quot;}}" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>data.attended.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>attended
+True     23
+False    21
+Name: count, dtype: int64</code></pre>
+</div>
 </div>
 <p>We can also calculate various statistical measures using Pandas: the mean with <code>mean()</code>, the median with <code>median()</code>, the standard deviation with <code>std()</code>, and the minimum and maximum values with <code>min()</code> and <code>max()</code>, respectively.</p>
-<div id="565d13c4-2b05-4521-b8e9-fc131a793c35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:07.814104Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.811546Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mean:"</span>, data.temperature.mean())</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"median:"</span>, data.temperature.median())</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"standard deviation:"</span>, data.temperature.std())</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"minimum:"</span>, data.temperature.<span class="bu">min</span>())</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"maximum:"</span>, data.temperature.<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="565d13c4-2b05-4521-b8e9-fc131a793c35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.109767Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.107244Z&quot;}}" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mean:"</span>, data.temperature.mean())</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"median:"</span>, data.temperature.median())</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"standard deviation:"</span>, data.temperature.std())</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"minimum:"</span>, data.temperature.<span class="bu">min</span>())</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"maximum:"</span>, data.temperature.<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mean: 38.04545454545455
+median: 38.0
+standard deviation: 2.079294887803069
+minimum: 35
+maximum: 41</code></pre>
+</div>
 </div>
 </section>
 <section id="simple-plots-using-pandas-and-matplotlib" class="level3">
 <h3 class="anchored" data-anchor-id="simple-plots-using-pandas-and-matplotlib">Simple Plots using Pandas and Matplotlib</h3>
 <p>The data structures created in Pandas can be visualized using the Matplotlib package. To do this, you first need to import matplotlib.pyplot (as plt).</p>
 <p>Once imported, you can use the <code>plot()</code> function to create a plot. If you provide a single list or array to <code>plot()</code>, Matplotlib assumes it represents a sequence of y-values and automatically generates the corresponding x-values for you.</p>
-<div id="382e12de-ce83-4726-90e3-45d3239d8eda" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.032653Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:07.824536Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="382e12de-ce83-4726-90e3-45d3239d8eda" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:55.985870Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:55.800155Z&quot;}}" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="7816580c-f120-4a1c-b2ef-4b0f8a5c50ed" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.094290Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.038064Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">"age"</span>, <span class="st">"temperature"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7816580c-f120-4a1c-b2ef-4b0f8a5c50ed" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:56.674992Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:56.593383Z&quot;}}" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">"age"</span>, <span class="st">"temperature"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Im combination with a column name, we can also only plot one column. Here, matplotlib assumes that it is a sequence.</p>
-<div id="bc2d3b17-41f7-404c-8196-395c15f7140a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.131981Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.101673Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data.age.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bc2d3b17-41f7-404c-8196-395c15f7140a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:57.641277Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:57.586681Z&quot;}}" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>data.age.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>We can also reuse the groups that we created and plot the results based on these groups.</p>
-<div id="bcc0ca5c-15f6-421f-81a1-1f51d1fcfd43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.234807Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.139456Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>age_groups.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bcc0ca5c-15f6-421f-81a1-1f51d1fcfd43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:58.567681Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:58.427265Z&quot;}}" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>age_groups.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>group
+adult     Axes(0.125,0.11;0.775x0.77)
+junior    Axes(0.125,0.11;0.775x0.77)
+senior    Axes(0.125,0.11;0.775x0.77)
+dtype: object</code></pre>
 </div>
-<div id="ea851ec6-ae6c-442f-ba1a-3ab94b80ef1d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.278436Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.243829Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>age_groups.temperature.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-32-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-32-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-32-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="ea851ec6-ae6c-442f-ba1a-3ab94b80ef1d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:58.889909Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:58.833182Z&quot;}}" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>age_groups.temperature.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>group
+adult     Axes(0.125,0.11;0.775x0.77)
+junior    Axes(0.125,0.11;0.775x0.77)
+senior    Axes(0.125,0.11;0.775x0.77)
+Name: temperature, dtype: object</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-33-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>There are also other forms of plots that can be created using matplotlib. You can find an overview in the matplotlib documentation <a href="https://matplotlib.org/stable/plot_types/index.html">here</a>.</p>
 <section id="plot-customization" class="level4">
 <h4 class="anchored" data-anchor-id="plot-customization">Plot customization</h4>
 <p>To further customize a plot, you can adjust the labels on the x-axis and y-axis using <code>xlabel()</code> and <code>ylabel()</code>. This allows you to provide more context and clarity to your visualizations.</p>
-<div id="85661877-5b69-4003-bd6b-3955e155197c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.327691Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.283803Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We can add a title as well</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Temperature correlates with age?'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="85661877-5b69-4003-bd6b-3955e155197c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:59.890929Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:59.816396Z&quot;}}" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We can add a title as well</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Temperature correlates with age?'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>Text(0.5, 1.0, 'Temperature correlates with age?')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-34-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>To better represent your data, you can vary the type of plot used.</p>
 <p>For example, you might want to choose a scatter plot for visualizing relationships between variables.</p>
-<div id="9a37cccb-3cec-4f97-a97e-ed7f4750dfa8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.369163Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.332302Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>, kind <span class="op">=</span> <span class="st">'scatter'</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># We can adapt the limitations using xlim() and ylim()</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9a37cccb-3cec-4f97-a97e-ed7f4750dfa8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:00.827048Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:00.767087Z&quot;}}" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>, kind <span class="op">=</span> <span class="st">'scatter'</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co"># We can adapt the limitations using xlim() and ylim()</span></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>We can also annotate the plot, for example, with an arrow.</p>
-<div id="cf4d07cb-edb7-4e74-801d-7ae1448f3dba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.422304Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.376064Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>, kind <span class="op">=</span> <span class="st">'scatter'</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Temperature correlates with age?'</span>)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">100</span>)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>plt.annotate(<span class="st">'max age: '</span> <span class="op">+</span> <span class="bu">str</span>(data.age.<span class="bu">max</span>()), xy<span class="op">=</span>(<span class="dv">38</span>, data.age.<span class="bu">max</span>()), xytext<span class="op">=</span>(<span class="dv">40</span>, <span class="dv">90</span>),</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'black'</span>, shrink<span class="op">=</span><span class="fl">0.05</span>),)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cf4d07cb-edb7-4e74-801d-7ae1448f3dba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:01.851271Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:01.757581Z&quot;}}" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>, kind <span class="op">=</span> <span class="st">'scatter'</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Temperature correlates with age?'</span>)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">100</span>)</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>plt.annotate(<span class="st">'max age: '</span> <span class="op">+</span> <span class="bu">str</span>(data.age.<span class="bu">max</span>()), xy<span class="op">=</span>(<span class="dv">38</span>, data.age.<span class="bu">max</span>()), xytext<span class="op">=</span>(<span class="dv">40</span>, <span class="dv">90</span>),</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'black'</span>, shrink<span class="op">=</span><span class="fl">0.05</span>),)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>Text(40, 90, 'max age: 78')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-36-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>In total, we can choose between 11 kinds of plots in pandas:</p>
 <ul>
@@ -652,11 +1389,21 @@ Robin-Jaimy,69,senior,37</code></pre>
 <li>‘hexbin’ : hexbin plot (DataFrame only)</li>
 </ul>
 <p>Let us try the pie plot, but this time with the frequencies of the age groups.</p>
-<div id="73ccc170-d672-454a-9bdf-0619e9e7cccc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.447911Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.428446Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution across groups'</span>)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="73ccc170-d672-454a-9bdf-0619e9e7cccc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:02.811214Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:02.778256Z&quot;}}" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution across groups'</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>Text(0, 0.5, '')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-37-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Of course, there are many more use cases and ways to create plots. The right plot really depends on your data. In general, I recommend just trying it out!</p>
 <p>Pandas provides users with a good documentation of the possibilities <a href="https://pandas.pydata.org/docs/user_guide/visualization.html">here</a>.</p>
@@ -664,23 +1411,37 @@ Robin-Jaimy,69,senior,37</code></pre>
 </section>
 <section id="saving-a-plot" class="level3">
 <h3 class="anchored" data-anchor-id="saving-a-plot">Saving a plot</h3>
-<div id="06f5abea-6381-4110-8ea8-4dcfc93cb80d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.474549Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.452859Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: the plt.savefig() must be in the same Notebook cell as the creation of the plot</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution across groups'</span>)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot as pieplot_png</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'output/pie_plot.png'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="06f5abea-6381-4110-8ea8-4dcfc93cb80d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:04.380108Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:04.342553Z&quot;}}" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: the plt.savefig() must be in the same Notebook cell as the creation of the plot</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution across groups'</span>)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot as pieplot_png</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'output/pie_plot.png'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="5adb4a85-b19f-4163-8974-a0ecaf412dbb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.517064Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.480272Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust the resolution, size and style</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>, title <span class="op">=</span> <span class="st">'Distribution across groups'</span>, ylabel <span class="op">=</span> <span class="st">''</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'output/pie_plot2.png'</span>, dpi<span class="op">=</span><span class="dv">200</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># bbox is a mutable bounding box. bbox_inches refers to bbox in inches. Only the given portion of the figure is saved. If 'tight', it tries to figure out the tight bbox of the figure. </span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dpi stands for dots per inch</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># figsize takes the dimensions in inches</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="5adb4a85-b19f-4163-8974-a0ecaf412dbb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:05.022681Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:04.960543Z&quot;}}" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust the resolution, size and style</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>, title <span class="op">=</span> <span class="st">'Distribution across groups'</span>, ylabel <span class="op">=</span> <span class="st">''</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'output/pie_plot2.png'</span>, dpi<span class="op">=</span><span class="dv">200</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># bbox is a mutable bounding box. bbox_inches refers to bbox in inches. Only the given portion of the figure is saved. If 'tight', it tries to figure out the tight bbox of the figure. </span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dpi stands for dots per inch</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co"># figsize takes the dimensions in inches</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Day3_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="programming-style" class="level3">
@@ -694,41 +1455,53 @@ Robin-Jaimy,69,senior,37</code></pre>
 <li>Python coders from non-English speaking countries: please write your comments in English, unless you are 120% sure that the code will never be read by people who don’t speak your language.</li>
 </ul>
 <p>Doc strings even have their own conventions (<a href="https://peps.python.org/pep-0257/">PEP257</a>).</p>
-<div id="dc813ad9-d8b1-40f9-9282-d6998cae041b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.523323Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.520088Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a good documented code:</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_headers(file_location):</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Function reads csv file and prints headers</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">    file_location : str</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co">        The file location of the csv file</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="co">    list</span></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co">        a list of strings used that are the headers"""</span></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process input</span></span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(file_location)</span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> data.columns.to_list()</span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create output</span></span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(headers))</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> headers</span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>get_headers(<span class="st">"static/names_age_location.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="dc813ad9-d8b1-40f9-9282-d6998cae041b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:06.786279Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:06.779099Z&quot;}}" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a good documented code:</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_headers(file_location):</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Function reads csv file and prints headers</span></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="co">    file_location : str</span></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="co">        The file location of the csv file</span></span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="co">    list</span></span>
+<span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a><span class="co">        a list of strings used that are the headers"""</span></span>
+<span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process input</span></span>
+<span id="cb65-17"><a href="#cb65-17" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(file_location)</span>
+<span id="cb65-18"><a href="#cb65-18" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> data.columns.to_list()</span>
+<span id="cb65-19"><a href="#cb65-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create output</span></span>
+<span id="cb65-20"><a href="#cb65-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(headers))</span>
+<span id="cb65-21"><a href="#cb65-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> headers</span>
+<span id="cb65-22"><a href="#cb65-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-23"><a href="#cb65-23" aria-hidden="true" tabindex="-1"></a>get_headers(<span class="st">"static/names_age_location.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>name    age location</code></pre>
 </div>
-<div id="99a00a44-1946-47a0-8743-93f87b7fedc6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-05T12:30:08.532717Z&quot;,&quot;start_time&quot;:&quot;2026-02-05T12:30:08.529586Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is not easily understandable:</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hd(f):</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(f)</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(<span class="bu">list</span>(df.columns.values)))</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">list</span>(df.columns.values)</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>hd(<span class="st">"static/names_age_location.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>['name', 'age', 'location']</code></pre>
+</div>
+</div>
+<div id="99a00a44-1946-47a0-8743-93f87b7fedc6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:07.467304Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:07.460868Z&quot;}}" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is not easily understandable:</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hd(f):</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(f)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\t</span><span class="st">"</span>.join(<span class="bu">list</span>(df.columns.values)))</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">list</span>(df.columns.values)</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>hd(<span class="st">"static/names_age_location.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>name    age location</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>['name', 'age', 'location']</code></pre>
+</div>
 </div>
 </section>
 <section id="fair-practices" class="level3">
@@ -781,14 +1554,10 @@ Robin-Jaimy,69,senior,37</code></pre>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
 <p>Although we have been learning Python using Jupyter Lab, in daily practice, you might prefer using an IDE (Integrated Development Environment) like PyCharm or Visual Studio Code. These tools help you to write and use research software efficiently.</p>
-<p>Find the links to the Software catalog here: - <a href="https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=95">PyCharm</a> - <a href="https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=98&amp;e=GsnhYu">Visual Studio Code</a></p>
 </section>
 <section id="programming-café" class="level2">
 <h2 class="anchored" data-anchor-id="programming-café">Programming Café</h2>
 <p>To keep on learning Python, please consider coming to the monthly <a href="https://eur-nl.github.io/programming-cafe/">programming cafés</a> that we host at EUR.</p>
-<p>The next session will focus on how to clean and correct errors in your raw data using Python. It is a fitting next step to strengthen your programming skills. Find more information <a href="https://my.eur.nl/en/events/programming-cafe-clean-your-data-using-python-2026-02-10">here</a>.</p>
-<p>In March, we will explore how to manage your data using Python.</p>
-<p>In April, we will have a look at the IDEs and virtual environments in the Programming Café!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/logo_with_text.jpg" class="img-fluid figure-img"></p>
