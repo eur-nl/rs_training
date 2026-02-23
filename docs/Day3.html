@@ -313,9 +313,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-packages---random" class="level2">
 <h2 class="anchored" data-anchor-id="using-packages---random">Using packages - random</h2>
 <p>Before we begin our data analysis, let’s experiment with random numbers.</p>
-<p>The random package enables us to generate a single random number or a list of random numbers. To produce a random number within a specified range, we can use the <code>randrange()</code> function. This function requires two arguments: the starting point and the endpoint of the range, and it returns a random number from within that range.</p>
+<p>The random package enables us to generate a single random number or a list of random numbers. To produce a random number within a specified range, we can utilize the <strong>randrange()</strong> function. This function requires two arguments: the starting point and the endpoint of the range, and it returns a random number from within that range.</p>
 <p>It is recommended to set a seed for the random package at the start of your code, ensuring that you can consistently reproduce the same sequence of random numbers.</p>
-<div id="450a2c1b-0e25-4edd-bc95-2b0d7ccee2dd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.450212Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.446267Z&quot;}}" data-execution_count="1">
+<div id="450a2c1b-0e25-4edd-bc95-2b0d7ccee2dd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:36.347254Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:36.342508Z&quot;}}" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first let us import the random package</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> Random</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use a random seed to allow for a reproducible output of the random package</span></span>
@@ -333,9 +333,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="detailed-explanation-not-explained-in-class" class="level2">
 <h2 class="anchored" data-anchor-id="detailed-explanation-not-explained-in-class">Detailed explanation (not explained in class)</h2>
-<p>To generate a list of random numbers, we can use the <code>random.sample()</code> function. This function requires the range as its first argument, for instance, <code>range(1, 101)</code>, and then the desired sample size, e.g., 15. This function is useful for expanding our list of participants.</p>
-<p>After that, we can use <code>random.choice()</code> to select a single random element from the sample or list. In our scenario, it can be used to randomly choose a name and age.</p>
-<div id="7a62902d-6c8f-4f06-a72b-aa5071e74cd8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.464075Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.461389Z&quot;}}" data-execution_count="2">
+<p>To generate a list of random numbers, we can use the <strong>random.sample()</strong> function. This function requires the range as its first argument, for instance, range(1, 101), and then the desired sample size, e.g., 15. This function is useful for expanding our list of participants.</p>
+<p>After that, we can use <strong>random.choice()</strong> to select a single random element from the sample or list. In our scenario, it can be used to randomly choose a name and age.</p>
+<div id="7a62902d-6c8f-4f06-a72b-aa5071e74cd8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:36.364396Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:36.359200Z&quot;}}" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dict_participants <span class="op">=</span> {<span class="st">"Peter"</span>: <span class="dv">11</span>, <span class="st">"Alex"</span>: <span class="dv">25</span>, <span class="st">"Sandra"</span>: <span class="dv">43</span>, <span class="st">"Eva"</span>:<span class="dv">55</span>, <span class="st">"Adam"</span>:<span class="dv">66</span>}</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let us add some random extra participants out of a set of names and ages and add them to our list</span></span>
@@ -366,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Let’s now use the list of participants and incorporate it into our function to determine their age group.</p>
 <p>Once we’ve completed the checks, we want to export the results to a CSV file.</p>
-<div id="dd647d01-9b10-4c87-9f46-cd01fa4e3406" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.473803Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.471083Z&quot;}}" data-execution_count="3">
+<div id="dd647d01-9b10-4c87-9f46-cd01fa4e3406" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:36.377193Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:36.372553Z&quot;}}" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_age(participants):</span>
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="use-the-output-of-random-and-create-a-new-column-in-a-csv-file">Use the output of random and create a new column in a csv file</h2>
 <p>Let’s use the csv file <code>participants_random.csv</code> and add a new column to it with the output that our function generates.</p>
 <p>To do that, we use need to import csv again.</p>
-<div id="d1d5a820-549b-48b5-8154-49b32c51c66e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:01.497117Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.493996Z&quot;}}" data-execution_count="4">
+<div id="d1d5a820-549b-48b5-8154-49b32c51c66e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:36.387035Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:36.384336Z&quot;}}" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function</span></span>
@@ -470,13 +470,13 @@ Robin-Jaimy,69,senior,37</code></pre>
 <h2 class="anchored" data-anchor-id="using-packages---pandas">Using Packages - Pandas</h2>
 <p>Once we have prepared the data for our statistical analysis, we can start using another package: pandas.</p>
 <p>Pandas is a fast, powerful, flexible, and user-friendly open-source tool for data analysis and manipulation, built on top of the Python programming language.</p>
-<p>With pandas, we can read files, process them, and perform statistical analyses on the data. But to begin, we need to import pandas.</p>
+<p>With pandas, we can read files, process them, and perform statistical analyses on the data.But to begin, we need to import pandas.</p>
 <p>Note that, unlike other packages we’ve seen before, pandas is <em>not</em> in Python’s standard library. This means that it has to be installed in your environment before you can use it. For our course, though, this has been done for you already.</p>
-<div id="30360411-f851-48e6-8882-c9aca2d0077e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.809440Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:01.508861Z&quot;}}" data-execution_count="5">
+<div id="30360411-f851-48e6-8882-c9aca2d0077e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.329808Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:36.396235Z&quot;}}" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>After importing pandas, we can use the function <code>read_csv()</code> to read our list of participants. We give the name of the csv file and the data type (in this case: string) as arguments.</p>
-<div id="176ab68e-d524-4b48-b259-424f78e2b344" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.821366Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.814452Z&quot;}}" data-execution_count="6">
+<p>After importing pandas, we can use the function <strong>read_csv()</strong> to read our list of participants. We give the name of the csv file and the data type (in this case: string) as arguments.</p>
+<div id="176ab68e-d524-4b48-b259-424f78e2b344" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.342112Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.335567Z&quot;}}" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">"static/participants_long.csv"</span>,dtype<span class="op">=</span><span class="bu">str</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -528,7 +528,7 @@ Robin-Jaimy,69,senior,37</code></pre>
 </div>
 </div>
 <p>Given that we cannot assume the use of a single data type, we can specify the data types for each column. To achieve this, we create a dictionary named <code>d_type</code> and fill it it with the column names and their data types.</p>
-<div id="48fd1d96-c90d-40e8-a0ea-e3e585d12ec5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.840622Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.835813Z&quot;}}" data-execution_count="7">
+<div id="48fd1d96-c90d-40e8-a0ea-e3e585d12ec5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.352380Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.347823Z&quot;}}" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dtype <span class="op">=</span> {<span class="st">"name"</span>: <span class="bu">str</span>, <span class="st">"age"</span>: <span class="bu">int</span>, <span class="st">"group"</span>: <span class="bu">str</span>, <span class="st">"temperature"</span>:<span class="bu">int</span>}</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pandas.read_csv(<span class="st">"static/participants_long.csv"</span>,dtype<span class="op">=</span>dtype)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -580,8 +580,8 @@ Robin-Jaimy,69,senior,37</code></pre>
 43      Robin-Jaimy   69  senior           37</code></pre>
 </div>
 </div>
-<p>After importing the data, we can examine it by viewing the first five entries using <code>head()</code>and the last five entries using <code>tail()</code>.</p>
-<div id="c71a25c5-7154-4d82-ba7c-ec517235dc90" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.859012Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.856347Z&quot;}}" data-execution_count="8">
+<p>After importing the data, we can examine it by viewing the first five entries using <strong>head()</strong> and the last five entries using <strong>tail()</strong>.</p>
+<div id="c71a25c5-7154-4d82-ba7c-ec517235dc90" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.364518Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.362250Z&quot;}}" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     name  age   group  temperature
@@ -592,7 +592,7 @@ Robin-Jaimy,69,senior,37</code></pre>
 4    Adam   66  senior           39</code></pre>
 </div>
 </div>
-<div id="3b3cf544-446f-40f1-aaec-b5adb79eb0a9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.866201Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.863912Z&quot;}}" data-execution_count="9">
+<div id="3b3cf544-446f-40f1-aaec-b5adb79eb0a9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.379040Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.376740Z&quot;}}" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.tail())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           name  age   group  temperature
@@ -603,23 +603,23 @@ Robin-Jaimy,69,senior,37</code></pre>
 43  Robin-Jaimy   69  senior           37</code></pre>
 </div>
 </div>
-<p>We can also display the column names using <code>data.columns</code> or look at potential row names using <code>data.index</code>.</p>
-<div id="2714822d-a90e-4aaf-aa2b-379015a0e11c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.879747Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.878109Z&quot;}}" data-execution_count="10">
+<p>We can also display the column names using <strong>data.columns</strong> or look at potential row names using <strong>data.index</strong>.</p>
+<div id="2714822d-a90e-4aaf-aa2b-379015a0e11c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.392638Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.391012Z&quot;}}" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['name', 'age', 'group', 'temperature'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="9c2ec14b-9aa5-4c80-9dc8-9b19a3791535" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.892536Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.890899Z&quot;}}" data-execution_count="11">
+<div id="9c2ec14b-9aa5-4c80-9dc8-9b19a3791535" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.406003Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.404400Z&quot;}}" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.index)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>RangeIndex(start=0, stop=44, step=1)</code></pre>
 </div>
 </div>
-<p>We can also obtain a quick statistical summary of the data using <code>describe()</code>.</p>
+<p>We can also obtain a quick statistical summary of the data using <strong>describe()</strong>.</p>
 <p>For string data, this provides information on the number of rows (count), the number of unique items (unique), the most common item (top), and its frequency (freq).</p>
-<p>For integer data, <code>describe()</code> gives us the number of rows (count), the mean, the standard deviation (std), the smallest value (min), the 1st, 2nd, and 3rd quartiles (25%, 50%, and 75%), and the maximum value (max).</p>
-<div id="cff78b94-5d7d-48ee-ac5f-1f88c4ee9010" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.908659Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.903848Z&quot;}}" data-execution_count="12">
+<p>For integer data, <strong>describe()</strong> gives us the number of rows (count), the mean, the standard deviation (std), the smallest value (min), the 1st, 2nd, and 3rd quartiles (25%, 50%, and 75%), and the maximum value (max).</p>
+<div id="cff78b94-5d7d-48ee-ac5f-1f88c4ee9010" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.422296Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.417922Z&quot;}}" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             age  temperature
@@ -633,8 +633,8 @@ min     1.000000    35.000000
 max    78.000000    41.000000</code></pre>
 </div>
 </div>
-<p>We can use <code>sort_index()</code> to sort the data by rows or by column name (using data.sort_index(axis = 1)).</p>
-<div id="bdbff3cd-aa31-458a-a907-029d1bfbfaaf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.923071Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.920412Z&quot;}}" data-execution_count="13">
+<p>We can use <strong>sort_index()</strong> to sort the data by rows or by column name (using data.sort_index(axis = 1)).</p>
+<div id="bdbff3cd-aa31-458a-a907-029d1bfbfaaf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.434520Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.431976Z&quot;}}" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.sort_index())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               name  age   group  temperature
@@ -685,7 +685,7 @@ max    78.000000    41.000000</code></pre>
 </div>
 </div>
 <p>We can also sort the data by a specific column, such as age. Setting ascending=False allows us to arrange the data in descending order.</p>
-<div id="46716971-37b7-4bf3-af0b-48cd7565c214" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.937252Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.934329Z&quot;}}" data-execution_count="14">
+<div id="46716971-37b7-4bf3-af0b-48cd7565c214" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.441681Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.438990Z&quot;}}" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.sort_values(by <span class="op">=</span> <span class="st">'age'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               name  age   group  temperature
@@ -738,9 +738,9 @@ max    78.000000    41.000000</code></pre>
 <section id="selection-of-specific-columns-or-items" class="level3">
 <h3 class="anchored" data-anchor-id="selection-of-specific-columns-or-items">Selection of specific columns or items</h3>
 <p>We can also examine the statistical summary of a single column. To do this, we simply use the column name after the dot.</p>
-<p>For example, <code>print(data.age)</code> prints the ‘age’ column.</p>
-<p>We can also combine this with <code>describe()</code> to obtain detailed information about a specific column.</p>
-<div id="2314edc7-0e2e-4fbc-ac16-e9f353f8a169" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.951897Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.949201Z&quot;}}" data-execution_count="15">
+<p>For example, <strong>print(data.age)</strong> prints the ‘age’ column.</p>
+<p>We can also combine this with <strong>describe()</strong> to obtain detailed information about a specific column.</p>
+<div id="2314edc7-0e2e-4fbc-ac16-e9f353f8a169" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.454224Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.451623Z&quot;}}" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.age.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>count    44.000000
@@ -755,7 +755,7 @@ Name: age, dtype: float64</code></pre>
 </div>
 </div>
 <p>By using the column name and the index, we can access individual rows or a sequence of rows, similar to accessing elements within a list or characters in a string.</p>
-<div id="4bd851a5-e795-4d35-bf76-3d9eb755b177" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.962744Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.960782Z&quot;}}" data-execution_count="16">
+<div id="4bd851a5-e795-4d35-bf76-3d9eb755b177" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.468224Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.466193Z&quot;}}" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># return the first row of the column age</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First row:"</span>, data.age[<span class="dv">0</span>])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># return the sequence between the first row of the column age and the third row</span></span>
@@ -772,7 +772,7 @@ Name: age, dtype: int64</code></pre>
 </div>
 <p>You can also request specific properties of a value using boolean indexing.</p>
 <p>This approach uses logic similar to the conditions used in an ‘if’ statement. The important distinction is that we apply this condition to <em>all</em> of the rows at once.</p>
-<div id="95520b0d-dd5c-4c42-b643-8ad511ef3b0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.974752Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.972224Z&quot;}}" data-execution_count="17">
+<div id="95520b0d-dd5c-4c42-b643-8ad511ef3b0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.479907Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.477486Z&quot;}}" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only look at the data in which the age is above 40</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[data[<span class="st">"age"</span>] <span class="op">&gt;</span> <span class="dv">40</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -802,10 +802,10 @@ Name: age, dtype: int64</code></pre>
 43      Robin-Jaimy   69  senior           37</code></pre>
 </div>
 </div>
-<p>The function <code>isin()</code> allows us to only access values that are in a certain list or group.</p>
-<div id="cbab6882-ae4d-415b-9923-70788351b777" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:05.989310Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.984008Z&quot;}}" data-execution_count="18">
+<p>The function isin() allows us to only access values that are in a certain list or group.</p>
+<div id="cbab6882-ae4d-415b-9923-70788351b777" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.495376Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.489633Z&quot;}}" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data[data[<span class="st">"name"</span>].isin([<span class="st">"Ali"</span>, <span class="st">"Adam"</span>])]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -841,7 +841,7 @@ Name: age, dtype: int64</code></pre>
 </div>
 </div>
 <p>Based on these conditions, we can also create a new column. In this example, we create a new column named ‘attended’ that contains the value True if the participant is older than 40.</p>
-<div id="8781c554-8048-40dc-97b3-110b9291bb4d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.001560Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:05.998393Z&quot;}}" data-execution_count="19">
+<div id="8781c554-8048-40dc-97b3-110b9291bb4d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.506455Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.503510Z&quot;}}" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'attended'</span>] <span class="op">=</span> data[<span class="st">'age'</span>] <span class="op">&gt;</span> <span class="dv">40</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -897,13 +897,13 @@ Name: age, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="groups">Groups</h3>
 <p>With Pandas, you can split the data into groups based on specific criteria, apply a function to each group independently, and then combine the results into a single data structure.</p>
 <p>Let’s create groups for the age categories: adult, junior, and senior, as we have defined.</p>
-<div id="86092c31-58df-4eb0-9e35-ccfa2be3bd85" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.012630Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.010962Z&quot;}}" data-execution_count="20">
+<div id="86092c31-58df-4eb0-9e35-ccfa2be3bd85" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.517735Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.516109Z&quot;}}" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>age_groups <span class="op">=</span> data.groupby(<span class="st">"group"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We can now use the function <code>describe()</code> to access the statistics based on the groups</p>
-<div id="63ab72e9-9fb1-4cb4-80e7-5fcfe7178079" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.035372Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.023544Z&quot;}}" data-execution_count="21">
+<p>We can now use the function <strong>describe()</strong> to access the statistics based on the groups</p>
+<div id="63ab72e9-9fb1-4cb4-80e7-5fcfe7178079" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.540497Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.527663Z&quot;}}" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>age_groups.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -1018,9 +1018,9 @@ Name: age, dtype: int64</code></pre>
 </div>
 </div>
 <p>This also works in combination with specific columns.</p>
-<div id="dc528a04-454c-4bba-8887-bc835f8130cc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.045985Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.040004Z&quot;}}" data-execution_count="22">
+<div id="dc528a04-454c-4bba-8887-bc835f8130cc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.551031Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.544666Z&quot;}}" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>age_groups.age.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -1092,14 +1092,14 @@ Name: age, dtype: int64</code></pre>
 </section>
 <section id="simple-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="simple-statistics">Simple Statistics</h3>
-<p>With Pandas, you can count the occurrences of specific columns or values. The <code>count()</code> function counts all non-empty cells for each column or row.</p>
-<div id="6ea662f9-9f8d-4e1c-843a-d989e17f7417" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.060119Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.056809Z&quot;}}" data-execution_count="23">
+<p>With Pandas, you can count the occurrences of specific columns or values. The <strong>count()</strong> function counts all non-empty cells for each column or row.</p>
+<div id="6ea662f9-9f8d-4e1c-843a-d989e17f7417" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.567333Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.563109Z&quot;}}" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each filled row per column</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>data.count()</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count each filled column per row</span></span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>data.count(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>0     5
 1     5
 2     5
@@ -1147,10 +1147,10 @@ Name: age, dtype: int64</code></pre>
 dtype: int64</code></pre>
 </div>
 </div>
-<p>You can also count values (or combinations) using <code>value_counts()</code>.</p>
-<div id="a4cbd1df-a958-4eb5-937a-925f30f1c744" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.073468Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.068942Z&quot;}}" data-execution_count="24">
+<p>You can also count values (or combinations) using <strong>value_counts()</strong>.</p>
+<div id="a4cbd1df-a958-4eb5-937a-925f30f1c744" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.582326Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.577126Z&quot;}}" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>name             age  group   temperature  attended
 Adam             66   senior  39           True        1
 Alex             25   adult   41           False       1
@@ -1199,10 +1199,10 @@ Willy-Jamie      57   adult   38           True        1
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<p>If you use <code>value_counts()</code> in combination with a specific column, you will get the occurence of every value.</p>
-<div id="9d02ae7f-fcd3-470c-a237-1c403b4752b5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.084235Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.081646Z&quot;}}" data-execution_count="25">
+<p>If you use value_counts in combination with a specific column, you will get the occurence of every value.</p>
+<div id="9d02ae7f-fcd3-470c-a237-1c403b4752b5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.595601Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.591523Z&quot;}}" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data.group.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>group
 adult     21
 junior    15
@@ -1210,17 +1210,17 @@ senior     8
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="5338cd17-82d9-490a-a8f3-5a8b541b43ac" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.098601Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.095982Z&quot;}}" data-execution_count="26">
+<div id="5338cd17-82d9-490a-a8f3-5a8b541b43ac" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.606492Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.603429Z&quot;}}" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>data.attended.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>attended
 True     23
 False    21
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<p>We can also calculate various statistical measures using Pandas: the mean with <code>mean()</code>, the median with <code>median()</code>, the standard deviation with <code>std()</code>, and the minimum and maximum values with <code>min()</code> and <code>max()</code>, respectively.</p>
-<div id="565d13c4-2b05-4521-b8e9-fc131a793c35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:06.109767Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:06.107244Z&quot;}}" data-execution_count="27">
+<p>We can also calculate various statistical measures using Pandas: the mean with <strong>mean()</strong>, the median with <strong>median()</strong>, the standard deviation with <strong>std()</strong>, and the minimum and maximum values with <strong>min()</strong> and <strong>max()</strong>, respectively.</p>
+<div id="565d13c4-2b05-4521-b8e9-fc131a793c35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:37.618084Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.614560Z&quot;}}" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mean:"</span>, data.temperature.mean())</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"median:"</span>, data.temperature.median())</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"standard deviation:"</span>, data.temperature.std())</span>
@@ -1238,11 +1238,11 @@ maximum: 41</code></pre>
 <section id="simple-plots-using-pandas-and-matplotlib" class="level3">
 <h3 class="anchored" data-anchor-id="simple-plots-using-pandas-and-matplotlib">Simple Plots using Pandas and Matplotlib</h3>
 <p>The data structures created in Pandas can be visualized using the Matplotlib package. To do this, you first need to import matplotlib.pyplot (as plt).</p>
-<p>Once imported, you can use the <code>plot()</code> function to create a plot. If you provide a single list or array to <code>plot()</code>, Matplotlib assumes it represents a sequence of y-values and automatically generates the corresponding x-values for you.</p>
-<div id="382e12de-ce83-4726-90e3-45d3239d8eda" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:55.985870Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:55.800155Z&quot;}}" data-execution_count="29">
+<p>Once imported, you can use the <strong>plot()</strong> function to create a plot. If you provide a single list or array to <strong>plot()</strong>, Matplotlib assumes it represents a sequence of y-values and automatically generates the corresponding x-values for you.</p>
+<div id="382e12de-ce83-4726-90e3-45d3239d8eda" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.053911Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:37.628862Z&quot;}}" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="7816580c-f120-4a1c-b2ef-4b0f8a5c50ed" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:56.674992Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:56.593383Z&quot;}}" data-execution_count="30">
+<div id="7816580c-f120-4a1c-b2ef-4b0f8a5c50ed" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.143148Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.057917Z&quot;}}" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">"age"</span>, <span class="st">"temperature"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1253,7 +1253,7 @@ maximum: 41</code></pre>
 </div>
 </div>
 <p>Im combination with a column name, we can also only plot one column. Here, matplotlib assumes that it is a sequence.</p>
-<div id="bc2d3b17-41f7-404c-8196-395c15f7140a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:57.641277Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:57.586681Z&quot;}}" data-execution_count="31">
+<div id="bc2d3b17-41f7-404c-8196-395c15f7140a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.189036Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.151134Z&quot;}}" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>data.age.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1264,9 +1264,9 @@ maximum: 41</code></pre>
 </div>
 </div>
 <p>We can also reuse the groups that we created and plot the results based on these groups.</p>
-<div id="bcc0ca5c-15f6-421f-81a1-1f51d1fcfd43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:58.567681Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:58.427265Z&quot;}}" data-execution_count="32">
+<div id="bcc0ca5c-15f6-421f-81a1-1f51d1fcfd43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.318013Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.194276Z&quot;}}" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>age_groups.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>group
 adult     Axes(0.125,0.11;0.775x0.77)
 junior    Axes(0.125,0.11;0.775x0.77)
@@ -1295,9 +1295,9 @@ dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="ea851ec6-ae6c-442f-ba1a-3ab94b80ef1d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:58.889909Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:58.833182Z&quot;}}" data-execution_count="33">
+<div id="ea851ec6-ae6c-442f-ba1a-3ab94b80ef1d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.383289Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.336686Z&quot;}}" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>age_groups.temperature.plot()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>group
 adult     Axes(0.125,0.11;0.775x0.77)
 junior    Axes(0.125,0.11;0.775x0.77)
@@ -1315,15 +1315,15 @@ Name: temperature, dtype: object</code></pre>
 <p>There are also other forms of plots that can be created using matplotlib. You can find an overview in the matplotlib documentation <a href="https://matplotlib.org/stable/plot_types/index.html">here</a>.</p>
 <section id="plot-customization" class="level4">
 <h4 class="anchored" data-anchor-id="plot-customization">Plot customization</h4>
-<p>To further customize a plot, you can adjust the labels on the x-axis and y-axis using <code>xlabel()</code> and <code>ylabel()</code>. This allows you to provide more context and clarity to your visualizations.</p>
-<div id="85661877-5b69-4003-bd6b-3955e155197c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:23:59.890929Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:23:59.816396Z&quot;}}" data-execution_count="34">
+<p>To further customize a plot, you can adjust the labels on the x-axis and y-axis using <strong>xlabel()</strong> and <strong>ylabel()</strong>. This allows you to provide more context and clarity to your visualizations.</p>
+<div id="85661877-5b69-4003-bd6b-3955e155197c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.454339Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.390686Z&quot;}}" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We can add a title as well</span></span>
 <span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Temperature correlates with age?'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>Text(0.5, 1.0, 'Temperature correlates with age?')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1336,7 +1336,7 @@ Name: temperature, dtype: object</code></pre>
 </div>
 <p>To better represent your data, you can vary the type of plot used.</p>
 <p>For example, you might want to choose a scatter plot for visualizing relationships between variables.</p>
-<div id="9a37cccb-3cec-4f97-a97e-ed7f4750dfa8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:00.827048Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:00.767087Z&quot;}}" data-execution_count="35">
+<div id="9a37cccb-3cec-4f97-a97e-ed7f4750dfa8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.527203Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.458804Z&quot;}}" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>, kind <span class="op">=</span> <span class="st">'scatter'</span>)</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
@@ -1353,7 +1353,7 @@ Name: temperature, dtype: object</code></pre>
 </div>
 </div>
 <p>We can also annotate the plot, for example, with an arrow.</p>
-<div id="cf4d07cb-edb7-4e74-801d-7ae1448f3dba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:01.851271Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:01.757581Z&quot;}}" data-execution_count="36">
+<div id="cf4d07cb-edb7-4e74-801d-7ae1448f3dba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.589615Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.533280Z&quot;}}" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>data.plot(<span class="st">'temperature'</span>, <span class="st">'age'</span>, kind <span class="op">=</span> <span class="st">'scatter'</span>)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature'</span>)</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Age'</span>)</span>
@@ -1363,7 +1363,7 @@ Name: temperature, dtype: object</code></pre>
 <span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow</span></span>
 <span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>plt.annotate(<span class="st">'max age: '</span> <span class="op">+</span> <span class="bu">str</span>(data.age.<span class="bu">max</span>()), xy<span class="op">=</span>(<span class="dv">38</span>, data.age.<span class="bu">max</span>()), xytext<span class="op">=</span>(<span class="dv">40</span>, <span class="dv">90</span>),</span>
 <span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'black'</span>, shrink<span class="op">=</span><span class="fl">0.05</span>),)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>Text(40, 90, 'max age: 78')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1389,12 +1389,12 @@ Name: temperature, dtype: object</code></pre>
 <li>‘hexbin’ : hexbin plot (DataFrame only)</li>
 </ul>
 <p>Let us try the pie plot, but this time with the frequencies of the age groups.</p>
-<div id="73ccc170-d672-454a-9bdf-0619e9e7cccc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:02.811214Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:02.778256Z&quot;}}" data-execution_count="37">
+<div id="73ccc170-d672-454a-9bdf-0619e9e7cccc" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.620163Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.599075Z&quot;}}" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution across groups'</span>)</span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>Text(0, 0.5, '')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1411,7 +1411,7 @@ Name: temperature, dtype: object</code></pre>
 </section>
 <section id="saving-a-plot" class="level3">
 <h3 class="anchored" data-anchor-id="saving-a-plot">Saving a plot</h3>
-<div id="06f5abea-6381-4110-8ea8-4dcfc93cb80d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:04.380108Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:04.342553Z&quot;}}" data-execution_count="38">
+<div id="06f5abea-6381-4110-8ea8-4dcfc93cb80d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.654035Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.627058Z&quot;}}" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: the plt.savefig() must be in the same Notebook cell as the creation of the plot</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>)</span>
@@ -1428,7 +1428,7 @@ Name: temperature, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div id="5adb4a85-b19f-4163-8974-a0ecaf412dbb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:05.022681Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:04.960543Z&quot;}}" data-execution_count="39">
+<div id="5adb4a85-b19f-4163-8974-a0ecaf412dbb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.703842Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.658294Z&quot;}}" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust the resolution, size and style</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>data.group.value_counts().plot(kind <span class="op">=</span> <span class="st">'pie'</span>, title <span class="op">=</span> <span class="st">'Distribution across groups'</span>, ylabel <span class="op">=</span> <span class="st">''</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>))</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'output/pie_plot2.png'</span>, dpi<span class="op">=</span><span class="dv">200</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
@@ -1455,7 +1455,7 @@ Name: temperature, dtype: object</code></pre>
 <li>Python coders from non-English speaking countries: please write your comments in English, unless you are 120% sure that the code will never be read by people who don’t speak your language.</li>
 </ul>
 <p>Doc strings even have their own conventions (<a href="https://peps.python.org/pep-0257/">PEP257</a>).</p>
-<div id="dc813ad9-d8b1-40f9-9282-d6998cae041b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:06.786279Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:06.779099Z&quot;}}" data-execution_count="40">
+<div id="dc813ad9-d8b1-40f9-9282-d6998cae041b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.712913Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.709079Z&quot;}}" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a good documented code:</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1482,11 +1482,11 @@ Name: temperature, dtype: object</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>name    age location</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>['name', 'age', 'location']</code></pre>
 </div>
 </div>
-<div id="99a00a44-1946-47a0-8743-93f87b7fedc6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-09T10:24:07.467304Z&quot;,&quot;start_time&quot;:&quot;2026-02-09T10:24:07.460868Z&quot;}}" data-execution_count="41">
+<div id="99a00a44-1946-47a0-8743-93f87b7fedc6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:38.729858Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:38.726444Z&quot;}}" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is not easily understandable:</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1499,7 +1499,7 @@ Name: temperature, dtype: object</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>name    age location</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>['name', 'age', 'location']</code></pre>
 </div>
 </div>
@@ -1554,6 +1554,7 @@ Name: temperature, dtype: object</code></pre>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
 <p>Although we have been learning Python using Jupyter Lab, in daily practice, you might prefer using an IDE (Integrated Development Environment) like PyCharm or Visual Studio Code. These tools help you to write and use research software efficiently.</p>
+<p>Find the links to the Software catalog here: - <a href="https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=95">PyCharm</a> - <a href="https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=98&amp;e=GsnhYu">Visual Studio Code</a></p>
 </section>
 <section id="programming-café" class="level2">
 <h2 class="anchored" data-anchor-id="programming-café">Programming Café</h2>
