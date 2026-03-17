@@ -44,6 +44,8 @@ website:
           href: bash.qmd
         - text: "4 Clean your data with Python"
           href: DataCleaning.ipynb
+        - text: "5 Manage your data with Python"
+          href: DataManagementwithSoftware.ipynb
 
 format:
   html:
