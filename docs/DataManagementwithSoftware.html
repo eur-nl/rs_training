@@ -265,8 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#what-will-we-cover" id="toc-what-will-we-cover" class="nav-link active" data-scroll-target="#what-will-we-cover">What will we cover?</a></li>
-  <li><a href="#preparation-for-the-session" id="toc-preparation-for-the-session" class="nav-link" data-scroll-target="#preparation-for-the-session">Preparation for the session</a>
-  <ul class="collapse">
+  <li><a href="#preparation-for-the-session" id="toc-preparation-for-the-session" class="nav-link" data-scroll-target="#preparation-for-the-session">Preparation for the session</a></li>
   <li><a href="#data-sharing-de-identification-of-data" id="toc-data-sharing-de-identification-of-data" class="nav-link" data-scroll-target="#data-sharing-de-identification-of-data">Data sharing – De-identification of data</a>
   <ul class="collapse">
   <li><a href="#how-to-anonymize-your-data" id="toc-how-to-anonymize-your-data" class="nav-link" data-scroll-target="#how-to-anonymize-your-data">How to anonymize your data</a></li>
@@ -277,7 +276,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#collaborating---how-to-validate-your-file-format" id="toc-collaborating---how-to-validate-your-file-format" class="nav-link" data-scroll-target="#collaborating---how-to-validate-your-file-format">Collaborating - How to validate your file format</a>
   <ul class="collapse">
   <li><a href="#other-useful-tools-and-links" id="toc-other-useful-tools-and-links" class="nav-link" data-scroll-target="#other-useful-tools-and-links">Other useful tools and links</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -305,8 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In this fifth session of the Programming Café, we will have a look at the content of the Research Data Management Week and find out, whether and how we can automate or ease these processes using research software and/or tools.</p>
-<section id="what-will-we-cover" class="level3">
-<h3 class="anchored" data-anchor-id="what-will-we-cover">What will we cover?</h3>
+<section id="what-will-we-cover" class="level2">
+<h2 class="anchored" data-anchor-id="what-will-we-cover">What will we cover?</h2>
 <p><strong>Data sharing</strong></p>
 <ul>
 <li>De-identification of data</li>
@@ -326,13 +324,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Hopefully, you also see some known faces in the room: Some of the Data Stewards joined us today to answer your questions!</p>
 </section>
-<section id="preparation-for-the-session" class="level1">
-<h1>Preparation for the session</h1>
+<section id="preparation-for-the-session" class="level2">
+<h2 class="anchored" data-anchor-id="preparation-for-the-session">Preparation for the session</h2>
 <p>Before we (or you at home) start diving into the content, make sure to open a fitting IDE (such as PyCharm and Visual Studio Code) or to install and open Jupyter notebook (You can do that using Anaconda).</p>
 <ul>
 <li>EUR internals: Find PyCharm <a href="https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=95">here</a> and Visual Studio Code <a href="https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=98&amp;e=n4vPQP">here</a></li>
 <li>Self-managed PC: Find PyCharm <a href="https://www.jetbrains.com/pycharm/">here</a> and Visual Studio Code <a href="https://code.visualstudio.com">here</a></li>
 </ul>
+</section>
 <section id="data-sharing-de-identification-of-data" class="level2">
 <h2 class="anchored" data-anchor-id="data-sharing-de-identification-of-data">Data sharing – De-identification of data</h2>
 <p>In last Tuesday’s session, you learned how to share your data responsibly. You explored the de-identification of qualitative data and learned how to prepare your publication package.</p>
@@ -343,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">'../..'</span>) <span class="op">/</span> <span class="st">"static"</span> <span class="op">/</span> <span class="st">"extras"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_path <span class="op">=</span> Path(<span class="st">'.'</span>) <span class="op">/</span> <span class="st">"Data"</span> <span class="co"># Replace with your own path to your data if applicable</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pandas.read_csv(data_path <span class="op">/</span> <span class="st">"Example_Data.csv"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace the names with pseudonyms and save the new mapping</span></span>
@@ -475,7 +474,7 @@ pip install -r requirements.txt</code></pre>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>              <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">├──</span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss">"</span>, <span class="bu">file</span> <span class="op">=</span> file_out)</span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>generate_README(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>generate_README(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>) <span class="co"># Replace with your own preferred path</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="collaborating---how-to-check-whether-your-file-names-fit-your-conventions" class="level2">
@@ -510,7 +509,7 @@ pip install -r requirements.txt</code></pre>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>                    validated.writerow([<span class="bu">file</span>,<span class="st">'not tested'</span>,<span class="st">'NA'</span>])</span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>validate_filenames(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>validate_filenames(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>) <span class="co"># Replace with your own preferred path</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="collaborating---how-to-validate-your-file-format" class="level2">
@@ -528,6 +527,13 @@ pip install -r requirements.txt</code></pre>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss"> is not in a preferred file format"</span>)</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>validate_filetype(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.Rhistory is not in a preferred file format
+.DS_Store is not in a preferred file format
+.gitignore is not in a preferred file format
+.DS_Store is not in a preferred file format
+.DS_Store is not in a preferred file format</code></pre>
+</div>
 </div>
 <section id="other-useful-tools-and-links" class="level3">
 <h3 class="anchored" data-anchor-id="other-useful-tools-and-links">Other useful tools and links</h3>
@@ -543,7 +549,6 @@ pip install -r requirements.txt</code></pre>
 </ul>
 
 
-</section>
 </section>
 </section>
 
