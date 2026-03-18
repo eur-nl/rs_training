@@ -234,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lesson_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./AutomatingTasks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2 Automating Tasks with Python</span></a>
   </div>
 </li>
@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In today’s session, I want to help you show how you can check whether your data is “messy” and how to get it ready for your analysis.</p>
 <p>You may now wonder “Why should I clean my data? Can’t I just analyse the messy data?”. There are multiple answers to this, but in general, messy data (in general) can lead to wrong results, make your analysis slower, increases your chance of mistakes and a lot harder to reproduce. If “Amsterdam”, for example, appears in three different spellings in your data, your analysis might think you have three cities instead of one.</p>
 <p>Let’s learn together, how to spot messy data, how to fix it and how to log the changes so everything is transparent and reproducible!</p>
-<p>Before we begin, I want to show you <a href="https://github.com/eyowhite/Messy-dataset">an example of messy data</a>! Let’s have a look at the data, open the file and try to spot some irregularities together. I want you to think of issues such as <strong>unwanted characters</strong>, <strong>inconsistent spelling</strong>, <strong>mixed data types</strong>, <strong>extra whitespace</strong>, <strong>duplicate rows</strong> and <strong>missing values</strong>.</p>
+<p>Before we begin, I want to show you <a href="https://github.com/eyowhite/Messy-dataset">an example of messy data</a>! Let’s have a look at the data, open the file and try to spot some irregularities together. I want you to think of issues such as <strong>unwanted characters</strong>, <strong>inconsistent spelling</strong>, <strong>mixed data types</strong>, <strong>extra whitespace</strong>, <strong>duplicate rows</strong> and <strong>missing values</strong>. You can download the data <a href="material/messy_HR_data.zip">here</a>.</p>
 <p>While we did the first examination with our own eyes, we can also use pandas (the python package) to inspect the data.</p>
 <section id="inspect-your-data" class="level2">
 <h2 class="anchored" data-anchor-id="inspect-your-data">Inspect your data</h2>
@@ -567,7 +567,14 @@ Length: 10, dtype: str</code></pre>
 </section>
 <section id="manipulate-cases" class="level2">
 <h2 class="anchored" data-anchor-id="manipulate-cases">Manipulate cases</h2>
-<p>We can do that using str.capitalize(). In a similar manner, we can use lowercase, uppercase or different settings: - str.lower(): Converts all characters to lowercase. - str.upper(): Converts all characters to uppercase. - str.title(): Converts first character of each word to uppercase and remaining to lowercase. - str.capitalize(): Converts first character to uppercase and remaining to lowercase. - str.swapcase(): Converts uppercase to lowercase and lowercase to uppercase.</p>
+<p>We can do that using str.capitalize(). In a similar manner, we can use lowercase, uppercase or different settings:</p>
+<ul>
+<li>str.lower(): Converts all characters to lowercase.</li>
+<li>str.upper(): Converts all characters to uppercase.</li>
+<li>str.title(): Converts first character of each word to uppercase and remaining to lowercase.</li>
+<li>str.capitalize(): Converts first character to uppercase and remaining to lowercase.</li>
+<li>str.swapcase(): Converts uppercase to lowercase and lowercase to uppercase.</li>
+</ul>
 <div id="7dff5def0a7ccc20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.590805Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.588906Z&quot;}}" data-execution_count="501">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df.Name <span class="op">=</span> df.Name.<span class="bu">str</span>.capitalize()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>log_change(<span class="st">"Capitalized strings in column Name"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

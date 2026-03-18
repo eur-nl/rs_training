@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lesson_2 – Research Software Training @ EUR</title>
+<title>automatingtasks – Research Software Training @ EUR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programming_cafe.html">Programming Café</a></li><li class="breadcrumb-item"><a href="./lesson_2.html">2 Automating Tasks with Python</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programming_cafe.html">Programming Café</a></li><li class="breadcrumb-item"><a href="./AutomatingTasks.html">2 Automating Tasks with Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lesson_2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./AutomatingTasks.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">2 Automating Tasks with Python</span></a>
   </div>
 </li>
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programming_cafe.html">Programming Café</a></li><li class="breadcrumb-item"><a href="./lesson_2.html">2 Automating Tasks with Python</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./programming_cafe.html">Programming Café</a></li><li class="breadcrumb-item"><a href="./AutomatingTasks.html">2 Automating Tasks with Python</a></li></ol></nav></header>
 
 
 
@@ -297,7 +297,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will start with a question: Which tasks would you like to automate in your research ? I hope that I can show you some tricks for these tasks today.</p>
 <section id="requirements-to-start" class="level2">
 <h2 class="anchored" data-anchor-id="requirements-to-start">Requirements to start</h2>
-<p>Did everyone install Python ? Who needs help ? I would recommend the use of PyCharm! - Please create a copy of the files that you want to work on. - You can also download test files extracted from the <a href="https://clarin.eurac.edu/repository/xmlui/handle/20.500.12124/81">German Summary Corpus</a> (Wedig &amp; Strobl, 2024) <strong><a href="extras/data.zip">here</a></strong>. - Create a folder “data” in your projects and a subfolder “files” in which you paste your files</p>
+<p>Did everyone install Python ? Who needs help ? I would recommend the use of PyCharm!</p>
+<ul>
+<li>Please create a copy of the files that you want to work on.</li>
+<li>You can also download test files extracted from the <a href="https://clarin.eurac.edu/repository/xmlui/handle/20.500.12124/81">German Summary Corpus</a> (Wedig &amp; Strobl, 2024) <strong><a href="material/AutomatingTasks.zip">here</a></strong>.</li>
+<li>Create a folder “data” in your projects and a subfolder “files” in which you paste your files</li>
+</ul>
 </section>
 <section id="import-the-necessary-modules-and-create-a-main-function-to-coordinate-all-tasks" class="level2">
 <h2 class="anchored" data-anchor-id="import-the-necessary-modules-and-create-a-main-function-to-coordinate-all-tasks">Import the necessary modules and create a main function to coordinate all tasks</h2>
