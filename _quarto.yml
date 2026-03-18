@@ -39,7 +39,7 @@ website:
         - text: "1 How to approach programming as a researcher (GitRepo)"
           href: https://codeberg.org/charliegreene/research-software-best-practice
         - text: "2 Automating Tasks with Python"
-          href: lesson_2.md
+          href: AutomatingTasks.md
         - text: "3 Basic command line usage in the Bash shell (PDF)"
           href: bash.qmd
         - text: "4 Clean your data with Python"

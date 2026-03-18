@@ -10,8 +10,9 @@ I hope that I can show you some tricks for these tasks today.
 
 Did everyone install Python ? Who needs help ?
 I would recommend the use of PyCharm!
+
 - Please create a copy of the files that you want to work on.
-- You can also download test files extracted from the [German Summary Corpus](https://clarin.eurac.edu/repository/xmlui/handle/20.500.12124/81) (Wedig & Strobl, 2024) **[here](extras/data.zip)**. 
+- You can also download test files extracted from the [German Summary Corpus](https://clarin.eurac.edu/repository/xmlui/handle/20.500.12124/81) (Wedig & Strobl, 2024) **[here](material/AutomatingTasks.zip)**. 
 - Create a folder "data" in your projects and a subfolder "files" in which you paste your files
 
 ## Import the necessary modules and create a main function to coordinate all tasks
