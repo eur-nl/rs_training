@@ -1,0 +1,119 @@
+--- 
+title: "IDEs and virtual environments" 
+format: html 
+toc: true 
+toc-location: right 
+--- 
+# Get ready to program! Learn how IDEs like PyCharm (and virtual environments) support you every step of the way
+
+While you might have used Integrated Development Environments (IDEs) such as PyCharm, RStudio and Visual Studio Code 
+before to simply run your code, in this session, we want to explore more functionalities 
+of the tools as well as have a look at interesting extensions. To follow best practices, we loosely based the content on 
+the lesson [Byte-sized RSE: Code Development & Debugging with IDEs](https://carpentries-incubator.github.io/byte-sized-rse-vscode/instructor/introduction.html) published in the Carpentries Incubator. 
+Please have a look at it, if you are interested in more examples. 
+There is also a [podcast episode](https://codeforthought.buzzsprout.com/1326658/episodes/12051994-bytesized-rse-continuous-integration) by [Code for Thought](https://codeforthought.buzzsprout.com/1326658) on this topic.
+
+Let us start with an introduction in IDEs:
+
+## What is an IDE?
+In its essence, an IDE is a graphical interface that offers you a workspace to write, edit, test and debug code. 
+It is a modern approach on editors that are meant to ease your programming workflows. 
+
+Before modern IDEs developers used text editors (you might have used one before) to write their code and then use other tools separately to run or debug the code.
+These solution were mostly not user-friendly which is why modern IDEs were created, many of them also support multiple programming languages.
+
+### Why should I use an IDE?
+An IDE is a one-stop shop for programming, it offers you everything you need in one place. Amongst other functionalities, **they help to...**
+- **...format your code**. Most IDEs support automatic indentations (as well as other automatic code formatting) and syntax highlighting which makes your code more readable and consistent.
+- **...auto-complete your code**. IDEs such as PyCharm and Visual Studio Code can suggest you the next syntactically correct option, e.g., when typing the first few letters of a function.
+- **...have a look at the documentation**. IDEs already show you a preview of arguments that are needed when choosing the function, it can also help you look up references.
+- **...debug your code**. Did you make a mistake somewhere, but cannot figure out what exactly went wrong? IDEs offer functionalities that enable you to jump into the code and inspect how your variables change.
+- **...run tests**. The IDEs can support you in running and managing tests of your code.
+- **...view various file formats.** In their essence, they also function as text editors, which means you can open many different file formats suchg as CSV, JSON, YAML, HTML and TXT.
+- **...use version control.** The IDEs support you in tracking changes to your code through enabling you to link them version control systems such as Git.
+- **...use virtual environments.** Most IDEs support you in creating virtual environments in which you can install packages and modules without changing the settings of your device.
+- **...personalize your programming experience.** You can make most IDEs "your own". They offer extensions and settings which changes appearance, usability and enable shortcuts.
+
+### Which IDEs are popular and offered in the EUR Software Catalog?
+The most common IDEs (which we will also have a look at today) are:
+- **Visual Studio Code** (VS Code) 
+  - supports various programming languages
+- **PyCharm** (Community version)
+  - mostly supports Python
+- **RStudio**
+  - mostly supports R
+
+What might be also handy to know, but will not be explained today:
+- **JupyterLab**
+
+## Where can I find the IDEs?
+### VSCode
+<details>
+<summary><b>EUR-managed PC</b></summary>
+
+VSCode can be found in the software catalog and can be downloaded using the Company Portal  or [this link](https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=98&e=rpdxSC).
+
+</details>
+
+<details>
+<summary><b>Self-managed PC</b></summary>
+
+Go to [this website](https://code.visualstudio.com) and download it for your operating system.
+
+</details>
+
+### PyCharm
+<details>
+<summary><b>EUR-managed PC</b></summary>
+
+PyCharm can be found in the Software catalog of EUR. It can be downloaded using the Company Portal on the PC or via [this link](https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=95).
+
+</details>
+<details>
+<summary><b>Self-managed PC</b></summary>
+
+Go to [this website](https://www.jetbrains.com/pycharm/?source=google&medium=cpc&campaign=emea_en_nl_pycharm_branded&term=pycharm&content=785237935124&gad_source=1&gad_campaignid=14124132615&gbraid=0AAAAADloJziVznVriVspxBSla4wIaOTpy&gclid=CjwKCAjwhLPOBhBiEiwA8_wJHGHI7R8d22KqXnkfaSiN92kHffQfBXZylcX0-UqacnLBOZB67AldMRoCEj4QAvD_BwE) and download the Community Edition for your operating system.
+
+</details>
+
+### RStudio
+<details>
+<summary><b>EUR-managed PC</b></summary>
+
+RStudio can be found in the software catalog and can be downloaded using the Company Portal  or [this link](https://liveeur.sharepoint.com/sites/EUR-Intune-Devices/Lists/Software%20catalog/DispForm.aspx?ID=58&e=2akkHj).
+
+</details>
+
+<details>
+<summary><b>Self-managed PC</b></summary>
+
+Go to [this website](https://posit.co/products/open-source/rstudio/?sid=1) and download the Open Source Edition for your operating system.
+
+</details>
+
+At this point, I would like to show you how to use the various IDEs. For clarity, this will be split into three different subpages. **Please choose the IDE that you want to know more about and follow the material from that point on!**
+
+## A quick tour through your IDE
+
+
+
+## How do I run simple code?
+
+
+## Get to know the basic features
+### Code Formatting
+### Autocompletion
+### Documentation
+### Debugging
+### Running tests
+### Version control
+### Personalize your experience
+
+## More than a feature: Virtual environments
+
+## Best practices
+
+## Link your IDE with SURF tools
+https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74227837/Integrated+Development+Environments+IDE
+
+## More documentation

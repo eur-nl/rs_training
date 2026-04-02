@@ -1,0 +1,18 @@
+# Get to know VSCode
+## A quick tour through your IDE
+
+## How do I run simple code?
+
+## Get to know the basic features
+### Code Formatting
+### Autocompletion
+### Documentation
+### Debugging
+### Running tests
+### Version control
+### Personalize your experience
+
+## Link your IDE with SURF tools
+https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74227837/Integrated+Development+Environments+IDE
+
+## More documentation
