@@ -149,6 +149,8 @@ Aside form this use of conda in the terminal (or console), IDEs also have the op
 
 In RStudio, you can create a virtual environment using renv. To do that, you have to click on `Tools > Project Option > Environments` after that, you will see the following menu.
 
+![Creating a virtual environment with RStudio](./figures/RStudio/rstudio_venv.png)
+
 For your first time use, you will see the following message in your console
 
 ```
