@@ -1,18 +1,109 @@
-# Get to know VSCode
+# Get to know VS Code
+
+The following overview is based on the [Visual Studio Documentation](https://code.visualstudio.com/docs) as well as [the Carpentry lesson on IDEs](https://carpentries-incubator.github.io/byte-sized-rse-vscode/index.html) and also contains screenshots taken from these websites. It has been shortened to mostly show relevant content.
+
 ## A quick tour through your IDE
 
+![VisualStudioCode](./figures/vscode/vscode_overview.png)
+
+Visual Studio Code is divided into five main areas:
+
+-   **Activity Bar (A)**: this bar on the left gies you fast access to context-specific indicators, e.g., Git, run your code, search for files and look for extensions.
+-   **Primary Side Bar (B)**: this bar contains your file structure, the outline and timeline of your project.
+-   **The Editor groups (C)**: here you can edit your scripts and other files
+-   **The Panel (D)**: this area shows the output, debug information, errors and warnings, and gives you access to an integrated terminal
+
+VS Code provides a nice tutorial that includes all these areas [here](https://code.visualstudio.com/docs/getstarted/getting-started).
+
 ## How do I run simple code?
+To run simple code, you just use the terminal access in the panel. However, to write your own scripts, we recommend that you create a folder locally and then open it with VS Code using `File > Open Folder`.
+
+![Folder](./figures/vscode/vscode_folder.png)
+
+After opening the folder, you can click on `File > New File...` to create a new script of your choice. After typing in the file name with the right file format (e.g., .py) a new script opens in the editor fields.
+
+![File](./figures/vscode/vscode_empty.png)
+
+In this document, you can write all your code! Do not forget to save it!
+
+Attention! To run Python or R code, you need to install [the Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) or [R extensions](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r). These extensions give you more language specific content such as documented [here](https://code.visualstudio.com/docs/python/python-tutorial) for Python and [here](https://code.visualstudio.com/docs/languages/r) for R.
 
 ## Get to know the basic features
+
+### Identation & Syntax Highlighting
+Similar to other IDEs VS Code highlights your syntax according to the programming language that you chose. The following example shows the coloring of a Python script:
+
+![syntax](./figures/vscode/vscode_syntax.png)
+
+You can see that functions are colored purple, in-built words are pink and function arguments are colored orange. You can adjust these colors using `Code > Settings > Themes`.
+
+In addition to syntax highlighting, VS Code also supports adjusting the text identation and adapts the level of identation according to the syntax (e.g., when writing a function).
+
 ### Code Formatting
+You can also use VS Code in-built support to format your code. To use the function, you have to open the editor context menu by right-clicking in the document that you want to format. After that, the following menu will open:
+
+![editmenu](./figures/vscode/vscode_editmenu.png)
+
+By clicking on `Format Document` amongst other things, the identations, whitespaces and empty lines will be adapted to fit a unified style.
+
 ### Autocompletion
+VS Code offers the [IntelliSense](https://code.visualstudio.com/docs/editing/intellisense) feature which allows, amongst others, for code autocompletion.
+
+It is mostly language-dependent and requires downloading the specific language extension. According to their website "VS Code IntelliSense features are powered by a language service. A language service provides intelligent code completions based on language semantics and an analysis of your source code. If a language service knows possible completions, the IntelliSense suggestions will pop up as you type." 
+
+The following example shows an example of an R script:
+
+![completion](./figures/vscode/vscode_completion.png)
+
 ### Documentation
+Similar to other IDEs, VS Code shows you a glimpse of the code documentation when you hover over a specific function. 
+
+Example R:
+![Documentation R](./figures/vscode/vscode_docR.png)
+
+Example Python:
+![Documentation Python](./figures/vscode/vscode_docPython.png)
+
+For R, you can also open the specific help for a selection with the context edit menu (right click) and then click on `Open help for selection`.
+
+![Help R](./figures/vscode/vscode_helpR.png)
+
 ### Debugging
-### Running tests
+You can debug (i.e., get insights into your program while it is running) [with VS Code](https://code.visualstudio.com/docs/debugtest/debugging). To do that, you first must install a debugging extension from the Visual Studio Marketplace for your language. It could be that you have to define a [debugging configuration](https://code.visualstudio.com/docs/debugtest/debugging-configuration) for your project after that. Visual Studio Code will lead you through the process once you clicked `Run > Start Debugging`.
+
+![Start Debugging](./figures/vscode/vscode_startdebug.png)
+
+Once everthing is set up, you can set breakpoints on the left side of your code.
+
+![Breakpoints](./figures/vscode/vscode_breakpoint.png)
+
+After starting the debugging process, you will then see some new windows in your editor which give you insights into your code.
+
+![Breakpoints](./figures/vscode/vscode_debugPython.png)
+
 ### Version control
+VS Code allows you to connect with your Git repositories and manage your [version control](https://code.visualstudio.com/docs/sourcecontrol/overview) with the IDE.
+
+After clicking on the third button of the activity side bar, you will get an overview of all changes and the history of your git repository. You can even compare the current version with the version that was uploaded as seen in the example below.
+
+![Git](./figures/vscode/vscode_git.png)
+
+For more information about Git & GitHub, please follow one of our upcoming courses!
+
 ### Personalize your experience
 
-## Link your IDE with SURF tools
-https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74227837/Integrated+Development+Environments+IDE
+VS Code is one of the most customizable IDEs. You can not only adapt the [theme](https://code.visualstudio.com/docs/configure/themes) and [layout](https://code.visualstudio.com/docs/configure/custom-layout), but your whole programming experience using [the extensions](https://code.visualstudio.com/docs/getstarted/extensions) and [the settings](https://code.visualstudio.com/docs/configure/settings).
 
-## More documentation
+[This website](https://code.visualstudio.com/docs/getstarted/personalize-VS Code) gives a nice overview of the most basic options. You can also find an overview of how to make it more accessible [here](https://code.visualstudio.com/docs/configure/accessibility/accessibility).
+
+## Link your IDE with SURF tools
+You can also use VS Code for remote development (e.g., with a SURF product). SURF provides a good tutorial [here](https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/30660616/Visual+Studio+Code+for+remote+development).
+
+## More information
+- VS Code offers cheat sheets for [Windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf), [macOS](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf) and [Linux](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf).
+
+- You can find a tutorial on Data Science with VS Code [on their website](https://code.visualstudio.com/docs/datascience/data-science-tutorial).
+
+- It is possible to [combine jupyter notebooks with VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks).
+
+- VS Code provides an [overview of tips and tricks here](https://code.visualstudio.com/docs/getstarted/tips-and-tricks).

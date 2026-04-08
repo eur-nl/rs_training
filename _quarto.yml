@@ -46,6 +46,8 @@ website:
           href: DataCleaning.ipynb
         - text: "5 Manage your data with Python"
           href: DataManagementwithSoftware.ipynb
+        - text: "6 IDEs and virtual environments"
+          href: IDEs.qmd
 
 format:
   html:

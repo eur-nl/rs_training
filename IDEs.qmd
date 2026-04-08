@@ -4,8 +4,6 @@ format: html
 toc: true 
 toc-location: right 
 --- 
-# Get ready to program! Learn how IDEs like PyCharm (and virtual environments) support you every step of the way
-
 While you might have used Integrated Development Environments (IDEs) such as PyCharm, RStudio and Visual Studio Code 
 before to simply run your code, in this session, we want to explore more functionalities 
 of the tools as well as have a look at interesting extensions. To follow best practices, we loosely based the content on 
@@ -24,22 +22,34 @@ These solution were mostly not user-friendly which is why modern IDEs were creat
 
 ### Why should I use an IDE?
 An IDE is a one-stop shop for programming, it offers you everything you need in one place. Amongst other functionalities, **they help to...**
+
 - **...format your code**. Most IDEs support automatic indentations (as well as other automatic code formatting) and syntax highlighting which makes your code more readable and consistent.
+
 - **...auto-complete your code**. IDEs such as PyCharm and Visual Studio Code can suggest you the next syntactically correct option, e.g., when typing the first few letters of a function.
+
 - **...have a look at the documentation**. IDEs already show you a preview of arguments that are needed when choosing the function, it can also help you look up references.
+
 - **...debug your code**. Did you make a mistake somewhere, but cannot figure out what exactly went wrong? IDEs offer functionalities that enable you to jump into the code and inspect how your variables change.
+
 - **...run tests**. The IDEs can support you in running and managing tests of your code.
+
 - **...view various file formats.** In their essence, they also function as text editors, which means you can open many different file formats suchg as CSV, JSON, YAML, HTML and TXT.
+
 - **...use version control.** The IDEs support you in tracking changes to your code through enabling you to link them version control systems such as Git.
+
 - **...use virtual environments.** Most IDEs support you in creating virtual environments in which you can install packages and modules without changing the settings of your device.
+
 - **...personalize your programming experience.** You can make most IDEs "your own". They offer extensions and settings which changes appearance, usability and enable shortcuts.
 
 ### Which IDEs are popular and offered in the EUR Software Catalog?
 The most common IDEs (which we will also have a look at today) are:
+
 - **Visual Studio Code** (VS Code) 
   - supports various programming languages
+
 - **PyCharm** (Community version)
   - mostly supports Python
+
 - **RStudio**
   - mostly supports R
 
@@ -93,27 +103,22 @@ Go to [this website](https://posit.co/products/open-source/rstudio/?sid=1) and d
 
 At this point, I would like to show you how to use the various IDEs. For clarity, this will be split into three different subpages. **Please choose the IDE that you want to know more about and follow the material from that point on!**
 
-## A quick tour through your IDE
+---
 
+{{< include RStudio.qmd >}}
 
+---
 
-## How do I run simple code?
+{{< include PyCharm.qmd >}}
 
+---
 
-## Get to know the basic features
-### Code Formatting
-### Autocompletion
-### Documentation
-### Debugging
-### Running tests
-### Version control
-### Personalize your experience
+{{< include VSCode.qmd >}}
 
-## More than a feature: Virtual environments
+---
 
-## Best practices
+# More than a feature: Virtual environments
 
-## Link your IDE with SURF tools
-https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/74227837/Integrated+Development+Environments+IDE
+---
 
-## More documentation
+# Best practices
