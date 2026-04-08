@@ -7,7 +7,7 @@ toc-location: right
 While you might have used Integrated Development Environments (IDEs) such as PyCharm, RStudio and Visual Studio Code 
 before to simply run your code, in this session, we want to explore more functionalities 
 of the tools as well as have a look at interesting extensions. To follow best practices, we loosely based the content on 
-the lesson [Byte-sized RSE: Code Development & Debugging with IDEs](https://carpentries-incubator.github.io/byte-sized-rse-vscode/instructor/introduction.html) published in the Carpentries Incubator. 
+the lesson [Byte-sized RSE: Code Development & Debugging with IDEs](https://carpentries-incubator.github.io/byte-sized-rse-vscode/instructor/introduction.html) published in the Carpentries Incubator as well as the [lesson on Python and Visual Studio Code](https://train.rse.ox.ac.uk/material/HPCu/technology_and_tooling/ide/python) published in the Oxford University training platform. 
 Please have a look at it, if you are interested in more examples. 
 There is also a [podcast episode](https://codeforthought.buzzsprout.com/1326658/episodes/12051994-bytesized-rse-continuous-integration) by [Code for Thought](https://codeforthought.buzzsprout.com/1326658) on this topic.
 
@@ -111,13 +111,106 @@ At this point, I would like to show you how to use the various IDEs. For clarity
 
 {{< include PyCharm.qmd >}}
 
+
 ---
 
 {{< include VSCode.qmd >}}
 
+
 ---
 
 # More than a feature: Virtual environments
+
+Whenever we start a new programming project, it’s a good idea to create a matching virtual environment. You might wonder why this is necessary. A virtual environment makes it easier for you (and anyone else using your project) to reuse your work and maintain control over the exact package versions the project depends on.
+
+In practice, using a virtual environment is like creating a small, isolated computer that contains its own programming language version (for example, Python 3.6) and its own set of package dependencies, independent from those on your actual machine. This prevents confusion about which package, which version, or even which programming language belongs to which project, keeping everything clean and organized.
+
+A typical way to create a virtual environment directly in your machine terminal is using [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html). After installing [conda](https://www.anaconda.com/docs/getting-started/miniconda/main) directly or via an [anaconda distribution](https://www.anaconda.com/docs/getting-started/anaconda/install/overview), creating a virtual environment is as easy as typing
+
+```bash
+conda create --name env-name
+```
+
+after that, you can activate the specific environment using 
+
+```bash
+conda activate env-name
+```
+
+and once activated, to install new packages you use 
+
+```bash
+conda install package-name
+```
+
+Aside form this use of conda in the terminal (or console), IDEs also have the option to create a virtual environment when you create a project. 
+
+## Creating a virtual environment with RStudio
+
+In RStudio, you can create a virtual environment using renv. To do that, you have to click on `Tools > Project Option > Environments` after that, you will see the following menu.
+
+For your first time use, you will see the following message in your console
+
+```
+renv: Project Environments for R
+
+Welcome to renv! It looks like this is your first time using renv.
+This is a one-time message, briefly describing some of renv's functionality.
+
+renv will write to files within the active project folder, including:
+
+  - A folder 'renv' in the project directory, and
+  - A lockfile called 'renv.lock' in the project directory.
+
+In particular, projects using renv will normally use a private, per-project R library, in which new packages will be installed. This project library is isolated from other R libraries on your system.
+
+In addition, renv will update files within your project directory, including:
+
+  - .gitignore
+  - .Rbuildignore
+  - .Rprofile
+
+Finally, renv maintains a local cache of data on the filesystem, located at:
+
+  - "~/Library/Caches/org.R-project.R/R/renv"
+
+This path can be customized: please see the documentation in `?renv::paths`.
+
+Please read the introduction vignette with `vignette("renv")` for more information.
+You can browse the package documentation online at https://rstudio.github.io/renv/.
+Do you want to proceed? [y/N]: 
+```
+
+Once you type in `y`, RStudio will create the environment and you can continue using RStudio like you are used to (i.e. using `install.packages()`). After installing a package and checking whether your code still works, you can use `renv::snapshot()` to log the package versions that you have, so that others can recreate your environment. You can find more information on how to use renv [here](https://rstudio.github.io/renv/articles/renv.html).
+
+## Creating a virtual environment with PyCharm
+In PyCharm, there are multiple ways of setting up a virtual environment. The fastest way is to create it when creating a new project. For that you click on `File > New Project...` and you will see the following window:
+
+![Creating a virtual environment with PyCharm](./figures/PyCharm/pycharm_venv.png)
+
+In this window, you can not only choose whether you want a project venv, base conda or custom environment, but also which Python version the environment should have. After creating the environment, you can install packages in the console of PyCharm using pip (or for conda environments using conda) as well as [the Python packages tool window](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html#packages-tool-window). 
+
+[Another way to create a virtual environment for an existing project](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html), is to click on the Python Interpretor selector (in the lower right corner) and either choose the interpreter (and venv) of choice or click on `Add Interpreter > Add Local Interpreter` to then get to a similar window as shown for the project creation.
+
+![Creating a virtual environment for an existing project with PyCharm](./figures/PyCharm/py_python_interpreter_widget.png)
+
+To save the environment and to be able to share the packages (and versions) that you have, you can either follow [this guide](https://www.jetbrains.com/help/pycharm/managing-dependencies.html#add-requirements) or use `pip freeze > requirements.txt` in the console.
+
+## Creating a virtual environment with VS Code
+
+Similar to PyCharm, in VS Code you can [set and create your virtual environment](https://code.visualstudio.com/docs/python/environments#_creating-environments) using the environment editor in the lower right corner. After clicking on it, a menu will open under the search bar, where you can either choose an existing environment or create your own venv.
+
+![Creating a virtual environment for an existing project with VS Code](./figures/VSCode/vscode_venv.png)
+
+Once you click on `+ Create new Virtual Environment...` the following options will be shown:
+
+![Options for a virtual environment in VS Code](./figures/VSCode/vscode_venv_options.png)
+
+You can choose the environment that fits your needs here! 
+
+After creating the venv, you can use the VS Code terminal to install new packages.
+
+To save the environment and to be able to share the packages (and versions) that you have, you can use `pip freeze > requirements.txt` in the terminal.
 
 ---
 
