@@ -6,7 +6,7 @@ toc-location: right
 --- 
 While you might have used Integrated Development Environments (IDEs) such as PyCharm, RStudio and Visual Studio Code 
 before to simply run your code, in this session, we want to explore more functionalities 
-of the tools as well as have a look at interesting extensions. To follow best practices, we loosely based the content on 
+of the tools. To follow best practices, we loosely based the content on 
 the lesson [Byte-sized RSE: Code Development & Debugging with IDEs](https://carpentries-incubator.github.io/byte-sized-rse-vscode/instructor/introduction.html) published in the Carpentries Incubator as well as the [lesson on Python and Visual Studio Code](https://train.rse.ox.ac.uk/material/HPCu/technology_and_tooling/ide/python) published in the Oxford University training platform. 
 Please have a look at it, if you are interested in more examples. 
 There is also a [podcast episode](https://codeforthought.buzzsprout.com/1326658/episodes/12051994-bytesized-rse-continuous-integration) by [Code for Thought](https://codeforthought.buzzsprout.com/1326658) on this topic.
