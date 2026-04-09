@@ -204,11 +204,11 @@ To save the environment and to be able to share the packages (and versions) that
 
 Similar to PyCharm, in VS Code you can [set and create your virtual environment](https://code.visualstudio.com/docs/python/environments#_creating-environments) using the environment editor in the lower right corner. After clicking on it, a menu will open under the search bar, where you can either choose an existing environment or create your own venv.
 
-![Creating a virtual environment for an existing project with VS Code](./figures/VSCode/vscode_venv.png)
+![Creating a virtual environment for an existing project with VS Code](./figures/vscode/vscode_venv.png)
 
 Once you click on `+ Create new Virtual Environment...` the following options will be shown:
 
-![Options for a virtual environment in VS Code](./figures/VSCode/vscode_venv_options.png)
+![Options for a virtual environment in VS Code](./figures/vscode/vscode_venv_options.png)
 
 You can choose the environment that fits your needs here. 
 
