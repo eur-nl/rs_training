@@ -11,35 +11,35 @@ the lesson [Byte-sized RSE: Code Development & Debugging with IDEs](https://carp
 Please have a look at it, if you are interested in more examples. 
 There is also a [podcast episode](https://codeforthought.buzzsprout.com/1326658/episodes/12051994-bytesized-rse-continuous-integration) by [Code for Thought](https://codeforthought.buzzsprout.com/1326658) on this topic.
 
-Let us start with an introduction in IDEs:
+Let us start with an introduction to IDEs:
 
 ## What is an IDE?
-In its essence, an IDE is a graphical interface that offers you a workspace to write, edit, test and debug code. 
-It is a modern approach on editors that are meant to ease your programming workflows. 
+In its essence, an IDE is a graphical interface that offers you a workspace to write, edit, test, and debug code.
+It is a modern approach to editors that are meant to ease your programming workflows.
 
-Before modern IDEs developers used text editors (you might have used one before) to write their code and then use other tools separately to run or debug the code.
-These solution were mostly not user-friendly which is why modern IDEs were created, many of them also support multiple programming languages.
+Before modern IDEs, developers used text editors (you might have used one before) to write their code and then used other tools separately to run or debug the code.
+These solutions were mostly not user-friendly, which is why modern IDEs were created. Many of them also support multiple programming languages.
 
 ### Why should I use an IDE?
 An IDE is a one-stop shop for programming, it offers you everything you need in one place. Amongst other functionalities, **they help to...**
 
-- **...format your code**. Most IDEs support automatic indentations (as well as other automatic code formatting) and syntax highlighting which makes your code more readable and consistent.
+- **...format your code**. Most IDEs support automatic indentation (as well as other automatic code formatting) and syntax highlighting, which make your code more readable and consistent.
 
-- **...auto-complete your code**. IDEs such as PyCharm and Visual Studio Code can suggest you the next syntactically correct option, e.g., when typing the first few letters of a function.
+- **...auto-complete your code**. IDEs such as PyCharm and Visual Studio Code can suggest the next syntactically correct option, e.g., when you type the first few letters of a function.
 
-- **...have a look at the documentation**. IDEs already show you a preview of arguments that are needed when choosing the function, it can also help you look up references.
+- **...have a look at the documentation**. IDEs already show you a preview of the arguments needed when choosing a function, and they can also help you look up references.
 
-- **...debug your code**. Did you make a mistake somewhere, but cannot figure out what exactly went wrong? IDEs offer functionalities that enable you to jump into the code and inspect how your variables change.
+- **...debug your code**. Did you make a mistake somewhere but can't figure out exactly what went wrong? IDEs offer functionalities that allow you to jump into the code and inspect how your variables change.
 
 - **...run tests**. The IDEs can support you in running and managing tests of your code.
 
-- **...view various file formats.** In their essence, they also function as text editors, which means you can open many different file formats suchg as CSV, JSON, YAML, HTML and TXT.
+- **...view various file formats.** In their essence, IDEs also function as text editors, which means you can open many different file formats such as CSV, JSON, YAML, HTML, and TXT.
 
-- **...use version control.** The IDEs support you in tracking changes to your code through enabling you to link them version control systems such as Git.
+- **...use version control.** The IDEs support you in tracking changes to your code by enabling you to link them to version control systems such as Git.
 
-- **...use virtual environments.** Most IDEs support you in creating virtual environments in which you can install packages and modules without changing the settings of your device.
+- **...use virtual environments.** Most IDEs support you in creating virtual environments, allowing you to install packages and modules without changing the settings of your device.
 
-- **...personalize your programming experience.** You can make most IDEs "your own". They offer extensions and settings which changes appearance, usability and enable shortcuts.
+- **...personalize your programming experience.** You can make most IDEs "your own". They offer extensions and settings which change appearance, usability and enable shortcuts.
 
 ### Which IDEs are popular and offered in the EUR Software Catalog?
 The most common IDEs (which we will also have a look at today) are:
@@ -54,6 +54,7 @@ The most common IDEs (which we will also have a look at today) are:
   - mostly supports R
 
 What might be also handy to know, but will not be explained today:
+
 - **JupyterLab**
 
 ## Where can I find the IDEs?
@@ -101,6 +102,8 @@ Go to [this website](https://posit.co/products/open-source/rstudio/?sid=1) and d
 
 </details>
 
+---
+
 At this point, I would like to show you how to use the various IDEs. For clarity, this will be split into three different subpages. **Please choose the IDE that you want to know more about and follow the material from that point on!**
 
 ---
@@ -147,11 +150,10 @@ Aside form this use of conda in the terminal (or console), IDEs also have the op
 
 ## Creating a virtual environment with RStudio
 
-In RStudio, you can create a virtual environment using renv. To do that, you have to click on `Tools > Project Option > Environments` after that, you will see the following menu.
+In RStudio, you can create a virtual environment using `renv`. To do that, you have to click on `Tools > Project Option > Environments` after that, you will see the following menu.
 
 ![Creating a virtual environment with RStudio](./figures/RStudio/rstudio_venv.png)
-
-For your first time use, you will see the following message in your console
+When you use renv for the first time, you will see the following message in your console:
 
 ```
 renv: Project Environments for R
@@ -183,16 +185,16 @@ You can browse the package documentation online at https://rstudio.github.io/ren
 Do you want to proceed? [y/N]: 
 ```
 
-Once you type in `y`, RStudio will create the environment and you can continue using RStudio like you are used to (i.e. using `install.packages()`). After installing a package and checking whether your code still works, you can use `renv::snapshot()` to log the package versions that you have, so that others can recreate your environment. You can find more information on how to use renv [here](https://rstudio.github.io/renv/articles/renv.html).
+Once you type in `y`, RStudio will create the environment and you can continue using RStudio like you are used to (i.e., using `install.packages()`). After installing a package and checking whether your code still works, you can use `renv::snapshot()` to log the package versions that you have, so that others can recreate your environment. You can find more information on how to use renv [here](https://rstudio.github.io/renv/articles/renv.html).
 
 ## Creating a virtual environment with PyCharm
-In PyCharm, there are multiple ways of setting up a virtual environment. The fastest way is to create it when creating a new project. For that you click on `File > New Project...` and you will see the following window:
+In PyCharm, there are multiple ways to set up a virtual environment. The fastest way is to create it when creating a new project. To do this, click on `File > New Project...` and you will see the following window:
 
 ![Creating a virtual environment with PyCharm](./figures/PyCharm/pycharm_venv.png)
 
-In this window, you can not only choose whether you want a project venv, base conda or custom environment, but also which Python version the environment should have. After creating the environment, you can install packages in the console of PyCharm using pip (or for conda environments using conda) as well as [the Python packages tool window](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html#packages-tool-window). 
+In this window, you can not only choose whether you want a project venv, base conda or custom environment, but also which Python version the environment should have. After creating the environment, you can install packages in the console of PyCharm using `pip` (or for conda environments using `conda`) as well as [the Python packages tool window](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html#packages-tool-window). 
 
-[Another way to create a virtual environment for an existing project](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html), is to click on the Python Interpretor selector (in the lower right corner) and either choose the interpreter (and venv) of choice or click on `Add Interpreter > Add Local Interpreter` to then get to a similar window as shown for the project creation.
+[Another way to create a virtual environment for an existing project](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html) is to click on the Python Interpretor selector (in the lower right corner) and either choose the interpreter (and venv) of choice or click on `Add Interpreter > Add Local Interpreter`. Afterward you will get a similar window as shown for the project creation.
 
 ![Creating a virtual environment for an existing project with PyCharm](./figures/PyCharm/py_python_interpreter_widget.png)
 
@@ -208,12 +210,8 @@ Once you click on `+ Create new Virtual Environment...` the following options wi
 
 ![Options for a virtual environment in VS Code](./figures/VSCode/vscode_venv_options.png)
 
-You can choose the environment that fits your needs here! 
+You can choose the environment that fits your needs here. 
 
 After creating the venv, you can use the VS Code terminal to install new packages.
 
 To save the environment and to be able to share the packages (and versions) that you have, you can use `pip freeze > requirements.txt` in the terminal.
-
----
-
-# Best practices

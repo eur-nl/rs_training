@@ -2,17 +2,17 @@
 The following overview is based on the [PyCharm User Guide](https://www.jetbrains.com/help/pycharm/quick-start-guide.html) and also contains screenshots taken from that website. It has been shortened to mostly show relevant content.
 
 ## A quick tour through your IDE
-![PyCharm](./figures/PyCharm/py_main_window_overview.png)
+![Overview PyCharm](./figures/PyCharm/py_main_window_overview.png)
 
 The interface of PyCharm shows you nine different elements. 
 
 - The window header (1) contains buttons that allow easy access to import functions such as running the code.
 - The project tool window (2) shows the folder structure. It can be used to navigate between files.
 - The editor (3) allows you to edit your Python scripts and switch between open files using the tabs.
-- When you right-click, the context menus (4) open. They are a handy way to easily access functions e.g., refactoring a file. 
+- When you right-click, the context menu (4) opens. It provides a convenient way to access functions, such as refactoring a file.
 - The navigation bar (5) shows you where you are right now and allows you to switch to your parent folders.
 - The gutter (6) shows you in which line of code you are working and allows you to set breakpoints to debug your code.
-- The scrollbar (7) gives you hints and notification about your code e.g., about style issues or potential errors.
+- The scrollbar (7) provides hints and notifications about your code, such as style issues or potential errors.
 - The tool windows (8) allow you to access the console and the debugger. 
 - The status bar (9) shows you the file formatting, some warnings and the virtual environment that you are in.
 
@@ -20,66 +20,70 @@ The interface of PyCharm shows you nine different elements.
 You can run simple code by writing it in the console, 
 but it is recommended to create a project first and then write your code in a Python script to run it. 
 
-To [create a project](https://www.jetbrains.com/help/pycharm/creating-empty-project.html), you click on `File>New Project` then choose `Pure Python` and choose your project location.
-After that, you can also choose the Python version that you will be working with. You can also decide here whether a Git repository should be set up
+To [create a project](https://www.jetbrains.com/help/pycharm/creating-empty-project.html), you click on `File > New Project` then choose `Pure Python` and your project location.
+Afterward, you can select the Python version to work with and decide whether to set up a Git repository.
 
-![new_project](./figures/PyCharm/py_new_project.png)
+![How to create a new project in PyCharm](./figures/PyCharm/py_new_project.png)
 
 If you click `Create a main.py welcome script` PyCharm adds the main.py file to your project.
 
-![welcome](./figures/PyCharm/py_welcome_script.png)
+![The welcome script in PyCharm](./figures/PyCharm/py_welcome_script.png)
 
-After writing your code, you can click on the play button in the upper left corner [to run your code](https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html)!
+After writing your code, you can click on the play button in the upper left corner [to run your code](https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html).
 
 ## Get to know the basic features
 
 ### Identation & Syntax Highlighting
-PyCharm [automatically indents](https://www.jetbrains.com/help/pycharm/indentation.html) your code according to the programming language that you chose. The status bar (9) shows you the setting e.g., 4 spaces.
 
-Aside from automatically indenting your code, PyCharm also [highlights keywords, comments, parameters, type hints, and other elements.](https://www.jetbrains.com/help/pycharm/python-code-insight.html) as you can see in the example for the welcome script!
+PyCharm [automatically indents](https://www.jetbrains.com/help/pycharm/indentation.html) your code according to the programming language that you chose. The status bar shows you the setting (e.g., "4 spaces").
+
+Aside from automatically indenting your code, PyCharm also [highlights keywords, comments, parameters, type hints, and other elements](https://www.jetbrains.com/help/pycharm/python-code-insight.html) as you can see in the example of the welcome script.
 
 ### Autocompletion
+
 PyCharm helps you to complete the names of classes, methods, and keywords within your project.
 By default, it displays the [code completion](https://www.jetbrains.com/help/pycharm/auto-completing-code.html) automatically as you type. You can choose which suggestion to accept by using the arrow keys and `Enter`.
 
-![autocomplete](./figures/PyCharm/py_autocomplete.png)
+![Autocompletion in PyCharm](./figures/PyCharm/py_autocomplete.png)
 
 ### Intentions
-PyCharm can give you [various tips](https://www.jetbrains.com/help/pycharm/python-code-insight.html#intentions) while you program.
-These suggestions and/or tips will be shown with a light bulb.
 
-![tips](./figures/PyCharm/py_tips.png)
+PyCharm can give you [various tips](https://www.jetbrains.com/help/pycharm/python-code-insight.html#intentions) while you program. These suggestions and/or tips will be shown together with a light bulb.
+
+![Tips in PyCharm](./figures/PyCharm/py_tips.png)
 
 ### Checking regular expressions
-If you work with [regular expressions](https://www.jetbrains.com/help/pycharm/python-code-insight.html#regex), PyCharm can help you check whether your string matches your expression. To do that, you can click `Option` and `Enter` when your mouse is above the regular expression.
 
-![regex](./figures/PyCharm/py_check_regexp1.png)
+If you work with [regular expressions](https://www.jetbrains.com/help/pycharm/python-code-insight.html#regex), PyCharm can help you check whether your string matches your expression. To do that, you can click `Option` (or `Alt`) and `Enter` when your mouse is above the regular expression.
+
+![Regular expressions in PyCharm](./figures/PyCharm/py_check_regexp1.png)
 
 ### Viewing reference documentation
 
-If you want to look up certain functions, you can press `F1` while your mouse is on the function name. PyCharm will give you an [insight into the documentation](https://www.jetbrains.com/help/pycharm/python-code-insight.html#ref-doc) then.
+If you want to look up certain functions, you can press `F1` (or `Ctrl` + `Q`) while your mouse is on the function name. PyCharm will give you an [insight into the documentation](https://www.jetbrains.com/help/pycharm/python-code-insight.html#ref-doc) then.
 
-![doc](./figures/PyCharm/py_doc_print.png)
+![Insights into documentation in PyCharm](./figures/PyCharm/py_doc_print.png)
 
 ### Optimize your code
-PyCharm can [inspect your code](https://www.jetbrains.com/help/pycharm/code-inspection.html) according to style guidelines. To use this very handy function, click on `Code` and then on `Inspect code...`.
 
-Inspecting the code will lead PyCharm to detect and correct problems with your code. It looks for dead code (i.e., that is not used), find potential bugs, spelling errors and improve your style (e.g., code structure).
+PyCharm can [inspect your code](https://www.jetbrains.com/help/pycharm/code-inspection.html) according to style guidelines. To use this handy function, click on `Code` and then on `Inspect code...`.
 
-![inspection](./figures/PyCharm/py_inspection.png)
+Inspecting the code allows PyCharm to detect and fix issues in your code. It identifies dead code (i.e., unused code), potential bugs, spelling errors, and suggests improvements to your style (e.g., code structure).
+
+![Code inspection in PyCharm](./figures/PyCharm/py_inspection.png)
 
 After clicking on the corresponding item, PyCharm will suggest you possible changes or improvements.
 
 ### Debugging
-PyCharm can help you [debug your code](https://www.jetbrains.com/help/pycharm/debugging-code.html) and find out the status of your variables within the process. To use that feature, you can make use of so-called break points.
-Breakpoints can be set in the gutter and lead PyCharm to stop the process at that point. 
+PyCharm can help you [debug your code](https://www.jetbrains.com/help/pycharm/debugging-code.html) and check the status of your variables during execution. To use this feature, you can set breakpoints in the gutter, which will cause PyCharm to pause the process at those points.
 
-![debug](./figures/PyCharm/py_debug.png)
+![Debugging in PyCharm](./figures/PyCharm/py_debug.png)
 
-After setting the breakpoints, a click on the small bug in the right upper corner leads the program to run and the debugger to start. After stopping, the debug window will open and allow you to step over, in or continue the process.
+After setting breakpoints, clicking the small bug icon in the upper-right corner starts the program and launches the debugger. Once the process stops, the debug window opens, allowing you to step over, step into, or continue execution.
 
 ### Version control
-Your IDE can [connect to a version control](https://www.jetbrains.com/help/pycharm/version-control-integration.html) of your choice.
+
+Your IDE can [connect to a version control system](https://www.jetbrains.com/help/pycharm/version-control-integration.html) of your choice.
 
 The easiest way to use Git is to directly [set up the connection](https://www.jetbrains.com/help/pycharm/working-with-git-tutorial.html#create-test-prj) at the beginning of the project. To do that, you can flag the option `Create Git repository` when creating the project.
 
@@ -88,14 +92,19 @@ After setting up Git, PyCharm can visualise your changes and allows you to `comm
 For more information, you can have a look at the PyCharm documentation [here](https://www.jetbrains.com/help/pycharm/working-with-git-tutorial.html) or follow one of our upcoming sessions on version control!
 
 ### Personalize your experience
+
 PyCharm offers various [plugins](https://www.jetbrains.com/help/pycharm/managing-plugins.html) and [themes](https://www.jetbrains.com/help/pycharm/user-interface-themes.html) to personalize your IDE.
 
 You can find an overview of all plugins [here](https://plugins.jetbrains.com/pycharm). Funny enough, you can even replace your progress bar with random Pokémon using the [Pokémon progress](https://plugins.jetbrains.com/plugin/15090-pokemon-progress) plugin.
 
-
 You can also customize [the colour scheme and fonts](https://www.jetbrains.com/help/pycharm/configuring-colors-and-fonts.html).
 
 ## Link your IDE with SURF tools
-You can also use PyCharm for remote development (e.g., with a SURF product). SURF provides a good tutorial [here](https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/30668881/PyCharm+and+other+JetBrains+IDEs+for+remote+development).
 
-## More documentation
+You can use PyCharm for remote development (e.g., with a SURF product). SURF provides a tutorial [here](https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/30668881/PyCharm+and+other+JetBrains+IDEs+for+remote+development).
+
+## Further reading
+
+- JetBrains (the company behind PyCharm) offers various [tutorials](https://www.jetbrains.com/pycharm/learn/) on PyCharm.
+- Want to learn more about Python? Have a look at our Python course "Python Fundamentals" on the left side of this website.
+- Similar to the Data Carpentries, the Carpentries also offer ["Programming with Python"](https://swcarpentry.github.io/python-novice-inflammation/) in their Software Carpentry lessons. Are you interesting in the following the course in-person? Please contact one of our trainers!
