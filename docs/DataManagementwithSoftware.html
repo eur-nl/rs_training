@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./IDEs.html" rel="next">
 <link href="./DataCleaning.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -252,6 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">5 Manage your data with Python</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./IDEs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6 IDEs and virtual environments</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -335,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="data-sharing-de-identification-of-data">Data sharing – De-identification of data</h2>
 <p>In last Tuesday’s session, you learned how to share your data responsibly. You explored the de-identification of qualitative data and learned how to prepare your publication package.</p>
 <p>Programming can assist you in de-identifying your data! Using research software, you can choose to either pseudonymize or anonymize it. Let’s take a closer look at how we can replace personal names, distort ages, and redact ZIP codes in <strong><a href="material/DataManagement.zip">this data</a></strong>:</p>
-<div id="8f44c7d8e2455c62" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:27.998150Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:27.984054Z&quot;}}" data-execution_count="7">
+<div id="d9de8dd1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:27.998150Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:27.984054Z&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in file</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span>
@@ -364,47 +371,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df.to_csv(data_path <span class="op">/</span> <span class="st">"NewData.csv"</span>, index <span class="op">=</span> <span class="va">False</span>)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Username  Birth_Date_rounded  Gender ZIP_Code_redacted        Complaint
-0   User_1                1960    Male             2xxxx  Short of breath
-1   User_2                1960    Male             2xxxx       Chest pain
-2   User_3                1960  Female             2xxxx      Painful eye
-3   User_4                1960  Female             2xxxx         Wheezing
-4   User_5                1960  Female             2xxxx    Aching joints
-5   User_6                1960  Female             2xxxx       Chest pain
-6   User_7                1960    Male             2xxxx  Short of breath</code></pre>
 </div>
-</div>
-<p>If you have saved a specific mapping, you can use it to pseudonymize textual data. In the following example, we used the generated usernames to replace the names in the text. If you want to follow along, just copy your rename your <code>mapping.csv</code>-file to <code>mapping_manual.csv</code>. You can then also add the following two lines (manually):</p>
-<pre class="text"><code>Manchester,England
-1965,the 60s</code></pre>
-<div id="ca95402b6c3fb92a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:42.007534Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:42.001716Z&quot;}}" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use your mapping file to change texts</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the mapping</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {}</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span> (data_path <span class="op">/</span> <span class="st">"mapping_manual.csv"</span>, mode <span class="op">=</span> <span class="st">'r'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> mapfile:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">map</span> <span class="op">=</span> csv.reader(mapfile, delimiter<span class="op">=</span><span class="st">','</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">map</span>:</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        mapping[line[<span class="dv">0</span>]] <span class="op">=</span> line[<span class="dv">1</span>]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(data_path <span class="op">/</span> <span class="st">'text_example.txt'</span>, mode <span class="op">=</span> <span class="st">'r'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> txtfile:</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> txtfile.read()</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace words in file with mapping file content</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>new_content, document <span class="op">=</span> content, content</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> mapping.items():</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    new_content <span class="op">=</span> new_content.replace(key, value)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    document <span class="op">=</span> document.replace(key, <span class="ss">f"</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss"> [Replaced - </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">]"</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Save two versions to also allow for documentation in the text</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(data_path <span class="op">/</span> <span class="st">'output.txt'</span>, mode <span class="op">=</span> <span class="st">'w'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> outfile:</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(new_content, <span class="bu">file</span> <span class="op">=</span> outfile)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(data_path <span class="op">/</span> <span class="st">'documentation.txt'</span>, mode <span class="op">=</span> <span class="st">'w'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> docfile:</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(document, <span class="bu">file</span> <span class="op">=</span> docfile)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In the following output <code>Birth_Date_rounded</code> has been shortened to <code>BD</code> and <code>ZIP_Code_redacted</code> to <code>ZIP</code> to allow for better readibility on the website:</p>
+<div class="line-block"><code>Username       BD   Gender   ZIP        Complaint</code><br>
+<code>0   User_1   1960    Male  2xxxx  Short of breath</code><br>
+<code>1   User_2   1960    Male  2xxxx       Chest pain</code><br>
+<code>2   User_3   1960  Female  2xxxx      Painful eye</code><br>
+<code>3   User_4   1960  Female  2xxxx         Wheezing</code><br>
+<code>4   User_5   1960  Female  2xxxx    Aching joints</code><br>
+<code>5   User_6   1960  Female  2xxxx       Chest pain</code><br>
+<code>6   User_7   1960    Male  2xxxx  Short of breath</code></div>
+<p><br>
+If you have saved a specific mapping, you can use it to pseudonymize textual data. In the following example, we used the generated usernames to replace the names in the text. If you want to follow along, just copy your rename your <code>mapping.csv</code>-file to <code>mapping_manual.csv</code>. You can then also add the following two lines (manually):</p>
+<div class="line-block"><code>Manchester,England</code><br>
+<code>1965,the 60s</code></div>
+<div id="3d2a75ad" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:42.007534Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:42.001716Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use your mapping file to change texts</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the mapping</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span> (data_path <span class="op">/</span> <span class="st">"mapping_manual.csv"</span>, mode <span class="op">=</span> <span class="st">'r'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> mapfile:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">map</span> <span class="op">=</span> csv.reader(mapfile, delimiter<span class="op">=</span><span class="st">','</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">map</span>:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        mapping[line[<span class="dv">0</span>]] <span class="op">=</span> line[<span class="dv">1</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(data_path <span class="op">/</span> <span class="st">'text_example.txt'</span>, mode <span class="op">=</span> <span class="st">'r'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> txtfile:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> txtfile.read()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace words in file with mapping file content</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>new_content, document <span class="op">=</span> content, content</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> mapping.items():</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    new_content <span class="op">=</span> new_content.replace(key, value)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    document <span class="op">=</span> document.replace(key, <span class="ss">f"</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss"> [Replaced - </span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">]"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Save two versions to also allow for documentation in the text</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(data_path <span class="op">/</span> <span class="st">'output.txt'</span>, mode <span class="op">=</span> <span class="st">'w'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> outfile:</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(new_content, <span class="bu">file</span> <span class="op">=</span> outfile)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(data_path <span class="op">/</span> <span class="st">'documentation.txt'</span>, mode <span class="op">=</span> <span class="st">'w'</span>, encoding <span class="op">=</span> <span class="st">'utf-8'</span>) <span class="im">as</span> docfile:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(document, <span class="bu">file</span> <span class="op">=</span> docfile)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Following, the documented version of the text would look like this:</p>
-<pre class="text"><code>In this interview, we talk with User_1 [Replaced - Sean Curtis] about his wife User_4 [Replaced - Marion Aaker]. User_1 [Replaced - Sean Curtis] said that his wife has been wheezing since some weeks, while he mainly feels short of breath. Both born in the 60s [Replaced - 1965], Doctors may think it is related to their age and that were born in England [Replaced - Manchester].</code></pre>
+<p><code>In this interview, we talk with User_1 [Replaced - Sean Curtis] about his wife User_4 [Replaced - Marion Aaker]. User_1 [Replaced - Sean Curtis] said that his wife has been wheezing since some weeks, while he mainly feels short of breath. Both born in the 60s [Replaced - 1965], Doctors may think it is related to their age and that were born in England [Replaced - Manchester].</code></p>
 <section id="how-to-anonymize-your-data" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-anonymize-your-data">How to anonymize your data</h3>
 <p>To truly anonymize the data instead, I recommend using an open-source tool such as <a href="https://github.com/ben-aaron188/textwash">Textwash</a>. Let’s take a quick look at how to use it:</p>
@@ -416,118 +423,146 @@ pip install -r requirements.txt</code></pre>
 <p>After preparing the folder, you can run the code below!</p>
 <pre class="console"><code>python3 anon.py --language en --input_dir my_documents --output_dir anonymised_documents --cpu</code></pre>
 <p>With this, this text here</p>
-<pre class="text"><code>In this interview, we talk with Sean Curtis about his wife Marion Aaker. Sean Curtis said that his wife has been wheezing since some weeks, while he mainly feels short of breath. Both born in 1965, Doctors may think it is related to their age and that were born in Manchester.</code></pre>
+<p><code>In this interview, we talk with Sean Curtis about his wife Marion Aaker. Sean Curtis said that his wife has been wheezing since some weeks, while he mainly feels short of breath. Both born in 1965, Doctors may think it is related to their age and that were born in Manchester.</code></p>
 <p>changes to this:</p>
-<pre class="text"><code>In this interview, we talk with PERSON_FIRSTNAME_1 PERSON_LASTNAME_1 about PRONOUN wife PERSON_FIRSTNAME_2 PERSON_LASTNAME_2. PERSON_FIRSTNAME_1 PERSON_LASTNAME_1 said that PRONOUN wife has been wheezing since some weeks, while PRONOUN mainly feels short of breath. Both born in DATE_1, Doctors DATE_1 think it is related to their age and that were born in LOCATION_1.</code></pre>
+<p><code>In this interview, we talk with PERSON_FIRSTNAME_1 PERSON_LASTNAME_1 about PRONOUN wife PERSON_FIRSTNAME_2 PERSON_LASTNAME_2. PERSON_FIRSTNAME_1 PERSON_LASTNAME_1 said that PRONOUN wife has been wheezing since some weeks, while PRONOUN mainly feels short of breath. Both born in DATE_1, Doctors DATE_1 think it is related to their age and that were born in LOCATION_1.</code></p>
 </section>
 </section>
 <section id="collaborating---create-folder-structure" class="level2">
 <h2 class="anchored" data-anchor-id="collaborating---create-folder-structure">Collaborating - Create folder structure</h2>
 <p>In last Thursday’s session on collaboration, you learned more about structuring a research project. Did you know that Python can help you create a structured project folder?</p>
 <p>The following code creates a folder structure as recommended by the <a href="https://github.com/bvreede/good-enough-project">good-enough-project</a>:</p>
-<div id="eb7a5f6d98731b9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:49.002083Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:48.996554Z&quot;}}" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_folder_setup(project_name):</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a project folder in documents</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    project_path <span class="op">=</span> Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> project_name</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> Path(project_path).exists():</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        Path.mkdir(project_path)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a list of folders that should be created</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    folders <span class="op">=</span> [<span class="st">'src'</span>, <span class="st">'data'</span>, <span class="st">'docs'</span>, <span class="st">'results'</span>, <span class="st">'config'</span>, <span class="st">'bin'</span>, <span class="st">'data/raw'</span>, <span class="st">'data/processed'</span>, <span class="st">'data/temp'</span>, <span class="st">'docs/manuscript'</span>, <span class="st">'docs/reports'</span>, <span class="st">'results/figures'</span>, <span class="st">'results/output'</span>]</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create folders</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> folder <span class="kw">in</span> folders:</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> Path(project_path <span class="op">/</span> folder).exists():</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            Path.mkdir(project_path <span class="op">/</span> folder)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a list of files that should be created</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> [<span class="st">'README.md'</span>, <span class="st">'LICENSE.md'</span>, <span class="st">'CITATION.md'</span>, <span class="st">'.gitignore'</span>, <span class="st">'requirements.txt'</span>, <span class="st">'docs/manuscript/notes.txt'</span>]</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create files</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> Path(project_path <span class="op">/</span> <span class="bu">file</span>).exists():</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>            Path.touch(project_path <span class="op">/</span> <span class="bu">file</span>)</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>create_folder_setup(<span class="st">"TestProject"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ac8be0cd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:49.002083Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:48.996554Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_folder_setup(project_name):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a project folder in documents</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    project_path <span class="op">=</span> Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> project_name</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> Path(project_path).exists():</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        Path.mkdir(project_path)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a list of folders that should be created</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    folders <span class="op">=</span> [<span class="st">'src'</span>, <span class="st">'data'</span>, <span class="st">'docs'</span>, <span class="st">'results'</span>, <span class="st">'config'</span>, <span class="st">'bin'</span>, <span class="st">'data/raw'</span>, <span class="st">'data/processed'</span>, <span class="st">'data/temp'</span>, <span class="st">'docs/manuscript'</span>, <span class="st">'docs/reports'</span>, <span class="st">'results/figures'</span>, <span class="st">'results/output'</span>]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create folders</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> folder <span class="kw">in</span> folders:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> Path(project_path <span class="op">/</span> folder).exists():</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            Path.mkdir(project_path <span class="op">/</span> folder)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a list of files that should be created</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    files <span class="op">=</span> [<span class="st">'README.md'</span>, <span class="st">'LICENSE.md'</span>, <span class="st">'CITATION.md'</span>, <span class="st">'.gitignore'</span>, <span class="st">'requirements.txt'</span>, <span class="st">'docs/manuscript/notes.txt'</span>]</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create files</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> Path(project_path <span class="op">/</span> <span class="bu">file</span>).exists():</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            Path.touch(project_path <span class="op">/</span> <span class="bu">file</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>create_folder_setup(<span class="st">"TestProject"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Although we’ve already created an empty README file, there are useful templates available to help you complete it. In <a href="https://realpython.com/readme-python-project/">this tutorial</a>, you’ll find specific editors designed to assist with filling them in.</p>
 </section>
 <section id="collaborating---how-to-paste-the-folder-and-file-structure-into-the-readme" class="level2">
 <h2 class="anchored" data-anchor-id="collaborating---how-to-paste-the-folder-and-file-structure-into-the-readme">Collaborating - How to paste the folder and file structure into the README</h2>
 <p>What we might want to use Python for directly is inserting file paths into a README. For that, we can reuse content from another Programming Café session.</p>
-<p>The goal is to create the following overview: <code>markdown text TestProject/ ├──LICENSE.md ├──requirements.txt ├──README.md ├──.gitignore ├──CITATION.md     ├──bin/     ├──config/     ├──docs/         ├──manuscript/         ├──notes.txt         ├──reports/     ├──results/         ├──output/         ├──figures/     ├──data/         ├──temp/         ├──processed/         ├──raw/     ├──src/</code></p>
-<div id="7dece5b0c39bcc5d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.871005Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.867361Z&quot;}}" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_README(project_path):</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Open the Readme file, print the header and then all information about the files</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> <span class="bu">open</span>(project_path <span class="op">/</span><span class="st">"README.md"</span>, mode <span class="op">=</span> <span class="st">"w"</span>, encoding <span class="op">=</span> <span class="st">"utf-8"</span>) <span class="im">as</span> file_out:</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># for every directory/folder that we find...</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> dirpath, dirnames, files <span class="kw">in</span> Path.walk(project_path):</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>          <span class="co"># calculate needed indent by looking at the depth of the directory</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>          dir_length <span class="op">=</span> <span class="bu">len</span>(dirpath.parts) <span class="op">-</span> <span class="bu">len</span>(project_path.parts)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>          indent <span class="op">=</span> dir_length <span class="op">*</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>          <span class="co"># print indented directory name</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">├──</span><span class="sc">{</span>dirpath<span class="sc">.</span>name<span class="sc">}</span><span class="ss">/"</span>, <span class="bu">file</span> <span class="op">=</span> file_out) <span class="cf">if</span> dir_length <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>dirpath<span class="sc">.</span>name<span class="sc">}</span><span class="ss">/"</span>, <span class="bu">file</span> <span class="op">=</span> file_out)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>          <span class="co">#...iterate through files and print file information in the readme</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>              <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">├──</span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss">"</span>, <span class="bu">file</span> <span class="op">=</span> file_out)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>generate_README(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>) <span class="co"># Replace with your own preferred path</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The goal is to create the following overview:</p>
+<pre><code>TestProject/
+├──LICENSE.md
+├──requirements.txt
+├──README.md
+├──.gitignore
+├──CITATION.md
+    ├──bin/
+    ├──config/
+    ├──docs/
+        ├──manuscript/
+        ├──notes.txt
+        ├──reports/
+    ├──results/
+        ├──output/
+        ├──figures/
+    ├──data/
+        ├──temp/
+        ├──processed/
+        ├──raw/
+    ├──src/</code></pre>
+<div id="00f71399" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.871005Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.867361Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_README(project_path):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Open the Readme file, print the header and then all information about the files</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> <span class="bu">open</span>(project_path <span class="op">/</span><span class="st">"README.md"</span>, mode <span class="op">=</span> <span class="st">"w"</span>, encoding <span class="op">=</span> <span class="st">"utf-8"</span>) <span class="im">as</span> file_out:</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># for every directory/folder that we find...</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> dirpath, dirnames, files <span class="kw">in</span> Path.walk(project_path):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>          <span class="co"># calculate needed indent by looking at the depth of the directory</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>          dir_length <span class="op">=</span> <span class="bu">len</span>(dirpath.parts) <span class="op">-</span> <span class="bu">len</span>(project_path.parts)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>          indent <span class="op">=</span> dir_length <span class="op">*</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>          <span class="co"># print indented directory name</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">├──</span><span class="sc">{</span>dirpath<span class="sc">.</span>name<span class="sc">}</span><span class="ss">/"</span>, <span class="bu">file</span> <span class="op">=</span> file_out) <span class="cf">if</span> dir_length <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>dirpath<span class="sc">.</span>name<span class="sc">}</span><span class="ss">/"</span>, <span class="bu">file</span> <span class="op">=</span> file_out)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>          <span class="co">#...iterate through files and print file information in the readme</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>          <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>              <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>indent<span class="sc">}</span><span class="ss">├──</span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss">"</span>, <span class="bu">file</span> <span class="op">=</span> file_out)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>generate_README(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>) <span class="co"># Replace with your own preferred path</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="collaborating---how-to-check-whether-your-file-names-fit-your-conventions" class="level2">
 <h2 class="anchored" data-anchor-id="collaborating---how-to-check-whether-your-file-names-fit-your-conventions">Collaborating - How to check whether your file names fit your conventions</h2>
-<p>You can also use Python to verify whether your file names match the pattern you’ve chosen. You can create the pattern using one of these useful websites: - https://regexr.com - https://regex101.com</p>
+<p>You can also use Python to verify whether your file names match the pattern you’ve chosen. You can create the pattern using one of these useful websites:</p>
+<ul>
+<li>https://regexr.com</li>
+<li>https://regex101.com</li>
+</ul>
 <p>The example below matches it to this pattern <code>YYYYMMDD_ExperimentID_Task_Version</code>.</p>
-<p>It fits the following file names: - 19951231_exp1543_interview_v1.csv - 20030128_exp1549_survey_v2.csv</p>
+<p>It fits the following file names:</p>
+<ul>
+<li>19951231_exp1543_interview_v1.csv</li>
+<li>20030128_exp1549_survey_v2.csv</li>
+</ul>
 <p>If you want to know how to rename your files, have a look at the content of our <a href="https://eur-nl.github.io/rs_training/lesson_2.html">previous programming café</a>!</p>
-<div id="fd260aeac32c1c0d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.877987Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.874061Z&quot;}}" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_filenames(project_path):</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create file that will contain the files that have been validated</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(project_path <span class="op">/</span><span class="st">'validated_files.csv'</span>, <span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> csvfile:</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        validated <span class="op">=</span> csv.writer(csvfile, delimiter<span class="op">=</span><span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for every file in the project...</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> dirpath, dirnames, files <span class="kw">in</span> Path.walk(project_path):</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                <span class="co"># if it is a csv file...</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">file</span>.endswith((<span class="st">".csv"</span>, <span class="st">".txt"</span>, <span class="st">".odt"</span>)):</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...define pattern... (the example matches YYYYMMDD_expID_Task_Version)</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># example file names: 19951231_exp1543_interview_v1.csv and 20030128_exp1549_survey_v2.csv</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>                    pattern <span class="op">=</span> <span class="vs">r"</span><span class="dv">^</span>(?:<span class="vs">19</span><span class="cf">|</span><span class="vs">20</span>)<span class="dv">\d</span><span class="op">{2}</span>(?:<span class="vs">0</span><span class="pp">[1-9]</span><span class="cf">|</span><span class="vs">1</span><span class="pp">[0-2]</span>)(?:<span class="vs">0</span><span class="pp">[1-9]</span><span class="cf">|</span><span class="pp">[12]</span><span class="dv">\d</span><span class="cf">|</span><span class="vs">3</span><span class="pp">[01]</span>)<span class="vs">_exp</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">_</span><span class="dv">\w</span><span class="op">+</span><span class="vs">_v</span><span class="dv">\d</span><span class="op">+</span><span class="vs">"</span> <span class="co"># FILL IN YOUR FILE PATTERN HERE</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...and test against pattern and print results</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> re.match(pattern, <span class="bu">file</span>) <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                        validated.writerow([<span class="bu">file</span>,<span class="st">'tested'</span>,<span class="st">'not consistent'</span>])</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">else</span>:</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                        validated.writerow([<span class="bu">file</span>,<span class="st">'tested'</span>,<span class="st">'consistent'</span>])</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>                <span class="co"># else print that the file has not been tested</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                    validated.writerow([<span class="bu">file</span>,<span class="st">'not tested'</span>,<span class="st">'NA'</span>])</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>validate_filenames(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>) <span class="co"># Replace with your own preferred path</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9225a290" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.877987Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.874061Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_filenames(project_path):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create file that will contain the files that have been validated</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(project_path <span class="op">/</span><span class="st">'validated_files.csv'</span>, <span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> csvfile:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        validated <span class="op">=</span> csv.writer(csvfile, delimiter<span class="op">=</span><span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for every file in the project...</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> dirpath, dirnames, files <span class="kw">in</span> Path.walk(project_path):</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                <span class="co"># if it is a csv file...</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">file</span>.endswith((<span class="st">".csv"</span>, <span class="st">".txt"</span>, <span class="st">".odt"</span>)):</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...define pattern... (the example matches YYYYMMDD_expID_Task_Version)</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># example file names: 19951231_exp1543_interview_v1.csv and 20030128_exp1549_survey_v2.csv</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                    pattern <span class="op">=</span> <span class="vs">r"</span><span class="dv">^</span>(?:<span class="vs">19</span><span class="cf">|</span><span class="vs">20</span>)<span class="dv">\d</span><span class="op">{2}</span>(?:<span class="vs">0</span><span class="pp">[1-9]</span><span class="cf">|</span><span class="vs">1</span><span class="pp">[0-2]</span>)(?:<span class="vs">0</span><span class="pp">[1-9]</span><span class="cf">|</span><span class="pp">[12]</span><span class="dv">\d</span><span class="cf">|</span><span class="vs">3</span><span class="pp">[01]</span>)<span class="vs">_exp</span><span class="dv">\d</span><span class="op">{4}</span><span class="vs">_</span><span class="dv">\w</span><span class="op">+</span><span class="vs">_v</span><span class="dv">\d</span><span class="op">+</span><span class="vs">"</span> <span class="co"># FILL IN YOUR FILE PATTERN HERE</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ...and test against pattern and print results</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> re.match(pattern, <span class="bu">file</span>) <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                        validated.writerow([<span class="bu">file</span>,<span class="st">'tested'</span>,<span class="st">'not consistent'</span>])</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">else</span>:</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                        validated.writerow([<span class="bu">file</span>,<span class="st">'tested'</span>,<span class="st">'consistent'</span>])</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                <span class="co"># else print that the file has not been tested</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                    validated.writerow([<span class="bu">file</span>,<span class="st">'not tested'</span>,<span class="st">'NA'</span>])</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>validate_filenames(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>) <span class="co"># Replace with your own preferred path</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="collaborating---how-to-validate-your-file-format" class="level2">
 <h2 class="anchored" data-anchor-id="collaborating---how-to-validate-your-file-format">Collaborating - How to validate your file format</h2>
 <p>Using the same techniques as before, you can also use Python to check whether the file formats you’ve chosen are preferred. To do this, you’ll need to create a list of all preferred formats (you can base it on the DANS list of preferred file formats <a href="https://dans.knaw.nl/en/file-formats/">here</a>).</p>
-<div id="d51c7ec2086e5951" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_filetype(project_path):</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for every file in the project...</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> dirpath, dirnames, files <span class="kw">in</span> Path.walk(project_path):</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                valid <span class="op">=</span> [<span class="st">'.odt'</span>, <span class="st">'.pdf'</span>, <span class="st">'.txt'</span>, <span class="st">'.xml'</span>, <span class="st">'.html'</span>, <span class="st">'.md'</span>, <span class="st">'.ods'</span>, <span class="st">'.csv'</span>,<span class="st">'.dat'</span>, <span class="st">'.sps'</span>, <span class="st">'.DO'</span>, <span class="st">'.R'</span>,<span class="st">'.siard'</span>, <span class="st">'.sql'</span>, <span class="st">'.txt'</span>, <span class="st">'.py'</span>]</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                <span class="co"># ...check whether file extension is NOT in list of preferred formats...</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="kw">not</span> <span class="bu">any</span>(<span class="bu">file</span>.endswith(ext) <span class="cf">for</span> ext <span class="kw">in</span> valid):</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                    <span class="co">#... and print warning</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss"> is not in a preferred file format"</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>validate_filetype(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="21c4a463" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_filetype(project_path):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for every file in the project...</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> dirpath, dirnames, files <span class="kw">in</span> Path.walk(project_path):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                valid <span class="op">=</span> [<span class="st">'.odt'</span>, <span class="st">'.pdf'</span>, <span class="st">'.txt'</span>, <span class="st">'.xml'</span>, <span class="st">'.html'</span>, <span class="st">'.md'</span>, <span class="st">'.ods'</span>, <span class="st">'.csv'</span>,<span class="st">'.dat'</span>, <span class="st">'.sps'</span>, <span class="st">'.DO'</span>, <span class="st">'.R'</span>,<span class="st">'.siard'</span>, <span class="st">'.sql'</span>, <span class="st">'.txt'</span>, <span class="st">'.py'</span>]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                <span class="co"># ...check whether file extension is NOT in list of preferred formats...</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="kw">not</span> <span class="bu">any</span>(<span class="bu">file</span>.endswith(ext) <span class="cf">for</span> ext <span class="kw">in</span> valid):</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                    <span class="co">#... and print warning</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">file</span><span class="sc">}</span><span class="ss"> is not in a preferred file format"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>validate_filetype(Path.home() <span class="op">/</span> <span class="st">'Documents'</span> <span class="op">/</span> <span class="st">'TestProject'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="other-useful-tools-and-links" class="level3">
 <h3 class="anchored" data-anchor-id="other-useful-tools-and-links">Other useful tools and links</h3>
@@ -954,6 +989,9 @@ pip install -r requirements.txt</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./IDEs.html" class="pagination-link" aria-label="6 IDEs and virtual environments">
+        <span class="nav-page-text">6 IDEs and virtual environments</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
