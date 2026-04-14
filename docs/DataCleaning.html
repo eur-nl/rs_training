@@ -540,7 +540,7 @@ Length: 10, dtype: str</code></pre>
 </section>
 <section id="wait-logging" class="level2">
 <h2 class="anchored" data-anchor-id="wait-logging">WAIT! Logging?</h2>
-<p>We just wanted to start deleting, however, we want to keep track of everthing. For that I want to write a small function that we can reuse.</p>
+<p>We just wanted to start deleting, however, we want to keep track of everything. For that I want to write a small function that we can reuse.</p>
 <div id="1237feff044f4ff5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.574957Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.573155Z&quot;}}" data-execution_count="498">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -883,9 +883,9 @@ Name: Gender, Length: 1000, dtype: str</code></pre>
 <div id="87376bfa60f50242" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-03T15:33:32.708757Z&quot;,&quot;start_time&quot;:&quot;2026-02-03T15:33:32.675191Z&quot;}}" data-execution_count="516">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_date(date):</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that takes the date and time and tries out to parse it using every possible format"""</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">format</span> <span class="kw">in</span> [<span class="st">"%B </span><span class="sc">%d</span><span class="st">, %Y"</span>, <span class="st">"%Y/%m/</span><span class="sc">%d</span><span class="st">"</span>,<span class="st">"%m/</span><span class="sc">%d</span><span class="st">/%Y"</span>, <span class="st">"%m-</span><span class="sc">%d</span><span class="st">-%Y"</span>, <span class="st">"%Y.%m.</span><span class="sc">%d</span><span class="st">"</span>]:</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> formats <span class="kw">in</span> [<span class="st">"%B </span><span class="sc">%d</span><span class="st">, %Y"</span>, <span class="st">"%Y/%m/</span><span class="sc">%d</span><span class="st">"</span>,<span class="st">"%m/</span><span class="sc">%d</span><span class="st">/%Y"</span>, <span class="st">"%m-</span><span class="sc">%d</span><span class="st">-%Y"</span>, <span class="st">"%Y.%m.</span><span class="sc">%d</span><span class="st">"</span>]:</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> pandas.to_datetime(date, <span class="bu">format</span><span class="op">=</span><span class="bu">format</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> pandas.to_datetime(date, <span class="bu">format</span><span class="op">=</span>formats)</span>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span></span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pandas.NaT</span>

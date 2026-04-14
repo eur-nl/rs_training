@@ -601,7 +601,7 @@ Adult: p4 is 55 years old
 Senior: p5 is 66 years old</code></pre>
 </div>
 </div>
-<p>Now, <code>seniors_local</code>, <code>juniors_local</code>, and <code>adults_local</code> are not accessible outside of the function. Similarly, we cannot access <code>seniors_local</code> outside of the function. Let’s test it.</p>
+<p>Now, <code>seniors_local</code>, <code>juniors_local</code>, and <code>adults_local</code> are not accessible outside the function. Similarly, we cannot access <code>seniors_local</code> outside of the function. Let’s test it.</p>
 <div id="7e692d7e-547c-4003-a317-5890e0ed6e1f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:52:31.936589Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:52:31.927455Z&quot;}}" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(seniors_local)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
@@ -831,7 +831,7 @@ Senior: Adam is 66 years old</code></pre>
 <br>
 Let’s add another participant:</p>
 <div id="cac08218-f649-4e1a-bc1f-ddd79cfdc357" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-02-23T14:55:20.631985Z&quot;,&quot;start_time&quot;:&quot;2026-02-23T14:55:20.628514Z&quot;}}" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the mode to a, this allows us to append new lines</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the mode to 'a', this allows us to append new lines</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output/participants.txt'</span>, mode<span class="op">=</span><span class="st">"a"</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> file_out:</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Adult: Fred is 55 years old"</span>, <span class="bu">file</span><span class="op">=</span>file_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -858,7 +858,7 @@ Adult: Fred is 55 years old
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with read, we receive the full text as string</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to receive every line, we can use readlines()</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the mode to a, this allows us to append new lines</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the mode to 'a', this allows us to append new lines</span></span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'static/participants.txt'</span>, mode<span class="op">=</span><span class="st">"r"</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> file_in:</span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(file_in.readlines())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
