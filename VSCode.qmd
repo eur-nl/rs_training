@@ -32,7 +32,7 @@ In this document, you can write all your code! Do not forget to save it!
 
 ## Get to know the basic features
 
-### Identation & Syntax Highlighting
+### Indentation & Syntax Highlighting
 
 Similar to other IDEs VS Code highlights your syntax according to the programming language that you chose. The following example shows the coloring of a Python script:
 

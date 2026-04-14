@@ -69,7 +69,7 @@ df.to_csv(data_path / "NewData.csv", index = False)
 print(df)
 ```
 
-In the following output `Birth_Date_rounded` has been shortened to `BD` and `ZIP_Code_redacted` to `ZIP` to allow for better readibility on the website:
+In the following output `Birth_Date_rounded` has been shortened to `BD` and `ZIP_Code_redacted` to `ZIP` to allow for better readability on the website:
 
 | `Username       BD   Gender   ZIP        Complaint`
 | `0   User_1   1960    Male  2xxxx  Short of breath`

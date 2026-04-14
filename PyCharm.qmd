@@ -33,7 +33,7 @@ After writing your code, you can click on the play button in the upper left corn
 
 ## Get to know the basic features
 
-### Identation & Syntax Highlighting
+### Indentation & Syntax Highlighting
 
 PyCharm [automatically indents](https://www.jetbrains.com/help/pycharm/indentation.html) your code according to the programming language that you chose. The status bar shows you the setting (e.g., "4 spaces").
 
@@ -107,4 +107,4 @@ You can use PyCharm for remote development (e.g., with a SURF product). SURF pro
 
 - JetBrains (the company behind PyCharm) offers various [tutorials](https://www.jetbrains.com/pycharm/learn/) on PyCharm.
 - Want to learn more about Python? Have a look at our Python course "Python Fundamentals" on the left side of this website.
-- Similar to the Data Carpentries, the Carpentries also offer ["Programming with Python"](https://swcarpentry.github.io/python-novice-inflammation/) in their Software Carpentry lessons. Are you interesting in the following the course in-person? Please contact one of our trainers!
+- Similar to the Data Carpentries, the Carpentries also offer ["Programming with Python"](https://swcarpentry.github.io/python-novice-inflammation/) in their Software Carpentry lessons. Are you interesting in the attending the course in-person? Please contact one of our trainers!
