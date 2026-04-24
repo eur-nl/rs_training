@@ -342,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="data-sharing-de-identification-of-data">Data sharing – De-identification of data</h2>
 <p>In last Tuesday’s session, you learned how to share your data responsibly. You explored the de-identification of qualitative data and learned how to prepare your publication package.</p>
 <p>Programming can assist you in de-identifying your data! Using research software, you can choose to either pseudonymize or anonymize it. Let’s take a closer look at how we can replace personal names, distort ages, and redact ZIP codes in <strong><a href="material/DataManagement.zip">this data</a></strong>:</p>
-<div id="b0129771" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:27.998150Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:27.984054Z&quot;}}">
+<div id="132c6bd5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:27.998150Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:27.984054Z&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in file</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span>
@@ -385,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 If you have saved a specific mapping, you can use it to pseudonymize textual data. In the following example, we used the generated usernames to replace the names in the text. If you want to follow along, just copy your rename your <code>mapping.csv</code>-file to <code>mapping_manual.csv</code>. You can then also add the following two lines (manually):</p>
 <div class="line-block"><code>Manchester,England</code><br>
 <code>1965,the 60s</code></div>
-<div id="d9a744b2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:42.007534Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:42.001716Z&quot;}}">
+<div id="e7cfd741" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:42.007534Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:42.001716Z&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use your mapping file to change texts</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the mapping</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {}</span>
@@ -432,7 +432,7 @@ pip install -r requirements.txt</code></pre>
 <h2 class="anchored" data-anchor-id="collaborating---create-folder-structure">Collaborating - Create folder structure</h2>
 <p>In last Thursday’s session on collaboration, you learned more about structuring a research project. Did you know that Python can help you create a structured project folder?</p>
 <p>The following code creates a folder structure as recommended by the <a href="https://github.com/bvreede/good-enough-project">good-enough-project</a>:</p>
-<div id="5e723388" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:49.002083Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:48.996554Z&quot;}}">
+<div id="099ff367" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T16:01:49.002083Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T16:01:48.996554Z&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_folder_setup(project_name):</span>
@@ -483,7 +483,7 @@ pip install -r requirements.txt</code></pre>
         ├──processed/
         ├──raw/
     ├──src/</code></pre>
-<div id="4778735a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.871005Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.867361Z&quot;}}">
+<div id="3c38eff1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.871005Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.867361Z&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_README(project_path):</span>
@@ -519,7 +519,7 @@ pip install -r requirements.txt</code></pre>
 <li>20030128_exp1549_survey_v2.csv</li>
 </ul>
 <p>If you want to know how to rename your files, have a look at the content of our <a href="https://eur-nl.github.io/rs_training/lesson_2.html">previous programming café</a>!</p>
-<div id="94872c9f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.877987Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.874061Z&quot;}}">
+<div id="188edc7f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;ExecuteTime&quot;,&quot;value&quot;:{&quot;end_time&quot;:&quot;2026-03-17T15:50:55.877987Z&quot;,&quot;start_time&quot;:&quot;2026-03-17T15:50:55.874061Z&quot;}}">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -551,7 +551,7 @@ pip install -r requirements.txt</code></pre>
 <section id="collaborating---how-to-validate-your-file-format" class="level2">
 <h2 class="anchored" data-anchor-id="collaborating---how-to-validate-your-file-format">Collaborating - How to validate your file format</h2>
 <p>Using the same techniques as before, you can also use Python to check whether the file formats you’ve chosen are preferred. To do this, you’ll need to create a list of all preferred formats (you can base it on the DANS list of preferred file formats <a href="https://dans.knaw.nl/en/file-formats/">here</a>).</p>
-<div id="5ca9ea06" class="cell">
+<div id="f5c471ac" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_filetype(project_path):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for every file in the project...</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> dirpath, dirnames, files <span class="kw">in</span> Path.walk(project_path):</span>

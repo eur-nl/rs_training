@@ -461,39 +461,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="get-to-know-rstudio" class="level1">
 <h1>Get to know RStudio</h1>
-<p>Do you want to be more efficient when using RStudio? The following overview is based on the <a href="https://docs.posit.co/ide/user/ide/get-started/">RStudio User Guide</a> and also contains screenshots taken from that website. It has been shortened to mostly show relevant content.<br>
+<p>Do you want to be more efficient when using RStudio? The following overview is based on the <a href="https://docs.posit.co/ide/user/ide/get-started/">RStudio User Guide</a>. It has been shortened to mostly show relevant content.<br>
 </p>
 <section id="a-quick-tour-through-your-ide" class="level2">
 <h2 class="anchored" data-anchor-id="a-quick-tour-through-your-ide">A quick tour through your IDE</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/rstudio-panes-labeled.jpeg" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_labeled.png" class="img-fluid figure-img"></p>
 <figcaption>Overview RStudio</figcaption>
 </figure>
 </div>
 <p>The interface of RStudio shows you four so-called “panes”:</p>
 <ul>
-<li>The Source pane (1) allows you to edit your R scripts.</li>
-<li>The Console pane (2) can be used to write short R commands that do not need to be listed in the script (e.g., help() or view() to access more information).</li>
-<li>The Environment pane (3) shows your environment, i.e., the objects that you created.</li>
-<li>The Output pane (4) shows your plots, tables or html files.</li>
+<li>The Source pane (A) allows you to edit your R scripts.</li>
+<li>The Environment pane (B) shows your environment, i.e., the objects that you created.</li>
+<li>The Console pane (C) can be used to write short R commands that do not need to be listed in the script (e.g., help() or view() to access more information).</li>
+<li>The Output pane (D) shows your plots, tables or html files.</li>
 </ul>
 <p>As you can already see in the screenshot, the four panes have multiple functions. In the Output pane, for example, you can also manage your packages, look at the documentation or see your folder structure.</p>
 </section>
 <section id="how-do-i-run-simple-code" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-run-simple-code">How do I run simple code?</h2>
 <p>To run simple code, you can just use the Console pane. However, to actually perform analyses, we recommend that you <a href="https://docs.posit.co/ide/user/ide/guide/code/projects.html">create a new Project</a>. To do that, click on <code>File &gt; New Project</code> and choose your working directory.</p>
-<p>After that, you can click on the green plus in the upper left corner to <a href="https://docs.posit.co/ide/user/ide/guide/ui/files.html">create an empty .R script</a>.</p>
+<p>After that, you can click on the green plus in the upper left corner to <a href="https://docs.posit.co/ide/user/ide/guide/ui/files.html">create an empty.R script</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/R_file.jpeg" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/R_file.png" class="img-fluid figure-img"></p>
 <figcaption>How to create an empty script in RStudio</figcaption>
 </figure>
 </div>
 <p>In this document, you can write all your code! Do not forget to save it in your working directory!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/Empty_script.jpeg" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/Empty_script.png" class="img-fluid figure-img"></p>
 <figcaption>First look at the empty script in RStudio</figcaption>
 </figure>
 </div>
@@ -505,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>While writing your own code, R highlights important expressions in blue and comments in green. It also helps you manage your indentation, such as when writing a function. The following screenshot provides an example:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/syntax_highlighting.jpeg" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_syntax_highlighting.png" class="img-fluid figure-img"></p>
 <figcaption>Syntax highlighting in RStudio</figcaption>
 </figure>
 </div>
@@ -516,15 +516,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Here you can see an example of function completion:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/console-completion.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_completion.png" class="img-fluid figure-img"></p>
 <figcaption>Function completion in RStudio</figcaption>
-</figure>
-</div>
-<p>And here an example of argument completion:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./figures/RStudio/console-completion-args.png" class="img-fluid figure-img"></p>
-<figcaption>Argument completion in RStudio</figcaption>
 </figure>
 </div>
 </section>
@@ -534,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the following screenshot you can see the documentation of the <code>sqrt()</code>function:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/help-function.jpeg" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_help.png" class="img-fluid figure-img"></p>
 <figcaption>Documentation of sqrt() in RStudio</figcaption>
 </figure>
 </div>
@@ -544,14 +537,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you encounter a bug and want to understand its cause, you might consider using <a href="https://docs.posit.co/ide/user/ide/guide/code/debugging.html">debugging</a>. To do this, you need to tell R when to inspect the status of your program. You can achieve this by setting breakpoints with a left click next to your code (on the index/line number to the left).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/breakpoint-rstudio.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_breakpoints.png" class="img-fluid figure-img"></p>
 <figcaption>Breakpoints in RStudio</figcaption>
 </figure>
 </div>
 <p>Once your program reaches the breakpoint, it will stop and give you the insights that you wanted.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/using-the-debugger.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_debug.png" class="img-fluid figure-img"></p>
 <figcaption>debugger</figcaption>
 </figure>
 </div>
@@ -563,17 +556,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Turning the diagnostics on, you will see the potential problems. The screenshot below shows an example of a stylistic issue. R Studio offers a good overview of all potential messages <a href="https://docs.posit.co/ide/user/ide/guide/code/diagnostics.html">here</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/warning-whitespace.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_diagnostics.png" class="img-fluid figure-img"></p>
 <figcaption>Code diagnostics in RStudio</figcaption>
 </figure>
 </div>
 </section>
 <section id="version-control" class="level3">
 <h3 class="anchored" data-anchor-id="version-control">Version control</h3>
-<p>It is possible to connect R Studio with Git and Subversion. To do that, you can go to <code>Settings &gt; GIT/SVN</code> and then enable the version control. Once you enabled it, you will find the Git tab in the Environment pane which shows you the current changes. It also allows you to <code>commit</code>, <code>push</code> and <code>pull</code> using the Git dropdown.</p>
+<p>It is possible to connect R Studio with Git and Subversion. To do that, you can go to <code>Settings &gt; GIT/SVN</code> and then enable the version control. Once you enabled it, you will find the Git tab (E) in the Environment pane which shows you the current changes. It also allows you to <code>commit</code>, <code>push</code> and <code>pull</code> using the Git dropdown.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/RStudio/rstudio-vcs-pane-labeled.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/RStudio/rstudio_git.png" class="img-fluid figure-img"></p>
 <figcaption>Git in RStudio</figcaption>
 </figure>
 </div>
@@ -605,26 +598,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="get-to-know-pycharm" class="level1">
 <h1>Get to know PyCharm</h1>
-<p>The following overview is based on the <a href="https://www.jetbrains.com/help/pycharm/quick-start-guide.html">PyCharm User Guide</a> and also contains screenshots taken from that website. It has been shortened to mostly show relevant content.</p>
+<p>The following overview is based on the <a href="https://www.jetbrains.com/help/pycharm/quick-start-guide.html">PyCharm User Guide</a>. It has been shortened to mostly show relevant content.</p>
 <section id="a-quick-tour-through-your-ide-1" class="level2">
 <h2 class="anchored" data-anchor-id="a-quick-tour-through-your-ide-1">A quick tour through your IDE</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/PyCharm/py_main_window_overview.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/PyCharm/pycharm_panels.png" class="img-fluid figure-img"></p>
 <figcaption>Overview PyCharm</figcaption>
 </figure>
 </div>
 <p>The interface of PyCharm shows you nine different elements.</p>
 <ul>
-<li>The window header (1) contains buttons that allow easy access to import functions such as running the code.</li>
-<li>The project tool window (2) shows the folder structure. It can be used to navigate between files.</li>
-<li>The editor (3) allows you to edit your Python scripts and switch between open files using the tabs.</li>
-<li>When you right-click, the context menu (4) opens. It provides a convenient way to access functions, such as refactoring a file.</li>
-<li>The navigation bar (5) shows you where you are right now and allows you to switch to your parent folders.</li>
-<li>The gutter (6) shows you in which line of code you are working and allows you to set breakpoints to debug your code.</li>
-<li>The scrollbar (7) provides hints and notifications about your code, such as style issues or potential errors.</li>
-<li>The tool windows (8) allow you to access the console and the debugger.</li>
-<li>The status bar (9) shows you the file formatting, some warnings and the virtual environment that you are in.</li>
+<li>The window header (A) contains buttons that allow easy access to import functions such as running the code.</li>
+<li>The project tool window (B) shows the folder structure. It can be used to navigate between files.</li>
+<li>The editor (C) allows you to edit your Python scripts and switch between open files using the tabs.</li>
+<li>When you right-click, the context menu (D) opens. It provides a convenient way to access functions, such as refactoring a file.</li>
+<li>The navigation bar (E) shows you where you are right now and allows you to switch to your parent folders.</li>
+<li>The gutter (F) shows you in which line of code you are working and allows you to set breakpoints to debug your code.</li>
+<li>The scrollbar (G) provides hints and notifications about your code, such as style issues or potential errors.</li>
+<li>The tool windows (H) allow you to access the console and the debugger.</li>
+<li>The status bar (I) shows you the file formatting, some warnings and the virtual environment that you are in.</li>
 </ul>
 </section>
 <section id="how-do-i-run-simple-code-1" class="level2">
@@ -678,7 +671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If you work with <a href="https://www.jetbrains.com/help/pycharm/python-code-insight.html#regex">regular expressions</a>, PyCharm can help you check whether your string matches your expression. To do that, you can click <code>Option</code> (or <code>Alt</code>) and <code>Enter</code> when your mouse is above the regular expression.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/PyCharm/py_check_regexp1.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/PyCharm/pycharm_regex.png" class="img-fluid figure-img"></p>
 <figcaption>Regular expressions in PyCharm</figcaption>
 </figure>
 </div>
@@ -746,7 +739,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="get-to-know-vs-code" class="level1">
 <h1>Get to know VS Code</h1>
-<p>The following overview is based on the <a href="https://code.visualstudio.com/docs">Visual Studio Code Documentation</a> as well as <a href="https://carpentries-incubator.github.io/byte-sized-rse-vscode/index.html">the Carpentry lesson on IDEs</a> and also contains screenshots taken from these websites. The content has been shortened to mostly show relevant content.</p>
+<p>The following overview is based on the <a href="https://code.visualstudio.com/docs">Visual Studio Code Documentation</a> as well as <a href="https://carpentries-incubator.github.io/byte-sized-rse-vscode/index.html">the Carpentry lesson on IDEs</a>. The content has been shortened to mostly show relevant content.</p>
 <section id="a-quick-tour-through-your-ide-2" class="level2">
 <h2 class="anchored" data-anchor-id="a-quick-tour-through-your-ide-2">A quick tour through your IDE</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -940,7 +933,7 @@ Do you want to proceed? [y/N]: </code></pre>
 <p>In PyCharm, there are multiple ways to set up a virtual environment. The fastest way is to create it when creating a new project. To do this, click on <code>File &gt; New Project...</code> and you will see the following window:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/PyCharm/pycharm_venv.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/PyCharm/py_new_project.png" class="img-fluid figure-img"></p>
 <figcaption>Creating a virtual environment with PyCharm</figcaption>
 </figure>
 </div>
@@ -948,7 +941,7 @@ Do you want to proceed? [y/N]: </code></pre>
 <p><a href="https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html">Another way to create a virtual environment for an existing project</a> is to click on the Python Interpreter selector (in the lower right corner) and either choose the interpreter (and venv) of choice or click on <code>Add Interpreter &gt; Add Local Interpreter</code>. Afterward you will get a similar window as shown for the project creation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figures/PyCharm/py_python_interpreter_widget.png" class="img-fluid figure-img"></p>
+<p><img src="./figures/PyCharm/pycharm_venv.png" class="img-fluid figure-img"></p>
 <figcaption>Creating a virtual environment for an existing project with PyCharm</figcaption>
 </figure>
 </div>
