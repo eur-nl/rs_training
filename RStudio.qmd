@@ -1,17 +1,17 @@
 # Get to know RStudio
 
-Do you want to be more efficient when using RStudio? The following overview is based on the [RStudio User Guide](https://docs.posit.co/ide/user/ide/get-started/) and also contains screenshots taken from that website. It has been shortened to mostly show relevant content. \
+Do you want to be more efficient when using RStudio? The following overview is based on the [RStudio User Guide](https://docs.posit.co/ide/user/ide/get-started/). It has been shortened to mostly show relevant content. \
 
 ## A quick tour through your IDE 
 
-![Overview RStudio](./figures/RStudio/rstudio-panes-labeled.jpeg)
+![Overview RStudio](./figures/RStudio/rstudio_labeled.png)
 
 The interface of RStudio shows you four so-called "panes": 
 
-- The Source pane (1) allows you to edit your R scripts.
-- The Console pane (2) can be used to write short R commands that do not need to be listed in the script (e.g., help() or view() to access more information). 
-- The Environment pane (3) shows your environment, i.e., the objects that you created. 
-- The Output pane (4) shows your plots, tables or html files.
+- The Source pane (A) allows you to edit your R scripts.
+- The Environment pane (B) shows your environment, i.e., the objects that you created. 
+- The Console pane (C) can be used to write short R commands that do not need to be listed in the script (e.g., help() or view() to access more information). 
+- The Output pane (D) shows your plots, tables or html files.
 
 As you can already see in the screenshot, the four panes have multiple functions. In the Output pane, for example, you can also manage your packages, look at the documentation or see your folder structure.
 
@@ -19,13 +19,13 @@ As you can already see in the screenshot, the four panes have multiple functions
 
 To run simple code, you can just use the Console pane. However, to actually perform analyses, we recommend that you [create a new Project](https://docs.posit.co/ide/user/ide/guide/code/projects.html). To do that, click on `File > New Project` and choose your working directory.
 
-After that, you can click on the green plus in the upper left corner to [create an empty .R script](https://docs.posit.co/ide/user/ide/guide/ui/files.html). 
+After that, you can click on the green plus in the upper left corner to [create an empty.R script](https://docs.posit.co/ide/user/ide/guide/ui/files.html). 
 
-![How to create an empty script in RStudio](./figures/RStudio/R_file.jpeg)
+![How to create an empty script in RStudio](./figures/RStudio/R_file.png)
 
 In this document, you can write all your code! Do not forget to save it in your working directory! 
 
-![First look at the empty script in RStudio](./figures/RStudio/Empty_script.jpeg)
+![First look at the empty script in RStudio](./figures/RStudio/Empty_script.png)
 
 ## Get to know the basic features
 
@@ -33,7 +33,7 @@ In this document, you can write all your code! Do not forget to save it in your 
 
 While writing your own code, R highlights important expressions in blue and comments in green. It also helps you manage your indentation, such as when writing a function. The following screenshot provides an example:
 
-![Syntax highlighting in RStudio](./figures/RStudio/syntax_highlighting.jpeg)
+![Syntax highlighting in RStudio](./figures/RStudio/rstudio_syntax_highlighting.png)
 
 ### Autocompletion
 
@@ -41,11 +41,7 @@ RStudio can help you with writing your code by offering [automatic completion](h
 
 Here you can see an example of function completion: 
 
-![Function completion in RStudio](./figures/RStudio/console-completion.png)
-
-And here an example of argument completion:
-
-![Argument completion in RStudio](./figures/RStudio/console-completion-args.png)
+![Function completion in RStudio](./figures/RStudio/rstudio_completion.png)
 
 ### Documentation
 
@@ -53,17 +49,17 @@ Within R, you can have a quick look into the documentation by using the [`help()
 
 In the following screenshot you can see the documentation of the `sqrt()`function:
 
-![Documentation of sqrt() in RStudio](./figures/RStudio/help-function.jpeg)
+![Documentation of sqrt() in RStudio](./figures/RStudio/rstudio_help.png)
 
 ### Debugging
 
 If you encounter a bug and want to understand its cause, you might consider using [debugging](https://docs.posit.co/ide/user/ide/guide/code/debugging.html). To do this, you need to tell R when to inspect the status of your program. You can achieve this by setting breakpoints with a left click next to your code (on the index/line number to the left).
 
-![Breakpoints in RStudio](./figures/RStudio/breakpoint-rstudio.png)
+![Breakpoints in RStudio](./figures/RStudio/rstudio_breakpoints.png)
 
 Once your program reaches the breakpoint, it will stop and give you the insights that you wanted.
 
-![debugger](./figures/RStudio/using-the-debugger.png)
+![debugger](./figures/RStudio/rstudio_debug.png)
 
 If you are interested in how to debug, please have a look at the [RStudio documentation](https://docs.posit.co/ide/user/ide/guide/code/debugging.html). We hope to offer a Programming Café session on it in the future!
 
@@ -73,13 +69,13 @@ RStudio can analyze your code to identify potential errors and stylistic issues!
 
 Turning the diagnostics on, you will see the potential problems. The screenshot below shows an example of a stylistic issue. R Studio offers a good overview of all potential messages [here](https://docs.posit.co/ide/user/ide/guide/code/diagnostics.html). 
 
-![Code diagnostics in RStudio](./figures/RStudio/warning-whitespace.png)
+![Code diagnostics in RStudio](./figures/RStudio/rstudio_diagnostics.png)
 
 ### Version control
 
-It is possible to connect R Studio with Git and Subversion. To do that, you can go to `Settings > GIT/SVN` and then enable the version control. Once you enabled it, you will find the Git tab in the Environment pane which shows you the current changes. It also allows you to `commit`, `push` and `pull` using the Git dropdown.
+It is possible to connect R Studio with Git and Subversion. To do that, you can go to `Settings > GIT/SVN` and then enable the version control. Once you enabled it, you will find the Git tab (E) in the Environment pane which shows you the current changes. It also allows you to `commit`, `push` and `pull` using the Git dropdown.
 
-![Git in RStudio](./figures/RStudio/rstudio-vcs-pane-labeled.png)
+![Git in RStudio](./figures/RStudio/rstudio_git.png)
 
 If you want to know more about version control, consider following one of our Git courses or have a look at the [RStudio documentation](https://docs.posit.co/ide/user/ide/guide/tools/version-control.html).
 

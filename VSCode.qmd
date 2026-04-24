@@ -1,6 +1,6 @@
 # Get to know VS Code
 
-The following overview is based on the [Visual Studio Code Documentation](https://code.visualstudio.com/docs) as well as [the Carpentry lesson on IDEs](https://carpentries-incubator.github.io/byte-sized-rse-vscode/index.html) and also contains screenshots taken from these websites. The content has been shortened to mostly show relevant content.
+The following overview is based on the [Visual Studio Code Documentation](https://code.visualstudio.com/docs) as well as [the Carpentry lesson on IDEs](https://carpentries-incubator.github.io/byte-sized-rse-vscode/index.html). The content has been shortened to mostly show relevant content.
 
 ## A quick tour through your IDE
 

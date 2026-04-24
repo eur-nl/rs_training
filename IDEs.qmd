@@ -190,13 +190,13 @@ Once you type in `y`, RStudio will create the environment, and you can continue 
 ## Creating a virtual environment with PyCharm
 In PyCharm, there are multiple ways to set up a virtual environment. The fastest way is to create it when creating a new project. To do this, click on `File > New Project...` and you will see the following window:
 
-![Creating a virtual environment with PyCharm](./figures/PyCharm/pycharm_venv.png)
+![Creating a virtual environment with PyCharm](./figures/PyCharm/py_new_project.png)
 
 In this window, you can not only choose whether you want a project venv, base conda or custom environment, but also which Python version the environment should have. After creating the environment, you can install packages in the console of PyCharm using `pip` (or for conda environments using `conda`) as well as [the Python packages tool window](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html#packages-tool-window). 
 
 [Another way to create a virtual environment for an existing project](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html) is to click on the Python Interpreter selector (in the lower right corner) and either choose the interpreter (and venv) of choice or click on `Add Interpreter > Add Local Interpreter`. Afterward you will get a similar window as shown for the project creation.
 
-![Creating a virtual environment for an existing project with PyCharm](./figures/PyCharm/py_python_interpreter_widget.png)
+![Creating a virtual environment for an existing project with PyCharm](./figures/PyCharm/pycharm_venv.png)
 
 To save the environment and to be able to share the packages (and versions) that you have, you can either follow [this guide](https://www.jetbrains.com/help/pycharm/managing-dependencies.html#add-requirements) or use `pip freeze > requirements.txt` in the console.
 
