@@ -477,24 +477,29 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Research Software at EUR",
+    "objectID": "JASP.html",
+    "href": "JASP.html",
+    "title": "Research Software Training @ EUR",
     "section": "",
-    "text": "Are you interested in learning more about Research Software? Do you want to improve your programming skills? On this website, we publish all training materials related to research software, making it easier to find the right topic.",
+    "text": "Back to top",
     "crumbs": [
-      "Home"
+      "Programming Café",
+      "7 Introduction to JASP"
     ]
   },
   {
-    "objectID": "index.html#contribute-your-own-material",
-    "href": "index.html#contribute-your-own-material",
-    "title": "Research Software at EUR",
-    "section": "Contribute Your Own Material",
-    "text": "Contribute Your Own Material\nHave you created a useful lesson, tutorial, or script that others could benefit from? Get in touch with us or submit a pull request!",
-    "crumbs": [
-      "Home"
-    ]
+    "objectID": "DataVisualisation.html",
+    "href": "DataVisualisation.html",
+    "title": "Data Visualization with R",
+    "section": "",
+    "text": "Are you interested in how to visualise your data using R? In this course, you will get an overview of possible visualizations and get to know where to look for more content. As we are not reinventing the wheel, this session will rely heavily on the content created by the Data Carpentries in their session on Data Visiualization with R and the material created by Antonio Schettino in his workshop on R and the tidyverse."
+  },
+  {
+    "objectID": "DataVisualisation.html#other-ways",
+    "href": "DataVisualisation.html#other-ways",
+    "title": "Data Visualization with R",
+    "section": "Other ways",
+    "text": "Other ways\nTo show the results in a different way, R also offers other libraries such as geomtextpath. Here an example of the usage. We will list other handy websites and/or libraries at the end.\n\nlibrary(geomtextpath)\nggplot(eplp, aes(x = year, y = par1_ld, color = country)) +\n  geom_labelsmooth(aes(label = country), fill = \"white\",\n                   method = \"lm\", formula = y ~ x,\n                   size = 3, linewidth = 1, boxlinewidth = 0.4) +\n  theme_bw() + guides(color = 'none')"
   },
   {
     "objectID": "programming_cafe.html",
@@ -707,6 +712,26 @@
     "title": "Get to know PyCharm",
     "section": "",
     "text": "JetBrains (the company behind PyCharm) offers various tutorials on PyCharm.\nWant to learn more about Python? Have a look at our Python course “Python Fundamentals” on the left side of this website.\nSimilar to the Data Carpentries, the Carpentries also offer “Programming with Python” in their Software Carpentry lessons. Are you interesting in the attending the course in-person? Please contact one of our trainers!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Research Software at EUR",
+    "section": "",
+    "text": "Are you interested in learning more about Research Software? Do you want to improve your programming skills? On this website, we publish all training materials related to research software, making it easier to find the right topic.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#contribute-your-own-material",
+    "href": "index.html#contribute-your-own-material",
+    "title": "Research Software at EUR",
+    "section": "Contribute Your Own Material",
+    "text": "Contribute Your Own Material\nHave you created a useful lesson, tutorial, or script that others could benefit from? Get in touch with us or submit a pull request!",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "Day2.html",
