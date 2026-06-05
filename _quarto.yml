@@ -48,6 +48,9 @@ website:
           href: DataManagementwithSoftware.qmd
         - text: "6 IDEs and virtual environments"
           href: IDEs.qmd
+        - text: "7 Introduction to JASP"
+          href: JASP.qmd
+
 
 format:
   html:
