@@ -1,14 +1,17 @@
 --- 
 title: "Data Visualization with R" 
 format: html 
+fig-width: 12
+fig-height: 10
 toc: true 
 toc-location: right 
+
 --- 
 
-Are you interested in how to visualise your data using R? In this course, you will get an overview of possible visualizations and get to know where to look for more content. As we are not reinventing the wheel, this session will rely heavily on the content created by the Data Carpentries in their session on [Data Visiualization with R](https://datacarpentry.github.io/r-socialsci/instructor/05-ggplot2.html) and the material created by Antonio Schettino in his [workshop on R and the tidyverse](https://github.com/aschetti/MPI2020_intro_tidyverse/tree/master).
+Are you interested in learning how to visualise your data using R? In this Programming Café session, you will gain an overview of possible visualisations and get to know where to find additional resources. Rather than reinventing the wheel, this session will draw heavily on content created by the Data Carpentries in their session on [Data Visiualisation with R](https://datacarpentry.github.io/r-socialsci/instructor/05-ggplot2.html) and the material created by Antonio Schettino in his [workshop on R and the tidyverse](https://github.com/aschetti/MPI2020_intro_tidyverse/tree/master).
 
 # The Data
-The data that we will use comes from the [Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday/tree/main), a weekly social data project with the goal to provide real-world datasets so that people can learn to work with data. We will focus on [European Parenting Leave Policies](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-06-02/readme.md).
+The data that we will use comes from the [Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday/tree/main), a weekly social data initiative designed to provide real-world datasets to practice with. We will focus on [European Parenting Leave Policies](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-06-02/readme.md).
 
 First, let's import tidyverse and download the data.
 ```{r}
@@ -16,18 +19,18 @@ library(tidyverse)
 eplp <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-06-02/eplp.csv')
 ```
 
-Our goal today is to explore how the paid parental leave duration in months changed in the years per country as well as whether specific parental groups (e.g., mother or co-parents) have more or different rights to earn extra money during their leave.
+Our goal today is to explore how the paid parental leave duration (in months) changed over the years per country, as well as whether specific parental groups (e.g., mothers or co-parents) have more or different rights to earn extra money during their leave.
 
-To be able to show these information in a plot, we first want to have a look at the data on hand. 
+To be able to show this information in a plot, we first want to look at the data at hand.
 
 ```{r}
 str(eplp)
-view(head(eplp, 10))
+head(eplp, 10)
 ```
 
 For the first question, we will mainly focus on `country`(two-letter country code), `par1_ld` (Paid parental leave duration (maximum duration)) and `year` (1970 to 2024).
 
-Let's create a basic plot with the year and parental leave duration to see whether the length of parental leave increases over time:
+Let's create a basic plot with the year (`year`) and parental leave (`par1_ld`) duration to see whether the length of parental leave increases over time:
 
 ```{r}
 plot(eplp$year, eplp$par1_ld,
@@ -42,13 +45,13 @@ Oh! That is not very readable, is it? Maybe **ggplot2** can help us with this.
 
 **ggplot2** is an R package that helps you create graphics. Through its underlying grammar (or syntax), it allows you to compose graphs by stacking independent components on top of each other. This makes it very powerful. You can think of it as working in layers: first you create an empty canvas for the plot, then you add the data and geometry, followed by the title, axis labels, colors, and themes. Almost every element is highly customizable. In today's session, we will get to know some of the functionalities.
 
-Let's start by creating an empty canvas. `aes` stands for aesthetics in this context and we add our x and y value.
+Let's start by creating an empty canvas. `aes` stands for aesthetics in this context and we add our `x` and `y` value.
 ```{r}
 eplp |>
   ggplot(aes(x = year, y = par1_ld)) 
 ```
 
-Next, we want to add the geometric layer (geom), it can be points, lines or a boxplot. I will use points for now. A plot must have at least one geom, but there is no upper limit. You can add a geom to a plot using the "+" operator.
+Next, we want to add the geometric layer (geom). The geometric layer can be a plot with points, lines or boxes. I will use points for now. A plot must have at least one geom, but there is no upper limit. You can add a geom to a plot using the `+` operator.
 
 ```{r}
 eplp |>
@@ -72,7 +75,7 @@ eplp_plot +
 
 The plot that we created till now is not very readable. It seems as if some of the points that we created are overlapping. A possible solution to make more points visible, is to use either change the transparency of the points or jitter the location of the points. 
 
-Let's try changing the transparency. We can change the transparency of the points using the `alpha` argument. Values of `alpha` range from 0 to 1 (transparent to non-transparent). 
+Let's try changing the transparency. We can change the transparency of the points using the `alpha` argument. Values of `alpha` range from 0 to 1 (transparent to non-transparent).
 
 ```{r}
 eplp_plot +
@@ -88,7 +91,7 @@ eplp_plot +
   geom_jitter()
 ```
 
-Geom_jitter() also enables us to change the width and height of the jittering and with this, control the randomness a bit. Let's combine the transparency and the jittering.
+`Geom_jitter()` also enables us to change the width and height of the jittering and with this, control the randomness a bit. Let's combine the transparency and the jittering.
   
 ```{r}
 eplp_plot +
@@ -97,7 +100,7 @@ geom_jitter(alpha = 0.5,
             height = 0.2)
 ```
 
-We can also add some color!
+We can also add some color using the `color` argument!
 
 ```{r}
 eplp_plot +
@@ -114,11 +117,11 @@ eplp_plot +
   geom_jitter(aes(color = country), alpha = 0.5, width = 0.2, height = 0.2)
 ```
 
-This already looks better, right? I am not sure whether this graph helps us to solve our research question though.
+This already looks better, right? I'm not sure whether this graph helps us answer our research question, though.
 
 # Building your plot – geom_boxplot()
 
-As of now, we have seen `geom_point()` and `geom_jitter()`, but to be able to see the leave duration per year and country, we will try out `geom_boxplots()`. I will not use the variable `eplp_plot` here, so that we can see all changes that we make.
+As of now, we have seen `geom_point()` and `geom_jitter()`, but to be able to see the leave duration per year and country, we will try out `geom_boxplots()`. I will not use the variable `eplp_plot` here but the full pipe instead, so that we can see all changes that we make.
 
 ```{r}
 eplp |>
@@ -126,7 +129,7 @@ eplp |>
   geom_boxplot()
 ```
 
-While we do not see the year of the documented duration, we easily see that the countries policies changed. Adding some color might also help to get a better grasps on the number of measurements and of their distribution.
+While we don't see the year of the documented duration, we can easily observe that the countries' policies have changed. Adding some color might also help to better grasp the number of measurements and their distribution.
 
 ```{r}
 eplp |>
@@ -138,7 +141,7 @@ eplp |>
               height = 0.2)
 ```
 
-Did you see that we layered a jitter plot on top of a boxplot? We used the `+` operator to layer them on top of each other. We can still freely customize either, for example, to use a color coding for the countries. 
+Did you see that we layered a jitter plot on top of a boxplot? We used the `+` operator to layer them on top of each other. We can still freely customize either, for example, to use color coding for the countries. 
 
 ```{r}
 eplp |>
@@ -169,7 +172,7 @@ ggplot(data=eplp, aes(x=year, y=par1_ld, color=country)) +
   ylab("Paid parental leave duration in months")
 ```
 
-The same would work with `xlab()` for the x-axis.
+The same works with `xlab()` for the x-axis.
 
 ```{r}
 ggplot(data=eplp, aes(x=year, y=par1_ld, color=country)) + 
@@ -179,6 +182,7 @@ ggplot(data=eplp, aes(x=year, y=par1_ld, color=country)) +
 ```
 
 And we can also use `title()` to add a title.
+
 ```{r}
 ggplot(data=eplp, aes(x=year, y=par1_ld, color=country)) + 
   geom_line() + 
@@ -188,6 +192,7 @@ ggplot(data=eplp, aes(x=year, y=par1_ld, color=country)) +
 ```
 
 There is also a more straight-forward way to do this. We can use `lab()` which takes `title`, `x` and `y` as arguments.
+
 ```{r}
 ggplot(data=eplp, aes(x=year, y=par1_ld, color=country)) + 
   geom_line() + 
@@ -211,7 +216,8 @@ This looks better already! At least now, we can see how the paid parental leave 
 
 ## Other ways
 
-To show the results in a different way, R also offers other libraries such as `geomtextpath`. Here an example of the usage. We will list other handy websites and/or libraries at the end.
+To present the results differently, R also provides other libraries, such as `geomtextpath`. Below is an example of its usage. We will list additional useful websites and/or libraries at the end.
+
 ```{r}
 library(geomtextpath)
 ggplot(eplp, aes(x = year, y = par1_ld, color = country)) +
@@ -223,9 +229,9 @@ ggplot(eplp, aes(x = year, y = par1_ld, color = country)) +
 
 # Building your plot – geom_bar()
 
-Since we also want to explore whether specific parental groups (e.g., mother or co-parents) have more or different rights to earn extra money during their leave, we need to find a plot that can work with categorical data. Barplots come in handy here. We can create one using `geom_bar()`.
+Since we also want to explore whether specific parental groups (e.g., mothers or co-parents) have more or different rights to earn extra money during their leave, we need to find a plot that works well with categorical data. Bar plots are particularly useful in this case, and we can create one using geom_bar().
 
-First, let's only give the x-value to see who gets the paid parental leave according to most policies.
+First, let's focus on the x-value to identify who receives paid parental leave according to most policies.
 
 ```{r}
 eplp |>
@@ -241,9 +247,9 @@ eplp |>
   geom_bar(aes(fill = par1_work))
 ```
 
-It looks like in the policies in which only mothers can get a paid parental leave, most of them do not allow them to work at the same time. It is a bit difficult to judge though, since we do not see the percentages. 
+It appears that in policies where only mothers are eligible for paid parental leave, most do not allow them to work at the same time. However, it’s a bit difficult to assess this accurately since we don’t see the percentages.
 
-Let's calculate the percentages to get a better impression! We do not use ggplot2 for this, but we still stack some functions. First, we will filter out the "not applicable" cases, then count the cases. After that we group them by parent staying home and calculate the percentages.
+Let’s calculate the percentages to get a better understanding! Instead of using ggplot2, we’ll stack some functions to achieve this. First, we’ll filter out the 'not applicable' cases, then count the remaining instances (`par1_for_whom` and `par1_work`). Afterward, we’ll group the data by the parent staying home (`par1_for_whom`)and calculate the percentages.
 
 ```{r}
 percent_work_during_leave <- eplp |>
@@ -255,7 +261,7 @@ percent_work_during_leave <- eplp |>
   ungroup()
 ```
 
-We can now plot the results using `geom_bar()`. We can separate the portions of the stacked bar that correspond to each category and put them side-by-side by setting the `position` to “dodge”.  We should also set `stat` to "identity", this way the barplot will display the values in the data frame as is. 
+Now, we can plot the results using `geom_bar()`. To separate the portions of the stacked bar corresponding to each category and display them side-by-side, we can set the `position` argument to 'dodge'. Additionally, we should set `stat` to 'identity' so that the bar plot directly reflects the values in the data frame.
 
 ```{r}
 percent_work_during_leave |>
@@ -263,7 +269,7 @@ percent_work_during_leave |>
   geom_bar(stat = "identity", position = "dodge")
 ```
 
-Let's add a facet to seperate the two different groups of being allowed to work and not being allowed.
+Let's add a facet to seperate the two different groups (`par1_work` = "Yes" vs. `par1_work` = "No").
 
 ```{r}
 percent_work_during_leave |>
@@ -275,7 +281,7 @@ percent_work_during_leave |>
   facet_wrap(~ par1_work)
 ```
 
-I am not sure whether this gives us the insights that we need yet, but we can use this chance to play around with the plot a bit. Let's add title and labels using `labs()` as well as a theme or two using `theme_bw()` to make the background white and `theme(panel.grid = element_blank())` to remove the grid.
+I'm not sure if this provides the insights we need yet, but we can use this chance to experiment with the plot a bit. Let's add a title and labels using `labs()`, and improve the appearance by applying themes. We can use `theme_bw()` to set a white background and `theme(panel.grid = element_blank())` to remove the grid.
 
 ```{r}
 percent_work_during_leave |>
@@ -300,10 +306,10 @@ percent_work_during_leave |>
        y="Percent") +
   facet_wrap(~ par1_work) +
   theme_bw() +
-  theme(text = element_text(size = 16))
+  theme(text = element_text(size = 9))
 ```
 
-To be better able to answer our research question, we might want to look at the percentages per country. For this, we have to calculate the new percentages.
+**Trying more**: To better address our research question, we may want to look at the percentages per country. To do this, we need to calculate the new percentages.
 
 ```{r}
 percent_work_during_leave_country <- eplp |>
@@ -315,7 +321,7 @@ percent_work_during_leave_country <- eplp |>
   ungroup()
 ```
 
-And then we can use the layers that we got to know today, to create a nice overview of the policies per country and their answer on on which parent is allowed to work during their paid leave. 
+Now, we can use the layers we looked at today to create a clear overview of the policies per country and their answer on which parent is allowed to work during paid leave.
 
 ```{r}
 percent_work_during_leave_country |>
@@ -326,10 +332,36 @@ percent_work_during_leave_country |>
        y="Percent") +
   facet_wrap(~ country + par1_for_whom) +
   theme_bw() +
-  theme(text = element_text(size = 16))
+  theme(text = element_text(size = 9))
 ```
- 
-I cannot say whether this plot is particularly fitting, since we have multiple entries per year, but at least we can see what is possible using ggplot. Feel free to play around with it more and find out how it can help your research!
+
+We may also consider removing the legend on the side to get more space for the plot. We can delete all legends by setting the argument `legend.position` of `theme` to "none".
+
+```{r}
+percent_work_during_leave_country |>
+  ggplot(aes(x = par1_work, y = percent, fill = country)) +
+  geom_bar(stat = "identity", position = "dodge")+
+  labs(title="Possibility to work/earn money during parts of the leave by person staying home",
+       x="Parental leave for whom",
+       y="Percent") +
+  facet_wrap(~ country + par1_for_whom) +
+  theme_bw() +
+  theme(text = element_text(size = 9), legend.position="none")
+```
+
+Last but not least, let's save our plot using `ggsave()`.
+
+```{r}
+ggsave(
+  filename = "plot.png",
+  path = "figures",
+  width = 7, height = 7, units = "in", 
+  dpi = 600
+  )
+```
+
+I cannot say whether this plot is particularly suitable, as we have multiple entries per year. However, it does provide an idea of what is possible using ggplot. Feel free to experiment further and explore how it can support your research!
+
 
 # Helpful links
 
