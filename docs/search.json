@@ -492,14 +492,14 @@
     "href": "DataVisualisation.html",
     "title": "Data Visualization with R",
     "section": "",
-    "text": "Are you interested in how to visualise your data using R? In this course, you will get an overview of possible visualizations and get to know where to look for more content. As we are not reinventing the wheel, this session will rely heavily on the content created by the Data Carpentries in their session on Data Visiualization with R and the material created by Antonio Schettino in his workshop on R and the tidyverse."
+    "text": "Are you interested in learning how to visualise your data using R? In this Programming Café session, you will gain an overview of possible visualisations and get to know where to find additional resources. Rather than reinventing the wheel, this session will draw heavily on content created by the Data Carpentries in their session on Data Visiualisation with R and the material created by Antonio Schettino in his workshop on R and the tidyverse."
   },
   {
     "objectID": "DataVisualisation.html#other-ways",
     "href": "DataVisualisation.html#other-ways",
     "title": "Data Visualization with R",
     "section": "Other ways",
-    "text": "Other ways\nTo show the results in a different way, R also offers other libraries such as geomtextpath. Here an example of the usage. We will list other handy websites and/or libraries at the end.\n\nlibrary(geomtextpath)\nggplot(eplp, aes(x = year, y = par1_ld, color = country)) +\n  geom_labelsmooth(aes(label = country), fill = \"white\",\n                   method = \"lm\", formula = y ~ x,\n                   size = 3, linewidth = 1, boxlinewidth = 0.4) +\n  theme_bw() + guides(color = 'none')"
+    "text": "Other ways\nTo present the results differently, R also provides other libraries, such as geomtextpath. Below is an example of its usage. We will list additional useful websites and/or libraries at the end.\n\nlibrary(geomtextpath)\nggplot(eplp, aes(x = year, y = par1_ld, color = country)) +\n  geom_labelsmooth(aes(label = country), fill = \"white\",\n                   method = \"lm\", formula = y ~ x,\n                   size = 3, linewidth = 1, boxlinewidth = 0.4) +\n  theme_bw() + guides(color = 'none')"
   },
   {
     "objectID": "programming_cafe.html",
