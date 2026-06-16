@@ -50,6 +50,8 @@ website:
           href: IDEs.qmd
         - text: "7 Introduction to JASP"
           href: JASP.qmd
+        - text: "8 Data Visualisation with R"
+          href: DataVisualization.qmd
 
 
 format:

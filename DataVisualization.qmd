@@ -8,7 +8,7 @@ toc-location: right
 
 --- 
 
-Are you interested in learning how to visualise your data using R? In this Programming Café session, you will gain an overview of possible visualisations and get to know where to find additional resources. Rather than reinventing the wheel, this session will draw heavily on content created by the Data Carpentries in their session on [Data Visiualisation with R](https://datacarpentry.github.io/r-socialsci/instructor/05-ggplot2.html) and the material created by Antonio Schettino in his [workshop on R and the tidyverse](https://github.com/aschetti/MPI2020_intro_tidyverse/tree/master).
+Are you interested in learning how to visualize your data using R? In this Programming Café session, you will gain an overview of possible visualizations and get to know where to find additional resources. Rather than reinventing the wheel, this session will draw heavily on content created by the Data Carpentries in their session on [Data Visualisation with R](https://datacarpentry.github.io/r-socialsci/instructor/05-ggplot2.html) and the material created by Antonio Schettino in his [workshop on R and the tidyverse](https://github.com/aschetti/MPI2020_intro_tidyverse/tree/master).
 
 # The Data
 The data that we will use comes from the [Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday/tree/main), a weekly social data initiative designed to provide real-world datasets to practice with. We will focus on [European Parenting Leave Policies](https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-06-02/readme.md).
@@ -369,6 +369,6 @@ Aside from the two sources that I cited at the beginning of the session, I can a
 
 - [The R Graphics Cookbook](https://r-graphics.org/index.html) is a practical guide to help you create high-quality graphs 
 - [The R Graph Gallery](https://r-graph-gallery.com) offers a wide range of graphs created with R. Check out this website to find inspirations for your plots! They even offer the source code to reproduce them
-- Utrecht University also had a programming café about data visualisation with R. Find their content [here](https://utrechtuniversity.github.io/programming-cafe/posts/2023-10-05_data-visualization/)
+- Utrecht University also had a programming café about data visualization with R. Find their content [here](https://utrechtuniversity.github.io/programming-cafe/posts/2023-10-05_data-visualization/)
 - Here is the online version of the 3rd edition of [ggplot2: elegant graphics for data analysis](https://ggplot2-book.org) which explains you the Grammar of Graphics better than I can
 - You can also have a look at [this informative series on ggplot2](https://www.youtube.com/watch?v=h29g21z0a68) on Youtube
