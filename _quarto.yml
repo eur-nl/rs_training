@@ -52,6 +52,8 @@ website:
           href: JASP.qmd
         - text: "8 Data Visualisation with R"
           href: DataVisualization.qmd
+        - text: "9 Text Mining with Python"
+          href: TextMining_FLL.ipynb
 
 
 format:
