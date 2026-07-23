@@ -1,0 +1,34 @@
+# FAIR principles
+
+The FAIR principles are guidelines that help to improve the machine-actionability of your data and software, while also increasing its reusability by other researchers. They hope to guide you to make your data more **f**indable, **a**ccessible, **i**nteroperable and **r**esuable. This page gives you a small introduction to FAIR. More detailed information can be found in the subordinating webpages.
+
+# What does FAIR entail?
+
+## Findable
+Software, Data, and their associated metadata, are easy for both humans and machines to find.
+
+## Accessible
+Users know how to access the data (incl. authentication & authorisation). Software, and its metadata, is retrievable via standardised protocols. 
+
+## Interoperable
+Data can interoperate with tools and software and be integrated with other data. Software interoperates with other software by exchanging data and/or metadata, and/or through interaction via application programming interfaces (APIs), described through standards.
+
+## Reusable
+Data & Software are both usable and reusable (can be understood, modified, built upon, or incorporated into other data and/or software).
+
+# Further reading
+## FAIR Data
+- [GO FAIR](https://www.go-fair.org/fair-principles/)
+- [How to GO FAIR](https://www.go-fair.org/how-to-go-fair/)
+- [How to FAIR](https://howtofair.dk)
+- [How to make your data FAIR](https://www.openaire.eu/how-to-make-your-data-fair)
+- [DANS FAIR-Aware Tool](https://fairaware.dans.knaw.nl)
+
+## FAIR Software
+- [Paper on "How can software interoperability be achieved under European competition law and related regimes?"](https://doi.org/10.1093/jeclap/lpt069)
+- [Paper on "Introducing the FAIR Principles for research software"](https://doi.org/10.1038/s41597-022-01710-x)
+- [FAIR Software Recommendations](https://fair-software.nl)
+- [Self-assessment for FAIR research software](https://fairsoftwarechecklist.net/v0.2/)
+
+
+

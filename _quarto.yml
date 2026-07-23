@@ -54,6 +54,14 @@ website:
           href: DataVisualization.qmd
         - text: "9 Text Mining with Python"
           href: TextMining_FLL.ipynb
+      - text: "---"
+      - section: FAIR
+        href: FAIR_principles.qmd
+        contents:
+        - text: "FAIR Software"
+          href: FAIR_software.qmd
+        - text: "Data Interoperability"
+        - text: "Software Interoperability"
 
 
 format:
