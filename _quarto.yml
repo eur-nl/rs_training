@@ -60,8 +60,8 @@ website:
         contents:
         - text: "FAIR Software"
           href: FAIR_software.qmd
-        - text: "Data Interoperability"
-        - text: "Software Interoperability"
+        - text: "Understanding Interoperability"
+          href: understanding_interoperability.qmd
 
 
 format:
