@@ -15,12 +15,7 @@ Mainly answers the question whether your data can be understood and used by othe
 **Software interoperability**
 Answers the question whether your script can work with others’ systems, libraries or research software?
 
-The fastest way to make your data and/or software interoperable is to use **standards**. Standards are agreed-upon rules for how data and software should be structured, described and exchanged. Categories in which standards play a role are...
-
-...file formats\
-...metadata schemas\
-...controlled vocabularies\
-...APIs and protocols
+The fastest way to make your data and/or software interoperable is to use **standards**. Standards are agreed-upon rules for how data and software should be structured, described and exchanged. 
 
 We will have a look at three standards: file formats, metadata schemas and controlled vocabularies.
 
@@ -45,7 +40,7 @@ In terms of interoperability, it is important that the metadata…
 …is machine-readable and human-understandable\
 …can be exchanged and interpreted across research software\
 
-In general, we differentiate between structured and unstructured metadata. Structured metadata is preferred when thinking about interoperability, but you can find a small comparison here:
+In general, we differentiate between structured and unstructured metadata. Structured metadata is often preferred when thinking about interoperability, but unstructered metadata can also add value e.g., when doing qualitative research.
 
 ![structured vs. unstructured metadata](figures/metadata.png)
 
