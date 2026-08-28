@@ -1,0 +1,169 @@
+--- 
+title: "Back to Basics: Refresh Your R Skills" 
+format: html 
+toc: true 
+toc-location: right 
+--- 
+
+Don’t we all know it? Summer ends and we’ve forgotten where we left off before the break. Has this happened with your R programming? No problem! In this session, we’ll refresh your R skills and give you a boost for the upcoming academic year. On 6th of October, we will cover the technical basics (basic syntax, how to run R scripts, and how to install and load packages), simple data processing (how to import and explore your data), and basic visualization (using base plots and ggplot2).
+
+# The technical basics
+
+## Basic syntax
+
+### Naming objects
+
+You can use R similar to a calculator. It is possible to just type in numbers into your console and receive results immediatly.
+
+```{r}
+9 * 5
+```
+
+Everything that you create (and that exists) in R is an object. To be able to use them efficiently, we can name objects. For that, we use the assignment operator `<-`.
+
+```{r}
+result <- 9 * 5
+```
+
+If we want to print the value of an object, you can run a line that just contains the object name.
+
+```{r}
+result
+```
+
+### Comments
+Comments are a programmers friend. They help you to keep an overview of your code, understand what you did (and why) and keep your code readable. In R, you can use the `#` character to create a comment. You can do this either behind a line of code or above or below it.
+
+```{r}
+# This is a comment
+code <- 10 * 3 # I can also add a comment here
+# This is also a comment
+```
+
+You can also use comments to exclude specific lines of code from being run. To do that, you "comment out" a line of code. In the following example, we commented the line out that assigns `b` the new value `20`.
+
+```{r}
+a <- 30
+b <- 100
+# b <- 20 
+
+c <- a * b
+c
+```
+
+### Functions and arguments
+R offers a various amounts of in-built functions, i.e., a block of code that runs when the function is used. To use a function, we use its name and provide it with the needed arguments, i.e., the input that the function needs to run.
+In the following example, we use the function `sqrt` to calculate the square root of 4.
+```{r}
+sqrt(4)
+```
+
+If you want to know more about a function, you can use the `?` to access the documentation.
+```{r}
+?sqrt()
+```
+
+### Vectors and data types
+In R, vectors are a commonly used data type. Vectors consists of a series of values which can be connected using the `c()`-function.
+
+```{r}
+my_vector <- c(1,2,3,4,5)
+my_vector
+```
+
+I can also store characters in a vector. Characters are indicated with `""`.
+```{r}
+my_second_vector <- c("these","are","characters")
+my_second_vector
+```
+
+Aside from `numeric` and `character` data types, R also allows to use `logical` data (`TRUE` vs. `FALSE`), `integer`, `complex` and `raw`.  
+
+You can use various function on vectors (and even subset them). Commonly used are the following:
+```{r}
+length(my_vector) # returns the length of the vector
+typeof(my_vector) # returns the type of the vector (e.g., character)
+str(my_vector) # returns an overview of the structure of the vector
+```
+
+## How to run R scripts
+You can run R code either through the command line or by using an R script. Usually, you run the code line by line. An example of an R script can be found in [our Programming Café session on IDEs](https://eur-nl.github.io/rs_training/IDEs.html#get-to-know-rstudio) in which we present how RStudio can be used to run R scripts.
+
+## How to install and load packages
+
+To install new packages, you can use the command `install.packages("PACKAGE")`. To import packages to use them in your program, use `library(PACKAGE)`. The following example shows how to install and import ggplot2.
+```{{r}}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+# Simple data analyses
+
+## How to import your data
+You can import your data with the help of various packages. The most straight-forward way is to use one of the following functions:
+```{r}
+# Read file in table format (each row is one line in the document)
+data <- read.table(file = "data/documents.csv", header = TRUE, sep = "\t")
+
+# import file with sep = "\t"
+data <- read.delim(file = "data/documents.csv") 
+# import .csv file
+data <- read.csv(file = "data/documents.csv") 
+
+```
+
+## How to explore your data
+
+You can have a look at your data with various in-built functions. The following overview is taken from the [Data Carpentry for SSH workshop](https://datacarpentry.github.io/r-socialsci/02-starting-with-data.html#importing-data) and adapted to fit our example:
+
+### Size
+```{r}
+dim(data) # - returns a vector with the number of rows as the first element, and the number of columns as the second element (the dimensions of the object)
+nrow(data) # - returns the number of rows
+ncol(data) # - returns the number of columns
+```
+
+### Content
+```{r}
+head(data) #- shows the first 6 rows
+tail(data) #- shows the last 6 rows
+```
+
+### Names
+```{r}
+names(data) #- returns the column names (synonym of colnames() for data.frame objects)
+```
+
+### Summary
+```{r}
+str(data) #- structure of the object and information about the class, length and content of each column
+summary(data) #- summary statistics for each column
+```
+
+## How to use characters as factors
+As most of our data consists of characters, we might want to make some of them categorical variables. We can do that by casting them as factors using the `as.factor()`-function. We address the specific column using `$`.
+
+```{r}
+data$Gender <- as.factor(data$Gender)
+data$Complaint <- as.factor(data$Complaint)
+data$ZIP.Code <- as.factor(data$ZIP.Code)
+```
+
+## How to create a base plot
+Creating a base plot in R is as easy as typing `plot(data)`. 
+```{r}
+plot(data)
+```
+
+For our data, the plot is not really helpful, but you can also focus on one specfic column instead using `$` to indicate the column name. 
+
+```{r}
+plot(data$Gender)
+```
+
+`plot()` allows for multiple other arguments to be used. You can find more information on it [here](https://eur-nl.github.io/rs_training/DataVisualization.html).
+
+A handy package to create plots is `ggplot2`. You can find a manual on how to visualize your data with it [here](https://eur-nl.github.io/rs_training/DataVisualization.html).
+
+
+# Further reading
