@@ -9,11 +9,11 @@ Don’t we all know it? Summer ends and we’ve forgotten where we left off befo
 
 # The technical basics
 
-## Basic syntax
+Before we start looking at how to use R to analyze your data, let's have a look at the technical basics. We will refresh how to name objects, how to use comments, what a function is and how to find out which arguments it needs. After that, we will shortly look at data types and how to run RScripts and how to install and load packages.
 
-### Naming objects
+## Naming objects
 
-You can use R similar to a calculator. It is possible to just type in numbers into your console and receive results immediatly.
+You can use R similar to a calculator. It is possible to just type in numbers into your console and receive results immediately.
 
 ```{r}
 9 * 5
@@ -31,8 +31,8 @@ If we want to print the value of an object, you can run a line that just contain
 result
 ```
 
-### Comments
-Comments are a programmers friend. They help you to keep an overview of your code, understand what you did (and why) and keep your code readable. In R, you can use the `#` character to create a comment. You can do this either behind a line of code or above or below it.
+## Comments
+Comments are a programmers friend. They help you to keep an overview of your code, understand what you did (and why) and keep your code readable. In R, you can use the `#` character to create a comment. You can do this either behind a line of code, above or below it.
 
 ```{r}
 # This is a comment
@@ -51,9 +51,8 @@ c <- a * b
 c
 ```
 
-### Functions and arguments
-R offers a various amounts of in-built functions, i.e., a block of code that runs when the function is used. To use a function, we use its name and provide it with the needed arguments, i.e., the input that the function needs to run.
-In the following example, we use the function `sqrt` to calculate the square root of 4.
+## Functions and arguments
+R offers various in-built functions, i.e., a block of code that runs when the function is used. To use a function, we use its name and provide it with the needed arguments, i.e., the input that the function needs to run. In the following example, we use the function `sqrt` to calculate the square root of 4.
 ```{r}
 sqrt(4)
 ```
@@ -63,17 +62,17 @@ If you want to know more about a function, you can use the `?` to access the doc
 ?sqrt()
 ```
 
-### Vectors and data types
+## Vectors and data types
 In R, vectors are a commonly used data type. Vectors consists of a series of values which can be connected using the `c()`-function.
 
 ```{r}
-my_vector <- c(1,2,3,4,5)
+my_vector <- c(1,2,3,4,5) # 1,2,3 are numeric data types
 my_vector
 ```
 
-I can also store characters in a vector. Characters are indicated with `""`.
+We can also store characters in a vector. Characters are indicated with `" "`.
 ```{r}
-my_second_vector <- c("these","are","characters")
+my_second_vector <- c("these","are","characters") # these words are seen as character data type
 my_second_vector
 ```
 
@@ -91,13 +90,14 @@ You can run R code either through the command line or by using an R script. Usua
 
 ## How to install and load packages
 
-To install new packages, you can use the command `install.packages("PACKAGE")`. To import packages to use them in your program, use `library(PACKAGE)`. The following example shows how to install and import ggplot2.
+To install new packages, you can use the command `install.packages("PACKAGE")`. To import packages and use them in your code, use `library(PACKAGE)`. The following example shows how to install and import `ggplot2`.
 ```{{r}}
 install.packages("ggplot2")
 library(ggplot2)
 ```
 
 # Simple data analyses
+While we cannot cover data analyses in this short session, I want to shortly remind you how to import, explore, slightly manipulate and visualize your data.
 
 ## How to import your data
 You can import your data with the help of various packages. The most straight-forward way is to use one of the following functions:
@@ -155,7 +155,7 @@ Creating a base plot in R is as easy as typing `plot(data)`.
 plot(data)
 ```
 
-For our data, the plot is not really helpful, but you can also focus on one specfic column instead using `$` to indicate the column name. 
+For our data, the plot is not really helpful, but you can also focus on one specific column instead using `$` to indicate the column name. 
 
 ```{r}
 plot(data$Gender)
@@ -167,3 +167,9 @@ A handy package to create plots is `ggplot2`. You can find a manual on how to vi
 
 
 # Further reading
+- [Douglas, A., Roos D., Mancini, F., Couto A., & Lusseau, D. (2026). Introduction to R. https://intro2r.com](https://intro2r.com) is an up-to-date introduction to R that helps you refresh the basics.
+- [R for Social Scientists](https://datacarpentry.github.io/r-socialsci/index.html) is the lesson script of the R course that we will teach at EUR.
+- [Wickham, H., Çetinkaya-Rundel, M., and Grolemund, G. (2023). R for Data Science (2e). https://r4ds.hadley.nz](https://r4ds.hadley.nz) is a good introduction to using R for Data Science.
+- [R Tutorial at W3Schools. https://www.w3schools.com/r/default.asp](https://www.w3schools.com/r/default.asp) Are you looking for a more technical perspective? Follow this tutorial!
+- [The R Graphics Cookbook](https://r-graphics.org/index.html) is a practical guide to help you create high-quality graphs 
+
