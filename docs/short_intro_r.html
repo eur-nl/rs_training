@@ -475,12 +475,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can import your data with the help of various packages. The most straight-forward way is to use one of the following functions:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file in table format (each row is one line in the document)</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/documents.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"material/example.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import file with sep = "\t"</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/documents.csv"</span>) </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"material/example.csv"</span>) </span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># import .csv file</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/documents.csv"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"material/example.csv"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="how-to-explore-your-data" class="level2">
@@ -491,15 +491,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data) <span class="co"># - returns a vector with the number of rows as the first element, and the number of columns as the second element (the dimensions of the object)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7 6</code></pre>
+<pre><code>[1] 44  4</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(data) <span class="co"># - returns the number of rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
+<pre><code>[1] 44</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(data) <span class="co"># - returns the number of columns</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 </section>
@@ -508,23 +508,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data) <span class="co">#- shows the first 6 rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Name    Surname Birth.Date Gender ZIP.Code       Complaint
-1   Sean     Curtis  20-9-1965   Male     2141 Short of breath
-2 Daniel      Smith  14-2-1965   Male     2142      Chest pain
-3   Kate      Adams 23-10-1965 Female     2138     Painful eye
-4 Marion      Aaker  24-8-1965 Female     2139        Wheezing
-5  Helen  Wackerman  7-11-1964 Female     2140   Aching joints
-6  Reese Haberlandt  1-12-1964 Female     2141      Chest pain</code></pre>
+<pre><code>    name age  group temperature
+1  Peter  11 junior          37
+2   Alex  25  adult          41
+3 Sandra  43  adult          35
+4    Eva  55  adult          38
+5   Adam  66 senior          39
+6 Marijn   7 junior          41</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(data) <span class="co">#- shows the last 6 rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    Name    Surname Birth.Date Gender ZIP.Code       Complaint
-2 Daniel      Smith  14-2-1965   Male     2142      Chest pain
-3   Kate      Adams 23-10-1965 Female     2138     Painful eye
-4 Marion      Aaker  24-8-1965 Female     2139        Wheezing
-5  Helen  Wackerman  7-11-1964 Female     2140   Aching joints
-6  Reese Haberlandt  1-12-1964 Female     2141      Chest pain
-7 Forest      Hacke 23-10-1964   Male     2142 Short of breath</code></pre>
+<pre><code>          name age  group temperature
+39  Henny-Dani  59  adult          38
+40 Jaimy-Henny  54  adult          40
+41   Jamie-Ali  63  adult          40
+42   Dominique  12 junior          37
+43   Jaimy-Sam  12 junior          40
+44 Robin-Jaimy  69 senior          37</code></pre>
 </div>
 </div>
 </section>
@@ -533,8 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="co">#- returns the column names (synonym of colnames() for data.frame objects)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Name"       "Surname"    "Birth.Date" "Gender"     "ZIP.Code"  
-[6] "Complaint" </code></pre>
+<pre><code>[1] "name"        "age"         "group"       "temperature"</code></pre>
 </div>
 </div>
 </section>
@@ -543,41 +542,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data) <span class="co">#- structure of the object and information about the class, length and content of each column</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   7 obs. of  6 variables:
- $ Name      : chr  "Sean" "Daniel" "Kate" "Marion" ...
- $ Surname   : chr  "Curtis" "Smith" "Adams" "Aaker" ...
- $ Birth.Date: chr  "20-9-1965" "14-2-1965" "23-10-1965" "24-8-1965" ...
- $ Gender    : chr  "Male" "Male" "Female" "Female" ...
- $ ZIP.Code  : int  2141 2142 2138 2139 2140 2141 2142
- $ Complaint : chr  "Short of breath" "Chest pain" "Painful eye" "Wheezing" ...</code></pre>
+<pre><code>'data.frame':   44 obs. of  4 variables:
+ $ name       : chr  "Peter" "Alex" "Sandra" "Eva" ...
+ $ age        : int  11 25 43 55 66 7 78 63 69 63 ...
+ $ group      : chr  "junior" "adult" "adult" "adult" ...
+ $ temperature: int  37 41 35 38 39 41 38 35 37 41 ...</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data) <span class="co">#- summary statistics for each column</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     Name             Surname           Birth.Date           Gender         
- Length:7           Length:7           Length:7           Length:7          
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-                                                                            
-                                                                            
-                                                                            
-    ZIP.Code     Complaint        
- Min.   :2138   Length:7          
- 1st Qu.:2140   Class :character  
- Median :2141   Mode  :character  
- Mean   :2140                     
- 3rd Qu.:2142                     
- Max.   :2142                     </code></pre>
+<pre><code>     name                age           group            temperature   
+ Length:44          Min.   : 1.00   Length:44          Min.   :35.00  
+ Class :character   1st Qu.:13.00   Class :character   1st Qu.:36.00  
+ Mode  :character   Median :44.00   Mode  :character   Median :38.00  
+                    Mean   :39.07                      Mean   :38.05  
+                    3rd Qu.:63.00                      3rd Qu.:40.00  
+                    Max.   :78.00                      Max.   :41.00  </code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="how-to-use-characters-as-factors" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-characters-as-factors">How to use characters as factors</h2>
-<p>As most of our data consists of characters, we might want to make some of them categorical variables. We can do that by casting them as factors using the <code>as.factor()</code>-function. We address the specific column using <code>$</code>.</p>
+<p>As two categories of our data consists of characters, we might want to make one of them categorical. We can do that by casting them as factors using the <code>as.factor()</code>-function. We address the specific column using <code>$</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Gender)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Complaint <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>Complaint)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ZIP.Code <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>ZIP.Code)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data<span class="sc">$</span>group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="how-to-create-a-base-plot" class="level2">
@@ -595,7 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>For our data, the plot is not really helpful, but you can also focus on one specific column instead using <code>$</code> to indicate the column name.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>Gender)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -614,8 +602,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://intro2r.com">Douglas, A., Roos D., Mancini, F., Couto A., &amp; Lusseau, D. (2026). Introduction to R. https://intro2r.com</a> is an up-to-date introduction to R that helps you refresh the basics.</li>
 <li><a href="https://datacarpentry.github.io/r-socialsci/index.html">R for Social Scientists</a> is the lesson script of the R course that we will teach at EUR.</li>
 <li><a href="https://r4ds.hadley.nz">Wickham, H., Çetinkaya-Rundel, M., and Grolemund, G. (2023). R for Data Science (2e). https://r4ds.hadley.nz</a> is a good introduction to using R for Data Science.</li>
-<li><a href="https://www.w3schools.com/r/default.asp">R Tutorial at W3Schools. https://www.w3schools.com/r/default.asp</a> Are you looking for a more technical perspective? Follow this tutorial!</li>
+<li>[R Tutorial at W3Schools.] (https://www.w3schools.com/r/default.asp](https://www.w3schools.com/r/default.asp) Are you looking for a more technical perspective? Follow this tutorial!</li>
 <li><a href="https://r-graphics.org/index.html">The R Graphics Cookbook</a> is a practical guide to help you create high-quality graphs</li>
+<li>Ismay, C. &amp; Kennedy, P.C. (2026). <a href="https://rbasics.netlify.app">Getting Used to R, RStudio and RMarkdown</a></li>
 </ul>
 
 
