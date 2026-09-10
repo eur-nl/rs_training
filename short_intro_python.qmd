@@ -232,7 +232,7 @@ print(data.describe())
 print("\n",data.group.describe())
 ```
 
-While `describe()` gives us an overview, we can also assess the information seperately.
+While `describe()` gives us an overview, we can also assess the information separately.
 
 ```{python}
 print("mean:", data.temperature.mean())
