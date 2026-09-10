@@ -36,8 +36,14 @@ In general, we differentiate between four types of data: Integer, Float, Boolean
 We can use the built-in function type() to check the type of objects.
 ```{python}
 type(1)
+```
+```{python}
 type(2.5)
+```
+```{python}
 type(True)
+```
+```{python}
 type("Hello world!")
 ```
 
@@ -55,11 +61,13 @@ To create a list, we can either use square brackets or the list() method or spli
 ```{python}
 participated = list()
 print(participated)
-
+```
+```{python}
 # If we create a new list, we can also directly fill it with items
 participated = ["participant_001", "participant_002", "participant_005"]
 print(participated)
-
+```
+```{python}
 # You can also use split() to create a list
 list_part = "peter,anna,katrin,sara,max".split(',')
 print(list_part)
@@ -88,10 +96,12 @@ All values in a set are unique and unordered. Unlike other collection types, set
 female = {'Sue','Mary','Kate','Lee'}
 male = set(['Lee','Eric','Tom','Adam']) 
 print(female & male)
-
+```
+```{python}
 # To look at the union of two sets, you can either use | or a.union(b) (with a one set, and b the other)
 print(female | male)
-
+```
+```{python}
 # To look at the difference between the two sets, you can either use - or a.difference(b) (with a one set, and b the other)
 print(female - male)
 ```
@@ -108,7 +118,8 @@ In this dictionary, participant_name, participant_age, and participant_city are 
 ```{python}
 data = {"participant_name": "Peter", "participant_age": 50, "participant_city": "Rotterdam"}
 print(data)
-
+```
+```{python}
 {'participant_name': 'Peter', 'participant_age': 50, 'participant_city': 'Rotterdam'}
 # To retrieve the values saved in a dictionary, you can use the keys
 print(data["participant_age"])
@@ -186,13 +197,13 @@ say_hello()
 There are multiple packages/modules available to create and read files (e.g., the [csv module](https://docs.python.org/3/library/csv.html) and [json module](https://docs.python.org/3/library/json.html)). However, you can also create files without using modules by making use of the function `open()` in the writing mode `w`.
 
 ```{python}
-with open('test.csv', mode = 'w') as file_out:
-    print("number\n20\n30\n40", file = file_out)
+with open('test.txt', mode = 'w') as file_out:
+    print("This is a test!", file = file_out)
 ```
 ## Read a file
 Similar to writing files, you can also use the csv and json modules to read files. `open()` in the reading mode `r` also allows us to read the content.
 ```{python}
-with open('test.csv', mode = 'r') as file_in:
+with open('test.txt', mode = 'r') as file_in:
     content = file_in.read()
 print(content)
 ```
@@ -208,20 +219,46 @@ After importing pandas, we can use the function read_csv() to read our list of p
 ```{python}
 import pandas
 
-data = pandas.read_csv("test.csv",dtype=int)
+dtype = {"name":str, "age":int, "group":str, "temperature":int}
+data = pandas.read_csv("material/example.csv", dtype = dtype)
 print(data)
-
-print(data.columns)
 ```
 
-After importing your data, you can use pandas to get insights.
+After importing your data, you can use pandas to get insights. `describe()` gives you some statistics.
 
 ```{python}
 print(data.describe())
-
-print(data.number.mean())
-print(data.number.std())
+# This also works when limiting us to one group
+print("\n",data.group.describe())
 ```
+
+While `describe()` gives us an overview, we can also assess the information seperately.
+
+```{python}
+print("mean:", data.temperature.mean())
+print("median:", data.temperature.median())
+print("standard deviation:", data.temperature.std())
+print("minimum:", data.temperature.min())
+print("maximum:", data.temperature.max())
+```
+
+ We can also group our results and look at it while keeping categorical in mind.
+
+```{python}
+age_groups = data.groupby("group")
+age_groups.describe()
+```
+
+We can also check whether we have any double-entries of full lines...
+```{python}
+data.value_counts()
+```
+
+...and how often certain combinations (or categories) are present.
+```{python}
+data.group.value_counts()
+```
+
 
 Pandas also offers other functionalities, a few are documented in the Python course overview [here](https://eur-nl.github.io/rs_training/Day3.html#using-packages---pandas).
 

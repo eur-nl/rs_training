@@ -103,12 +103,12 @@ While we cannot cover data analyses in this short session, I want to shortly rem
 You can import your data with the help of various packages. The most straight-forward way is to use one of the following functions:
 ```{r}
 # Read file in table format (each row is one line in the document)
-data <- read.table(file = "data/documents.csv", header = TRUE, sep = "\t")
+data <- read.table(file = "material/example.csv", header = TRUE, sep = "\t")
 
 # import file with sep = "\t"
-data <- read.delim(file = "data/documents.csv") 
+data <- read.delim(file = "material/example.csv") 
 # import .csv file
-data <- read.csv(file = "data/documents.csv") 
+data <- read.csv(file = "material/example.csv") 
 
 ```
 
@@ -141,12 +141,10 @@ summary(data) #- summary statistics for each column
 ```
 
 ## How to use characters as factors
-As most of our data consists of characters, we might want to make some of them categorical variables. We can do that by casting them as factors using the `as.factor()`-function. We address the specific column using `$`.
+As two categories of our data consists of characters, we might want to make one of them categorical. We can do that by casting them as factors using the `as.factor()`-function. We address the specific column using `$`.
 
 ```{r}
-data$Gender <- as.factor(data$Gender)
-data$Complaint <- as.factor(data$Complaint)
-data$ZIP.Code <- as.factor(data$ZIP.Code)
+data$group <- as.factor(data$group)
 ```
 
 ## How to create a base plot
@@ -158,7 +156,7 @@ plot(data)
 For our data, the plot is not really helpful, but you can also focus on one specific column instead using `$` to indicate the column name. 
 
 ```{r}
-plot(data$Gender)
+plot(data$group)
 ```
 
 `plot()` allows for multiple other arguments to be used. You can find more information on it [here](https://eur-nl.github.io/rs_training/DataVisualization.html).
