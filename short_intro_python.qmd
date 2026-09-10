@@ -259,6 +259,9 @@ data.value_counts()
 data.group.value_counts()
 ```
 
-
 Pandas also offers other functionalities, a few are documented in the Python course overview [here](https://eur-nl.github.io/rs_training/Day3.html#using-packages---pandas).
 
+# Further reading
+- [Plotting and Programming in Python course (Software Carpentries)](https://swcarpentry.github.io/python-novice-gapminder/)
+- [The Hitchhiker’s Guide to Python!](https://docs.python-guide.org)
+- [Kaggle courses](https://www.kaggle.com/learn)
