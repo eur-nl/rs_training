@@ -342,6 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#read-a-file" id="toc-read-a-file" class="nav-link" data-scroll-target="#read-a-file">Read a file</a></li>
   <li><a href="#basic-pandas-functions" id="toc-basic-pandas-functions" class="nav-link" data-scroll-target="#basic-pandas-functions">Basic pandas functions</a></li>
   </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -378,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="install-and-load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-and-load-packages">Install and load packages</h2>
 <p>Depending on your IDE, installing and loading packages can be managed with in-built package overviews (see <a href="https://eur-nl.github.io/rs_training/IDEs.html">our IDE Guide</a>. If you do not want to rely on your IDE, you can install a package using <code>python3 -m pip install PACKAGE</code> in the console. After installing a package, you need to import it in your Python script. You can do this using <code>import PACKAGE</code> in the first line of your script.</p>
-<div id="2256996e" class="cell" data-execution_count="1">
+<div id="7f126759" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -395,25 +396,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>A string is a sequence of characters, primarily used for handling text. A string is indicated by quotation marks.</li>
 </ul>
 <p>We can use the built-in function type() to check the type of objects.</p>
-<div id="9da29763" class="cell" data-execution_count="2">
+<div id="e97a6405" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>int</code></pre>
 </div>
 </div>
-<div id="d67ad68a" class="cell" data-execution_count="3">
+<div id="1dfd2f9b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="fl">2.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>float</code></pre>
 </div>
 </div>
-<div id="c8ffaafa" class="cell" data-execution_count="4">
+<div id="5602fb47" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>bool</code></pre>
 </div>
 </div>
-<div id="6194b951" class="cell" data-execution_count="5">
+<div id="d9794475" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="st">"Hello world!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>str</code></pre>
@@ -422,7 +423,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="variables" class="level3">
 <h3 class="anchored" data-anchor-id="variables">Variables</h3>
 <p>Variables allow us to bind a name to an object, meaning we can associate names with our values. This can be done with all types.</p>
-<div id="86dd4cd1" class="cell" data-execution_count="6">
+<div id="d0830056" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store a text in the variable txt</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>txt <span class="op">=</span> <span class="st">"This is a text."</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(txt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -434,14 +435,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="lists" class="level3">
 <h3 class="anchored" data-anchor-id="lists">Lists</h3>
 <p>Lists offer a lot of flexibility. They can store data of any type and even multiple instances of the same value. To create a list, we can either use square brackets or the list() method or split a string using <code>split()</code>.</p>
-<div id="baccae16" class="cell" data-execution_count="7">
+<div id="235e820e" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>participated <span class="op">=</span> <span class="bu">list</span>()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(participated)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[]</code></pre>
 </div>
 </div>
-<div id="323d5ac9" class="cell" data-execution_count="8">
+<div id="c52cd12b" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If we create a new list, we can also directly fill it with items</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>participated <span class="op">=</span> [<span class="st">"participant_001"</span>, <span class="st">"participant_002"</span>, <span class="st">"participant_005"</span>]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(participated)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -449,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>['participant_001', 'participant_002', 'participant_005']</code></pre>
 </div>
 </div>
-<div id="26544c3d" class="cell" data-execution_count="9">
+<div id="62607e65" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also use split() to create a list</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>list_part <span class="op">=</span> <span class="st">"peter,anna,katrin,sara,max"</span>.split(<span class="st">','</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list_part)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -458,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A very handy feature is that you can select individual items from a list using their index – the number assigned to them in the sequence of items. To do this, you use square brackets. In Python, the first element has the index number 0.</p>
-<div id="d8c0fca7" class="cell" data-execution_count="10">
+<div id="1cb4598a" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> participated[<span class="dv">0</span>]</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -469,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tuples" class="level3">
 <h3 class="anchored" data-anchor-id="tuples">Tuples</h3>
 <p>Another collection data type is tuples. The biggest difference between lists and tuples is that tuple elements cannot be changed.</p>
-<div id="8156e028" class="cell" data-execution_count="11">
+<div id="ce1ad8b6" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>participated <span class="op">=</span> [<span class="st">"participant_001"</span>, <span class="st">"participant_005"</span>, <span class="st">"participant_002"</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to transform a list into a tuple or create a new tuple, we can use tuple()</span></span>
@@ -483,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sets" class="level3">
 <h3 class="anchored" data-anchor-id="sets">Sets</h3>
 <p>All values in a set are unique and unordered. Unlike other collection types, sets do not support indexing. You may have encountered sets in your high school math class.</p>
-<div id="62ab77f4" class="cell" data-execution_count="12">
+<div id="c729405e" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To look at the intersection of two sets, you can either use the ampersand &amp; or a.intersection(b) (with a one set, and b the other)</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>female <span class="op">=</span> {<span class="st">'Sue'</span>,<span class="st">'Mary'</span>,<span class="st">'Kate'</span>,<span class="st">'Lee'</span>}</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>male <span class="op">=</span> <span class="bu">set</span>([<span class="st">'Lee'</span>,<span class="st">'Eric'</span>,<span class="st">'Tom'</span>,<span class="st">'Adam'</span>]) </span>
@@ -492,14 +493,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>{'Lee'}</code></pre>
 </div>
 </div>
-<div id="ea90a872" class="cell" data-execution_count="13">
+<div id="368fd342" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To look at the union of two sets, you can either use | or a.union(b) (with a one set, and b the other)</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(female <span class="op">|</span> male)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'Tom', 'Lee', 'Sue', 'Mary', 'Eric', 'Kate', 'Adam'}</code></pre>
+<pre><code>{'Kate', 'Adam', 'Tom', 'Lee', 'Sue', 'Eric', 'Mary'}</code></pre>
 </div>
 </div>
-<div id="1149f027" class="cell" data-execution_count="14">
+<div id="20ce9e94" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To look at the difference between the two sets, you can either use - or a.difference(b) (with a one set, and b the other)</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(female <span class="op">-</span> male)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -512,14 +513,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Dictionaries function like a real dictionary, meaning they have keys and values. Using this type, we can build the following structure:</p>
 <p>participant_name: Peter participant_age: 50 participant_city: Rotterdam</p>
 <p>In this dictionary, participant_name, participant_age, and participant_city are the keys, while Peter, 50, and Rotterdam are the values. To create a dictionary, we use curly brackets.</p>
-<div id="83e76daf" class="cell" data-execution_count="15">
+<div id="376914df" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"participant_name"</span>: <span class="st">"Peter"</span>, <span class="st">"participant_age"</span>: <span class="dv">50</span>, <span class="st">"participant_city"</span>: <span class="st">"Rotterdam"</span>}</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'participant_name': 'Peter', 'participant_age': 50, 'participant_city': 'Rotterdam'}</code></pre>
 </div>
 </div>
-<div id="c6819f1d" class="cell" data-execution_count="16">
+<div id="ac4d5e1a" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>{<span class="st">'participant_name'</span>: <span class="st">'Peter'</span>, <span class="st">'participant_age'</span>: <span class="dv">50</span>, <span class="st">'participant_city'</span>: <span class="st">'Rotterdam'</span>}</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># To retrieve the values saved in a dictionary, you can use the keys</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">"participant_age"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -536,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In real-life scenarios, you may want to exclude certain participants or apply different tests based on their attributes. For example, you could say:</p>
 <p>If the age is higher than 65, print ‘senior’. Else if the age is lower than 18, print ‘junior’. Else, print ‘adult’.</p>
 <p>We can implement similar logic in Python using if, elif, and else statements.</p>
-<div id="6e76b960" class="cell" data-execution_count="17">
+<div id="55ad2539" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> age <span class="op">&gt;</span> <span class="dv">65</span>:</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'senior'</span>)</span>
@@ -555,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We differentiate between two types of loops: while and for. - In a while loop, an action is performed as long as a certain condition is True. - In a for loop, an action is repeated a preset number of times.</p>
 <section id="while" class="level4">
 <h4 class="anchored" data-anchor-id="while">while</h4>
-<div id="ad3d438c" class="cell" data-execution_count="18">
+<div id="eb4cd281" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ages <span class="op">=</span> [<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">32</span>,<span class="dv">45</span>,<span class="dv">50</span>,<span class="dv">57</span>,<span class="dv">61</span>,<span class="dv">65</span>,<span class="dv">70</span>,<span class="dv">78</span>]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>no_iteration <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> no_iteration <span class="op">&lt;</span> <span class="bu">len</span>(ages):</span>
@@ -588,7 +589,7 @@ senior</code></pre>
 <section id="for" class="level4">
 <h4 class="anchored" data-anchor-id="for">for</h4>
 <p>Another approach to iterating over items in a list or dictionary is the for loop. It repeats an action for a specified number of times. In prose, this would be: For every age in the list of ages, print the appropriate text.</p>
-<div id="0fd8fc3f" class="cell" data-execution_count="19">
+<div id="9165b150" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ages <span class="op">=</span> [<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">32</span>,<span class="dv">45</span>,<span class="dv">50</span>,<span class="dv">57</span>,<span class="dv">61</span>,<span class="dv">65</span>,<span class="dv">70</span>,<span class="dv">78</span>]</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> age <span class="kw">in</span> ages:</span>
@@ -622,7 +623,7 @@ senior</code></pre>
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
 <p>If we write snippets of code that we want to reuse in the future, it can be helpful to use functions. Functions are typically defined once and serve to group related functionality. They can be called (used) multiple times throughout your code. Additionally, functions have their own local variables, which are separate from the rest of the program.</p>
 <p>To define a function, we use def.</p>
-<div id="b6f3f21e" class="cell" data-execution_count="20">
+<div id="89863762" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function say_hello()</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> say_hello():</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello, how are you?"</span>)</span>
@@ -640,7 +641,7 @@ senior</code></pre>
 <section id="write-a-file" class="level2">
 <h2 class="anchored" data-anchor-id="write-a-file">Write a file</h2>
 <p>There are multiple packages/modules available to create and read files (e.g., the <a href="https://docs.python.org/3/library/csv.html">csv module</a> and <a href="https://docs.python.org/3/library/json.html">json module</a>). However, you can also create files without using modules by making use of the function <code>open()</code> in the writing mode <code>w</code>.</p>
-<div id="07b3e7f6" class="cell" data-execution_count="21">
+<div id="add6650e" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'test.txt'</span>, mode <span class="op">=</span> <span class="st">'w'</span>) <span class="im">as</span> file_out:</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This is a test!"</span>, <span class="bu">file</span> <span class="op">=</span> file_out)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -648,7 +649,7 @@ senior</code></pre>
 <section id="read-a-file" class="level2">
 <h2 class="anchored" data-anchor-id="read-a-file">Read a file</h2>
 <p>Similar to writing files, you can also use the csv and json modules to read files. <code>open()</code> in the reading mode <code>r</code> also allows us to read the content.</p>
-<div id="b88464e1" class="cell" data-execution_count="22">
+<div id="5e0505bb" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'test.txt'</span>, mode <span class="op">=</span> <span class="st">'r'</span>) <span class="im">as</span> file_in:</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> file_in.read()</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -663,7 +664,7 @@ senior</code></pre>
 <p>Pandas is a fast, powerful, flexible, and user-friendly open-source tool for data analysis and manipulation, built on top of the Python programming language.</p>
 <p>With pandas, we can read files, process them, and perform statistical analyses on the data.</p>
 <p>After importing pandas, we can use the function read_csv() to read our list of participants. We give the name of the csv file and the data type (in this case: string) as arguments.</p>
-<div id="2c8fd245" class="cell" data-execution_count="23">
+<div id="6ebc35d9" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>dtype <span class="op">=</span> {<span class="st">"name"</span>:<span class="bu">str</span>, <span class="st">"age"</span>:<span class="bu">int</span>, <span class="st">"group"</span>:<span class="bu">str</span>, <span class="st">"temperature"</span>:<span class="bu">int</span>}</span>
@@ -718,7 +719,7 @@ senior</code></pre>
 </div>
 </div>
 <p>After importing your data, you can use pandas to get insights. <code>describe()</code> gives you some statistics.</p>
-<div id="f67efd9f" class="cell" data-execution_count="24">
+<div id="00f2b3a5" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.describe())</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This also works when limiting us to one group</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,data.group.describe())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -741,7 +742,7 @@ Name: group, dtype: object</code></pre>
 </div>
 </div>
 <p>While <code>describe()</code> gives us an overview, we can also assess the information separately.</p>
-<div id="2757d7b1" class="cell" data-execution_count="25">
+<div id="7853ab01" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mean:"</span>, data.temperature.mean())</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"median:"</span>, data.temperature.median())</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"standard deviation:"</span>, data.temperature.std())</span>
@@ -756,7 +757,7 @@ maximum: 41</code></pre>
 </div>
 </div>
 <p>We can also group our results and look at it while keeping categorical in mind.</p>
-<div id="cf317b1f" class="cell" data-execution_count="26">
+<div id="e6879de1" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>age_groups <span class="op">=</span> data.groupby(<span class="st">"group"</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>age_groups.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
@@ -874,7 +875,7 @@ maximum: 41</code></pre>
 </div>
 </div>
 <p>We can also check whether we have any double-entries of full lines…</p>
-<div id="e5ba7d04" class="cell" data-execution_count="27">
+<div id="144bb19a" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>data.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>name             age  group   temperature
@@ -926,7 +927,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>…and how often certain combinations (or categories) are present.</p>
-<div id="d3047e80" class="cell" data-execution_count="28">
+<div id="405ad982" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>data.group.value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>group
@@ -937,9 +938,17 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Pandas also offers other functionalities, a few are documented in the Python course overview <a href="https://eur-nl.github.io/rs_training/Day3.html#using-packages---pandas">here</a>.</p>
-
-
 </section>
+</section>
+<section id="further-reading" class="level1">
+<h1>Further reading</h1>
+<ul>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/">Plotting and Programming in Python course (Software Carpentries)</a></li>
+<li><a href="https://docs.python-guide.org">The Hitchhiker’s Guide to Python!</a></li>
+<li><a href="https://www.kaggle.com/learn">Kaggle courses</a></li>
+</ul>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
