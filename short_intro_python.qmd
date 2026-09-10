@@ -182,6 +182,46 @@ say_hello()
 ```
 
 # Work with data
-## Read a file
 ## Write a file
+There are multiple packages/modules available to create and read files (e.g., the [csv module](https://docs.python.org/3/library/csv.html) and [json module](https://docs.python.org/3/library/json.html)). However, you can also create files without using modules by making use of the function `open()` in the writing mode `w`.
+
+```{python}
+with open('test.csv', mode = 'w') as file_out:
+    print("number\n20\n30\n40", file = file_out)
+```
+## Read a file
+Similar to writing files, you can also use the csv and json modules to read files. `open()` in the reading mode `r` also allows us to read the content.
+```{python}
+with open('test.csv', mode = 'r') as file_in:
+    content = file_in.read()
+print(content)
+```
+
+
 ## Basic pandas functions
+Pandas is a fast, powerful, flexible, and user-friendly open-source tool for data analysis and manipulation, built on top of the Python programming language.
+
+With pandas, we can read files, process them, and perform statistical analyses on the data.
+
+After importing pandas, we can use the function read_csv() to read our list of participants. We give the name of the csv file and the data type (in this case: string) as arguments.
+
+```{python}
+import pandas
+
+data = pandas.read_csv("test.csv",dtype=int)
+print(data)
+
+print(data.columns)
+```
+
+After importing your data, you can use pandas to get insights.
+
+```{python}
+print(data.describe())
+
+print(data.number.mean())
+print(data.number.std())
+```
+
+Pandas also offers other functionalities, a few are documented in the Python course overview [here](https://eur-nl.github.io/rs_training/Day3.html#using-packages---pandas).
+

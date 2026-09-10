@@ -126,6 +126,8 @@ CSV, JSON, XML
 Comment your code while you program!
 Comments should not copy the code, but explain what is happening and why
 
+# Links to additional resources
+- [ODISSEI guide for preparing and sharing code](https://odissei-data.nl/2022/06/17/a-short-practical-guide-for-preparing-and-sharing-your-analysis-code/)
 
 # TLDR
 **Follow the FAIR principle**
