@@ -1,0 +1,187 @@
+--- 
+title: "Back to Basics: Refresh Your Python Skills" 
+format: html 
+toc: true 
+toc-location: right 
+--- 
+
+Is the yearly dilemma back again? The new academic year starts and we’ve forgotten the basics of a skill that felt natural before. Has this happened with your Python programming? No problem! In this session, we’ll refresh your Python skills and give you a good start to the academic year. We cover the technical basics (basic syntax, how to run scripts, and how to install and load packages) and core Python concepts (data types, lists, sets, dictionaries, basic operations, control flow, loops) to help you start working with data.
+
+# The technical basics
+Remembering the basics might take a while after holidays, especially of you know how to program in other programming languages as well. Let's first rehearse how to run scripts and install and load packages:
+
+## Running scripts
+To run a script, you can either use the command line or the "play" button in your IDE. If you prefer to use the IDE, you can refer to [our IDE Guide](https://eur-nl.github.io/rs_training/IDEs.html). If you want to use the command line instead, you can run your code using the python command and the name of the file (e.g., `python myscript.py`).
+
+## Install and load packages
+Depending on your IDE, installing and loading packages can be managed with in-built package overviews (see [our IDE Guide](https://eur-nl.github.io/rs_training/IDEs.html). If you do not want to rely on your IDE, you can install a package using `python3 -m pip install PACKAGE` in the console. 
+After installing a package, you need to import it in your Python script. You can do this using `import PACKAGE` in the first line of your script.
+
+```{python}
+import random
+```
+
+# Core concepts
+
+
+## Data types
+In general, we differentiate between four types of data: Integer, Float, Boolean, and String.
+
+- An integer is a number without a decimal point.
+- A float is a floating-point number, meaning it has a decimal place.
+- A boolean has two possible values: true and false. It is used for logical operations.
+- A string is a sequence of characters, primarily used for handling text. A string is indicated by quotation marks.
+
+
+We can use the built-in function type() to check the type of objects.
+```{python}
+type(1)
+type(2.5)
+type(True)
+type("Hello world!")
+```
+
+### Variables
+Variables allow us to bind a name to an object, meaning we can associate names with our values. This can be done with all types.
+```{python}
+# Store a text in the variable txt
+txt = "This is a text."
+print(txt)
+```
+### Lists
+Lists offer a lot of flexibility. They can store data of any type and even multiple instances of the same value.
+To create a list, we can either use square brackets or the list() method or split a string using `split()`.
+
+```{python}
+participated = list()
+print(participated)
+
+# If we create a new list, we can also directly fill it with items
+participated = ["participant_001", "participant_002", "participant_005"]
+print(participated)
+
+# You can also use split() to create a list
+list_part = "peter,anna,katrin,sara,max".split(',')
+print(list_part)
+```
+
+A very handy feature is that you can select individual items from a list using their index – the number assigned to them in the sequence of items. To do this, you use square brackets.
+In Python, the first element has the index number 0.
+```{python}
+first = participated[0]
+print(first)
+```
+### Tuples
+Another collection data type is tuples. The biggest difference between lists and tuples is that tuple elements cannot be changed.
+```{python}
+participated = ["participant_001", "participant_005", "participant_002"]
+
+# if we want to transform a list into a tuple or create a new tuple, we can use tuple()
+part_tuple = tuple(participated)
+print(part_tuple)
+```
+### Sets
+All values in a set are unique and unordered. Unlike other collection types, sets do not support indexing. You may have encountered sets in your high school math class.
+
+```{python}
+# To look at the intersection of two sets, you can either use the ampersand & or a.intersection(b) (with a one set, and b the other)
+female = {'Sue','Mary','Kate','Lee'}
+male = set(['Lee','Eric','Tom','Adam']) 
+print(female & male)
+
+# To look at the union of two sets, you can either use | or a.union(b) (with a one set, and b the other)
+print(female | male)
+
+# To look at the difference between the two sets, you can either use - or a.difference(b) (with a one set, and b the other)
+print(female - male)
+```
+
+### Dictionaries
+Dictionaries function like a real dictionary, meaning they have keys and values. Using this type, we can build the following structure:
+
+participant_name: Peter
+participant_age: 50
+participant_city: Rotterdam
+
+In this dictionary, participant_name, participant_age, and participant_city are the keys, while Peter, 50, and Rotterdam are the values. To create a dictionary, we use curly brackets.
+
+```{python}
+data = {"participant_name": "Peter", "participant_age": 50, "participant_city": "Rotterdam"}
+print(data)
+
+{'participant_name': 'Peter', 'participant_age': 50, 'participant_city': 'Rotterdam'}
+# To retrieve the values saved in a dictionary, you can use the keys
+print(data["participant_age"])
+```
+
+## Basic operations
+### Control flow – if, else, and elif
+In real-life scenarios, you may want to exclude certain participants or apply different tests based on their attributes. For example, you could say:
+
+If the age is higher than 65, print 'senior'.
+Else if the age is lower than 18, print 'junior'.
+Else, print 'adult'.
+
+We can implement similar logic in Python using if, elif, and else statements.
+
+```{python}
+age = 10
+if age > 65:
+    print('senior')
+elif age < 18:
+    print('junior')
+else: 
+    print('adult')
+```
+### Loops
+Typically, we want to perform actions multiple times, which means we need to repeat them. For this purpose, we use loops.
+
+We differentiate between two types of loops: while and for.
+- In a while loop, an action is performed as long as a certain condition is True. 
+- In a for loop, an action is repeated a preset number of times.
+
+#### while
+```{python}
+ages = [11,12,13,14,18,25,26,32,45,50,57,61,65,70,78]
+no_iteration = 0
+while no_iteration < len(ages):
+    if ages[no_iteration] > 65:
+        print('senior')
+    elif ages[no_iteration] < 18:
+        print('junior')
+    else: 
+        print('adult')
+    no_iteration += 1
+```
+
+#### for
+Another approach to iterating over items in a list or dictionary is the for loop. It repeats an action for a specified number of times.
+In prose, this would be: For every age in the list of ages, print the appropriate text.
+```{python}
+ages = [11,12,13,14,18,25,26,32,45,50,57,61,65,70,78]
+
+for age in ages:
+    if age > 65:
+        print('senior')
+    elif age < 18:
+        print('junior')
+    else: 
+        print('adult')
+```
+### Functions
+If we write snippets of code that we want to reuse in the future, it can be helpful to use functions. Functions are typically defined once and serve to group related functionality. They can be called (used) multiple times throughout your code. Additionally, functions have their own local variables, which are separate from the rest of the program.
+
+To define a function, we use def.
+
+```{python}
+# Define function say_hello()
+def say_hello():
+    print("Hello, how are you?")
+    
+say_hello()
+```
+
+# Work with data
+## Read a file
+## Write a file
+## Basic pandas functions
