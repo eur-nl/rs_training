@@ -167,7 +167,7 @@ A handy package to create plots is `ggplot2`. You can find a manual on how to vi
 # Further reading
 - [Douglas, A., Roos D., Mancini, F., Couto A., & Lusseau, D. (2026). Introduction to R. https://intro2r.com](https://intro2r.com) is an up-to-date introduction to R that helps you refresh the basics.
 - [R for Social Scientists](https://datacarpentry.github.io/r-socialsci/index.html) is the lesson script of the R course that we will teach at EUR.
-- [Wickham, H., Çetinkaya-Rundel, M., and Grolemund, G. (2023). R for Data Science (2e). https://r4ds.hadley.nz](https://r4ds.hadley.nz) is a good introduction to using R for Data Science.
-- [R Tutorial at W3Schools.] (https://www.w3schools.com/r/default.asp](https://www.w3schools.com/r/default.asp) Are you looking for a more technical perspective? Follow this tutorial!
+- [Wickham, H., Çetinkaya-Rundel, M., and Grolemund, G. (2023). R for Data Science (2e).](https://r4ds.hadley.nz) is a good introduction to using R for Data Science.
+- [R Tutorial at W3Schools.](https://www.w3schools.com/r/default.asp) Are you looking for a more technical perspective? Follow this tutorial!
 - [The R Graphics Cookbook](https://r-graphics.org/index.html) is a practical guide to help you create high-quality graphs 
 - Ismay, C. & Kennedy, P.C. (2026). [Getting Used to R, RStudio and RMarkdown](https://rbasics.netlify.app)
